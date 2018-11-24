@@ -8,6 +8,12 @@ namespace THSet {
         public override string getName() {
             return "TH16";
         }
+        public override string getSpecialTip() {
+            return "季节槽值为0-1140";
+        }
+        public override bool[] getEnable() {
+            return new bool[10] { true,true,true,false,true,true,true,true,false,false };
+        }
         public override int getPlayerAddress() {
             return 0x004A57F4;
         }
@@ -43,6 +49,42 @@ namespace THSet {
         }
         public override int[] getSpecialAddress() {
             return new int[] { 0x004A5808 };
+        }
+        public override int getIPlayerAddress() {
+            return 0x0042CDEE;
+        }
+        public override byte[] getIPlayerCode() {
+            return new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 };
+        }
+        public override int getIPlayerFragmentAddress() {
+            return 0;
+        }
+        public override byte[] getIPlayerFragmentCode() {
+            return new byte[] { 0 };
+        }
+        public override int getIBombAddress() {
+            return 0x0042E5AE;
+        }
+        public override byte[] getIBombCode() {
+            return new byte[] { 0xC7,0x46,0x70 };
+        }
+        public override int getIBombFragmentAddress() {
+            return 0;
+        }
+        public override byte[] getIBombFragmentCode() {
+            return new byte[] { 0 };
+        }
+        public override int getIPowerAddress() {
+            return 0;
+        }
+        public override byte[] getIPowerCode() {
+            return new byte[] { 0 };
+        }
+        public override int[] getISpecialAddress() {
+            return new int[] { 0 };
+        }
+        public override byte[][] getISpecialCode() {
+            return new byte[][] { new byte[] { 0 },new byte[] { 0 } };
         }
     }
 }
