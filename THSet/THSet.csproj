@@ -66,6 +66,7 @@
     <Compile Include="MemoryTool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TH12Code.cs" />
     <Compile Include="THCode.cs" />
     <Compile Include="TH16Code.cs" />
     <EmbeddedResource Include="MainForm.resx">

@@ -502,7 +502,7 @@
             this.tbISpecial1.Name = "tbISpecial1";
             this.tbISpecial1.Size = new System.Drawing.Size(62, 21);
             this.tbISpecial1.TabIndex = 9;
-            this.tbISpecial1.Text = "1140";
+            this.tbISpecial1.Text = "0";
             this.tbISpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label10
@@ -726,7 +726,7 @@
             this.tbScore.Name = "tbScore";
             this.tbScore.Size = new System.Drawing.Size(88, 21);
             this.tbScore.TabIndex = 15;
-            this.tbScore.Text = "100";
+            this.tbScore.Text = "10";
             this.tbScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnScore
@@ -754,7 +754,7 @@
             this.tbMaxPoint.Name = "tbMaxPoint";
             this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbMaxPoint.TabIndex = 18;
-            this.tbMaxPoint.Text = "100";
+            this.tbMaxPoint.Text = "10000";
             this.tbMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnMaxPoint
@@ -783,7 +783,7 @@
             this.tbIScore.Name = "tbIScore";
             this.tbIScore.Size = new System.Drawing.Size(88, 21);
             this.tbIScore.TabIndex = 15;
-            this.tbIScore.Text = "100";
+            this.tbIScore.Text = "10";
             this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label21
@@ -811,7 +811,7 @@
             this.tbIMaxPoint.Name = "tbIMaxPoint";
             this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbIMaxPoint.TabIndex = 18;
-            this.tbIMaxPoint.Text = "100";
+            this.tbIMaxPoint.Text = "10000";
             this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label22

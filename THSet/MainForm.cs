@@ -23,9 +23,10 @@ namespace THSet {
 
             //    } else if(GetProcessHandle("th11")!=(IntPtr)0) {
 
-            //   } else if(GetProcessHandle("th12")!=(IntPtr)0) {
-
-            //   } else if(GetProcessHandle("th13")!=(IntPtr)0) {
+            //   } else 
+            if(GetProcessHandle("th12c")!=(IntPtr)0) {
+                tc=new TH12Code();
+            } else //if(GetProcessHandle("th13")!=(IntPtr)0) {
 
             //   } else if(GetProcessHandle("th14")!=(IntPtr)0) {
 

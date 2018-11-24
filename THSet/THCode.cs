@@ -9,7 +9,6 @@ namespace THSet {
         public abstract string getSpecialTip();
 
         public abstract bool[] getEnable();
-        public abstract void setMemoryTool(MemoryTool mt);
 
         public abstract void setLockPlayer(bool b);
         public abstract void setLockBomb(bool b);
@@ -45,8 +44,5 @@ namespace THSet {
         public abstract void setISpecial2(int b);
         public abstract void setISpecial3(int b);
 
-        public abstract void write(int addr,int value);
-        public abstract void write(int addr,byte[] value);
-        public abstract void write(int addr,byte[] opCode,byte value2);
     }
 }

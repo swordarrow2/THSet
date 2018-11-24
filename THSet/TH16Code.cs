@@ -6,9 +6,6 @@ using System.Text;
 namespace THSet {
     public class TH16Code:THCode {
         MemoryTool mt = new MemoryTool("th16");
-        public override void setMemoryTool(MemoryTool mt) {
-            this.mt=mt;
-        }
         public override string getName() {
             return "TH16";
         }
@@ -60,13 +57,9 @@ namespace THSet {
         public override void setSpecial3(int i) {
 
         }
-
-
         public override void setIPlayer(byte b) {
-            //story
-            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);
-            //practice
-            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);
+            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //story
+            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //practice
             //spell practice no need
         }
         public override void setIPlayerFragment(byte b) {
@@ -112,14 +105,14 @@ namespace THSet {
 
         }
 
-        
-        public override void write(int addr,int value) {
+
+        private void write(int addr,int value) {
             mt.WriteInteger(addr,value);
         }
-        public override void write(int addr,byte[] value) {
+        private void write(int addr,byte[] value) {
             mt.WriteBytes(addr,value);
         }
-        public override void write(int addr,byte[] opCode,byte value2) {
+        private void write(int addr,byte[] opCode,byte value2) {
             List<byte> tmp = opCode.ToList();
             tmp.Add(value2);
             mt.WriteBytes(addr,tmp.ToArray());
