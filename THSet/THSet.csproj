@@ -67,7 +67,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="THCode.cs" />
-    <Compile Include="THDataManager.cs" />
     <Compile Include="TH16Code.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

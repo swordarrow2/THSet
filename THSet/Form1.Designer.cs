@@ -38,7 +38,9 @@
             this.tbPlayer = new System.Windows.Forms.TextBox();
             this.btnPlayer = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.choice = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbSpecialTip = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbSpecial3 = new System.Windows.Forms.TextBox();
@@ -52,7 +54,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbISpecialTip = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbISpecial1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -77,9 +81,6 @@
             this.tbIBomb = new System.Windows.Forms.TextBox();
             this.tbIPlayerFragment = new System.Windows.Forms.TextBox();
             this.btnIPlayerFragment = new System.Windows.Forms.Button();
-            this.lbSpecialTip = new System.Windows.Forms.Label();
-            this.lbISpecialTip = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -224,6 +225,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.choice);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
@@ -249,6 +251,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "当前值设置";
             // 
+            // choice
+            // 
+            this.choice.AutoSize = true;
+            this.choice.Location = new System.Drawing.Point(156, 19);
+            this.choice.Name = "choice";
+            this.choice.Size = new System.Drawing.Size(48, 16);
+            this.choice.TabIndex = 13;
+            this.choice.Text = "无敌";
+            this.choice.UseVisualStyleBackColor = true;
+            this.choice.CheckedChanged += new System.EventHandler(this.choice_CheckedChanged);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lbSpecialTip);
@@ -266,7 +279,16 @@
             this.groupBox3.Size = new System.Drawing.Size(188, 126);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "左下角";
+            this.groupBox3.Text = "特殊值";
+            // 
+            // lbSpecialTip
+            // 
+            this.lbSpecialTip.AutoSize = true;
+            this.lbSpecialTip.Location = new System.Drawing.Point(12, 108);
+            this.lbSpecialTip.Name = "lbSpecialTip";
+            this.lbSpecialTip.Size = new System.Drawing.Size(77, 12);
+            this.lbSpecialTip.TabIndex = 16;
+            this.lbSpecialTip.Text = "lbSpecialTip";
             // 
             // label8
             // 
@@ -338,9 +360,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 155);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 12);
+            this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 12;
-            this.label5.Text = "power";
+            this.label5.Text = "灵力";
             // 
             // label4
             // 
@@ -349,7 +371,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 12;
-            this.label4.Text = "bomb碎片";
+            this.label4.Text = "Bomb碎片";
             // 
             // label3
             // 
@@ -358,7 +380,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 12;
-            this.label3.Text = "bomb";
+            this.label3.Text = "Bomb";
             // 
             // label2
             // 
@@ -404,6 +426,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "初始值设置";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(12, 20);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(41, 12);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "THInit";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lbISpecialTip);
@@ -421,7 +452,16 @@
             this.groupBox4.Size = new System.Drawing.Size(188, 126);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "左下角";
+            this.groupBox4.Text = "特殊值";
+            // 
+            // lbISpecialTip
+            // 
+            this.lbISpecialTip.AutoSize = true;
+            this.lbISpecialTip.Location = new System.Drawing.Point(10, 107);
+            this.lbISpecialTip.Name = "lbISpecialTip";
+            this.lbISpecialTip.Size = new System.Drawing.Size(83, 12);
+            this.lbISpecialTip.TabIndex = 16;
+            this.lbISpecialTip.Text = "lbISpecialTip";
             // 
             // label9
             // 
@@ -512,9 +552,9 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(6, 150);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(35, 12);
+            this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 12;
-            this.label12.Text = "power";
+            this.label12.Text = "灵力";
             // 
             // label13
             // 
@@ -523,7 +563,7 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 12;
-            this.label13.Text = "bomb碎片";
+            this.label13.Text = "Bomb碎片";
             // 
             // label14
             // 
@@ -532,7 +572,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 12;
-            this.label14.Text = "bomb";
+            this.label14.Text = "Bomb";
             // 
             // label15
             // 
@@ -647,33 +687,6 @@
             this.btnIPlayerFragment.UseVisualStyleBackColor = true;
             this.btnIPlayerFragment.Click += new System.EventHandler(this.btnIPlayerFragment_Click);
             // 
-            // lbSpecialTip
-            // 
-            this.lbSpecialTip.AutoSize = true;
-            this.lbSpecialTip.Location = new System.Drawing.Point(12, 108);
-            this.lbSpecialTip.Name = "lbSpecialTip";
-            this.lbSpecialTip.Size = new System.Drawing.Size(77, 12);
-            this.lbSpecialTip.TabIndex = 16;
-            this.lbSpecialTip.Text = "lbSpecialTip";
-            // 
-            // lbISpecialTip
-            // 
-            this.lbISpecialTip.AutoSize = true;
-            this.lbISpecialTip.Location = new System.Drawing.Point(10, 107);
-            this.lbISpecialTip.Name = "lbISpecialTip";
-            this.lbISpecialTip.Size = new System.Drawing.Size(83, 12);
-            this.lbISpecialTip.TabIndex = 16;
-            this.lbISpecialTip.Text = "lbISpecialTip";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 20);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 12);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "THInit";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -754,6 +767,7 @@
         private System.Windows.Forms.Label lbSpecialTip;
         private System.Windows.Forms.Label lbISpecialTip;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox choice;
     }
 }
 

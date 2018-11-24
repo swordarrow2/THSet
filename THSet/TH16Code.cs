@@ -5,86 +5,109 @@ using System.Text;
 
 namespace THSet {
     public class TH16Code:THCode {
+        MemoryTool mt = new MemoryTool("th16");
+        public override void setMemoryTool(MemoryTool mt) {
+            this.mt=mt;
+        }
         public override string getName() {
             return "TH16";
         }
         public override string getSpecialTip() {
-            return "季节槽值为0-1140";
+            return "季节槽:0-1140";
         }
         public override bool[] getEnable() {
             return new bool[10] { true,true,true,false,true,true,true,true,false,false };
         }
-        public override int getPlayerAddress() {
-            return 0x004A57F4;
+        public override void setLockPlayer(bool b) {
+            write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
+                                 new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });
         }
-        public override int getPlayerFragmentAddress() {
-            return 0;
+        public override void setLockBomb(bool b) {
+            write(0x0040DB9C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
+                                 new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });
         }
-        public override int getPlayerCodeAddress() {
-            return 0x00443D3A;
+        public override void setChoice(bool b) {
+            write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
+                                new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });
         }
-        public override byte[] getLockPlayerCode0() {
-            return new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 };
+        public override void setPlayer(int i) {
+            write(0x004A57F4,i);
         }
-        public override byte[] getLockPlayerCode1() {
-            return new byte[] { 0x90,0x90,0x90,0x90,0x90 };
+        public override void setPlayerFragment(int i) {
+
         }
-        public override int getBombAddress() {
-            return 0x004A5800;
+        public override void setBomb(int i) {
+            write(0x004A5800,i);
         }
-        public override int getBombFragmentAddress() {
-            return 0x004A5804;
+        public override void setBombFragment(int i) {
+            write(0x004A5804,i);
         }
-        public override int getBombCodeAddress() {
-            return 0x0040DB9C;
+        public override void setPower(int i) {
+            write(0x004A57E4,i);
         }
-        public override byte[] getLockBombCode0() {
-            return new byte[] { 0xA3,0x00,0x58,0x4A,0x00 };
+        public override void setSpecial1(int i) {
+            write(0x004A5808,i);
         }
-        public override byte[] getLockBombCode1() {
-            return new byte[] { 0x90,0x90,0x90,0x90,0x90 };
+        public override void setSpecial2(int i) {
+
         }
-        public override int getPowerAddress() {
-            return 0x004A57E4;
+        public override void setSpecial3(int i) {
+
         }
-        public override int[] getSpecialAddress() {
-            return new int[] { 0x004A5808 };
+
+
+        public override void setIPlayer(byte b) {
+            //story
+            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);
+            //practice
+            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);
+            //spell practice no need
         }
-        public override int getIPlayerAddress() {
-            return 0x0042CDEE;
+        public override void setIPlayerFragment(byte b) {
+
         }
-        public override byte[] getIPlayerCode() {
-            return new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 };
+        public override void setIBomb(byte b) {
+            //story and practice,spell practice no need
+            write(0x0042E5AE,new byte[] { 0xC7,0x46,0x70 },b);
         }
-        public override int getIPlayerFragmentAddress() {
-            return 0;
+        public override void setIBombFragment(byte b) {
+            //story and practice,spell practice no need
+            write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74 },b);
         }
-        public override byte[] getIPlayerFragmentCode() {
-            return new byte[] { 0 };
+        public override void setIPower(int b) {
+            byte[] b1 = BitConverter.GetBytes(b);
+            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b1[0],b1[1] });
+
+            //Stop to set default values
+            write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
+            write(0x0042CEEC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //practice
+            write(0x0042CE51,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //spell practice
         }
-        public override int getIBombAddress() {
-            return 0x0042E5AE;
+        public override void setISpecial1(int b) {
+            byte[] b1 = BitConverter.GetBytes(b);
+            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1] });                  //story
+            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],0x00,0x00,0x90 });   //practice
+            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1] });                  //spell practice
+
         }
-        public override byte[] getIBombCode() {
-            return new byte[] { 0xC7,0x46,0x70 };
+        public override void setISpecial2(int b) {
+
         }
-        public override int getIBombFragmentAddress() {
-            return 0;
+        public override void setISpecial3(int b) {
+
         }
-        public override byte[] getIBombFragmentCode() {
-            return new byte[] { 0 };
+
+        
+        public override void write(int addr,int value) {
+            mt.WriteInteger(addr,value);
         }
-        public override int getIPowerAddress() {
-            return 0;
+        public override void write(int addr,byte[] value) {
+            mt.WriteBytes(addr,value);
         }
-        public override byte[] getIPowerCode() {
-            return new byte[] { 0 };
-        }
-        public override int[] getISpecialAddress() {
-            return new int[] { 0 };
-        }
-        public override byte[][] getISpecialCode() {
-            return new byte[][] { new byte[] { 0 },new byte[] { 0 } };
+        public override void write(int addr,byte[] opCode,byte value2) {
+            List<byte> tmp = opCode.ToList();
+            tmp.Add(value2);
+            mt.WriteBytes(addr,tmp.ToArray());
         }
     }
 }
