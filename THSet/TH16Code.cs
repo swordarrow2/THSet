@@ -16,7 +16,7 @@ namespace THSet {
             return "季节槽:0-1140";
         }
         public override bool[] getEnable() {
-            return new bool[10] { true,true,true,false,true,true,true,true,false,false };
+            return new bool[13] { true,true,true,true,false,true,true,true,true,true,true,false,false };
         }
         public override void setLockPlayer(bool b) {
             write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
@@ -44,6 +44,12 @@ namespace THSet {
         }
         public override void setPower(int i) {
             write(0x004A57E4,i);
+        }
+        public override void setScore(int i) {
+            write(0x004A57B0,i/10);
+        }
+        public override void setMaxPoint(int i) {
+            write(0x004A57D8,i*100);
         }
         public override void setSpecial1(int i) {
             write(0x004A5808,i);
@@ -82,6 +88,15 @@ namespace THSet {
             write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
             write(0x0042CEEC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //practice
             write(0x0042CE51,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //spell practice
+        }
+        public override void setIScore(int i) {
+            byte[] b1 = BitConverter.GetBytes(i/10);
+            write(0x0042CD38,new byte[] { 0xB9,b1[0],b1[1],b1[2],b1[3],0x89,0x0D,0xB0,0x57,0x4A,
+                0x00,0xB9,0x00,0x00,0x00,0x00,0x89,0x0D,0xC0,0x57,0x4A,0x00,0x90,0x90,0x90 });
+        }
+        public override void setIMaxPoint(int i) {
+            byte[] b1 = BitConverter.GetBytes(i*100);
+            write(0x0042CD66,new byte[] { 0xB9,b1[0],b1[1],b1[2],b1[3],0x90,0x90,0x90 });
         }
         public override void setISpecial1(int b) {
             byte[] b1 = BitConverter.GetBytes(b);

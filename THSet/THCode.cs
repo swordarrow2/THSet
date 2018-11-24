@@ -23,6 +23,9 @@ namespace THSet {
 
         public abstract void setPower(int i);
 
+        public abstract void setScore(int i);
+        public abstract void setMaxPoint(int i);
+
         public abstract void setSpecial1(int i);
         public abstract void setSpecial2(int i);
         public abstract void setSpecial3(int i);
@@ -34,6 +37,9 @@ namespace THSet {
         public abstract void setIBombFragment(byte b);
 
         public abstract void setIPower(int b);
+
+        public abstract void setIScore(int i);
+        public abstract void setIMaxPoint(int i);
 
         public abstract void setISpecial1(int b);
         public abstract void setISpecial2(int b);
