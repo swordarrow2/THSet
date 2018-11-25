@@ -19,12 +19,19 @@ namespace THSet {
 
             //    } else if(GetProcessHandle("th08")!=(IntPtr)0) {
 
-            //    } else if(GetProcessHandle("th10")!=(IntPtr)0) {
+            //    } else 
+            if(GetProcessHandle("th10")!=(IntPtr)0) {
+                tc=new TH10Code();
+                tc.setMemoryTool(new MemoryTool("th10"));
+            } else if(GetProcessHandle("th10c")!=(IntPtr)0) {
+                tc=new TH10Code();
+                tc.setTitle("东方神曲录汉化版");
+                tc.setMemoryTool(new MemoryTool("th10c"));
+            } else
+              //if(GetProcessHandle("th11")!=(IntPtr)0) {
 
-            //    } else if(GetProcessHandle("th11")!=(IntPtr)0) {
-
-            //   } else 
-            if(GetProcessHandle("th12")!=(IntPtr)0) {
+              //   } else 
+              if(GetProcessHandle("th12")!=(IntPtr)0) {
                 tc=new TH12Code();
                 tc.setMemoryTool(new MemoryTool("th12"));
             } else if(GetProcessHandle("th12c")!=(IntPtr)0) {
@@ -36,9 +43,11 @@ namespace THSet {
 
             //   } else if(GetProcessHandle("th14")!=(IntPtr)0) {
 
-            //   } else if(GetProcessHandle("th15")!=(IntPtr)0) {
-
-            //   }  else
+            //   } else
+                if(GetProcessHandle("th15")!=(IntPtr)0) {
+                    tc=new TH15Code();
+                    tc.setMemoryTool(new MemoryTool("th15"));
+                }  else
             if(GetProcessHandle("th16")!=(IntPtr)0) {
                 tc=new TH16Code();
                 tc.setMemoryTool(new MemoryTool("th16"));
@@ -72,7 +81,7 @@ namespace THSet {
             tc.setLockBomb(lockBomb.Checked);
         }
         private void choice_CheckedChanged(object sender,EventArgs e) {
-            tc.setChoice(choice.Checked);
+            tc.setUnbeatable(choice.Checked);
         }
         private void btnPlayer_Click(object sender,EventArgs e) {
             tc.setPlayer(Convert.ToInt32(tbPlayer.Text));
