@@ -5,8 +5,10 @@ using System.Text;
 
 namespace THSet {
     public abstract class THCode {
-        public abstract string getName();
+        public abstract string getTitle();
         public abstract string getSpecialTip();
+        public abstract void setTitle(string s);
+        public abstract void setMemoryTool(MemoryTool m);
 
         public abstract bool[] getEnable();
 
@@ -28,6 +30,9 @@ namespace THSet {
         public abstract void setSpecial1(int i);
         public abstract void setSpecial2(int i);
         public abstract void setSpecial3(int i);
+        public abstract int getSpecial1();
+        public abstract int getSpecial2();
+        public abstract int getSpecial3();
 
 
         public abstract void setIPlayer(byte b);

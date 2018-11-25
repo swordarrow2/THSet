@@ -5,12 +5,19 @@ using System.Text;
 
 namespace THSet {
     public class TH16Code:THCode {
-        MemoryTool mt = new MemoryTool("th16");
-        public override string getName() {
-            return "TH16";
+        MemoryTool mt;
+        string gameTitle = "东方CBC";
+        public override string getTitle() {
+            return gameTitle;
+        }
+        public override void setTitle(string s) {
+            gameTitle=s;
         }
         public override string getSpecialTip() {
             return "季节槽:0-1140";
+        }
+        public override void setMemoryTool(MemoryTool m) {
+            mt=m;
         }
         public override bool[] getEnable() {
             return new bool[13] { true,true,true,true,false,true,true,true,true,true,true,false,false };
@@ -31,7 +38,7 @@ namespace THSet {
             write(0x004A57F4,i);
         }
         public override void setPlayerFragment(int i) {
-
+            throw new NotImplementedException();
         }
         public override void setBomb(int i) {
             write(0x004A5800,i);
@@ -52,10 +59,19 @@ namespace THSet {
             write(0x004A5808,i);
         }
         public override void setSpecial2(int i) {
-
+            throw new NotImplementedException();
         }
         public override void setSpecial3(int i) {
-
+            throw new NotImplementedException();
+        }
+        public override int getSpecial1() {
+            return mt.ReadInteger(0x004A5808);
+        }
+        public override int getSpecial2() {
+            throw new NotImplementedException();
+        }
+        public override int getSpecial3() {
+            throw new NotImplementedException();
         }
         public override void setIPlayer(byte b) {
             write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //story
@@ -75,7 +91,7 @@ namespace THSet {
         }
         public override void setIPower(int b) {
             byte[] b1 = BitConverter.GetBytes(b);
-            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b1[0],b1[1] });
+            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b1[0],b1[1],b1[2],b1[3] });
 
             //Stop to set default values
             write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
@@ -93,16 +109,16 @@ namespace THSet {
         }
         public override void setISpecial1(int b) {
             byte[] b1 = BitConverter.GetBytes(b);
-            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1] });                  //story
-            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],0x00,0x00,0x90 });   //practice
-            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1] });                  //spell practice
+            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //story
+            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3],0x90 });   //practice
+            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //spell practice
 
         }
         public override void setISpecial2(int b) {
-
+            throw new NotImplementedException();
         }
         public override void setISpecial3(int b) {
-
+            throw new NotImplementedException();
         }
 
 

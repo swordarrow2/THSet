@@ -38,9 +38,17 @@
             this.tbPlayer = new System.Windows.Forms.TextBox();
             this.btnPlayer = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbMaxPoint = new System.Windows.Forms.TextBox();
+            this.btnMaxPoint = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tbScore = new System.Windows.Forms.TextBox();
+            this.btnScore = new System.Windows.Forms.Button();
             this.choice = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.lbSpecialTip = new System.Windows.Forms.Label();
+            this.btnReadSpecial3 = new System.Windows.Forms.Button();
+            this.btnReadSpecial2 = new System.Windows.Forms.Button();
+            this.btnReadSpecial1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tbSpecial3 = new System.Windows.Forms.TextBox();
@@ -53,10 +61,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbSpecialTip = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.tbIMaxPoint = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lbISpecialTip = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.tbISpecial1 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -66,9 +76,13 @@
             this.btnISpecial3 = new System.Windows.Forms.Button();
             this.btnISpecial2 = new System.Windows.Forms.Button();
             this.tbISpecial2 = new System.Windows.Forms.TextBox();
+            this.btnIMaxPoint = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.tbIScore = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnIScore = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tbIPower = new System.Windows.Forms.TextBox();
@@ -81,18 +95,6 @@
             this.tbIBomb = new System.Windows.Forms.TextBox();
             this.tbIPlayerFragment = new System.Windows.Forms.TextBox();
             this.btnIPlayerFragment = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.tbScore = new System.Windows.Forms.TextBox();
-            this.btnScore = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.tbMaxPoint = new System.Windows.Forms.TextBox();
-            this.btnMaxPoint = new System.Windows.Forms.Button();
-            this.btnIScore = new System.Windows.Forms.Button();
-            this.tbIScore = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.btnIMaxPoint = new System.Windows.Forms.Button();
-            this.tbIMaxPoint = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -264,10 +266,66 @@
             this.groupBox2.Controls.Add(this.btnPlayerFragment);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(216, 367);
+            this.groupBox2.Size = new System.Drawing.Size(216, 349);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "当前值设置";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(6, 209);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 12);
+            this.label19.TabIndex = 19;
+            this.label19.Text = "最大得点";
+            // 
+            // tbMaxPoint
+            // 
+            this.tbMaxPoint.Location = new System.Drawing.Point(68, 206);
+            this.tbMaxPoint.Name = "tbMaxPoint";
+            this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
+            this.tbMaxPoint.TabIndex = 18;
+            this.tbMaxPoint.Text = "10000";
+            this.tbMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnMaxPoint
+            // 
+            this.btnMaxPoint.Location = new System.Drawing.Point(162, 204);
+            this.btnMaxPoint.Name = "btnMaxPoint";
+            this.btnMaxPoint.Size = new System.Drawing.Size(44, 23);
+            this.btnMaxPoint.TabIndex = 17;
+            this.btnMaxPoint.Text = "修改";
+            this.btnMaxPoint.UseVisualStyleBackColor = true;
+            this.btnMaxPoint.Click += new System.EventHandler(this.btnMaxPoint_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 182);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(29, 12);
+            this.label18.TabIndex = 16;
+            this.label18.Text = "得分";
+            // 
+            // tbScore
+            // 
+            this.tbScore.Location = new System.Drawing.Point(68, 179);
+            this.tbScore.Name = "tbScore";
+            this.tbScore.Size = new System.Drawing.Size(88, 21);
+            this.tbScore.TabIndex = 15;
+            this.tbScore.Text = "10";
+            this.tbScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // btnScore
+            // 
+            this.btnScore.Location = new System.Drawing.Point(162, 177);
+            this.btnScore.Name = "btnScore";
+            this.btnScore.Size = new System.Drawing.Size(44, 23);
+            this.btnScore.TabIndex = 14;
+            this.btnScore.Text = "修改";
+            this.btnScore.UseVisualStyleBackColor = true;
+            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
             // 
             // choice
             // 
@@ -282,7 +340,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.lbSpecialTip);
+            this.groupBox3.Controls.Add(this.btnReadSpecial3);
+            this.groupBox3.Controls.Add(this.btnReadSpecial2);
+            this.groupBox3.Controls.Add(this.btnReadSpecial1);
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.tbSpecial1);
             this.groupBox3.Controls.Add(this.label7);
@@ -294,19 +354,40 @@
             this.groupBox3.Controls.Add(this.tbSpecial2);
             this.groupBox3.Location = new System.Drawing.Point(8, 235);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(188, 126);
+            this.groupBox3.Size = new System.Drawing.Size(188, 106);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "特殊值";
             // 
-            // lbSpecialTip
+            // btnReadSpecial3
             // 
-            this.lbSpecialTip.AutoSize = true;
-            this.lbSpecialTip.Location = new System.Drawing.Point(12, 108);
-            this.lbSpecialTip.Name = "lbSpecialTip";
-            this.lbSpecialTip.Size = new System.Drawing.Size(77, 12);
-            this.lbSpecialTip.TabIndex = 16;
-            this.lbSpecialTip.Text = "lbSpecialTip";
+            this.btnReadSpecial3.Location = new System.Drawing.Point(147, 74);
+            this.btnReadSpecial3.Name = "btnReadSpecial3";
+            this.btnReadSpecial3.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSpecial3.TabIndex = 18;
+            this.btnReadSpecial3.Text = "读取";
+            this.btnReadSpecial3.UseVisualStyleBackColor = true;
+            this.btnReadSpecial3.Click += new System.EventHandler(this.btnReadSpecial3_Click);
+            // 
+            // btnReadSpecial2
+            // 
+            this.btnReadSpecial2.Location = new System.Drawing.Point(147, 47);
+            this.btnReadSpecial2.Name = "btnReadSpecial2";
+            this.btnReadSpecial2.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSpecial2.TabIndex = 17;
+            this.btnReadSpecial2.Text = "读取";
+            this.btnReadSpecial2.UseVisualStyleBackColor = true;
+            this.btnReadSpecial2.Click += new System.EventHandler(this.btnReadSpecial2_Click);
+            // 
+            // btnReadSpecial1
+            // 
+            this.btnReadSpecial1.Location = new System.Drawing.Point(147, 20);
+            this.btnReadSpecial1.Name = "btnReadSpecial1";
+            this.btnReadSpecial1.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSpecial1.TabIndex = 16;
+            this.btnReadSpecial1.Text = "读取";
+            this.btnReadSpecial1.UseVisualStyleBackColor = true;
+            this.btnReadSpecial1.Click += new System.EventHandler(this.btnReadSpecial1_Click);
             // 
             // label8
             // 
@@ -418,6 +499,15 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "残机";
             // 
+            // lbSpecialTip
+            // 
+            this.lbSpecialTip.AutoSize = true;
+            this.lbSpecialTip.Location = new System.Drawing.Point(30, 370);
+            this.lbSpecialTip.Name = "lbSpecialTip";
+            this.lbSpecialTip.Size = new System.Drawing.Size(77, 12);
+            this.lbSpecialTip.TabIndex = 16;
+            this.lbSpecialTip.Text = "lbSpecialTip";
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label22);
@@ -445,10 +535,19 @@
             this.groupBox1.Controls.Add(this.btnIPlayerFragment);
             this.groupBox1.Location = new System.Drawing.Point(234, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 367);
+            this.groupBox1.Size = new System.Drawing.Size(217, 349);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "初始值设置";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 209);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 19;
+            this.label22.Text = "最大得点";
             // 
             // label17
             // 
@@ -459,9 +558,17 @@
             this.label17.TabIndex = 17;
             this.label17.Text = "THInit";
             // 
+            // tbIMaxPoint
+            // 
+            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 206);
+            this.tbIMaxPoint.Name = "tbIMaxPoint";
+            this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
+            this.tbIMaxPoint.TabIndex = 18;
+            this.tbIMaxPoint.Text = "10000";
+            this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.lbISpecialTip);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.tbISpecial1);
             this.groupBox4.Controls.Add(this.label10);
@@ -473,19 +580,10 @@
             this.groupBox4.Controls.Add(this.tbISpecial2);
             this.groupBox4.Location = new System.Drawing.Point(14, 235);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(188, 126);
+            this.groupBox4.Size = new System.Drawing.Size(188, 106);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "特殊值";
-            // 
-            // lbISpecialTip
-            // 
-            this.lbISpecialTip.AutoSize = true;
-            this.lbISpecialTip.Location = new System.Drawing.Point(10, 107);
-            this.lbISpecialTip.Name = "lbISpecialTip";
-            this.lbISpecialTip.Size = new System.Drawing.Size(83, 12);
-            this.lbISpecialTip.TabIndex = 16;
-            this.lbISpecialTip.Text = "lbISpecialTip";
             // 
             // label9
             // 
@@ -571,6 +669,16 @@
             this.tbISpecial2.Text = "0";
             this.tbISpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btnIMaxPoint
+            // 
+            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 204);
+            this.btnIMaxPoint.Name = "btnIMaxPoint";
+            this.btnIMaxPoint.Size = new System.Drawing.Size(44, 23);
+            this.btnIMaxPoint.TabIndex = 17;
+            this.btnIMaxPoint.Text = "修改";
+            this.btnIMaxPoint.UseVisualStyleBackColor = true;
+            this.btnIMaxPoint.Click += new System.EventHandler(this.btnIMaxPoint_Click);
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -579,6 +687,15 @@
             this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 12;
             this.label12.Text = "灵力";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 182);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(29, 12);
+            this.label21.TabIndex = 16;
+            this.label21.Text = "得分";
             // 
             // label13
             // 
@@ -589,6 +706,15 @@
             this.label13.TabIndex = 12;
             this.label13.Text = "Bomb碎片";
             // 
+            // tbIScore
+            // 
+            this.tbIScore.Location = new System.Drawing.Point(68, 179);
+            this.tbIScore.Name = "tbIScore";
+            this.tbIScore.Size = new System.Drawing.Size(88, 21);
+            this.tbIScore.TabIndex = 15;
+            this.tbIScore.Text = "10";
+            this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -597,6 +723,16 @@
             this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 12;
             this.label14.Text = "Bomb";
+            // 
+            // btnIScore
+            // 
+            this.btnIScore.Location = new System.Drawing.Point(162, 177);
+            this.btnIScore.Name = "btnIScore";
+            this.btnIScore.Size = new System.Drawing.Size(44, 23);
+            this.btnIScore.TabIndex = 14;
+            this.btnIScore.Text = "修改";
+            this.btnIScore.UseVisualStyleBackColor = true;
+            this.btnIScore.Click += new System.EventHandler(this.btnIScore_Click);
             // 
             // label15
             // 
@@ -711,123 +847,12 @@
             this.btnIPlayerFragment.UseVisualStyleBackColor = true;
             this.btnIPlayerFragment.Click += new System.EventHandler(this.btnIPlayerFragment_Click);
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 182);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 12);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "得分";
-            // 
-            // tbScore
-            // 
-            this.tbScore.Location = new System.Drawing.Point(68, 179);
-            this.tbScore.Name = "tbScore";
-            this.tbScore.Size = new System.Drawing.Size(88, 21);
-            this.tbScore.TabIndex = 15;
-            this.tbScore.Text = "10";
-            this.tbScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnScore
-            // 
-            this.btnScore.Location = new System.Drawing.Point(162, 177);
-            this.btnScore.Name = "btnScore";
-            this.btnScore.Size = new System.Drawing.Size(44, 23);
-            this.btnScore.TabIndex = 14;
-            this.btnScore.Text = "修改";
-            this.btnScore.UseVisualStyleBackColor = true;
-            this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 209);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "最大得点";
-            // 
-            // tbMaxPoint
-            // 
-            this.tbMaxPoint.Location = new System.Drawing.Point(68, 206);
-            this.tbMaxPoint.Name = "tbMaxPoint";
-            this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
-            this.tbMaxPoint.TabIndex = 18;
-            this.tbMaxPoint.Text = "10000";
-            this.tbMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // btnMaxPoint
-            // 
-            this.btnMaxPoint.Location = new System.Drawing.Point(162, 204);
-            this.btnMaxPoint.Name = "btnMaxPoint";
-            this.btnMaxPoint.Size = new System.Drawing.Size(44, 23);
-            this.btnMaxPoint.TabIndex = 17;
-            this.btnMaxPoint.Text = "修改";
-            this.btnMaxPoint.UseVisualStyleBackColor = true;
-            this.btnMaxPoint.Click += new System.EventHandler(this.btnMaxPoint_Click);
-            // 
-            // btnIScore
-            // 
-            this.btnIScore.Location = new System.Drawing.Point(162, 177);
-            this.btnIScore.Name = "btnIScore";
-            this.btnIScore.Size = new System.Drawing.Size(44, 23);
-            this.btnIScore.TabIndex = 14;
-            this.btnIScore.Text = "修改";
-            this.btnIScore.UseVisualStyleBackColor = true;
-            this.btnIScore.Click += new System.EventHandler(this.btnIScore_Click);
-            // 
-            // tbIScore
-            // 
-            this.tbIScore.Location = new System.Drawing.Point(68, 179);
-            this.tbIScore.Name = "tbIScore";
-            this.tbIScore.Size = new System.Drawing.Size(88, 21);
-            this.tbIScore.TabIndex = 15;
-            this.tbIScore.Text = "10";
-            this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 182);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(29, 12);
-            this.label21.TabIndex = 16;
-            this.label21.Text = "得分";
-            // 
-            // btnIMaxPoint
-            // 
-            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 204);
-            this.btnIMaxPoint.Name = "btnIMaxPoint";
-            this.btnIMaxPoint.Size = new System.Drawing.Size(44, 23);
-            this.btnIMaxPoint.TabIndex = 17;
-            this.btnIMaxPoint.Text = "修改";
-            this.btnIMaxPoint.UseVisualStyleBackColor = true;
-            this.btnIMaxPoint.Click += new System.EventHandler(this.btnIMaxPoint_Click);
-            // 
-            // tbIMaxPoint
-            // 
-            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 206);
-            this.tbIMaxPoint.Name = "tbIMaxPoint";
-            this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
-            this.tbIMaxPoint.TabIndex = 18;
-            this.tbIMaxPoint.Text = "10000";
-            this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 209);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 19;
-            this.label22.Text = "最大得点";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 391);
+            this.Controls.Add(this.lbSpecialTip);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Name = "MainForm";
@@ -841,6 +866,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -901,7 +927,6 @@
         private System.Windows.Forms.TextBox tbIPlayerFragment;
         private System.Windows.Forms.Button btnIPlayerFragment;
         private System.Windows.Forms.Label lbSpecialTip;
-        private System.Windows.Forms.Label lbISpecialTip;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox choice;
         private System.Windows.Forms.Label label19;
@@ -916,6 +941,9 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox tbIScore;
         private System.Windows.Forms.Button btnIScore;
+        private System.Windows.Forms.Button btnReadSpecial3;
+        private System.Windows.Forms.Button btnReadSpecial2;
+        private System.Windows.Forms.Button btnReadSpecial1;
     }
 }
 

@@ -24,9 +24,15 @@ namespace THSet {
             //    } else if(GetProcessHandle("th11")!=(IntPtr)0) {
 
             //   } else 
-            if(GetProcessHandle("th12c")!=(IntPtr)0) {
+            if(GetProcessHandle("th12")!=(IntPtr)0) {
                 tc=new TH12Code();
-            } else //if(GetProcessHandle("th13")!=(IntPtr)0) {
+                tc.setMemoryTool(new MemoryTool("th12"));
+            } else if(GetProcessHandle("th12c")!=(IntPtr)0) {
+                tc=new TH12Code();
+                tc.setTitle("东方红红蓝汉化版");
+                tc.setMemoryTool(new MemoryTool("th12c"));
+            } else
+            //if(GetProcessHandle("th13")!=(IntPtr)0) {
 
             //   } else if(GetProcessHandle("th14")!=(IntPtr)0) {
 
@@ -35,12 +41,13 @@ namespace THSet {
             //   }  else
             if(GetProcessHandle("th16")!=(IntPtr)0) {
                 tc=new TH16Code();
+                tc.setMemoryTool(new MemoryTool("th16"));
             } else {
                 MessageBox.Show("没有发现车万进程");
                 System.Environment.Exit(System.Environment.ExitCode);
             }
 
-            this.Text=tc.getName();
+            this.Text=tc.getTitle();
             bool[] enable = tc.getEnable();
             lockPlayer.Enabled=enable[0];
             lockBomb.Enabled=enable[1];
@@ -52,10 +59,10 @@ namespace THSet {
             tbPower.Enabled=btnPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=enable[7];
             tbScore.Enabled=btnScore.Enabled=tbIScore.Enabled=btnIScore.Enabled=enable[8];
             tbMaxPoint.Enabled=btnMaxPoint.Enabled=tbIMaxPoint.Enabled=btnIMaxPoint.Enabled=enable[9];
-            tbSpecial1.Enabled=btnSpecial1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=enable[10];
-            tbSpecial2.Enabled=btnSpecial2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=enable[11];
-            tbSpecial3.Enabled=btnSpecial3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=enable[12];
-            lbSpecialTip.Text=lbISpecialTip.Text=tc.getSpecialTip();
+            tbSpecial1.Enabled=btnSpecial1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=btnReadSpecial1.Enabled=enable[10];
+            tbSpecial2.Enabled=btnSpecial2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=btnReadSpecial2.Enabled=enable[11];
+            tbSpecial3.Enabled=btnSpecial3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=btnReadSpecial3.Enabled=enable[12];
+            lbSpecialTip.Text=tc.getSpecialTip();
         }
 
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) {
@@ -97,7 +104,15 @@ namespace THSet {
         private void btnSpecial3_Click(object sender,EventArgs e) {
             tc.setSpecial3(Convert.ToInt32(tbSpecial3.Text));
         }
-
+        private void btnReadSpecial1_Click(object sender,EventArgs e) {
+            tbSpecial1.Text=Convert.ToString(tc.getSpecial1());
+        }
+        private void btnReadSpecial2_Click(object sender,EventArgs e) {
+            tbSpecial2.Text=Convert.ToString(tc.getSpecial2());
+        }
+        private void btnReadSpecial3_Click(object sender,EventArgs e) {
+            tbSpecial3.Text=Convert.ToString(tc.getSpecial3());
+        }
         private void btnIPlayer_Click(object sender,EventArgs e) {
             tc.setIPlayer(Convert.ToByte(tbIPlayer.Text));
         }
