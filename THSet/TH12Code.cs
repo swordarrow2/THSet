@@ -5,15 +5,22 @@ using System.Text;
 
 namespace THSet {
     class TH12Code:THCode {
-        MemoryTool mt = new MemoryTool("th12");
+        MemoryTool mt;
+        string gameTitle = "东方红红蓝";
         public override bool[] getEnable() {
-            return new bool[] { true,true,false,true,true,true,true,true,true,true,true,true,false };
+            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false };
         }
-        public override string getName() {
-            return "TH12";
+        public override string getTitle() {
+            return gameTitle;
+        }
+        public override void setTitle(string s) {
+            gameTitle=s;
         }
         public override string getSpecialTip() {
             return "0无 1红 2蓝 3绿";
+        }
+        public override void setMemoryTool(MemoryTool m) {
+            mt=m;
         }
         public override void setLockBomb(bool b) {
             write(0x00422F28,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
@@ -24,7 +31,8 @@ namespace THSet {
                                  new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00 });
         }
         public override void setChoice(bool b) {
-            throw new NotImplementedException();
+            write(0x00438379,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
+                                 new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setPlayer(int i) {
             write(0x004B0C98,i);
@@ -54,6 +62,16 @@ namespace THSet {
             write(0x004B0C50,i);
         }
         public override void setSpecial3(int i) {
+            throw new NotImplementedException();
+        }
+        public override int getSpecial1() {
+            return mt.ReadInteger(0x004B0C4C);
+        }
+        public override int getSpecial2() {
+            return mt.ReadInteger(0x004B0C50);
+        }
+        public override int getSpecial3() {
+            throw new NotImplementedException();
         }
 
         public override void setIPlayer(byte b) {
@@ -74,10 +92,14 @@ namespace THSet {
             write(0x00497B0D,new byte[] { 0xC7,0x05,0xA4,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0x1F,0xA3,0xF8,0xFF });
         }
         public override void setIPower(int b) {
-            throw new NotImplementedException();
+            byte[] b1 = BitConverter.GetBytes(b);
+            write(0x00421F20,new byte[] { 0xE9,0xF7,0x5B,0x07,0x00 });
+            write(0x00497B1C,new byte[] { 0xC7,0x05,0x48,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xFA,0xA3,0xF8,0xFF });
         }
         public override void setIScore(int i) {
-            throw new NotImplementedException();
+            byte[] b1 = BitConverter.GetBytes(i/10);
+            write(0x00421DE9,new byte[] { 0xE9,0x3D,0x5D,0x07,0x00,0x90 });
+            write(0x00497B2B,new byte[] { 0xC7,0x05,0x44,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xB5,0xA2,0xF8,0xFF });
         }
         public override void setIMaxPoint(int i) {
             throw new NotImplementedException();
@@ -89,8 +111,9 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setISpecial3(int b) {
+            throw new NotImplementedException();
         }
-        
+
 
         private void write(int addr,int value) {
             mt.WriteInteger(addr,value);
