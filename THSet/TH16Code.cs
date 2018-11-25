@@ -30,7 +30,7 @@ namespace THSet {
             write(0x0040DB9C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });
         }
-        public override void setChoice(bool b) {
+        public override void setUnbeatable(bool b) {
             write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                 new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });
         }
@@ -90,8 +90,8 @@ namespace THSet {
             write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74 },b);
         }
         public override void setIPower(int i) {
-            byte[] b1 = BitConverter.GetBytes(i);
-            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b1[0],b1[1],b1[2],b1[3] });
+            byte[] b = BitConverter.GetBytes(i);
+            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });
 
             //Stop to set default values
             write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
@@ -99,19 +99,19 @@ namespace THSet {
             write(0x0042CE51,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //spell practice
         }
         public override void setIScore(int i) {
-            byte[] b1 = BitConverter.GetBytes(i/10);
-            write(0x0042CD38,new byte[] { 0xB9,b1[0],b1[1],b1[2],b1[3],0x89,0x0D,0xB0,0x57,0x4A,
+            byte[] b = BitConverter.GetBytes(i/10);
+            write(0x0042CD38,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x89,0x0D,0xB0,0x57,0x4A,
                 0x00,0xB9,0x00,0x00,0x00,0x00,0x89,0x0D,0xC0,0x57,0x4A,0x00,0x90,0x90,0x90 });
         }
         public override void setIMaxPoint(int i) {
-            byte[] b1 = BitConverter.GetBytes(i*100);
-            write(0x0042CD66,new byte[] { 0xB9,b1[0],b1[1],b1[2],b1[3],0x90,0x90,0x90 });
+            byte[] b = BitConverter.GetBytes(i*100);
+            write(0x0042CD66,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90,0x90 });
         }
         public override void setISpecial1(int i) {
-            byte[] b1 = BitConverter.GetBytes(i);
-            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //story
-            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3],0x90 });   //practice
-            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //spell practice
+            byte[] b = BitConverter.GetBytes(i);
+            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //story
+            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3],0x90 });   //practice
+            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //spell practice
 
         }
         public override void setISpecial2(int i) {
