@@ -89,8 +89,8 @@ namespace THSet {
             //story and practice,spell practice no need
             write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74 },b);
         }
-        public override void setIPower(int b) {
-            byte[] b1 = BitConverter.GetBytes(b);
+        public override void setIPower(int i) {
+            byte[] b1 = BitConverter.GetBytes(i);
             write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b1[0],b1[1],b1[2],b1[3] });
 
             //Stop to set default values
@@ -107,17 +107,17 @@ namespace THSet {
             byte[] b1 = BitConverter.GetBytes(i*100);
             write(0x0042CD66,new byte[] { 0xB9,b1[0],b1[1],b1[2],b1[3],0x90,0x90,0x90 });
         }
-        public override void setISpecial1(int b) {
-            byte[] b1 = BitConverter.GetBytes(b);
+        public override void setISpecial1(int i) {
+            byte[] b1 = BitConverter.GetBytes(i);
             write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //story
             write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3],0x90 });   //practice
             write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b1[0],b1[1],b1[2],b1[3] });                  //spell practice
 
         }
-        public override void setISpecial2(int b) {
+        public override void setISpecial2(int i) {
             throw new NotImplementedException();
         }
-        public override void setISpecial3(int b) {
+        public override void setISpecial3(int i) {
             throw new NotImplementedException();
         }
 

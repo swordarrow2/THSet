@@ -45,9 +45,9 @@ namespace THSet {
         public abstract void setIScore(int i);
         public abstract void setIMaxPoint(int i);
 
-        public abstract void setISpecial1(int b);
-        public abstract void setISpecial2(int b);
-        public abstract void setISpecial3(int b);
+        public abstract void setISpecial1(int i);
+        public abstract void setISpecial2(int i);
+        public abstract void setISpecial3(int i);
 
     }
 }
