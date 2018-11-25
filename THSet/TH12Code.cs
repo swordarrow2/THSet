@@ -91,8 +91,8 @@ namespace THSet {
             write(0x00421E35,new byte[] { 0xE9,0xD3,0x5C,0x07,0x00,0x90 });
             write(0x00497B0D,new byte[] { 0xC7,0x05,0xA4,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0x1F,0xA3,0xF8,0xFF });
         }
-        public override void setIPower(int b) {
-            byte[] b1 = BitConverter.GetBytes(b);
+        public override void setIPower(int i) {
+            byte[] b1 = BitConverter.GetBytes(i);
             write(0x00421F20,new byte[] { 0xE9,0xF7,0x5B,0x07,0x00 });
             write(0x00497B1C,new byte[] { 0xC7,0x05,0x48,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xFA,0xA3,0xF8,0xFF });
         }
@@ -102,15 +102,21 @@ namespace THSet {
             write(0x00497B2B,new byte[] { 0xC7,0x05,0x44,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xB5,0xA2,0xF8,0xFF });
         }
         public override void setIMaxPoint(int i) {
-            throw new NotImplementedException();
+            byte[] b1 = BitConverter.GetBytes(i*100);
+            write(0x00421E74,new byte[] { 0xE9,0xC1,0x5C,0x07,0x00 });
+            write(0x00497B3A,new byte[] { 0xC7,0x05,0x78,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0x30,0xA3,0xF8,0xFF });
         }
-        public override void setISpecial1(int b) {
-            throw new NotImplementedException();
+        public override void setISpecial1(int i) {
+            byte[] b1 = BitConverter.GetBytes(i);
+            write(0x00421E47,new byte[] { 0xE9,0xFD,0x5C,0x07,0x00,0x90 });
+            write(0x00497B49,new byte[] { 0xC7,0x05,0x4C,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xF5,0xA2,0xF8,0xFF });
         }
-        public override void setISpecial2(int b) {
-            throw new NotImplementedException();
+        public override void setISpecial2(int i) {
+            byte[] b1 = BitConverter.GetBytes(i);
+            write(0x00421E41,new byte[] { 0xE9,0x12,0x5D,0x07,0x00,0x90 });
+            write(0x00497B58,new byte[] { 0xC7,0x05,0x50,0x0C,0x4B,0x00,b1[0],b1[1],b1[2],b1[3],0xE9,0xE0,0xA2,0xF8,0xFF });
         }
-        public override void setISpecial3(int b) {
+        public override void setISpecial3(int i) {
             throw new NotImplementedException();
         }
 
