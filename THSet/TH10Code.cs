@@ -49,16 +49,16 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setPower(int i) {
-            write(0x0074C48,i);
+            write(0x0074C48,i/5);
         }
         public override void setScore(int i) {
-            write(0x0074C44,i);
+            write(0x0074C44,i/10);
         }
         public override void setMaxPoint(int i) {
             throw new NotImplementedException();
         }
         public override void setSpecial1(int i) {
-            write(0x00474C4C,i);
+            write(0x00474C4C,i/10);
         }
         public override void setSpecial2(int i) {
             throw new NotImplementedException();

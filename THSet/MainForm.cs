@@ -39,11 +39,17 @@ namespace THSet {
                 tc.setTitle("东方红红蓝汉化版");
                 tc.setMemoryTool(new MemoryTool("th12c"));
             } else
-            //if(GetProcessHandle("th13")!=(IntPtr)0) {
+            if(GetProcessHandle("th13")!=(IntPtr)0) {
+                tc=new TH13Code();
+                tc.setMemoryTool(new MemoryTool("th13"));
+            } else if(GetProcessHandle("th13c")!=(IntPtr)0) {
+                tc=new TH13Code();
+                tc.setTitle("东方神灵庙汉化版");
+                tc.setMemoryTool(new MemoryTool("th13c"));
+            } else
+                //if(GetProcessHandle("th14")!=(IntPtr)0) {
 
-            //   } else if(GetProcessHandle("th14")!=(IntPtr)0) {
-
-            //   } else
+                //   } else
                 if(GetProcessHandle("th15")!=(IntPtr)0) {
                     tc=new TH15Code();
                     tc.setMemoryTool(new MemoryTool("th15"));
