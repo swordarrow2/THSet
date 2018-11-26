@@ -70,6 +70,7 @@
     <Compile Include="TH10Code.cs" />
     <Compile Include="TH13Code.cs" />
     <Compile Include="TH15Code.cs" />
+    <Compile Include="TH14Code.cs" />
     <Compile Include="THCode.cs" />
     <Compile Include="TH16Code.cs" />
     <EmbeddedResource Include="MainForm.resx">
