@@ -49,10 +49,10 @@
             this.btnReadSpecial3 = new System.Windows.Forms.Button();
             this.btnReadSpecial2 = new System.Windows.Forms.Button();
             this.btnReadSpecial1 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lbSp3 = new System.Windows.Forms.Label();
+            this.lbSp2 = new System.Windows.Forms.Label();
             this.tbSpecial3 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lbSp1 = new System.Windows.Forms.Label();
             this.btnSpecial3 = new System.Windows.Forms.Button();
             this.btnSpecial2 = new System.Windows.Forms.Button();
             this.tbSpecial2 = new System.Windows.Forms.TextBox();
@@ -61,18 +61,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lbSpecialTip = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.tbIMaxPoint = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lbISp3 = new System.Windows.Forms.Label();
             this.tbISpecial1 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lbISp2 = new System.Windows.Forms.Label();
             this.btnISpecial1 = new System.Windows.Forms.Button();
             this.tbISpecial3 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lbISp1 = new System.Windows.Forms.Label();
             this.btnISpecial3 = new System.Windows.Forms.Button();
             this.btnISpecial2 = new System.Windows.Forms.Button();
             this.tbISpecial2 = new System.Windows.Forms.TextBox();
@@ -125,9 +124,9 @@
             // 
             // tbSpecial1
             // 
-            this.tbSpecial1.Location = new System.Drawing.Point(39, 20);
+            this.tbSpecial1.Location = new System.Drawing.Point(53, 20);
             this.tbSpecial1.Name = "tbSpecial1";
-            this.tbSpecial1.Size = new System.Drawing.Size(62, 21);
+            this.tbSpecial1.Size = new System.Drawing.Size(48, 21);
             this.tbSpecial1.TabIndex = 9;
             this.tbSpecial1.Text = "0";
             this.tbSpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -314,7 +313,7 @@
             this.tbScore.Name = "tbScore";
             this.tbScore.Size = new System.Drawing.Size(88, 21);
             this.tbScore.TabIndex = 15;
-            this.tbScore.Text = "10";
+            this.tbScore.Text = "0";
             this.tbScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnScore
@@ -343,18 +342,18 @@
             this.groupBox3.Controls.Add(this.btnReadSpecial3);
             this.groupBox3.Controls.Add(this.btnReadSpecial2);
             this.groupBox3.Controls.Add(this.btnReadSpecial1);
-            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.lbSp3);
             this.groupBox3.Controls.Add(this.tbSpecial1);
-            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.lbSp2);
             this.groupBox3.Controls.Add(this.btnSpecial1);
             this.groupBox3.Controls.Add(this.tbSpecial3);
-            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.lbSp1);
             this.groupBox3.Controls.Add(this.btnSpecial3);
             this.groupBox3.Controls.Add(this.btnSpecial2);
             this.groupBox3.Controls.Add(this.tbSpecial2);
             this.groupBox3.Location = new System.Drawing.Point(8, 235);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(188, 106);
+            this.groupBox3.Size = new System.Drawing.Size(196, 106);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "特殊值";
@@ -389,41 +388,41 @@
             this.btnReadSpecial1.UseVisualStyleBackColor = true;
             this.btnReadSpecial1.Click += new System.EventHandler(this.btnReadSpecial1_Click);
             // 
-            // label8
+            // lbSp3
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 79);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 12);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "值3";
+            this.lbSp3.AutoSize = true;
+            this.lbSp3.Location = new System.Drawing.Point(6, 77);
+            this.lbSp3.Name = "lbSp3";
+            this.lbSp3.Size = new System.Drawing.Size(41, 12);
+            this.lbSp3.TabIndex = 15;
+            this.lbSp3.Text = "不可用";
             // 
-            // label7
+            // lbSp2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(23, 12);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "值2";
+            this.lbSp2.AutoSize = true;
+            this.lbSp2.Location = new System.Drawing.Point(6, 50);
+            this.lbSp2.Name = "lbSp2";
+            this.lbSp2.Size = new System.Drawing.Size(41, 12);
+            this.lbSp2.TabIndex = 15;
+            this.lbSp2.Text = "不可用";
             // 
             // tbSpecial3
             // 
-            this.tbSpecial3.Location = new System.Drawing.Point(39, 74);
+            this.tbSpecial3.Location = new System.Drawing.Point(53, 74);
             this.tbSpecial3.Name = "tbSpecial3";
-            this.tbSpecial3.Size = new System.Drawing.Size(62, 21);
+            this.tbSpecial3.Size = new System.Drawing.Size(48, 21);
             this.tbSpecial3.TabIndex = 14;
             this.tbSpecial3.Text = "0";
             this.tbSpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label6
+            // lbSp1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 12);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "值1";
+            this.lbSp1.AutoSize = true;
+            this.lbSp1.Location = new System.Drawing.Point(6, 23);
+            this.lbSp1.Name = "lbSp1";
+            this.lbSp1.Size = new System.Drawing.Size(41, 12);
+            this.lbSp1.TabIndex = 12;
+            this.lbSp1.Text = "不可用";
             // 
             // btnSpecial3
             // 
@@ -447,9 +446,9 @@
             // 
             // tbSpecial2
             // 
-            this.tbSpecial2.Location = new System.Drawing.Point(39, 47);
+            this.tbSpecial2.Location = new System.Drawing.Point(53, 47);
             this.tbSpecial2.Name = "tbSpecial2";
-            this.tbSpecial2.Size = new System.Drawing.Size(62, 21);
+            this.tbSpecial2.Size = new System.Drawing.Size(48, 21);
             this.tbSpecial2.TabIndex = 14;
             this.tbSpecial2.Text = "0";
             this.tbSpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -498,15 +497,6 @@
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 10;
             this.label1.Text = "残机";
-            // 
-            // lbSpecialTip
-            // 
-            this.lbSpecialTip.AutoSize = true;
-            this.lbSpecialTip.Location = new System.Drawing.Point(30, 370);
-            this.lbSpecialTip.Name = "lbSpecialTip";
-            this.lbSpecialTip.Size = new System.Drawing.Size(77, 12);
-            this.lbSpecialTip.TabIndex = 16;
-            this.lbSpecialTip.Text = "lbSpecialTip";
             // 
             // groupBox1
             // 
@@ -569,48 +559,48 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.lbISp3);
             this.groupBox4.Controls.Add(this.tbISpecial1);
-            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.lbISp2);
             this.groupBox4.Controls.Add(this.btnISpecial1);
             this.groupBox4.Controls.Add(this.tbISpecial3);
-            this.groupBox4.Controls.Add(this.label11);
+            this.groupBox4.Controls.Add(this.lbISp1);
             this.groupBox4.Controls.Add(this.btnISpecial3);
             this.groupBox4.Controls.Add(this.btnISpecial2);
             this.groupBox4.Controls.Add(this.tbISpecial2);
-            this.groupBox4.Location = new System.Drawing.Point(14, 235);
+            this.groupBox4.Location = new System.Drawing.Point(8, 235);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(188, 106);
+            this.groupBox4.Size = new System.Drawing.Size(198, 106);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "特殊值";
             // 
-            // label9
+            // lbISp3
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(10, 79);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(23, 12);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "值3";
+            this.lbISp3.AutoSize = true;
+            this.lbISp3.Location = new System.Drawing.Point(4, 79);
+            this.lbISp3.Name = "lbISp3";
+            this.lbISp3.Size = new System.Drawing.Size(41, 12);
+            this.lbISp3.TabIndex = 15;
+            this.lbISp3.Text = "不可用";
             // 
             // tbISpecial1
             // 
-            this.tbISpecial1.Location = new System.Drawing.Point(39, 20);
+            this.tbISpecial1.Location = new System.Drawing.Point(57, 20);
             this.tbISpecial1.Name = "tbISpecial1";
-            this.tbISpecial1.Size = new System.Drawing.Size(62, 21);
+            this.tbISpecial1.Size = new System.Drawing.Size(44, 21);
             this.tbISpecial1.TabIndex = 9;
             this.tbISpecial1.Text = "0";
             this.tbISpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label10
+            // lbISp2
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 52);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(23, 12);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "值2";
+            this.lbISp2.AutoSize = true;
+            this.lbISp2.Location = new System.Drawing.Point(4, 52);
+            this.lbISp2.Name = "lbISp2";
+            this.lbISp2.Size = new System.Drawing.Size(41, 12);
+            this.lbISp2.TabIndex = 15;
+            this.lbISp2.Text = "不可用";
             // 
             // btnISpecial1
             // 
@@ -624,21 +614,21 @@
             // 
             // tbISpecial3
             // 
-            this.tbISpecial3.Location = new System.Drawing.Point(39, 74);
+            this.tbISpecial3.Location = new System.Drawing.Point(57, 74);
             this.tbISpecial3.Name = "tbISpecial3";
-            this.tbISpecial3.Size = new System.Drawing.Size(62, 21);
+            this.tbISpecial3.Size = new System.Drawing.Size(44, 21);
             this.tbISpecial3.TabIndex = 14;
             this.tbISpecial3.Text = "0";
             this.tbISpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label11
+            // lbISp1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 25);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(23, 12);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "值1";
+            this.lbISp1.AutoSize = true;
+            this.lbISp1.Location = new System.Drawing.Point(4, 25);
+            this.lbISp1.Name = "lbISp1";
+            this.lbISp1.Size = new System.Drawing.Size(41, 12);
+            this.lbISp1.TabIndex = 12;
+            this.lbISp1.Text = "不可用";
             // 
             // btnISpecial3
             // 
@@ -662,9 +652,9 @@
             // 
             // tbISpecial2
             // 
-            this.tbISpecial2.Location = new System.Drawing.Point(39, 47);
+            this.tbISpecial2.Location = new System.Drawing.Point(57, 47);
             this.tbISpecial2.Name = "tbISpecial2";
-            this.tbISpecial2.Size = new System.Drawing.Size(62, 21);
+            this.tbISpecial2.Size = new System.Drawing.Size(44, 21);
             this.tbISpecial2.TabIndex = 14;
             this.tbISpecial2.Text = "0";
             this.tbISpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -712,7 +702,7 @@
             this.tbIScore.Name = "tbIScore";
             this.tbIScore.Size = new System.Drawing.Size(88, 21);
             this.tbIScore.TabIndex = 15;
-            this.tbIScore.Text = "10";
+            this.tbIScore.Text = "0";
             this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label14
@@ -851,10 +841,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(463, 391);
-            this.Controls.Add(this.lbSpecialTip);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(463, 368);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "Form1";
             this.groupBox2.ResumeLayout(false);
@@ -866,7 +858,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -888,10 +879,10 @@
         private System.Windows.Forms.Button btnSpecial1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lbSp3;
+        private System.Windows.Forms.Label lbSp2;
         private System.Windows.Forms.TextBox tbSpecial3;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lbSp1;
         private System.Windows.Forms.Button btnSpecial3;
         private System.Windows.Forms.Button btnSpecial2;
         private System.Windows.Forms.TextBox tbSpecial2;
@@ -902,12 +893,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lbISp3;
         private System.Windows.Forms.TextBox tbISpecial1;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label lbISp2;
         private System.Windows.Forms.Button btnISpecial1;
         private System.Windows.Forms.TextBox tbISpecial3;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lbISp1;
         private System.Windows.Forms.Button btnISpecial3;
         private System.Windows.Forms.Button btnISpecial2;
         private System.Windows.Forms.TextBox tbISpecial2;
@@ -926,7 +917,6 @@
         private System.Windows.Forms.TextBox tbIBomb;
         private System.Windows.Forms.TextBox tbIPlayerFragment;
         private System.Windows.Forms.Button btnIPlayerFragment;
-        private System.Windows.Forms.Label lbSpecialTip;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox choice;
         private System.Windows.Forms.Label label19;

@@ -13,8 +13,8 @@ namespace THSet {
         public override void setTitle(string s) {
             gameTitle=s;
         }
-        public override string getSpecialTip() {
-            return "季节槽:0-1140";
+        public override string[] getSpecialTip() {
+            return new string[] { "季节槽","","" };
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;

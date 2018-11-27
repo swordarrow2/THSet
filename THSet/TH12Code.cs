@@ -16,8 +16,8 @@ namespace THSet {
         public override void setTitle(string s) {
             gameTitle=s;
         }
-        public override string getSpecialTip() {
-            return "0无 1红 2蓝 3绿";
+        public override string[] getSpecialTip() {
+            return new string[] { "飞碟1","飞碟2","" };
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
@@ -95,6 +95,7 @@ namespace THSet {
             byte[] b = BitConverter.GetBytes(i);
             write(0x00421F20,new byte[] { 0xE9,0xF7,0x5B,0x07,0x00 });
             write(0x00497B1C,new byte[] { 0xC7,0x05,0x48,0x0C,0x4B,0x00,b[0],b[1],b[2],b[3],0xE9,0xFA,0xA3,0xF8,0xFF });
+            write(0x00421ED3,new byte[] { 0xC7,0x05,0x48,0x0C,0x4B,0x00,b[0],b[1],b[2],b[3] });
         }
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i/10);

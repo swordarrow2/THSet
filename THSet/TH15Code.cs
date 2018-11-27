@@ -10,8 +10,8 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
-        public override string getSpecialTip() {
-            return "亲民绀超亲民";
+        public override string[] getSpecialTip() {
+            return new string[] { "","","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;

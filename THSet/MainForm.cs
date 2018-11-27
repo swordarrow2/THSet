@@ -27,39 +27,38 @@ namespace THSet {
                 tc=new TH10Code();
                 tc.setTitle("东方神曲录汉化版");
                 tc.setMemoryTool(new MemoryTool("th10c"));
-            } else
-              //if(GetProcessHandle("th11")!=(IntPtr)0) {
-
-              //   } else 
-              if(GetProcessHandle("th12")!=(IntPtr)0) {
+            } else if(GetProcessHandle("th11")!=(IntPtr)0) {
+                tc=new TH11Code();
+                tc.setMemoryTool(new MemoryTool("th11"));
+            } else if(GetProcessHandle("th11c")!=(IntPtr)0) {
+                tc=new TH11Code();
+                tc.setMemoryTool(new MemoryTool("th11c"));
+                tc.setTitle("东方弟灵殿汉化版");
+            } else if(GetProcessHandle("th12")!=(IntPtr)0) {
                 tc=new TH12Code();
                 tc.setMemoryTool(new MemoryTool("th12"));
             } else if(GetProcessHandle("th12c")!=(IntPtr)0) {
                 tc=new TH12Code();
                 tc.setTitle("东方红红蓝汉化版");
                 tc.setMemoryTool(new MemoryTool("th12c"));
-            } else
-            if(GetProcessHandle("th13")!=(IntPtr)0) {
+            } else if(GetProcessHandle("th13")!=(IntPtr)0) {
                 tc=new TH13Code();
                 tc.setMemoryTool(new MemoryTool("th13"));
             } else if(GetProcessHandle("th13c")!=(IntPtr)0) {
                 tc=new TH13Code();
                 tc.setTitle("东方神灵庙汉化版");
                 tc.setMemoryTool(new MemoryTool("th13c"));
-            } else
-               if(GetProcessHandle("th14")!=(IntPtr)0) {
+            } else if(GetProcessHandle("th14")!=(IntPtr)0) {
                 tc=new TH14Code();
                 tc.setMemoryTool(new MemoryTool("th14"));
-            } else
-                if(GetProcessHandle("th15")!=(IntPtr)0) {
-                    tc=new TH15Code();
-                    tc.setMemoryTool(new MemoryTool("th15"));
-                }  else
-            if(GetProcessHandle("th16")!=(IntPtr)0) {
+            } else if(GetProcessHandle("th15")!=(IntPtr)0) {
+                tc=new TH15Code();
+                tc.setMemoryTool(new MemoryTool("th15"));
+            } else if(GetProcessHandle("th16")!=(IntPtr)0) {
                 tc=new TH16Code();
                 tc.setMemoryTool(new MemoryTool("th16"));
             } else {
-                MessageBox.Show("没有发现车万进程\n可识别TH10,TH12,TH13,TH14,TH15,TH16");
+                MessageBox.Show("没有发现车万进程\n可识别TH10,TH11,TH12,TH13,TH14,TH15,TH16");
                 System.Environment.Exit(System.Environment.ExitCode);
             }
 
@@ -75,10 +74,13 @@ namespace THSet {
             tbPower.Enabled=btnPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=enable[7];
             tbScore.Enabled=btnScore.Enabled=tbIScore.Enabled=btnIScore.Enabled=enable[8];
             tbMaxPoint.Enabled=btnMaxPoint.Enabled=tbIMaxPoint.Enabled=btnIMaxPoint.Enabled=enable[9];
-            tbSpecial1.Enabled=btnSpecial1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=btnReadSpecial1.Enabled=enable[10];
-            tbSpecial2.Enabled=btnSpecial2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=btnReadSpecial2.Enabled=enable[11];
-            tbSpecial3.Enabled=btnSpecial3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=btnReadSpecial3.Enabled=enable[12];
-            lbSpecialTip.Text=tc.getSpecialTip();
+            lbSp1.Enabled=tbSpecial1.Enabled=btnSpecial1.Enabled=lbISp1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=btnReadSpecial1.Enabled=enable[10];
+            lbSp2.Enabled=tbSpecial2.Enabled=btnSpecial2.Enabled=lbISp2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=btnReadSpecial2.Enabled=enable[11];
+            lbSp3.Enabled=tbSpecial3.Enabled=btnSpecial3.Enabled=lbISp3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=btnReadSpecial3.Enabled=enable[12];
+            string[] sptip = tc.getSpecialTip();
+            lbSp1.Text=lbISp1.Text=sptip[0].Equals("") ? "不可用" : sptip[0];
+            lbSp2.Text=lbISp2.Text=sptip[1].Equals("") ? "不可用" : sptip[1];
+            lbSp3.Text=lbISp3.Text=sptip[2].Equals("") ? "不可用" : sptip[2];
         }
 
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) {

@@ -10,8 +10,8 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
-        public override string getSpecialTip() {
-            return "信仰值";
+        public override string[] getSpecialTip() {
+            return new string[] { "信仰值","","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -49,10 +49,10 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setPower(int i) {
-            write(0x0074C48,i/5);
+            write(0x00474C48,i/5);
         }
         public override void setScore(int i) {
-            write(0x0074C44,i/10);
+            write(0x00474C44,i/10);
         }
         public override void setMaxPoint(int i) {
             throw new NotImplementedException();

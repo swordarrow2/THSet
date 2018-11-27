@@ -6,7 +6,7 @@ using System.Text;
 namespace THSet {
     public abstract class THCode {
         public abstract string getTitle();
-        public abstract string getSpecialTip();
+        public abstract string[] getSpecialTip();
         public abstract void setTitle(string s);
         public abstract void setMemoryTool(MemoryTool m);
 

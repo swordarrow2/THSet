@@ -10,8 +10,8 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
-        public override string getSpecialTip() {
-            return "1：非2.0次数 2:已获得的奖残数";
+        public override string[] getSpecialTip() {
+            return new string[] { "非2.0","已得奖残","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -100,8 +100,8 @@ namespace THSet {
             write(0x00436D75,new byte[] { 0xE9,0x21,0xEF,0xFF,0xFF });
         }
         public override void setIMaxPoint(int i) {
-            byte[] b = BitConverter.GetBytes(i/10);
-            write(0x00435CB0,new byte[] { 0xB9,0xFF,0xFF,b[0],b[1],b[2],b[3] });
+            byte[] b = BitConverter.GetBytes(i);
+            write(0x00435CB0,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90 });
         }
         public override void setISpecial1(int i) {
             write(0x0043760E,i);

@@ -10,8 +10,8 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
-        public override string getSpecialTip() {
-            return "1:灵界槽(0-600) 2:已获得的奖残个数(0-6)";
+        public override string[] getSpecialTip() {
+            return new string[] { "灵界槽","已得奖残","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
