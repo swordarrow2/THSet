@@ -59,7 +59,7 @@ namespace THSet {
                 tc=new TH16Code();
                 tc.setMemoryTool(new MemoryTool("th16"));
             } else {
-                MessageBox.Show("没有发现车万进程");
+                MessageBox.Show("没有发现车万进程\n可识别TH10,TH12,TH13,TH14,TH15,TH16");
                 System.Environment.Exit(System.Environment.ExitCode);
             }
 
