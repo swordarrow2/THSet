@@ -94,10 +94,14 @@ namespace THSet {
             write(0x004375B3,i);
         }
         public override void setIScore(int i) {
-            throw new NotImplementedException();
+            byte[] b = BitConverter.GetBytes(i/10);
+            write(0x00435C95,new byte[] { 0xE9,0xC9,0x10,0x00,0x00,0x90 });
+            write(0x00436D63,new byte[] { 0xC7,0x05,0x30,0x58,0x4F,0x00,b[0],b[1],b[2],b[3],0xEB,0x06 });
+            write(0x00436D75,new byte[] { 0xE9,0x21,0xEF,0xFF,0xFF });
         }
         public override void setIMaxPoint(int i) {
-            throw new NotImplementedException();
+            byte[] b = BitConverter.GetBytes(i/10);
+            write(0x00435CB0,new byte[] { 0xB9,0xFF,0xFF,b[0],b[1],b[2],b[3] });
         }
         public override void setISpecial1(int i) {
             write(0x0043760E,i);
