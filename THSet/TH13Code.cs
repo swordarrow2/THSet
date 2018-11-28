@@ -13,6 +13,9 @@ namespace THSet {
         public override string[] getSpecialTip() {
             return new string[] { "灵界槽","已得奖残","" };
         }
+        public override string[] getDefaultValue() {
+            return new string[] { "600","0","0" };
+        }
         public override void setTitle(string s) {
             gameTitle=s;
         }

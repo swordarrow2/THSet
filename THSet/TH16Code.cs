@@ -16,6 +16,9 @@ namespace THSet {
         public override string[] getSpecialTip() {
             return new string[] { "季节槽","","" };
         }
+        public override string[] getDefaultValue() {
+            return new string[] { "1140","0","0" };
+        }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
         }

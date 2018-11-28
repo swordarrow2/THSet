@@ -9,6 +9,7 @@ namespace THSet {
         public abstract string[] getSpecialTip();
         public abstract void setTitle(string s);
         public abstract void setMemoryTool(MemoryTool m);
+        public abstract string[] getDefaultValue();
 
         public abstract bool[] getEnable();
 

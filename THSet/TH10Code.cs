@@ -13,6 +13,9 @@ namespace THSet {
         public override string[] getSpecialTip() {
             return new string[] { "信仰值","","" };
         }
+        public override string[] getDefaultValue() {
+            return new string[] { "999990","0","0" };
+        }
         public override void setTitle(string s) {
             gameTitle=s;
         }
@@ -23,7 +26,7 @@ namespace THSet {
             return new bool[13] { true,true,true,true,false,false,false,true,true,false,true,false,false };
         }
         public override void setLockPlayer(bool b) {
-            write(0x00426A1C,b?new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
+            write(0x00426A1C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
                                new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00 });
         }
         public override void setLockBomb(bool b) {

@@ -10,6 +10,9 @@ namespace THSet {
         public override bool[] getEnable() {
             return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false };
         }
+        public override string[] getDefaultValue() {
+            return new string[] { "0","0","0" };
+        }
         public override string getTitle() {
             return gameTitle;
         }
