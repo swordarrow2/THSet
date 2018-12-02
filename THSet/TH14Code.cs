@@ -10,6 +10,12 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "有时候播放replay出错，如果replay文件没问题，可重启游戏再播放此处\n\n魔理沙激光可能会歪，其中一部分会导致播放录像时出错而另一部分不会(录像中的激光也是歪的)";
+        }
+        public override string getAboutSpecial() {
+            return "非2.0为收点系统中获得的非2.0奖励的次数，已得奖残在辉针城似乎没有什么作用";
+        }
         public override string[] getSpecialTip() {
             return new string[] { "非2.0","已得奖残","" };
         }
@@ -76,18 +82,18 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
-            write(0x00435D42,b);
-            write(0x00435D57,b);
+        public override void setIPlayer(int i) {
+            write(0x00435D42,i);
+            write(0x00435D57,i);
         }
-        public override void setIPlayerFragment(byte b) {
-            write(0x004375E4,b);
+        public override void setIPlayerFragment(int i) {
+            write(0x004375E4,i);
         }
-        public override void setIBomb(byte b) {
-            write(0x004375C1,b);
+        public override void setIBomb(int i) {
+            write(0x004375C1,i);
         }
-        public override void setIBombFragment(byte b) {
-            write(0x004375DD,b);
+        public override void setIBombFragment(int i) {
+            write(0x004375DD,i);
         }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);

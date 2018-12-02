@@ -10,6 +10,12 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能道中录像爆炸";
+        }
+        public override string getAboutSpecial() {
+            return "魔A火力较为特殊，修改魔A火力请使用此项";
+        }
         public override string[] getDefaultValue() {
             return new string[] { "0","0","0" };
         }
@@ -76,22 +82,24 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
+        public override void setIPlayer(int i) {
+            byte[] b = BitConverter.GetBytes(i);
             write(0x0041FA38,new byte[] { 0xE9,0x84,0xFE,0xFF,0xFF,0x90 });
-            write(0x0041F8C1,new byte[] { 0xC7,0x05,0x18,0x57,0x4A,0x00,b,0x00,0x00,0x00,0xE9,0x6E,0x01,0x00,0x00 });
-            write(0x0041FA4F,b);
+            write(0x0041F8C1,new byte[] { 0xC7,0x05,0x18,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],0xE9,0x6E,0x01,0x00,0x00 });
+            write(0x0041FA4F,i);
         }
-        public override void setIPlayerFragment(byte b) {
+        public override void setIPlayerFragment(int i) {
+            byte[] b = BitConverter.GetBytes(i);
             write(0x0041FA30,new byte[] { 0xE9,0x1F,0xFE,0xFF,0xFF,0x90 });
-            write(0x0041F854,new byte[] { 0xC7,0x05,0x1C,0x57,0x4A,0x00,b,0x00,0x00,0x00,0xEB,0x17 });
+            write(0x0041F854,new byte[] { 0xC7,0x05,0x1C,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0x17 });
             write(0x0041F877,new byte[] { 0xE9,0xBA,0x01,0x00,0x00 });
-            write(0x0041F85A,b);
+            write(0x0041F85A,i);
 
         }
-        public override void setIBomb(byte b) {
+        public override void setIBomb(int i) {
             throw new NotImplementedException();
         }
-        public override void setIBombFragment(byte b) {
+        public override void setIBombFragment(int i) {
             throw new NotImplementedException();
         }
         public override void setIPower(int i) {

@@ -10,11 +10,17 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会道中录像爆炸，从3面开始播放即可避免";
+        }
+        public override string getAboutSpecial() {
+            return "信仰值初始为50000，最大值为999990";
+        }
         public override string[] getSpecialTip() {
             return new string[] { "信仰值","","" };
         }
         public override string[] getDefaultValue() {
-            return new string[] { "999990","0","0" };
+            return new string[] { "50000","0","0" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -78,17 +84,18 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
+        public override void setIPlayer(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x0041794F,new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b });
             write(0x00417964,new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b });
         }
-        public override void setIPlayerFragment(byte b) {
+        public override void setIPlayerFragment(int i) {
             throw new NotImplementedException();
         }
-        public override void setIBomb(byte b) {
+        public override void setIBomb(int i) {
             throw new NotImplementedException();
         }
-        public override void setIBombFragment(byte b) {
+        public override void setIBombFragment(int i) {
             throw new NotImplementedException();
         }
         public override void setIPower(int i) {

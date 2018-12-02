@@ -10,6 +10,12 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra8非时boss也会无敌且无法解除\n\n无欠模式纯符击破撞重开时弹幕处于减速状态且boss无敌，需重启游戏再打此章节";
+        }
+        public override string getAboutSpecial() {
+            return "没啥好说的，使劲擦弹就得了（";
+        }
         public override string[] getSpecialTip() {
             return new string[] { "","","" };
         }
@@ -76,18 +82,18 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
-            write(0x0043C2B3,b);
-            write(0x0043C2C8,b);
+        public override void setIPlayer(int i) {
+            write(0x0043C2B3,i);
+            write(0x0043C2C8,i);
         }
-        public override void setIPlayerFragment(byte b) {
-            write(0x0043E716,b);
+        public override void setIPlayerFragment(int i) {
+            write(0x0043E716,i);
         }
-        public override void setIBomb(byte b) {
-            write(0x0043E6F1,b);
+        public override void setIBomb(int i) {
+            write(0x0043E6F1,i);
         }
-        public override void setIBombFragment(byte b) {
-            write(0x0043E70F,b);
+        public override void setIBombFragment(int i) {
+            write(0x0043E70F,i);
         }
         public override void setIPower(int i) {
             write(0x0043C32B,new byte[] { 0x90,0x90,0x90,0x90,0x90 });

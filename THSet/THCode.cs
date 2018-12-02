@@ -7,6 +7,8 @@ namespace THSet {
     public abstract class THCode {
         public abstract string getTitle();
         public abstract string[] getSpecialTip();
+        public abstract string getAboutBug();
+        public abstract string getAboutSpecial();
         public abstract void setTitle(string s);
         public abstract void setMemoryTool(MemoryTool m);
         public abstract string[] getDefaultValue();
@@ -36,10 +38,10 @@ namespace THSet {
         public abstract int getSpecial3();
 
 
-        public abstract void setIPlayer(byte b);
-        public abstract void setIPlayerFragment(byte b);
-        public abstract void setIBomb(byte b);
-        public abstract void setIBombFragment(byte b);
+        public abstract void setIPlayer(int i);
+        public abstract void setIPlayerFragment(int i);
+        public abstract void setIBomb(int i);
+        public abstract void setIBombFragment(int i);
 
         public abstract void setIPower(int i);
 

@@ -10,6 +10,12 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay只能从1面播放(汉化版)，从其他地方播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
+        }
+        public override string getAboutSpecial() {
+            return "灵界槽初始为200，最大值为600\n已得奖残会影响获得下一残机时需要的残碎片(红灵)数量";
+        }
         public override string[] getSpecialTip() {
             return new string[] { "灵界槽","已得奖残","" };
         }
@@ -80,18 +86,18 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
-            write(0x0042BC18,b);
-            write(0x0042BC2D,b);
+        public override void setIPlayer(int i) {
+            write(0x0042BC18,i);
+            write(0x0042BC2D,i);
         }
-        public override void setIPlayerFragment(byte b) {
-            write(0x0042D4C7,b);
+        public override void setIPlayerFragment(int i) {
+            write(0x0042D4C7,i);
         }
-        public override void setIBomb(byte b) {
-            write(0x0042D3DA,b);
+        public override void setIBomb(int i) {
+            write(0x0042D3DA,i);
         }
-        public override void setIBombFragment(byte b) {
-            write(0x0042D5D7,b);
+        public override void setIBombFragment(int i) {
+            write(0x0042D5D7,i);
         }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);

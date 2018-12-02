@@ -94,6 +94,9 @@
             this.tbIBomb = new System.Windows.Forms.TextBox();
             this.tbIPlayerFragment = new System.Windows.Forms.TextBox();
             this.btnIPlayerFragment = new System.Windows.Forms.Button();
+            this.showBug = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.note = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -147,7 +150,7 @@
             this.tbPower.Name = "tbPower";
             this.tbPower.Size = new System.Drawing.Size(88, 21);
             this.tbPower.TabIndex = 7;
-            this.tbPower.Text = "100";
+            this.tbPower.Text = "0";
             this.tbPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnPower
@@ -204,7 +207,7 @@
             this.tbBomb.Name = "tbBomb";
             this.tbBomb.Size = new System.Drawing.Size(88, 21);
             this.tbBomb.TabIndex = 3;
-            this.tbBomb.Text = "3";
+            this.tbBomb.Text = "0";
             this.tbBomb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnBomb
@@ -223,7 +226,7 @@
             this.tbPlayer.Name = "tbPlayer";
             this.tbPlayer.Size = new System.Drawing.Size(88, 21);
             this.tbPlayer.TabIndex = 1;
-            this.tbPlayer.Text = "2";
+            this.tbPlayer.Text = "0";
             this.tbPlayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnPlayer
@@ -285,7 +288,7 @@
             this.tbMaxPoint.Name = "tbMaxPoint";
             this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbMaxPoint.TabIndex = 18;
-            this.tbMaxPoint.Text = "10000";
+            this.tbMaxPoint.Text = "0";
             this.tbMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnMaxPoint
@@ -554,7 +557,7 @@
             this.tbIMaxPoint.Name = "tbIMaxPoint";
             this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbIMaxPoint.TabIndex = 18;
-            this.tbIMaxPoint.Text = "10000";
+            this.tbIMaxPoint.Text = "0";
             this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox4
@@ -748,7 +751,7 @@
             this.tbIPower.Name = "tbIPower";
             this.tbIPower.Size = new System.Drawing.Size(88, 21);
             this.tbIPower.TabIndex = 7;
-            this.tbIPower.Text = "100";
+            this.tbIPower.Text = "0";
             this.tbIPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbIPlayer
@@ -757,7 +760,7 @@
             this.tbIPlayer.Name = "tbIPlayer";
             this.tbIPlayer.Size = new System.Drawing.Size(88, 21);
             this.tbIPlayer.TabIndex = 1;
-            this.tbIPlayer.Text = "2";
+            this.tbIPlayer.Text = "0";
             this.tbIPlayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnIPower
@@ -815,7 +818,7 @@
             this.tbIBomb.Name = "tbIBomb";
             this.tbIBomb.Size = new System.Drawing.Size(88, 21);
             this.tbIBomb.TabIndex = 3;
-            this.tbIBomb.Text = "3";
+            this.tbIBomb.Text = "0";
             this.tbIBomb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbIPlayerFragment
@@ -837,12 +840,45 @@
             this.btnIPlayerFragment.UseVisualStyleBackColor = true;
             this.btnIPlayerFragment.Click += new System.EventHandler(this.btnIPlayerFragment_Click);
             // 
+            // showBug
+            // 
+            this.showBug.Location = new System.Drawing.Point(177, 367);
+            this.showBug.Name = "showBug";
+            this.showBug.Size = new System.Drawing.Size(85, 23);
+            this.showBug.TabIndex = 14;
+            this.showBug.Text = "关于游戏bug";
+            this.showBug.UseVisualStyleBackColor = true;
+            this.showBug.Click += new System.EventHandler(this.showBug_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 367);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 15;
+            this.button2.Text = "关于特殊值";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // note
+            // 
+            this.note.Location = new System.Drawing.Point(96, 367);
+            this.note.Name = "note";
+            this.note.Size = new System.Drawing.Size(75, 23);
+            this.note.TabIndex = 16;
+            this.note.Text = "使用说明";
+            this.note.UseVisualStyleBackColor = true;
+            this.note.Click += new System.EventHandler(this.note_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(463, 368);
+            this.ClientSize = new System.Drawing.Size(463, 397);
+            this.Controls.Add(this.note);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.showBug);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -934,6 +970,9 @@
         private System.Windows.Forms.Button btnReadSpecial3;
         private System.Windows.Forms.Button btnReadSpecial2;
         private System.Windows.Forms.Button btnReadSpecial1;
+        private System.Windows.Forms.Button showBug;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button note;
     }
 }
 

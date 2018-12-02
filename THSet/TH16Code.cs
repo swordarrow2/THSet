@@ -10,14 +10,20 @@ namespace THSet {
         public override string getTitle() {
             return gameTitle;
         }
+        public override string getAboutBug() {
+            return "符卡练习中若获得残机，miss后练习不会结束且bomb数量会重置为3";
+        }
         public override void setTitle(string s) {
             gameTitle=s;
+        }
+        public override string getAboutSpecial() {
+            return "季节槽范围为0-1140";
         }
         public override string[] getSpecialTip() {
             return new string[] { "季节槽","","" };
         }
         public override string[] getDefaultValue() {
-            return new string[] { "1140","0","0" };
+            return new string[] { "0","0","0" };
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
@@ -76,19 +82,22 @@ namespace THSet {
         public override int getSpecial3() {
             throw new NotImplementedException();
         }
-        public override void setIPlayer(byte b) {
+        public override void setIPlayer(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //story
             write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //practice
             //spell practice no need
         }
-        public override void setIPlayerFragment(byte b) {
-
+        public override void setIPlayerFragment(int i) {
+            throw new NotImplementedException();
         }
-        public override void setIBomb(byte b) {
+        public override void setIBomb(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             //story and practice,spell practice no need
             write(0x0042E5AE,new byte[] { 0xC7,0x46,0x70 },b);
         }
-        public override void setIBombFragment(byte b) {
+        public override void setIBombFragment(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             //story and practice,spell practice no need
             write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74 },b);
         }
@@ -115,7 +124,6 @@ namespace THSet {
             write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //story
             write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3],0x90 });   //practice
             write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //spell practice
-
         }
         public override void setISpecial2(int i) {
             throw new NotImplementedException();

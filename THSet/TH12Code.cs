@@ -10,6 +10,12 @@ namespace THSet {
         public override bool[] getEnable() {
             return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false };
         }
+        public override string getAboutBug() {
+            return "得分超过2,147,483,647时继续获得分数会使计数倒退";
+        }
+        public override string getAboutSpecial() {
+            return "0-无 1-红 2-蓝 3-绿";
+        }
         public override string[] getDefaultValue() {
             return new string[] { "0","0","0" };
         }
@@ -77,20 +83,24 @@ namespace THSet {
             throw new NotImplementedException();
         }
 
-        public override void setIPlayer(byte b) {
+        public override void setIPlayer(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E81,new byte[] { 0xE9,0x5A,0x5C,0x07,0x00,0x90 });
             write(0x00497AE0,new byte[] { 0xC7,0x05,0x98,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0x98,0xA3,0xF8,0xFF });
             write(0x00421E92,new byte[] { 0xC7,0x05,0x98,0x0C,0x4B,0x00,b });
         }
-        public override void setIPlayerFragment(byte b) {
+        public override void setIPlayerFragment(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E79,new byte[] { 0xE9,0x71,0x5C,0x07,0x00,0x90 });
             write(0x00497AEF,new byte[] { 0xC7,0x05,0x9C,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0x81,0xA3,0xF8,0xFF });
         }
-        public override void setIBomb(byte b) {
+        public override void setIBomb(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x00421DEF,new byte[] { 0xE9,0x0A,0x5D,0x07,0x00,0x90 });
             write(0x00497AFE,new byte[] { 0xC7,0x05,0xA0,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0xE8,0xA2,0xF8,0xFF });
         }
-        public override void setIBombFragment(byte b) {
+        public override void setIBombFragment(int i) {
+            byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E35,new byte[] { 0xE9,0xD3,0x5C,0x07,0x00,0x90 });
             write(0x00497B0D,new byte[] { 0xC7,0x05,0xA4,0x0C,0x4B,0x00,b,0x00,0x00,0x00,0xE9,0x1F,0xA3,0xF8,0xFF });
         }

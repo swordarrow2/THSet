@@ -34,7 +34,20 @@ namespace THSet {
                 tc=new TH12Code();
                 tc.setTitle("东方红红蓝汉化版");
                 tc.setMemoryTool(new MemoryTool("th12c"));
-            } else if(GetProcessHandle("th13")!=IntPtr.Zero) {
+            } else
+            
+            if(GetProcessHandle("th128")!=IntPtr.Zero) {
+                tc=new TH128Code();
+                tc.setMemoryTool(new MemoryTool("th128"));
+                tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=false;
+            } else if(GetProcessHandle("th128_CN")!=IntPtr.Zero) {
+                tc=new TH128Code();
+                tc.setTitle("妖精大战争汉化版");
+                tc.setMemoryTool(new MemoryTool("th128_CN"));
+                tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=false;
+            } else 
+            
+            if(GetProcessHandle("th13")!=IntPtr.Zero) {
                 tc=new TH13Code();
                 tc.setMemoryTool(new MemoryTool("th13"));
             } else if(GetProcessHandle("th13c")!=IntPtr.Zero) {
@@ -51,7 +64,7 @@ namespace THSet {
                 tc=new TH16Code();
                 tc.setMemoryTool(new MemoryTool("th16"));
             } else {
-                MessageBox.Show("没有发现车万进程\n可识别TH10,TH11,TH12,TH13,TH14,TH15,TH16");
+                MessageBox.Show("没有发现支持的车万进程\n目前支持风殿船庙城绀璋");
                 System.Environment.Exit(System.Environment.ExitCode);
             }
             this.Text=tc.getTitle();
@@ -77,6 +90,9 @@ namespace THSet {
             tbSpecial1.Text=tbISpecial1.Text=d[0];
             tbSpecial2.Text=tbISpecial2.Text=d[1];
             tbSpecial3.Text=tbISpecial3.Text=d[2];
+            if(GetProcessHandle("th128_CN")!=IntPtr.Zero||GetProcessHandle("th128")!=IntPtr.Zero) {
+                tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=tbIScore.Enabled=btnIScore.Enabled=false;
+            }
         }
 
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) {
@@ -128,16 +144,16 @@ namespace THSet {
             tbSpecial3.Text=Convert.ToString(tc.getSpecial3());
         }
         private void btnIPlayer_Click(object sender,EventArgs e) {
-            tc.setIPlayer(Convert.ToByte(tbIPlayer.Text));
+            tc.setIPlayer(Convert.ToInt32(tbIPlayer.Text));
         }
         private void btnIPlayerFragment_Click(object sender,EventArgs e) {
-            tc.setIPlayerFragment(Convert.ToByte(tbIPlayerFragment.Text));
+            tc.setIPlayerFragment(Convert.ToInt32(tbIPlayerFragment.Text));
         }
         private void btnIBomb_Click(object sender,EventArgs e) {
-            tc.setIBomb(Convert.ToByte(tbIBomb.Text));
+            tc.setIBomb(Convert.ToInt32(tbIBomb.Text));
         }
         private void btnIBombFragment_Click(object sender,EventArgs e) {
-            tc.setIBombFragment(Convert.ToByte(tbIBombFragment.Text));
+            tc.setIBombFragment(Convert.ToInt32(tbIBombFragment.Text));
         }
         private void btnIPower_Click(object sender,EventArgs e) {
             tc.setIPower(Convert.ToInt32(tbIPower.Text));
@@ -152,10 +168,21 @@ namespace THSet {
             tc.setISpecial1(Convert.ToInt32(tbISpecial1.Text));
         }
         private void btnISpecial2_Click(object sender,EventArgs e) {
-            tc.setISpecial2(Convert.ToByte(tbISpecial2.Text));
+            tc.setISpecial2(Convert.ToInt32(tbISpecial2.Text));
         }
         private void btnISpecial3_Click(object sender,EventArgs e) {
-            tc.setISpecial3(Convert.ToByte(tbISpecial3.Text));
+            tc.setISpecial3(Convert.ToInt32(tbISpecial3.Text));
+        }
+        private void showBug_Click(object sender,EventArgs e) {
+            bugTipForm btf = new bugTipForm(tc.getAboutBug());
+            btf.Show();
+        }
+        private void button2_Click(object sender,EventArgs e) {
+            MessageBox.Show(tc.getAboutSpecial());
+        }
+        private void note_Click(object sender,EventArgs e) {
+            MessageBox.Show("左侧的为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n"+
+                "右侧修改的为初始值，修改内容会记录到录像中，和THInit效果相同，此部分修改务必不要和THInit同时使用，可能会造成游戏爆炸");
         }
         public IntPtr GetProcessHandle(string exeName) {
             try {
@@ -165,6 +192,7 @@ namespace THSet {
                 return IntPtr.Zero;
             }
         }
+
 
     }
 }
