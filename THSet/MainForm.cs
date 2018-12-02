@@ -64,7 +64,7 @@ namespace THSet {
                 tc=new TH16Code();
                 tc.setMemoryTool(new MemoryTool("th16"));
             } else {
-                MessageBox.Show("没有发现支持的车万进程\n目前支持风殿船庙城绀璋");
+                MessageBox.Show("没有发现支持的车万进程\n目前TH10,11,12,12.8,13,14,15,16");
                 System.Environment.Exit(System.Environment.ExitCode);
             }
             this.Text=tc.getTitle();
