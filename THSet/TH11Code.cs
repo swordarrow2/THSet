@@ -14,7 +14,7 @@ namespace THSet {
             return new string[] { "0","0","0" };
         }
         public override string[] getSpecialTip() {
-            return new string[] { "","","" };
+            return new string[] { "魔A灵力","","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -23,7 +23,7 @@ namespace THSet {
             mt=m;
         }
         public override bool[] getEnable() {
-            return new bool[13] { true,true,true,true,true,false,false,true,false,false,false,false,false };
+            return new bool[13] { true,true,true,true,true,false,false,true,false,false,true,false,false };
         }
         public override void setLockPlayer(bool b) {
             write(0x004327F0,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
@@ -59,7 +59,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setSpecial1(int i) {
-            throw new NotImplementedException();
+            write(0x004A56E8,(int)(i/8.333333333333f));
         }
         public override void setSpecial2(int i) {
             throw new NotImplementedException();
@@ -68,7 +68,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override int getSpecial1() {
-            throw new NotImplementedException();
+            return (int)(mt.ReadInteger(0x004A56E8)*8.333333333333f);
         }
         public override int getSpecial2() {
             throw new NotImplementedException();
@@ -109,7 +109,12 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setISpecial1(int i) {
-            throw new NotImplementedException();
+            byte[] b = BitConverter.GetBytes((int)(i/8.3333333333f));
+            write(0x0041FA8C,new byte[] { 0xE9,0x12,0xFD,0xFF,0xFF,0x90 });
+            write(0x0041F7A3,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0x18 });
+            write(0x0041FA7D,new byte[] { 0xE9,0xE0,0xFC,0xFF,0xFF,0x90 });
+            write(0x0041F762,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0xDA });
+            write(0x0041F748,new byte[] { 0xE9,0x36,0x03,0x00,0x00 });
         }
         public override void setISpecial2(int i) {
             throw new NotImplementedException();
