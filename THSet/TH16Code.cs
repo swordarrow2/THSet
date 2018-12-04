@@ -11,7 +11,7 @@ namespace THSet {
             return gameTitle;
         }
         public override string getAboutBug() {
-            return "符卡练习中若获得残机，miss后练习不会结束且bomb数量会重置为3";
+            return "太多了，我就不写了……";
         }
         public override void setTitle(string s) {
             gameTitle=s;
