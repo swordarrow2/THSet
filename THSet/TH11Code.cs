@@ -11,16 +11,16 @@ namespace THSet {
             return gameTitle;
         }
         public override string getAboutBug() {
-            return "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能道中录像爆炸";
+            return "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         }
         public override string getAboutSpecial() {
-            return "魔A火力较为特殊，修改魔A火力请使用此项";
+            return "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";
         }
         public override string[] getDefaultValue() {
             return new string[] { "0","0","0" };
         }
         public override string[] getSpecialTip() {
-            return new string[] { "魔A灵力","","" };
+            return new string[] { "","","" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -29,7 +29,7 @@ namespace THSet {
             mt=m;
         }
         public override bool[] getEnable() {
-            return new bool[13] { true,true,true,true,true,false,false,true,false,false,true,false,false };
+            return new bool[13] { true,true,true,true,true,false,false,true,false,false,false,false,false };
         }
         public override void setLockPlayer(bool b) {
             write(0x004327F0,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
@@ -38,6 +38,8 @@ namespace THSet {
         public override void setLockBomb(bool b) {
             write(0x004311F1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0x29,0x15,0xE8,0x56,0x4A,0x00 });
+            write(0x0043129D,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } :
+                                 new byte[] { 0x29,0x05,0xE8,0x56,0x4A,0x00 });
         }
         public override void setUnbeatable(bool b) {
             write(0x00432A9E,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
@@ -56,7 +58,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setPower(int i) {
-            write(0x004A56E8,i/5);
+            write(0x004A56E8,isMarisaA() ? (int)(i/8.333333333333f) : i/5);
         }
         public override void setScore(int i) {
             write(0x004A56E4,i/10);
@@ -65,7 +67,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setSpecial1(int i) {
-            write(0x004A56E8,(int)(i/8.333333333333f));
+            throw new NotImplementedException();
         }
         public override void setSpecial2(int i) {
             throw new NotImplementedException();
@@ -74,7 +76,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override int getSpecial1() {
-            return (int)(mt.ReadInteger(0x004A56E8)*8.333333333333f);
+            throw new NotImplementedException();
         }
         public override int getSpecial2() {
             throw new NotImplementedException();
@@ -103,12 +105,13 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setIPower(int i) {
-            byte[] b = BitConverter.GetBytes(i/5);
+            byte[] b = BitConverter.GetBytes(isMarisaA() ? (int)(i/8.3333333333f) : i/5);
             write(0x0041FA8C,new byte[] { 0xE9,0x12,0xFD,0xFF,0xFF,0x90 });
             write(0x0041F7A3,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0x18 });
             write(0x0041FA7D,new byte[] { 0xE9,0xE0,0xFC,0xFF,0xFF,0x90 });
             write(0x0041F762,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0xDA });
             write(0x0041F748,new byte[] { 0xE9,0x36,0x03,0x00,0x00 });
+
         }
         public override void setIScore(int i) {
             throw new NotImplementedException();
@@ -117,12 +120,7 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public override void setISpecial1(int i) {
-            byte[] b = BitConverter.GetBytes((int)(i/8.3333333333f));
-            write(0x0041FA8C,new byte[] { 0xE9,0x12,0xFD,0xFF,0xFF,0x90 });
-            write(0x0041F7A3,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0x18 });
-            write(0x0041FA7D,new byte[] { 0xE9,0xE0,0xFC,0xFF,0xFF,0x90 });
-            write(0x0041F762,new byte[] { 0xC7,0x05,0xE8,0x56,0x4A,0x00,b[0],b[1],b[2],b[3],0xEB,0xDA });
-            write(0x0041F748,new byte[] { 0xE9,0x36,0x03,0x00,0x00 });
+
         }
         public override void setISpecial2(int i) {
             throw new NotImplementedException();
@@ -131,6 +129,9 @@ namespace THSet {
             throw new NotImplementedException();
         }
 
+        private bool isMarisaA() {
+            return ((mt.ReadInteger(0x004A5710)==1)&&(mt.ReadInteger(0x004A5714)==0));
+        }
 
         private void write(int addr,int value) {
             mt.WriteInteger(addr,value);
