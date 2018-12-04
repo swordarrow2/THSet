@@ -173,8 +173,9 @@ namespace THSet {
             MessageBox.Show(tc.getAboutSpecial());
         }
         private void note_Click(object sender,EventArgs e) {
-            MessageBox.Show("左侧的为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n"+
-                "右侧修改的为初始值，修改内容会记录到录像中，和THInit效果相同，此部分修改务必不要和THInit同时使用，可能会造成游戏爆炸");
+            MessageBox.Show("即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n"+
+                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改务必不要和THInit同时使用，可能会造成游戏爆炸" +
+                "\n\n注意：如果重启游戏需重启修改器");
         }
         public int GetPID(string exeName) {
             try {

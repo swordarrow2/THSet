@@ -37,7 +37,6 @@
             this.btnBomb = new System.Windows.Forms.Button();
             this.tbPlayer = new System.Windows.Forms.TextBox();
             this.btnPlayer = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.tbMaxPoint = new System.Windows.Forms.TextBox();
             this.btnMaxPoint = new System.Windows.Forms.Button();
@@ -61,7 +60,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.tbIMaxPoint = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -96,16 +94,22 @@
             this.showBug = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.note = new System.Windows.Forms.Button();
-            this.groupBox2.SuspendLayout();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lockPlayer
             // 
             this.lockPlayer.AutoSize = true;
-            this.lockPlayer.Location = new System.Drawing.Point(6, 20);
+            this.lockPlayer.Location = new System.Drawing.Point(8, 20);
             this.lockPlayer.Name = "lockPlayer";
             this.lockPlayer.Size = new System.Drawing.Size(72, 16);
             this.lockPlayer.TabIndex = 0;
@@ -116,7 +120,7 @@
             // lockBomb
             // 
             this.lockBomb.AutoSize = true;
-            this.lockBomb.Location = new System.Drawing.Point(84, 20);
+            this.lockBomb.Location = new System.Drawing.Point(86, 20);
             this.lockBomb.Name = "lockBomb";
             this.lockBomb.Size = new System.Drawing.Size(72, 16);
             this.lockBomb.TabIndex = 1;
@@ -126,9 +130,9 @@
             // 
             // tbSpecial1
             // 
-            this.tbSpecial1.Location = new System.Drawing.Point(53, 20);
+            this.tbSpecial1.Location = new System.Drawing.Point(62, 20);
             this.tbSpecial1.Name = "tbSpecial1";
-            this.tbSpecial1.Size = new System.Drawing.Size(48, 21);
+            this.tbSpecial1.Size = new System.Drawing.Size(39, 21);
             this.tbSpecial1.TabIndex = 9;
             this.tbSpecial1.Text = "0";
             this.tbSpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -145,7 +149,7 @@
             // 
             // tbPower
             // 
-            this.tbPower.Location = new System.Drawing.Point(68, 152);
+            this.tbPower.Location = new System.Drawing.Point(68, 114);
             this.tbPower.Name = "tbPower";
             this.tbPower.Size = new System.Drawing.Size(88, 21);
             this.tbPower.TabIndex = 7;
@@ -154,7 +158,7 @@
             // 
             // btnPower
             // 
-            this.btnPower.Location = new System.Drawing.Point(162, 150);
+            this.btnPower.Location = new System.Drawing.Point(162, 112);
             this.btnPower.Name = "btnPower";
             this.btnPower.Size = new System.Drawing.Size(44, 23);
             this.btnPower.TabIndex = 6;
@@ -164,7 +168,7 @@
             // 
             // tbBombFragment
             // 
-            this.tbBombFragment.Location = new System.Drawing.Point(68, 125);
+            this.tbBombFragment.Location = new System.Drawing.Point(68, 87);
             this.tbBombFragment.Name = "tbBombFragment";
             this.tbBombFragment.Size = new System.Drawing.Size(88, 21);
             this.tbBombFragment.TabIndex = 5;
@@ -173,7 +177,7 @@
             // 
             // btnBombFragment
             // 
-            this.btnBombFragment.Location = new System.Drawing.Point(162, 123);
+            this.btnBombFragment.Location = new System.Drawing.Point(162, 85);
             this.btnBombFragment.Name = "btnBombFragment";
             this.btnBombFragment.Size = new System.Drawing.Size(44, 23);
             this.btnBombFragment.TabIndex = 4;
@@ -183,7 +187,7 @@
             // 
             // tbPlayerFragment
             // 
-            this.tbPlayerFragment.Location = new System.Drawing.Point(68, 71);
+            this.tbPlayerFragment.Location = new System.Drawing.Point(68, 33);
             this.tbPlayerFragment.Name = "tbPlayerFragment";
             this.tbPlayerFragment.Size = new System.Drawing.Size(88, 21);
             this.tbPlayerFragment.TabIndex = 3;
@@ -192,7 +196,7 @@
             // 
             // btnPlayerFragment
             // 
-            this.btnPlayerFragment.Location = new System.Drawing.Point(162, 69);
+            this.btnPlayerFragment.Location = new System.Drawing.Point(162, 31);
             this.btnPlayerFragment.Name = "btnPlayerFragment";
             this.btnPlayerFragment.Size = new System.Drawing.Size(44, 23);
             this.btnPlayerFragment.TabIndex = 2;
@@ -202,7 +206,7 @@
             // 
             // tbBomb
             // 
-            this.tbBomb.Location = new System.Drawing.Point(68, 98);
+            this.tbBomb.Location = new System.Drawing.Point(68, 60);
             this.tbBomb.Name = "tbBomb";
             this.tbBomb.Size = new System.Drawing.Size(88, 21);
             this.tbBomb.TabIndex = 3;
@@ -211,7 +215,7 @@
             // 
             // btnBomb
             // 
-            this.btnBomb.Location = new System.Drawing.Point(162, 96);
+            this.btnBomb.Location = new System.Drawing.Point(162, 58);
             this.btnBomb.Name = "btnBomb";
             this.btnBomb.Size = new System.Drawing.Size(44, 23);
             this.btnBomb.TabIndex = 2;
@@ -221,7 +225,7 @@
             // 
             // tbPlayer
             // 
-            this.tbPlayer.Location = new System.Drawing.Point(68, 44);
+            this.tbPlayer.Location = new System.Drawing.Point(68, 6);
             this.tbPlayer.Name = "tbPlayer";
             this.tbPlayer.Size = new System.Drawing.Size(88, 21);
             this.tbPlayer.TabIndex = 1;
@@ -230,7 +234,7 @@
             // 
             // btnPlayer
             // 
-            this.btnPlayer.Location = new System.Drawing.Point(162, 42);
+            this.btnPlayer.Location = new System.Drawing.Point(162, 6);
             this.btnPlayer.Name = "btnPlayer";
             this.btnPlayer.Size = new System.Drawing.Size(44, 23);
             this.btnPlayer.TabIndex = 0;
@@ -238,44 +242,10 @@
             this.btnPlayer.UseVisualStyleBackColor = true;
             this.btnPlayer.Click += new System.EventHandler(this.btnPlayer_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.tbMaxPoint);
-            this.groupBox2.Controls.Add(this.btnMaxPoint);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.tbScore);
-            this.groupBox2.Controls.Add(this.btnScore);
-            this.groupBox2.Controls.Add(this.choice);
-            this.groupBox2.Controls.Add(this.groupBox3);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.lockBomb);
-            this.groupBox2.Controls.Add(this.lockPlayer);
-            this.groupBox2.Controls.Add(this.tbPower);
-            this.groupBox2.Controls.Add(this.tbPlayer);
-            this.groupBox2.Controls.Add(this.btnPower);
-            this.groupBox2.Controls.Add(this.btnPlayer);
-            this.groupBox2.Controls.Add(this.tbBombFragment);
-            this.groupBox2.Controls.Add(this.btnBomb);
-            this.groupBox2.Controls.Add(this.btnBombFragment);
-            this.groupBox2.Controls.Add(this.tbBomb);
-            this.groupBox2.Controls.Add(this.tbPlayerFragment);
-            this.groupBox2.Controls.Add(this.btnPlayerFragment);
-            this.groupBox2.Location = new System.Drawing.Point(12, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(216, 349);
-            this.groupBox2.TabIndex = 10;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "当前值设置";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 209);
+            this.label19.Location = new System.Drawing.Point(6, 171);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(53, 12);
             this.label19.TabIndex = 19;
@@ -283,7 +253,7 @@
             // 
             // tbMaxPoint
             // 
-            this.tbMaxPoint.Location = new System.Drawing.Point(68, 206);
+            this.tbMaxPoint.Location = new System.Drawing.Point(68, 168);
             this.tbMaxPoint.Name = "tbMaxPoint";
             this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbMaxPoint.TabIndex = 18;
@@ -292,7 +262,7 @@
             // 
             // btnMaxPoint
             // 
-            this.btnMaxPoint.Location = new System.Drawing.Point(162, 204);
+            this.btnMaxPoint.Location = new System.Drawing.Point(162, 166);
             this.btnMaxPoint.Name = "btnMaxPoint";
             this.btnMaxPoint.Size = new System.Drawing.Size(44, 23);
             this.btnMaxPoint.TabIndex = 17;
@@ -303,7 +273,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 182);
+            this.label18.Location = new System.Drawing.Point(6, 144);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(29, 12);
             this.label18.TabIndex = 16;
@@ -311,7 +281,7 @@
             // 
             // tbScore
             // 
-            this.tbScore.Location = new System.Drawing.Point(68, 179);
+            this.tbScore.Location = new System.Drawing.Point(68, 141);
             this.tbScore.Name = "tbScore";
             this.tbScore.Size = new System.Drawing.Size(88, 21);
             this.tbScore.TabIndex = 15;
@@ -320,7 +290,7 @@
             // 
             // btnScore
             // 
-            this.btnScore.Location = new System.Drawing.Point(162, 177);
+            this.btnScore.Location = new System.Drawing.Point(162, 139);
             this.btnScore.Name = "btnScore";
             this.btnScore.Size = new System.Drawing.Size(44, 23);
             this.btnScore.TabIndex = 14;
@@ -331,7 +301,7 @@
             // choice
             // 
             this.choice.AutoSize = true;
-            this.choice.Location = new System.Drawing.Point(156, 19);
+            this.choice.Location = new System.Drawing.Point(158, 19);
             this.choice.Name = "choice";
             this.choice.Size = new System.Drawing.Size(48, 16);
             this.choice.TabIndex = 13;
@@ -353,9 +323,9 @@
             this.groupBox3.Controls.Add(this.btnSpecial3);
             this.groupBox3.Controls.Add(this.btnSpecial2);
             this.groupBox3.Controls.Add(this.tbSpecial2);
-            this.groupBox3.Location = new System.Drawing.Point(8, 235);
+            this.groupBox3.Location = new System.Drawing.Point(6, 194);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(196, 106);
+            this.groupBox3.Size = new System.Drawing.Size(200, 106);
             this.groupBox3.TabIndex = 11;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "特殊值";
@@ -410,9 +380,9 @@
             // 
             // tbSpecial3
             // 
-            this.tbSpecial3.Location = new System.Drawing.Point(53, 74);
+            this.tbSpecial3.Location = new System.Drawing.Point(62, 74);
             this.tbSpecial3.Name = "tbSpecial3";
-            this.tbSpecial3.Size = new System.Drawing.Size(48, 21);
+            this.tbSpecial3.Size = new System.Drawing.Size(39, 21);
             this.tbSpecial3.TabIndex = 14;
             this.tbSpecial3.Text = "0";
             this.tbSpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -448,9 +418,9 @@
             // 
             // tbSpecial2
             // 
-            this.tbSpecial2.Location = new System.Drawing.Point(53, 47);
+            this.tbSpecial2.Location = new System.Drawing.Point(62, 47);
             this.tbSpecial2.Name = "tbSpecial2";
-            this.tbSpecial2.Size = new System.Drawing.Size(48, 21);
+            this.tbSpecial2.Size = new System.Drawing.Size(39, 21);
             this.tbSpecial2.TabIndex = 14;
             this.tbSpecial2.Text = "0";
             this.tbSpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -458,7 +428,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 155);
+            this.label5.Location = new System.Drawing.Point(6, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
             this.label5.TabIndex = 12;
@@ -467,7 +437,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 128);
+            this.label4.Location = new System.Drawing.Point(6, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 12;
@@ -476,7 +446,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 101);
+            this.label3.Location = new System.Drawing.Point(6, 63);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 12;
@@ -485,7 +455,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 74);
+            this.label2.Location = new System.Drawing.Point(6, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 11;
@@ -494,47 +464,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 47);
+            this.label1.Location = new System.Drawing.Point(6, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 10;
             this.label1.Text = "残机";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.tbIMaxPoint);
-            this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.btnIMaxPoint);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.label21);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.tbIScore);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.btnIScore);
-            this.groupBox1.Controls.Add(this.label15);
-            this.groupBox1.Controls.Add(this.label16);
-            this.groupBox1.Controls.Add(this.tbIPower);
-            this.groupBox1.Controls.Add(this.tbIPlayer);
-            this.groupBox1.Controls.Add(this.btnIPower);
-            this.groupBox1.Controls.Add(this.btnIPlayer);
-            this.groupBox1.Controls.Add(this.tbIBombFragment);
-            this.groupBox1.Controls.Add(this.btnIBomb);
-            this.groupBox1.Controls.Add(this.btnIBombFragment);
-            this.groupBox1.Controls.Add(this.tbIBomb);
-            this.groupBox1.Controls.Add(this.tbIPlayerFragment);
-            this.groupBox1.Controls.Add(this.btnIPlayerFragment);
-            this.groupBox1.Location = new System.Drawing.Point(234, 19);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 317);
-            this.groupBox1.TabIndex = 13;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "THInit";
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 182);
+            this.label22.Location = new System.Drawing.Point(6, 171);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 12);
             this.label22.TabIndex = 19;
@@ -542,7 +481,7 @@
             // 
             // tbIMaxPoint
             // 
-            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 179);
+            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 168);
             this.tbIMaxPoint.Name = "tbIMaxPoint";
             this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbIMaxPoint.TabIndex = 18;
@@ -560,7 +499,7 @@
             this.groupBox4.Controls.Add(this.btnISpecial3);
             this.groupBox4.Controls.Add(this.btnISpecial2);
             this.groupBox4.Controls.Add(this.tbISpecial2);
-            this.groupBox4.Location = new System.Drawing.Point(8, 206);
+            this.groupBox4.Location = new System.Drawing.Point(6, 194);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(198, 106);
             this.groupBox4.TabIndex = 11;
@@ -570,7 +509,7 @@
             // lbISp3
             // 
             this.lbISp3.AutoSize = true;
-            this.lbISp3.Location = new System.Drawing.Point(4, 79);
+            this.lbISp3.Location = new System.Drawing.Point(6, 77);
             this.lbISp3.Name = "lbISp3";
             this.lbISp3.Size = new System.Drawing.Size(41, 12);
             this.lbISp3.TabIndex = 15;
@@ -578,9 +517,9 @@
             // 
             // tbISpecial1
             // 
-            this.tbISpecial1.Location = new System.Drawing.Point(57, 20);
+            this.tbISpecial1.Location = new System.Drawing.Point(62, 20);
             this.tbISpecial1.Name = "tbISpecial1";
-            this.tbISpecial1.Size = new System.Drawing.Size(44, 21);
+            this.tbISpecial1.Size = new System.Drawing.Size(39, 21);
             this.tbISpecial1.TabIndex = 9;
             this.tbISpecial1.Text = "0";
             this.tbISpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -588,7 +527,7 @@
             // lbISp2
             // 
             this.lbISp2.AutoSize = true;
-            this.lbISp2.Location = new System.Drawing.Point(4, 52);
+            this.lbISp2.Location = new System.Drawing.Point(6, 50);
             this.lbISp2.Name = "lbISp2";
             this.lbISp2.Size = new System.Drawing.Size(41, 12);
             this.lbISp2.TabIndex = 15;
@@ -606,9 +545,9 @@
             // 
             // tbISpecial3
             // 
-            this.tbISpecial3.Location = new System.Drawing.Point(57, 74);
+            this.tbISpecial3.Location = new System.Drawing.Point(62, 74);
             this.tbISpecial3.Name = "tbISpecial3";
-            this.tbISpecial3.Size = new System.Drawing.Size(44, 21);
+            this.tbISpecial3.Size = new System.Drawing.Size(39, 21);
             this.tbISpecial3.TabIndex = 14;
             this.tbISpecial3.Text = "0";
             this.tbISpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -616,7 +555,7 @@
             // lbISp1
             // 
             this.lbISp1.AutoSize = true;
-            this.lbISp1.Location = new System.Drawing.Point(4, 25);
+            this.lbISp1.Location = new System.Drawing.Point(6, 23);
             this.lbISp1.Name = "lbISp1";
             this.lbISp1.Size = new System.Drawing.Size(41, 12);
             this.lbISp1.TabIndex = 12;
@@ -644,16 +583,16 @@
             // 
             // tbISpecial2
             // 
-            this.tbISpecial2.Location = new System.Drawing.Point(57, 47);
+            this.tbISpecial2.Location = new System.Drawing.Point(62, 47);
             this.tbISpecial2.Name = "tbISpecial2";
-            this.tbISpecial2.Size = new System.Drawing.Size(44, 21);
+            this.tbISpecial2.Size = new System.Drawing.Size(39, 21);
             this.tbISpecial2.TabIndex = 14;
             this.tbISpecial2.Text = "0";
             this.tbISpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnIMaxPoint
             // 
-            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 177);
+            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 166);
             this.btnIMaxPoint.Name = "btnIMaxPoint";
             this.btnIMaxPoint.Size = new System.Drawing.Size(44, 23);
             this.btnIMaxPoint.TabIndex = 17;
@@ -664,7 +603,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 128);
+            this.label12.Location = new System.Drawing.Point(6, 117);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 12;
@@ -673,7 +612,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 155);
+            this.label21.Location = new System.Drawing.Point(6, 144);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 16;
@@ -682,7 +621,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 101);
+            this.label13.Location = new System.Drawing.Point(6, 90);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 12;
@@ -690,7 +629,7 @@
             // 
             // tbIScore
             // 
-            this.tbIScore.Location = new System.Drawing.Point(68, 152);
+            this.tbIScore.Location = new System.Drawing.Point(68, 141);
             this.tbIScore.Name = "tbIScore";
             this.tbIScore.Size = new System.Drawing.Size(88, 21);
             this.tbIScore.TabIndex = 15;
@@ -700,7 +639,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 74);
+            this.label14.Location = new System.Drawing.Point(6, 63);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 12;
@@ -708,7 +647,7 @@
             // 
             // btnIScore
             // 
-            this.btnIScore.Location = new System.Drawing.Point(162, 150);
+            this.btnIScore.Location = new System.Drawing.Point(162, 139);
             this.btnIScore.Name = "btnIScore";
             this.btnIScore.Size = new System.Drawing.Size(44, 23);
             this.btnIScore.TabIndex = 14;
@@ -719,7 +658,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 47);
+            this.label15.Location = new System.Drawing.Point(6, 36);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 11;
@@ -728,7 +667,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 20);
+            this.label16.Location = new System.Drawing.Point(6, 9);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 12);
             this.label16.TabIndex = 10;
@@ -736,7 +675,7 @@
             // 
             // tbIPower
             // 
-            this.tbIPower.Location = new System.Drawing.Point(68, 125);
+            this.tbIPower.Location = new System.Drawing.Point(68, 114);
             this.tbIPower.Name = "tbIPower";
             this.tbIPower.Size = new System.Drawing.Size(88, 21);
             this.tbIPower.TabIndex = 7;
@@ -745,7 +684,7 @@
             // 
             // tbIPlayer
             // 
-            this.tbIPlayer.Location = new System.Drawing.Point(68, 17);
+            this.tbIPlayer.Location = new System.Drawing.Point(68, 6);
             this.tbIPlayer.Name = "tbIPlayer";
             this.tbIPlayer.Size = new System.Drawing.Size(88, 21);
             this.tbIPlayer.TabIndex = 1;
@@ -754,7 +693,7 @@
             // 
             // btnIPower
             // 
-            this.btnIPower.Location = new System.Drawing.Point(162, 123);
+            this.btnIPower.Location = new System.Drawing.Point(162, 112);
             this.btnIPower.Name = "btnIPower";
             this.btnIPower.Size = new System.Drawing.Size(44, 23);
             this.btnIPower.TabIndex = 6;
@@ -764,7 +703,7 @@
             // 
             // btnIPlayer
             // 
-            this.btnIPlayer.Location = new System.Drawing.Point(162, 15);
+            this.btnIPlayer.Location = new System.Drawing.Point(162, 6);
             this.btnIPlayer.Name = "btnIPlayer";
             this.btnIPlayer.Size = new System.Drawing.Size(44, 23);
             this.btnIPlayer.TabIndex = 0;
@@ -774,7 +713,7 @@
             // 
             // tbIBombFragment
             // 
-            this.tbIBombFragment.Location = new System.Drawing.Point(68, 98);
+            this.tbIBombFragment.Location = new System.Drawing.Point(68, 87);
             this.tbIBombFragment.Name = "tbIBombFragment";
             this.tbIBombFragment.Size = new System.Drawing.Size(88, 21);
             this.tbIBombFragment.TabIndex = 5;
@@ -783,7 +722,7 @@
             // 
             // btnIBomb
             // 
-            this.btnIBomb.Location = new System.Drawing.Point(162, 69);
+            this.btnIBomb.Location = new System.Drawing.Point(162, 58);
             this.btnIBomb.Name = "btnIBomb";
             this.btnIBomb.Size = new System.Drawing.Size(44, 23);
             this.btnIBomb.TabIndex = 2;
@@ -793,7 +732,7 @@
             // 
             // btnIBombFragment
             // 
-            this.btnIBombFragment.Location = new System.Drawing.Point(162, 96);
+            this.btnIBombFragment.Location = new System.Drawing.Point(162, 85);
             this.btnIBombFragment.Name = "btnIBombFragment";
             this.btnIBombFragment.Size = new System.Drawing.Size(44, 23);
             this.btnIBombFragment.TabIndex = 4;
@@ -803,7 +742,7 @@
             // 
             // tbIBomb
             // 
-            this.tbIBomb.Location = new System.Drawing.Point(68, 71);
+            this.tbIBomb.Location = new System.Drawing.Point(68, 60);
             this.tbIBomb.Name = "tbIBomb";
             this.tbIBomb.Size = new System.Drawing.Size(88, 21);
             this.tbIBomb.TabIndex = 3;
@@ -812,7 +751,7 @@
             // 
             // tbIPlayerFragment
             // 
-            this.tbIPlayerFragment.Location = new System.Drawing.Point(68, 44);
+            this.tbIPlayerFragment.Location = new System.Drawing.Point(68, 33);
             this.tbIPlayerFragment.Name = "tbIPlayerFragment";
             this.tbIPlayerFragment.Size = new System.Drawing.Size(88, 21);
             this.tbIPlayerFragment.TabIndex = 3;
@@ -821,7 +760,7 @@
             // 
             // btnIPlayerFragment
             // 
-            this.btnIPlayerFragment.Location = new System.Drawing.Point(162, 42);
+            this.btnIPlayerFragment.Location = new System.Drawing.Point(162, 31);
             this.btnIPlayerFragment.Name = "btnIPlayerFragment";
             this.btnIPlayerFragment.Size = new System.Drawing.Size(44, 23);
             this.btnIPlayerFragment.TabIndex = 2;
@@ -831,17 +770,17 @@
             // 
             // showBug
             // 
-            this.showBug.Location = new System.Drawing.Point(177, 367);
+            this.showBug.Location = new System.Drawing.Point(155, 41);
             this.showBug.Name = "showBug";
-            this.showBug.Size = new System.Drawing.Size(85, 23);
+            this.showBug.Size = new System.Drawing.Size(58, 23);
             this.showBug.TabIndex = 14;
-            this.showBug.Text = "关于游戏bug";
+            this.showBug.Text = "游戏bug";
             this.showBug.UseVisualStyleBackColor = true;
             this.showBug.Click += new System.EventHandler(this.showBug_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 367);
+            this.button2.Location = new System.Drawing.Point(5, 41);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -851,37 +790,127 @@
             // 
             // note
             // 
-            this.note.Location = new System.Drawing.Point(96, 367);
+            this.note.Location = new System.Drawing.Point(86, 41);
             this.note.Name = "note";
-            this.note.Size = new System.Drawing.Size(75, 23);
+            this.note.Size = new System.Drawing.Size(64, 23);
             this.note.TabIndex = 16;
             this.note.Text = "使用说明";
             this.note.UseVisualStyleBackColor = true;
             this.note.Click += new System.EventHandler(this.note_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(7, 7);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(220, 332);
+            this.tabControl1.TabIndex = 17;
+            this.tabControl1.Tag = "";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.tbMaxPoint);
+            this.tabPage1.Controls.Add(this.btnPlayerFragment);
+            this.tabPage1.Controls.Add(this.btnMaxPoint);
+            this.tabPage1.Controls.Add(this.tbPlayerFragment);
+            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.tbBomb);
+            this.tabPage1.Controls.Add(this.tbScore);
+            this.tabPage1.Controls.Add(this.btnBombFragment);
+            this.tabPage1.Controls.Add(this.btnScore);
+            this.tabPage1.Controls.Add(this.btnBomb);
+            this.tabPage1.Controls.Add(this.tbBombFragment);
+            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.btnPlayer);
+            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.btnPower);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.tbPlayer);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.tbPower);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(212, 306);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "即时修改";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label22);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.tbIMaxPoint);
+            this.tabPage2.Controls.Add(this.btnIPlayerFragment);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.tbIPlayerFragment);
+            this.tabPage2.Controls.Add(this.btnIMaxPoint);
+            this.tabPage2.Controls.Add(this.tbIBomb);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.btnIBombFragment);
+            this.tabPage2.Controls.Add(this.label21);
+            this.tabPage2.Controls.Add(this.btnIBomb);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.tbIBombFragment);
+            this.tabPage2.Controls.Add(this.tbIScore);
+            this.tabPage2.Controls.Add(this.btnIPlayer);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.btnIPower);
+            this.tabPage2.Controls.Add(this.btnIScore);
+            this.tabPage2.Controls.Add(this.tbIPlayer);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.tbIPower);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(212, 306);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Init";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lockBomb);
+            this.groupBox1.Controls.Add(this.choice);
+            this.groupBox1.Controls.Add(this.lockPlayer);
+            this.groupBox1.Controls.Add(this.showBug);
+            this.groupBox1.Controls.Add(this.note);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Location = new System.Drawing.Point(7, 341);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(220, 73);
+            this.groupBox1.TabIndex = 18;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "其它";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(463, 397);
-            this.Controls.Add(this.note);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.showBug);
+            this.ClientSize = new System.Drawing.Size(233, 419);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.tabControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -902,7 +931,6 @@
         private System.Windows.Forms.Button btnPower;
         private System.Windows.Forms.TextBox tbSpecial1;
         private System.Windows.Forms.Button btnSpecial1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lbSp3;
         private System.Windows.Forms.Label lbSp2;
@@ -916,7 +944,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label lbISp3;
         private System.Windows.Forms.TextBox tbISpecial1;
@@ -961,6 +988,10 @@
         private System.Windows.Forms.Button showBug;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button note;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
