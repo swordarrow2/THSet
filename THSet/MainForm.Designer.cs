@@ -63,7 +63,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.tbIMaxPoint = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lbISp3 = new System.Windows.Forms.Label();
@@ -504,7 +503,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label22);
-            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.tbIMaxPoint);
             this.groupBox1.Controls.Add(this.groupBox4);
             this.groupBox1.Controls.Add(this.btnIMaxPoint);
@@ -526,34 +524,25 @@
             this.groupBox1.Controls.Add(this.tbIBomb);
             this.groupBox1.Controls.Add(this.tbIPlayerFragment);
             this.groupBox1.Controls.Add(this.btnIPlayerFragment);
-            this.groupBox1.Location = new System.Drawing.Point(234, 12);
+            this.groupBox1.Location = new System.Drawing.Point(234, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(217, 349);
+            this.groupBox1.Size = new System.Drawing.Size(217, 317);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "初始值设置";
+            this.groupBox1.Text = "THInit";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 209);
+            this.label22.Location = new System.Drawing.Point(6, 182);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(53, 12);
             this.label22.TabIndex = 19;
             this.label22.Text = "最大得点";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 20);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 12);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "THInit";
-            // 
             // tbIMaxPoint
             // 
-            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 206);
+            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 179);
             this.tbIMaxPoint.Name = "tbIMaxPoint";
             this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
             this.tbIMaxPoint.TabIndex = 18;
@@ -571,7 +560,7 @@
             this.groupBox4.Controls.Add(this.btnISpecial3);
             this.groupBox4.Controls.Add(this.btnISpecial2);
             this.groupBox4.Controls.Add(this.tbISpecial2);
-            this.groupBox4.Location = new System.Drawing.Point(8, 235);
+            this.groupBox4.Location = new System.Drawing.Point(8, 206);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(198, 106);
             this.groupBox4.TabIndex = 11;
@@ -664,7 +653,7 @@
             // 
             // btnIMaxPoint
             // 
-            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 204);
+            this.btnIMaxPoint.Location = new System.Drawing.Point(162, 177);
             this.btnIMaxPoint.Name = "btnIMaxPoint";
             this.btnIMaxPoint.Size = new System.Drawing.Size(44, 23);
             this.btnIMaxPoint.TabIndex = 17;
@@ -675,7 +664,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 150);
+            this.label12.Location = new System.Drawing.Point(6, 128);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 12);
             this.label12.TabIndex = 12;
@@ -684,7 +673,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 182);
+            this.label21.Location = new System.Drawing.Point(6, 155);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 16;
@@ -693,7 +682,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 123);
+            this.label13.Location = new System.Drawing.Point(6, 101);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 12);
             this.label13.TabIndex = 12;
@@ -701,7 +690,7 @@
             // 
             // tbIScore
             // 
-            this.tbIScore.Location = new System.Drawing.Point(68, 179);
+            this.tbIScore.Location = new System.Drawing.Point(68, 152);
             this.tbIScore.Name = "tbIScore";
             this.tbIScore.Size = new System.Drawing.Size(88, 21);
             this.tbIScore.TabIndex = 15;
@@ -711,7 +700,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 96);
+            this.label14.Location = new System.Drawing.Point(6, 74);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(29, 12);
             this.label14.TabIndex = 12;
@@ -719,7 +708,7 @@
             // 
             // btnIScore
             // 
-            this.btnIScore.Location = new System.Drawing.Point(162, 177);
+            this.btnIScore.Location = new System.Drawing.Point(162, 150);
             this.btnIScore.Name = "btnIScore";
             this.btnIScore.Size = new System.Drawing.Size(44, 23);
             this.btnIScore.TabIndex = 14;
@@ -730,7 +719,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 69);
+            this.label15.Location = new System.Drawing.Point(6, 47);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 11;
@@ -739,7 +728,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 42);
+            this.label16.Location = new System.Drawing.Point(6, 20);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(29, 12);
             this.label16.TabIndex = 10;
@@ -747,7 +736,7 @@
             // 
             // tbIPower
             // 
-            this.tbIPower.Location = new System.Drawing.Point(68, 147);
+            this.tbIPower.Location = new System.Drawing.Point(68, 125);
             this.tbIPower.Name = "tbIPower";
             this.tbIPower.Size = new System.Drawing.Size(88, 21);
             this.tbIPower.TabIndex = 7;
@@ -756,7 +745,7 @@
             // 
             // tbIPlayer
             // 
-            this.tbIPlayer.Location = new System.Drawing.Point(68, 39);
+            this.tbIPlayer.Location = new System.Drawing.Point(68, 17);
             this.tbIPlayer.Name = "tbIPlayer";
             this.tbIPlayer.Size = new System.Drawing.Size(88, 21);
             this.tbIPlayer.TabIndex = 1;
@@ -765,7 +754,7 @@
             // 
             // btnIPower
             // 
-            this.btnIPower.Location = new System.Drawing.Point(162, 145);
+            this.btnIPower.Location = new System.Drawing.Point(162, 123);
             this.btnIPower.Name = "btnIPower";
             this.btnIPower.Size = new System.Drawing.Size(44, 23);
             this.btnIPower.TabIndex = 6;
@@ -775,7 +764,7 @@
             // 
             // btnIPlayer
             // 
-            this.btnIPlayer.Location = new System.Drawing.Point(162, 37);
+            this.btnIPlayer.Location = new System.Drawing.Point(162, 15);
             this.btnIPlayer.Name = "btnIPlayer";
             this.btnIPlayer.Size = new System.Drawing.Size(44, 23);
             this.btnIPlayer.TabIndex = 0;
@@ -785,7 +774,7 @@
             // 
             // tbIBombFragment
             // 
-            this.tbIBombFragment.Location = new System.Drawing.Point(68, 120);
+            this.tbIBombFragment.Location = new System.Drawing.Point(68, 98);
             this.tbIBombFragment.Name = "tbIBombFragment";
             this.tbIBombFragment.Size = new System.Drawing.Size(88, 21);
             this.tbIBombFragment.TabIndex = 5;
@@ -794,7 +783,7 @@
             // 
             // btnIBomb
             // 
-            this.btnIBomb.Location = new System.Drawing.Point(162, 91);
+            this.btnIBomb.Location = new System.Drawing.Point(162, 69);
             this.btnIBomb.Name = "btnIBomb";
             this.btnIBomb.Size = new System.Drawing.Size(44, 23);
             this.btnIBomb.TabIndex = 2;
@@ -804,7 +793,7 @@
             // 
             // btnIBombFragment
             // 
-            this.btnIBombFragment.Location = new System.Drawing.Point(162, 118);
+            this.btnIBombFragment.Location = new System.Drawing.Point(162, 96);
             this.btnIBombFragment.Name = "btnIBombFragment";
             this.btnIBombFragment.Size = new System.Drawing.Size(44, 23);
             this.btnIBombFragment.TabIndex = 4;
@@ -814,7 +803,7 @@
             // 
             // tbIBomb
             // 
-            this.tbIBomb.Location = new System.Drawing.Point(68, 93);
+            this.tbIBomb.Location = new System.Drawing.Point(68, 71);
             this.tbIBomb.Name = "tbIBomb";
             this.tbIBomb.Size = new System.Drawing.Size(88, 21);
             this.tbIBomb.TabIndex = 3;
@@ -823,7 +812,7 @@
             // 
             // tbIPlayerFragment
             // 
-            this.tbIPlayerFragment.Location = new System.Drawing.Point(68, 66);
+            this.tbIPlayerFragment.Location = new System.Drawing.Point(68, 44);
             this.tbIPlayerFragment.Name = "tbIPlayerFragment";
             this.tbIPlayerFragment.Size = new System.Drawing.Size(88, 21);
             this.tbIPlayerFragment.TabIndex = 3;
@@ -832,7 +821,7 @@
             // 
             // btnIPlayerFragment
             // 
-            this.btnIPlayerFragment.Location = new System.Drawing.Point(162, 64);
+            this.btnIPlayerFragment.Location = new System.Drawing.Point(162, 42);
             this.btnIPlayerFragment.Name = "btnIPlayerFragment";
             this.btnIPlayerFragment.Size = new System.Drawing.Size(44, 23);
             this.btnIPlayerFragment.TabIndex = 2;
@@ -953,7 +942,6 @@
         private System.Windows.Forms.TextBox tbIBomb;
         private System.Windows.Forms.TextBox tbIPlayerFragment;
         private System.Windows.Forms.Button btnIPlayerFragment;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox choice;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tbMaxPoint;
