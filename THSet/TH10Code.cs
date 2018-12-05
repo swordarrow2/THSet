@@ -11,7 +11,7 @@ namespace THSet {
             return gameTitle;
         }
         public override string getAboutBug() {
-            return "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会道中录像爆炸，从3面开始播放即可避免";
+            return "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免";
         }
         public override string getAboutSpecial() {
             return "信仰值初始为50000，最大值为999990";
@@ -44,6 +44,9 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x00426CFF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x85,0x58,0x04,0x00,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
         }
         public override void setPlayer(int i) {
             write(0x00474C70,i);

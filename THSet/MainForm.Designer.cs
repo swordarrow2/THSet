@@ -99,12 +99,17 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnFPS = new System.Windows.Forms.Button();
+            this.lbFPS = new System.Windows.Forms.Label();
+            this.tbFPS = new System.Windows.Forms.TextBox();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // lockPlayer
@@ -803,6 +808,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(7, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -889,6 +895,46 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "其它";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.tbFPS);
+            this.tabPage3.Controls.Add(this.lbFPS);
+            this.tabPage3.Controls.Add(this.btnFPS);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(212, 306);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnFPS
+            // 
+            this.btnFPS.Location = new System.Drawing.Point(150, 4);
+            this.btnFPS.Name = "btnFPS";
+            this.btnFPS.Size = new System.Drawing.Size(59, 23);
+            this.btnFPS.TabIndex = 0;
+            this.btnFPS.Text = "修改";
+            this.btnFPS.UseVisualStyleBackColor = true;
+            this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
+            // 
+            // lbFPS
+            // 
+            this.lbFPS.AutoSize = true;
+            this.lbFPS.Location = new System.Drawing.Point(8, 9);
+            this.lbFPS.Name = "lbFPS";
+            this.lbFPS.Size = new System.Drawing.Size(83, 12);
+            this.lbFPS.TabIndex = 1;
+            this.lbFPS.Text = "游戏帧率(FPS)";
+            // 
+            // tbFPS
+            // 
+            this.tbFPS.Location = new System.Drawing.Point(97, 6);
+            this.tbFPS.Name = "tbFPS";
+            this.tbFPS.Size = new System.Drawing.Size(49, 21);
+            this.tbFPS.TabIndex = 2;
+            this.tbFPS.Text = "60";
+            this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -913,6 +959,8 @@
             this.tabPage2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -994,6 +1042,10 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button btnFPS;
+        private System.Windows.Forms.TextBox tbFPS;
+        private System.Windows.Forms.Label lbFPS;
     }
 }
 

@@ -11,7 +11,7 @@ namespace THSet {
             return gameTitle;
         }
         public override string getAboutBug() {
-            return "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra8非时boss也会无敌且无法解除\n\n无欠模式纯符击破撞重开时弹幕处于减速状态且boss无敌，需重启游戏再打此章节";
+            return "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
         }
         public override string getAboutSpecial() {
             return "没啥好说的，使劲擦弹就得了（";
@@ -29,7 +29,7 @@ namespace THSet {
             mt=m;
         }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,true,true,true,false,true,false,false,false};
+            return new bool[] { true,true,true,true,true,true,true,true,false,true,false,false,false,true};
         }
         public override void setLockPlayer(bool b) {
             write(0x00456398,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
@@ -42,6 +42,10 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x0045669F,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            mt.WriteBytes(0x00472931,BitConverter.GetBytes((double)1/i));
+            mt.WriteBytes(0x004727FE,new byte[] { 0xF2,0x0F,0x10,0x15,0x31,0x29,0x47,0x00 });
         }
         public override void setPlayer(int i) {
             write(0x004E7450,i);

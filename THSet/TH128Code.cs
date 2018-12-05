@@ -17,7 +17,7 @@ namespace THSet {
             return new string[] { "蓄力","","" };
         }
         public override string getAboutBug() {
-            return "";
+            return "终符若同时击破了两只妖精，则卡关……无解\n“满身疮痍”界面直接重新开始会导致录像爆炸，应返回主界面重新开始，若没有疮痍，则可以放心使用ESC+R\n难度\\路线选择界面如果按键频率过高可能会出现选择不正确的情况";
         }
         public override string getAboutSpecial() {
             return "";
@@ -41,6 +41,9 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x0043D0CF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
         }
         public override void setPlayer(int i) {
             write(0x004B4D64,i*100);

@@ -11,7 +11,7 @@ namespace THSet {
             return gameTitle;
         }
         public override string getAboutBug() {
-            return "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay只能从1面播放(汉化版)，从其他地方播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
+            return "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay(汉化版)如果从1面以外播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
         }
         public override string getAboutSpecial() {
             return "灵界槽初始为200，最大值为600\n已得奖残会影响获得下一残机时需要的残碎片(红灵)数量";
@@ -20,7 +20,7 @@ namespace THSet {
             return new string[] { "灵界槽","已得奖残","" };
         }
         public override string[] getDefaultValue() {
-            return new string[] { "600","0","0" };
+            return new string[] { "200","0","0" };
         }
         public override void setTitle(string s) {
             gameTitle=s;
@@ -46,6 +46,9 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x00444D75,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
         }
         public override void setPlayer(int i) {
             write(0x004BE7F4,i);

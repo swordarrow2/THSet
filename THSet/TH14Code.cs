@@ -14,7 +14,7 @@ namespace THSet {
             return "有时候播放replay出错，如果replay文件没问题，可重启游戏再播放此处\n\n魔理沙激光可能会歪，其中一部分会导致播放录像时出错而另一部分不会(录像中的激光也是歪的)";
         }
         public override string getAboutSpecial() {
-            return "非2.0为收点系统中获得的非2.0奖励的次数，已得奖残在辉针城似乎没有什么作用";
+            return "非2.0为收点系统中获得的非Bonus2.0奖励的次数，已得奖残在辉针城似乎用处不大，2un仅仅设置了可获得的上限";
         }
         public override string[] getSpecialTip() {
             return new string[] { "非2.0","已得奖残","" };
@@ -42,6 +42,9 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x0044F871,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
         }
         public override void setPlayer(int i) {
             write(0x004F5864,i);

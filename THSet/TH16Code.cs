@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方CBC";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return "东方CBC"; }
+            return "东方Bug璋";
         }
         public override string getAboutBug() {
             return "太多了，我就不写了……";
@@ -42,6 +43,9 @@ namespace THSet {
         public override void setUnbeatable(bool b) {
             write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                 new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });
+        }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
         }
         public override void setPlayer(int i) {
             write(0x004A57F4,i);

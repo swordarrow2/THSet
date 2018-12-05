@@ -21,7 +21,7 @@ namespace THSet {
                 if(pid!=0) { break; }
             }
             if(pid==0) {
-                MessageBox.Show("没有发现支持的车万进程\n目前TH10,11,12,12.8,13,14,15,16","",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("没有发现支持的车万进程\n目前支持TH10,11,12,12.8,13,14,15,16","",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 System.Environment.Exit(System.Environment.ExitCode);
             }
             switch(index) {
@@ -75,6 +75,7 @@ namespace THSet {
             lbSp1.Enabled=tbSpecial1.Enabled=btnSpecial1.Enabled=lbISp1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=btnReadSpecial1.Enabled=enable[10];
             lbSp2.Enabled=tbSpecial2.Enabled=btnSpecial2.Enabled=lbISp2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=btnReadSpecial2.Enabled=enable[11];
             lbSp3.Enabled=tbSpecial3.Enabled=btnSpecial3.Enabled=lbISp3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=btnReadSpecial3.Enabled=enable[12];
+            lbFPS.Enabled=tbFPS.Enabled=btnFPS.Enabled=enable[13];
             lbSp1.Text=lbISp1.Text=sptip[0].Equals("") ? "不可用" : sptip[0];
             lbSp2.Text=lbISp2.Text=sptip[1].Equals("") ? "不可用" : sptip[1];
             lbSp3.Text=lbISp3.Text=sptip[2].Equals("") ? "不可用" : sptip[2];
@@ -94,6 +95,9 @@ namespace THSet {
         }
         private void choice_CheckedChanged(object sender,EventArgs e) {
             tc.setUnbeatable(choice.Checked);
+        }
+        private void btnFPS_Click(object sender,EventArgs e) {
+            tc.setFPS(Convert.ToInt32(tbFPS.Text));
         }
         private void btnPlayer_Click(object sender,EventArgs e) {
             //  Imports.SetPlayer(Convert.ToInt32(tbPlayer.Text));
@@ -183,6 +187,6 @@ namespace THSet {
                 return 0;
             }
         }
-       
+
     }
 }

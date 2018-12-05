@@ -43,6 +43,9 @@ namespace THSet {
             write(0x00438379,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
                                  new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 });
         }
+        public override void setFPS(int i) {
+            throw new NotImplementedException();
+        }
         public override void setPlayer(int i) {
             write(0x004B0C98,i);
         }

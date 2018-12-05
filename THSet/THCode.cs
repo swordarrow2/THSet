@@ -18,6 +18,7 @@ namespace THSet {
         public abstract void setLockPlayer(bool b);
         public abstract void setLockBomb(bool b);
         public abstract void setUnbeatable(bool b);
+        public abstract void setFPS(int i);
 
         public abstract void setPlayer(int i);
         public abstract void setPlayerFragment(int i);
