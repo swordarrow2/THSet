@@ -98,24 +98,24 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnFPS = new System.Windows.Forms.Button();
-            this.lbFPS = new System.Windows.Forms.Label();
             this.tbFPS = new System.Windows.Forms.TextBox();
+            this.lbFPS = new System.Windows.Forms.Label();
+            this.btnFPS = new System.Windows.Forms.Button();
+            this.trackBar_FPS = new System.Windows.Forms.TrackBar();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
             this.SuspendLayout();
             // 
             // lockPlayer
             // 
             this.lockPlayer.AutoSize = true;
-            this.lockPlayer.Location = new System.Drawing.Point(8, 20);
+            this.lockPlayer.Location = new System.Drawing.Point(4, 12);
             this.lockPlayer.Name = "lockPlayer";
             this.lockPlayer.Size = new System.Drawing.Size(72, 16);
             this.lockPlayer.TabIndex = 0;
@@ -126,7 +126,7 @@
             // lockBomb
             // 
             this.lockBomb.AutoSize = true;
-            this.lockBomb.Location = new System.Drawing.Point(86, 20);
+            this.lockBomb.Location = new System.Drawing.Point(82, 12);
             this.lockBomb.Name = "lockBomb";
             this.lockBomb.Size = new System.Drawing.Size(72, 16);
             this.lockBomb.TabIndex = 1;
@@ -307,7 +307,7 @@
             // choice
             // 
             this.choice.AutoSize = true;
-            this.choice.Location = new System.Drawing.Point(158, 19);
+            this.choice.Location = new System.Drawing.Point(160, 12);
             this.choice.Name = "choice";
             this.choice.Size = new System.Drawing.Size(48, 16);
             this.choice.TabIndex = 13;
@@ -776,7 +776,7 @@
             // 
             // showBug
             // 
-            this.showBug.Location = new System.Drawing.Point(155, 41);
+            this.showBug.Location = new System.Drawing.Point(159, 345);
             this.showBug.Name = "showBug";
             this.showBug.Size = new System.Drawing.Size(58, 23);
             this.showBug.TabIndex = 14;
@@ -786,7 +786,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(5, 41);
+            this.button2.Location = new System.Drawing.Point(7, 345);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -796,7 +796,7 @@
             // 
             // note
             // 
-            this.note.Location = new System.Drawing.Point(86, 41);
+            this.note.Location = new System.Drawing.Point(88, 345);
             this.note.Name = "note";
             this.note.Size = new System.Drawing.Size(64, 23);
             this.note.TabIndex = 16;
@@ -880,23 +880,12 @@
             this.tabPage2.Text = "Init";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lockBomb);
-            this.groupBox1.Controls.Add(this.choice);
-            this.groupBox1.Controls.Add(this.lockPlayer);
-            this.groupBox1.Controls.Add(this.showBug);
-            this.groupBox1.Controls.Add(this.note);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Location = new System.Drawing.Point(7, 341);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(220, 73);
-            this.groupBox1.TabIndex = 18;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "其它";
-            // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lockBomb);
+            this.tabPage3.Controls.Add(this.choice);
+            this.tabPage3.Controls.Add(this.trackBar_FPS);
+            this.tabPage3.Controls.Add(this.lockPlayer);
             this.tabPage3.Controls.Add(this.tbFPS);
             this.tabPage3.Controls.Add(this.lbFPS);
             this.tabPage3.Controls.Add(this.btnFPS);
@@ -904,12 +893,30 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(212, 306);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.Text = "其它修改";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tbFPS
+            // 
+            this.tbFPS.Location = new System.Drawing.Point(94, 36);
+            this.tbFPS.Name = "tbFPS";
+            this.tbFPS.Size = new System.Drawing.Size(49, 21);
+            this.tbFPS.TabIndex = 2;
+            this.tbFPS.Text = "60";
+            this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbFPS
+            // 
+            this.lbFPS.AutoSize = true;
+            this.lbFPS.Location = new System.Drawing.Point(5, 39);
+            this.lbFPS.Name = "lbFPS";
+            this.lbFPS.Size = new System.Drawing.Size(83, 12);
+            this.lbFPS.TabIndex = 1;
+            this.lbFPS.Text = "游戏帧率(FPS)";
             // 
             // btnFPS
             // 
-            this.btnFPS.Location = new System.Drawing.Point(150, 4);
+            this.btnFPS.Location = new System.Drawing.Point(149, 34);
             this.btnFPS.Name = "btnFPS";
             this.btnFPS.Size = new System.Drawing.Size(59, 23);
             this.btnFPS.TabIndex = 0;
@@ -917,31 +924,30 @@
             this.btnFPS.UseVisualStyleBackColor = true;
             this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
             // 
-            // lbFPS
+            // trackBar_FPS
             // 
-            this.lbFPS.AutoSize = true;
-            this.lbFPS.Location = new System.Drawing.Point(8, 9);
-            this.lbFPS.Name = "lbFPS";
-            this.lbFPS.Size = new System.Drawing.Size(83, 12);
-            this.lbFPS.TabIndex = 1;
-            this.lbFPS.Text = "游戏帧率(FPS)";
-            // 
-            // tbFPS
-            // 
-            this.tbFPS.Location = new System.Drawing.Point(97, 6);
-            this.tbFPS.Name = "tbFPS";
-            this.tbFPS.Size = new System.Drawing.Size(49, 21);
-            this.tbFPS.TabIndex = 2;
-            this.tbFPS.Text = "60";
-            this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.trackBar_FPS.LargeChange = 30;
+            this.trackBar_FPS.Location = new System.Drawing.Point(1, 63);
+            this.trackBar_FPS.Maximum = 180;
+            this.trackBar_FPS.Minimum = 60;
+            this.trackBar_FPS.Name = "trackBar_FPS";
+            this.trackBar_FPS.Size = new System.Drawing.Size(205, 45);
+            this.trackBar_FPS.SmallChange = 5;
+            this.trackBar_FPS.TabIndex = 3;
+            this.trackBar_FPS.TickFrequency = 5;
+            this.trackBar_FPS.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBar_FPS.Value = 60;
+            this.trackBar_FPS.Scroll += new System.EventHandler(this.trackBar_FPS_Scroll);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(233, 419);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(231, 375);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.note);
+            this.Controls.Add(this.showBug);
             this.Controls.Add(this.tabControl1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -957,10 +963,9 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1041,11 +1046,11 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnFPS;
         private System.Windows.Forms.TextBox tbFPS;
         private System.Windows.Forms.Label lbFPS;
+        private System.Windows.Forms.TrackBar trackBar_FPS;
     }
 }
 

@@ -30,7 +30,7 @@ namespace THSet {
             mt=m;
         }
         public override bool[] getEnable() {
-            return new bool[13] { true,true,true,true,false,true,true,true,true,true,true,false,false };
+            return new bool[] { true,true,true,true,false,true,true,true,true,true,true,false,false,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
@@ -45,7 +45,8 @@ namespace THSet {
                                 new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setFPS(int i) {
-            throw new NotImplementedException();
+            mt.WriteBytes(0x0045AC45,BitConverter.GetBytes((double)1/i));
+            mt.WriteBytes(0x0045ACBD,new byte[] { 0xF2,0x0F,0x10,0x15,0x45,0xAC,0x45,0x00 });
         }
         public override void setPlayer(int i) {
             write(0x004A57F4,i);

@@ -8,7 +8,7 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方红红蓝";
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false };
+            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };
         }
         public override string getAboutBug() {
             return "得分超过2,147,483,647时继续获得分数会使计数倒退";
@@ -44,7 +44,8 @@ namespace THSet {
                                  new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setFPS(int i) {
-            throw new NotImplementedException();
+            mt.WriteBytes(0x00450014,BitConverter.GetBytes((double)1/i));
+            mt.WriteBytes(0x0045044C,new byte[] { 0xDD,0x05,0x14,0x00,0x45,0x00 });
         }
         public override void setPlayer(int i) {
             write(0x004B0C98,i);

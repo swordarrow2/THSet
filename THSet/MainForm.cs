@@ -75,7 +75,7 @@ namespace THSet {
             lbSp1.Enabled=tbSpecial1.Enabled=btnSpecial1.Enabled=lbISp1.Enabled=tbISpecial1.Enabled=btnISpecial1.Enabled=btnReadSpecial1.Enabled=enable[10];
             lbSp2.Enabled=tbSpecial2.Enabled=btnSpecial2.Enabled=lbISp2.Enabled=tbISpecial2.Enabled=btnISpecial2.Enabled=btnReadSpecial2.Enabled=enable[11];
             lbSp3.Enabled=tbSpecial3.Enabled=btnSpecial3.Enabled=lbISp3.Enabled=tbISpecial3.Enabled=btnISpecial3.Enabled=btnReadSpecial3.Enabled=enable[12];
-            lbFPS.Enabled=tbFPS.Enabled=btnFPS.Enabled=enable[13];
+            lbFPS.Enabled=tbFPS.Enabled=btnFPS.Enabled=trackBar_FPS.Enabled=enable[13];
             lbSp1.Text=lbISp1.Text=sptip[0].Equals("") ? "不可用" : sptip[0];
             lbSp2.Text=lbISp2.Text=sptip[1].Equals("") ? "不可用" : sptip[1];
             lbSp3.Text=lbISp3.Text=sptip[2].Equals("") ? "不可用" : sptip[2];
@@ -97,6 +97,10 @@ namespace THSet {
             tc.setUnbeatable(choice.Checked);
         }
         private void btnFPS_Click(object sender,EventArgs e) {
+            tc.setFPS(Convert.ToInt32(tbFPS.Text));
+        }
+        private void trackBar_FPS_Scroll(object sender,EventArgs e) {
+            tbFPS.Text=Convert.ToString(trackBar_FPS.Value);
             tc.setFPS(Convert.ToInt32(tbFPS.Text));
         }
         private void btnPlayer_Click(object sender,EventArgs e) {
@@ -176,7 +180,7 @@ namespace THSet {
             MessageBox.Show(tc.getAboutSpecial(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void note_Click(object sender,EventArgs e) {
-            MessageBox.Show("即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n"+
+            MessageBox.Show("这个修改器在原版的游戏上测试可用，如果你使用了修改过的游戏，可能有功能不正常.\n\n测试即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸"+
                 "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
@@ -188,5 +192,6 @@ namespace THSet {
             }
         }
 
+        
     }
 }
