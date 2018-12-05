@@ -98,6 +98,7 @@ namespace THSet {
         public override void setIPower(int i) {
             write(0x0043C32B,new byte[] { 0x90,0x90,0x90,0x90,0x90 });
             write(0x0043C383,new byte[] { 0x90,0x90,0x90,0x90,0x90 });
+            write(0x0043C353,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });
             write(0x0043E6E3,i);
         }
         public override void setIScore(int i) {

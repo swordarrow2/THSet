@@ -44,17 +44,11 @@ namespace THSet {
             WriteProcessMemory(GetProcessHandle(),Address,Bytes,Bytes.Length);
         }
         public void WriteInteger(long Address,int Value) {
-            WriteInteger(Address,Value,4);
-        }
-        public void WriteInteger(long Address,int Value,int size) {
-            WriteProcessMemory(GetProcessHandle(),Address,BitConverter.GetBytes(Value),size);
+            WriteProcessMemory(GetProcessHandle(),Address,BitConverter.GetBytes(Value),4);
         }
         public int ReadInteger(long Address) {
-            return ReadInteger(Address,4);
-        }
-        public int ReadInteger(long Address,int Length) {
-            byte[] Buffer = new byte[Length];
-            ReadProcessMemory(GetProcessHandle(),Address,Buffer,Length);
+            byte[] Buffer = new byte[4];
+            ReadProcessMemory(GetProcessHandle(),Address,Buffer,4);
             return BitConverter.ToInt32(Buffer,0);
         }
     }

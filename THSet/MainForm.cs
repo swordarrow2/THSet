@@ -16,12 +16,12 @@ namespace THSet {
             string[] names = new string[] { "th10","th10c","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
             int pid = 0;
             int index = 0;
-            for(;index<names.Length; index++) {
+            for(;index<names.Length;index++) {
                 pid=GetPID(names[index]);
                 if(pid!=0) { break; }
             }
             if(pid==0) {
-                MessageBox.Show("没有发现支持的车万进程\n目前TH10,11,12,12.8,13,14,15,16");
+                MessageBox.Show("没有发现支持的车万进程\n目前TH10,11,12,12.8,13,14,15,16","",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 System.Environment.Exit(System.Environment.ExitCode);
             }
             switch(index) {
@@ -166,26 +166,23 @@ namespace THSet {
             tc.setISpecial3(Convert.ToInt32(tbISpecial3.Text));
         }
         private void showBug_Click(object sender,EventArgs e) {
-            bugTipForm btf = new bugTipForm(tc.getAboutBug());
-            btf.Show();
+            MessageBox.Show(tc.getAboutBug(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void button2_Click(object sender,EventArgs e) {
-            MessageBox.Show(tc.getAboutSpecial());
+            MessageBox.Show(tc.getAboutSpecial(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void note_Click(object sender,EventArgs e) {
             MessageBox.Show("即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n"+
-                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改务必不要和THInit同时使用，可能会造成游戏爆炸" +
-                "\n\n注意：如果重启游戏需重启修改器");
+                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸"+
+                "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         public int GetPID(string exeName) {
             try {
-                Process[] ProcList = Process.GetProcessesByName(exeName);
-                return ProcList[0].Id;
+                return Process.GetProcessesByName(exeName)[0].Id;
             } catch {
                 return 0;
             }
         }
-
-
+       
     }
 }

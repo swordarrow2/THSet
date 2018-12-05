@@ -108,6 +108,7 @@ namespace THSet {
             //Stop to set default values
             write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
             write(0x0042CEEC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //practice
+            write(0x0042CEBC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //extra
             write(0x0042CE51,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //spell practice
         }
         public override void setIScore(int i) {
