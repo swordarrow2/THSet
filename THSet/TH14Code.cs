@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方1.6";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "东方掉帧城";
         }
         public override string getAboutBug() {
             return "有时候播放replay出错，如果replay文件没问题，可重启游戏再播放此处\n\n魔理沙激光可能会歪，其中一部分会导致播放录像时出错而另一部分不会(录像中的激光也是歪的)";

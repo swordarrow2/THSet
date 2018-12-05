@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方199";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "东方跟着转";
         }
         public override string getAboutBug() {
             return "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";

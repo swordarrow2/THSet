@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方弟灵殿";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "多睡觉，少操心";
         }
         public override string getAboutBug() {
             return "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";

@@ -10,6 +10,10 @@ namespace THSet {
         public override bool[] getEnable() {
             return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };
         }
+        public override string getTitle() {
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "春之岸边播放器";
+        }
         public override string getAboutBug() {
             return "得分超过2,147,483,647时继续获得分数会使计数倒退";
         }
@@ -18,9 +22,6 @@ namespace THSet {
         }
         public override string[] getDefaultValue() {
             return new string[] { "0","0","0" };
-        }
-        public override string getTitle() {
-            return gameTitle;
         }
         public override void setTitle(string s) {
             gameTitle=s;

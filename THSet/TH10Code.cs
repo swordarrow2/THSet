@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方神曲录";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "东方炸比录";
         }
         public override string getAboutBug() {
             return "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免";

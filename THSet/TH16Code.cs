@@ -8,7 +8,7 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方CBC";
         public override string getTitle() {
-            if((new Random().Next())%2==0) { return "东方CBC"; }
+            if((new Random().Next())%2==0) { return gameTitle; }
             return "东方Bug璋";
         }
         public override string getAboutBug() {

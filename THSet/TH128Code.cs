@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "妖精大战争";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "1+1=9";
         }
         public override void setTitle(string s) {
             gameTitle=s;

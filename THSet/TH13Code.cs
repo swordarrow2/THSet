@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方神灵庙";
         public override string getTitle() {
-            return gameTitle;
+            if((new Random().Next())%2==0) { return gameTitle; }
+            return "东方崩盘庙";
         }
         public override string getAboutBug() {
             return "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay(汉化版)如果从1面以外播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
