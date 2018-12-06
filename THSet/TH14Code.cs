@@ -28,6 +28,21 @@ namespace THSet {
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
+
+            write(0x0044F618,new byte[] { 0xEB,0xB7,0x90,0x90,0x90 });
+            write(0x0044F5D1,new byte[] { 0xA3,0x64,0x58,0x4F,0x00,0xFF,0x05,0xC0,0x59,0x4F,0x00,0xEB,0x3F });
+            write(0x004F59C0,0);
+
+            write(0x004120F5,new byte[] { 0xFF,0x05,0xC4,0x59,0x4F,0x00,0xE9,0x8F,0x00,0x00,0x00 });
+            write(0x00412105,new byte[] { 0xA3,0x70,0x58,0x4F,0x00,0xEB,0xE9 });
+            write(0x0041218A,new byte[] { 0xE9,0x76,0xFF,0xFF,0xFF });
+            write(0x004F59C4,0);
+        }
+        public override int getMissCount() {
+            return mt.ReadInteger(0x004F59C0);
+        }
+        public override int getBombCount() {
+            return mt.ReadInteger(0x004F59C4);
         }
         public override bool[] getEnable() {
             return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };

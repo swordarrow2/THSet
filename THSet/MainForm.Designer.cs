@@ -23,7 +23,9 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.timerMissAndBomb = new System.Windows.Forms.Timer(this.components);
             this.lockPlayer = new System.Windows.Forms.CheckBox();
             this.lockBomb = new System.Windows.Forms.CheckBox();
             this.tbSpecial1 = new System.Windows.Forms.TextBox();
@@ -99,10 +101,12 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lbBomb = new System.Windows.Forms.Label();
+            this.lbMiss = new System.Windows.Forms.Label();
+            this.trackBar_FPS = new System.Windows.Forms.TrackBar();
             this.tbFPS = new System.Windows.Forms.TextBox();
             this.lbFPS = new System.Windows.Forms.Label();
             this.btnFPS = new System.Windows.Forms.Button();
-            this.trackBar_FPS = new System.Windows.Forms.TrackBar();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -111,6 +115,10 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
             this.SuspendLayout();
+            // 
+            // timerMissAndBomb
+            // 
+            this.timerMissAndBomb.Tick += new System.EventHandler(this.timerMissAndBomb_Tick);
             // 
             // lockPlayer
             // 
@@ -882,6 +890,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lbBomb);
+            this.tabPage3.Controls.Add(this.lbMiss);
             this.tabPage3.Controls.Add(this.lockBomb);
             this.tabPage3.Controls.Add(this.choice);
             this.tabPage3.Controls.Add(this.trackBar_FPS);
@@ -895,6 +905,39 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "其它修改";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lbBomb
+            // 
+            this.lbBomb.AutoSize = true;
+            this.lbBomb.Location = new System.Drawing.Point(116, 100);
+            this.lbBomb.Name = "lbBomb";
+            this.lbBomb.Size = new System.Drawing.Size(53, 12);
+            this.lbBomb.TabIndex = 15;
+            this.lbBomb.Text = "bomb次数";
+            // 
+            // lbMiss
+            // 
+            this.lbMiss.AutoSize = true;
+            this.lbMiss.Location = new System.Drawing.Point(7, 100);
+            this.lbMiss.Name = "lbMiss";
+            this.lbMiss.Size = new System.Drawing.Size(53, 12);
+            this.lbMiss.TabIndex = 14;
+            this.lbMiss.Text = "miss次数";
+            // 
+            // trackBar_FPS
+            // 
+            this.trackBar_FPS.LargeChange = 30;
+            this.trackBar_FPS.Location = new System.Drawing.Point(1, 63);
+            this.trackBar_FPS.Maximum = 180;
+            this.trackBar_FPS.Minimum = 60;
+            this.trackBar_FPS.Name = "trackBar_FPS";
+            this.trackBar_FPS.Size = new System.Drawing.Size(205, 45);
+            this.trackBar_FPS.SmallChange = 5;
+            this.trackBar_FPS.TabIndex = 3;
+            this.trackBar_FPS.TickFrequency = 5;
+            this.trackBar_FPS.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
+            this.trackBar_FPS.Value = 60;
+            this.trackBar_FPS.Scroll += new System.EventHandler(this.trackBar_FPS_Scroll);
             // 
             // tbFPS
             // 
@@ -923,21 +966,6 @@
             this.btnFPS.Text = "修改";
             this.btnFPS.UseVisualStyleBackColor = true;
             this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
-            // 
-            // trackBar_FPS
-            // 
-            this.trackBar_FPS.LargeChange = 30;
-            this.trackBar_FPS.Location = new System.Drawing.Point(1, 63);
-            this.trackBar_FPS.Maximum = 180;
-            this.trackBar_FPS.Minimum = 60;
-            this.trackBar_FPS.Name = "trackBar_FPS";
-            this.trackBar_FPS.Size = new System.Drawing.Size(205, 45);
-            this.trackBar_FPS.SmallChange = 5;
-            this.trackBar_FPS.TabIndex = 3;
-            this.trackBar_FPS.TickFrequency = 5;
-            this.trackBar_FPS.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.trackBar_FPS.Value = 60;
-            this.trackBar_FPS.Scroll += new System.EventHandler(this.trackBar_FPS_Scroll);
             // 
             // MainForm
             // 
@@ -1051,6 +1079,9 @@
         private System.Windows.Forms.TextBox tbFPS;
         private System.Windows.Forms.Label lbFPS;
         private System.Windows.Forms.TrackBar trackBar_FPS;
+        private System.Windows.Forms.Label lbBomb;
+        private System.Windows.Forms.Label lbMiss;
+        private System.Windows.Forms.Timer timerMissAndBomb;
     }
 }
 

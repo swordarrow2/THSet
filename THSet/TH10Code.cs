@@ -7,6 +7,12 @@ namespace THSet {
     class TH10Code:THCode {
         MemoryTool mt;
         string gameTitle = "东方神曲录";
+        public override int getMissCount() {
+            return mt.ReadInteger(0x004750E0);
+        }
+        public override int getBombCount() {
+            return mt.ReadInteger(0x004750E4);
+        }
         public override string getTitle() {
             if((new Random().Next())%2==0) { return gameTitle; }
             return "东方炸比录";
@@ -28,6 +34,16 @@ namespace THSet {
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
+            write(0x00426A1C,new byte[] { 0xE9,0xA2,0xE4,0xFF,0xFF,0x90 });
+            write(0x00424EC3,new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00,0xE9,0x47,0x01,0x00,0x00 });
+            write(0x00425015,new byte[] { 0xFF,0x05,0xE0,0x50,0x47,0x00,0xE9,0x02,0x1A,0x00,0x00 });
+            write(0x004750E0,0);
+
+            write(0x004259D4,new byte[] { 0xE9,0xC8,0xF4,0xFF,0xFF,0x90,0x90,0x90 });
+            write(0x00424EA1,new byte[] { 0x66,0x81,0x05,0x48,0x4C,0x47,0x00,0xEC,0xFF,0xEB,0x07 });
+            write(0x00424EB3,new byte[] { 0xFF,0x05,0xE4,0x50,0x47,0x00,0xE9,0x1E,0x0B,0x00,0x00 });
+            write(0x004750E4,0);
+
         }
         public override bool[] getEnable() {
             return new bool[] { true,true,true,true,false,false,false,true,true,false,true,false,false,true };

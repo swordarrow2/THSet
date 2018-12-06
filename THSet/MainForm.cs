@@ -23,6 +23,8 @@ namespace THSet {
             if(pid==0) {
                 MessageBox.Show("没有发现支持的车万进程\n目前支持TH10,11,12,12.8,13,14,15,16","",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 System.Environment.Exit(System.Environment.ExitCode);
+            } else {
+                timerMissAndBomb.Enabled=true;
             }
             switch(index) {
                 case 0:
@@ -97,7 +99,9 @@ namespace THSet {
             tc.setUnbeatable(choice.Checked);
         }
         private void btnFPS_Click(object sender,EventArgs e) {
-            tc.setFPS(Convert.ToInt32(tbFPS.Text));
+            int v = Convert.ToInt32(tbFPS.Text);
+            tc.setFPS(v);
+            trackBar_FPS.Value=v>trackBar_FPS.Maximum ? trackBar_FPS.Maximum : v<trackBar_FPS.Minimum ? trackBar_FPS.Minimum : v;
         }
         private void trackBar_FPS_Scroll(object sender,EventArgs e) {
             tbFPS.Text=Convert.ToString(trackBar_FPS.Value);
@@ -180,8 +184,9 @@ namespace THSet {
             MessageBox.Show(tc.getAboutSpecial(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void note_Click(object sender,EventArgs e) {
-            MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常.\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
-                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸"+
+            MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常." +
+                "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
+                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
                 "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         public int GetPID(string exeName) {
@@ -192,6 +197,9 @@ namespace THSet {
             }
         }
 
-        
+        private void timerMissAndBomb_Tick(object sender,EventArgs e) {
+            lbMiss.Text="miss次数:"+tc.getMissCount();
+            lbBomb.Text="bomb次数:"+tc.getBombCount();
+        }
     }
 }

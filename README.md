@@ -1,6 +1,7 @@
 # THSet
 车万修改器
 
+2.2     FPS输入框与拖动条联动,增加除TH12.8以外作品的miss计数和bomb计数
 2.1.2   略优化
 2.1.1   speedhack for vpatch
 2.1     增加了TH11-TH16的FPS修改
