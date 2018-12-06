@@ -44,8 +44,9 @@ namespace THSet {
                                  new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setFPS(int i) {
-            mt.WriteBytes(0x00454938,BitConverter.GetBytes((double)1/i));
-            mt.WriteBytes(0x00454C48,new byte[] { 0xDD,0x05,0x38,0x49,0x45,0x00 });
+            write(0x00454938,BitConverter.GetBytes((double)1/i));
+            write(0x60018A24,i);
+            write(0x00454C48,new byte[] { 0xDD,0x05,0x38,0x49,0x45,0x00 });
         }
         public override void setPlayer(int i) {
             write(0x004B4D64,i*100);

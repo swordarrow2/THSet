@@ -180,7 +180,7 @@ namespace THSet {
             MessageBox.Show(tc.getAboutSpecial(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void note_Click(object sender,EventArgs e) {
-            MessageBox.Show("这个修改器在原版的游戏上测试可用，如果你使用了修改过的游戏，可能有功能不正常.\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
+            MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常.\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸"+
                 "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
