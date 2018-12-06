@@ -1,6 +1,7 @@
 # THSet
 车万修改器
 
+2.1.2   略优化
 2.1.1   speedhack for vpatch
 2.1     增加了TH11-TH16的FPS修改
 2.0     增加了extra关卡初始值修改,修复了一个导致地灵殿爆炸的问题,增加了icon

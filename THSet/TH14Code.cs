@@ -129,16 +129,16 @@ namespace THSet {
         }
 
 
-        private void write(int addr,int value) {
-            mt.WriteInteger(addr,value);
+        private int write(int addr,int value) {
+            return mt.WriteInteger(addr,value);
         }
-        private void write(int addr,byte[] value) {
-            mt.WriteBytes(addr,value);
+        private int write(int addr,byte[] value) {
+            return mt.WriteBytes(addr,value);
         }
-        private void write(int addr,byte[] opCode,byte value2) {
+        private int write(int addr,byte[] opCode,byte value2) {
             List<byte> tmp = opCode.ToList();
             tmp.Add(value2);
-            mt.WriteBytes(addr,tmp.ToArray());
+            return mt.WriteBytes(addr,tmp.ToArray());
         }
     }
 }

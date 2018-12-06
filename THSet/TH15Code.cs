@@ -45,9 +45,10 @@ namespace THSet {
                                  new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setFPS(int i) {
-            write(0x00472931,BitConverter.GetBytes((double)1/i));
-            write(0x60940A34,i);
-            write(0x004727FE,new byte[] { 0xF2,0x0F,0x10,0x15,0x31,0x29,0x47,0x00 });
+            if(write(0x60940A34,i)==0) {
+                write(0x00472931,BitConverter.GetBytes((double)1/i));
+                write(0x004727FE,new byte[] { 0xF2,0x0F,0x10,0x15,0x31,0x29,0x47,0x00 });
+            }
         }
         public override void setPlayer(int i) {
             write(0x004E7450,i);
@@ -126,16 +127,16 @@ namespace THSet {
         }
 
 
-        private void write(int addr,int value) {
-            mt.WriteInteger(addr,value);
+        private int write(int addr,int value) {
+            return mt.WriteInteger(addr,value);
         }
-        private void write(int addr,byte[] value) {
-            mt.WriteBytes(addr,value);
+        private int write(int addr,byte[] value) {
+            return mt.WriteBytes(addr,value);
         }
-        private void write(int addr,byte[] opCode,byte value2) {
+        private int write(int addr,byte[] opCode,byte value2) {
             List<byte> tmp = opCode.ToList();
             tmp.Add(value2);
-            mt.WriteBytes(addr,tmp.ToArray());
+            return mt.WriteBytes(addr,tmp.ToArray());
         }
     }
 }

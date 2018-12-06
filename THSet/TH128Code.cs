@@ -33,7 +33,7 @@ namespace THSet {
             return new bool[] { true,true,true,true,false,true,false,true,true,false,true,false,false,true };
         }
         public override void setLockPlayer(bool b) {
-            write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } 
+            write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 }
                                : new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 });
         }
         public override void setLockBomb(bool b) {
@@ -44,9 +44,10 @@ namespace THSet {
                                  new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });
         }
         public override void setFPS(int i) {
-            write(0x00454938,BitConverter.GetBytes((double)1/i));
-            write(0x60018A24,i);
-            write(0x00454C48,new byte[] { 0xDD,0x05,0x38,0x49,0x45,0x00 });
+            if(write(0x60018A24,i)==0) {
+                write(0x00454938,BitConverter.GetBytes((double)1/i));
+                write(0x00454C48,new byte[] { 0xDD,0x05,0x38,0x49,0x45,0x00 });
+            }
         }
         public override void setPlayer(int i) {
             write(0x004B4D64,i*100);
@@ -123,16 +124,16 @@ namespace THSet {
         }
 
 
-        private void write(int addr,int value) {
-            mt.WriteInteger(addr,value);
+        private int write(int addr,int value) {
+            return mt.WriteInteger(addr,value);
         }
-        private void write(int addr,byte[] value) {
-            mt.WriteBytes(addr,value);
+        private int write(int addr,byte[] value) {
+            return mt.WriteBytes(addr,value);
         }
-        private void write(int addr,byte[] opCode,byte value2) {
+        private int write(int addr,byte[] opCode,byte value2) {
             List<byte> tmp = opCode.ToList();
             tmp.Add(value2);
-            mt.WriteBytes(addr,tmp.ToArray());
+            return mt.WriteBytes(addr,tmp.ToArray());
         }
 
     }

@@ -40,11 +40,11 @@ namespace THSet {
             return Pointer;
         }
 
-        public void WriteBytes(long Address,byte[] Bytes) {
-            WriteProcessMemory(GetProcessHandle(),Address,Bytes,Bytes.Length);
+        public int WriteBytes(long Address,byte[] Bytes) {
+            return WriteProcessMemory(GetProcessHandle(),Address,Bytes,Bytes.Length);
         }
-        public void WriteInteger(long Address,int Value) {
-            WriteProcessMemory(GetProcessHandle(),Address,BitConverter.GetBytes(Value),4);
+        public int WriteInteger(long Address,int Value) {
+            return WriteProcessMemory(GetProcessHandle(),Address,BitConverter.GetBytes(Value),4);
         }
         public int ReadInteger(long Address) {
             byte[] Buffer = new byte[4];
