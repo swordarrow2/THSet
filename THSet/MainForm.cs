@@ -84,7 +84,7 @@ namespace THSet {
             tbSpecial1.Text=tbISpecial1.Text=d[0];
             tbSpecial2.Text=tbISpecial2.Text=d[1];
             tbSpecial3.Text=tbISpecial3.Text=d[2];
-            if(GetPID("th128_CN")!=0||GetPID("th128")!=0) {
+            if(GetPID("th128_CN")==pid||GetPID("th128")==pid) {
                 tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=tbIScore.Enabled=btnIScore.Enabled=false;
             }
         }
@@ -184,7 +184,7 @@ namespace THSet {
             MessageBox.Show(tc.getAboutSpecial(),"",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         private void note_Click(object sender,EventArgs e) {
-            MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常." +
+            MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常."+
                 "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
                 "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
