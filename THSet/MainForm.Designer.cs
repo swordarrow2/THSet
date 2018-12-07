@@ -107,6 +107,7 @@
             this.tbFPS = new System.Windows.Forms.TextBox();
             this.lbFPS = new System.Windows.Forms.Label();
             this.btnFPS = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -890,6 +891,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnReset);
             this.tabPage3.Controls.Add(this.lbBomb);
             this.tabPage3.Controls.Add(this.lbMiss);
             this.tabPage3.Controls.Add(this.lockBomb);
@@ -966,6 +968,16 @@
             this.btnFPS.Text = "修改";
             this.btnFPS.UseVisualStyleBackColor = true;
             this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(1, 129);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(205, 23);
+            this.btnReset.TabIndex = 16;
+            this.btnReset.Text = "重置";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // MainForm
             // 
@@ -1082,6 +1094,7 @@
         private System.Windows.Forms.Label lbBomb;
         private System.Windows.Forms.Label lbMiss;
         private System.Windows.Forms.Timer timerMissAndBomb;
+        private System.Windows.Forms.Button btnReset;
     }
 }
 

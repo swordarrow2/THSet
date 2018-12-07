@@ -11,11 +11,11 @@ using System.Windows.Forms;
 namespace THSet {
     public partial class MainForm:Form {
         THCode tc;
+        string[] names = new string[] { "th10","th10c","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
+        int pid = 0;
+        int index = 0;
         public MainForm() {
             InitializeComponent();
-            string[] names = new string[] { "th10","th10c","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
-            int pid = 0;
-            int index = 0;
             for(;index<names.Length;index++) {
                 pid=GetPID(names[index]);
                 if(pid!=0) { break; }
@@ -200,6 +200,10 @@ namespace THSet {
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
             lbMiss.Text="miss次数:"+tc.getMissCount();
             lbBomb.Text="bomb次数:"+tc.getBombCount();
+        }
+
+        private void btnReset_Click(object sender,EventArgs e) {
+            tc.setMemoryTool(new MemoryTool(names[index]));
         }
     }
 }
