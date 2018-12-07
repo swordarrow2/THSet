@@ -53,16 +53,16 @@ namespace THSet {
             return new bool[] { true,true,true,true,false,true,true,true,true,true,true,false,false,true };
         }
         public override void setLockPlayer(bool b) {
-            write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+            write(0x00443CC5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
                                  new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });//mov [004A57F4],eax
         }
         public override void setLockBomb(bool b) {
-            write(0x0040DB9C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+            write(0x0040DA86,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
                                  new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });//mov [004A5800],eax
         }
         public override void setUnbeatable(bool b) {
             write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
-                                new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });// mov[edi+165A8],4
+                                 new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });// mov[edi+165A8],4
         }
         public override void setFPS(int i) {
             mt.WriteBytes(0x0045AC45,BitConverter.GetBytes((double)1/i));

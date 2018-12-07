@@ -52,11 +52,11 @@ namespace THSet {
             return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };
         }
         public override void setLockPlayer(bool b) {
-            write(0x0044F618,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+            write(0x0044F5D1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
                                  new byte[] { 0xA3,0x64,0x58,0x4F,0x00 });//mov [004F5864],eax
         }
         public override void setLockBomb(bool b) {
-            write(0x0041218A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+            write(0x004120F5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
                                  new byte[] { 0xA3,0x70,0x58,0x4F,0x00 });//mov [004F5870],eax
         }
         public override void setUnbeatable(bool b) {

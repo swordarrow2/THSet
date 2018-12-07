@@ -34,9 +34,7 @@ namespace THSet {
                 0xEB,0x65 });//jmp 004567A4
             write(0x004567A4,new byte[] { 0xE9,0xF4,0xFB,0xFF,0xFF });//jmp 0045639D
             write(0x004E753C,0);
-
-
-
+            
             write(0x0041497A,new byte[] { 0xE9,0x56,0xFF,0xFF,0xFF,0x90 });//jmp 004148D5
             write(0x004148D5,new byte[] { 0xA3,0x5C,0x74,0x4E,0x00,//mov [004E745C],eax
                 0xEB,0x09 });//jmp 004148E5
@@ -55,11 +53,11 @@ namespace THSet {
             return new bool[] { true,true,true,true,true,true,true,true,false,true,false,false,false,true };
         }
         public override void setLockPlayer(bool b) {
-            write(0x00456398,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :                         //nop
+            write(0x00456732,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :                         //nop
                                  new byte[] { 0xA3,0x50,0x74,0x4E,0x00 });                         //mov [004E7450],eax
         }
         public override void setLockBomb(bool b) {
-            write(0x0041797A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :                         //nop
+            write(0x004148D5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :                         //nop
                                  new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 });                         //mov [004E745C],eax
         }
         public override void setUnbeatable(bool b) {
