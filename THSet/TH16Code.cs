@@ -28,15 +28,19 @@ namespace THSet {
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
-            write(0x00443D3A,new byte[] { 0xEB,0x89,0x90,0x90,0x90 });
-            write(0x00443CC5,new byte[] { 0xA3,0xF4,0x57,0x4A,0x00,0xE9,0x13,0xFE,0xFF,0xFF });
-            write(0x00443AE2,new byte[] { 0xFF,0x05,0x4C,0x59,0x4A,0x00,0xE9,0x52,0x02,0x00,0x00 });
+            write(0x00443D3A,new byte[] { 0xEB,0x89,0x90,0x90,0x90 });  //jmp 00443CC5
+            write(0x00443CC5,new byte[] { 0xA3,0xF4,0x57,0x4A,0x00,     //mov [004A57F4],eax
+                                          0xE9,0x13,0xFE,0xFF,0xFF });  //jmp 00443AE2
+            write(0x00443AE2,new byte[] { 0xFF,0x05,0x4C,0x59,0x4A,0x00,//inc [004A594C]
+                                          0xE9,0x52,0x02,0x00,0x00 });  //jmp 00443D3F
             write(0x004A594C,0);
 
 
-            write(0x0040DA65,new byte[] { 0xFF,0x05,0x50,0x59,0x4A,0x00,0xE9,0x31,0x01,0x00,0x00 });
-            write(0x0040DA86,new byte[] { 0xA3,0x00,0x58,0x4A,0x00,0xEB,0xD8 });
-            write(0x0040DB9C,new byte[] { 0xE9,0xE5,0xFE,0xFF,0xFF });
+            write(0x0040DB9C,new byte[] { 0xE9,0xE5,0xFE,0xFF,0xFF });  //jmp 0040DA86
+            write(0x0040DA86,new byte[] { 0xA3,0x00,0x58,0x4A,0x00,     //mov [004A5800],eax
+                                          0xEB,0xD8 });                 //jmp 0040DA65
+            write(0x0040DA65,new byte[] { 0xFF,0x05,0x50,0x59,0x4A,0x00,//inc [004A5950]
+                                          0xE9,0x31,0x01,0x00,0x00 });  //jmp 0040DBA1
             write(0x004A5950,0);
         }
         public override int getMissCount() {
@@ -49,16 +53,16 @@ namespace THSet {
             return new bool[] { true,true,true,true,false,true,true,true,true,true,true,false,false,true };
         }
         public override void setLockPlayer(bool b) {
-            write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
-                                 new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });
+            write(0x00443D3A,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+                                 new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });//mov [004A57F4],eax
         }
         public override void setLockBomb(bool b) {
-            write(0x0040DB9C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } :
-                                 new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });
+            write(0x0040DB9C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
+                                 new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });//mov [004A5800],eax
         }
         public override void setUnbeatable(bool b) {
-            write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } :
-                                new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });
+            write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
+                                new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });// mov[edi+165A8],4
         }
         public override void setFPS(int i) {
             mt.WriteBytes(0x0045AC45,BitConverter.GetBytes((double)1/i));
@@ -105,8 +109,10 @@ namespace THSet {
         }
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
-            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //story
-            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00 },b);   //practice
+            //story
+            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b });    // mov [004A57F4],b
+            //practice
+            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b });    //mov [004A57F4],b
             //spell practice no need
         }
         public override void setIPlayerFragment(int i) {
@@ -115,16 +121,16 @@ namespace THSet {
         public override void setIBomb(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             //story and practice,spell practice no need
-            write(0x0042E5AE,new byte[] { 0xC7,0x46,0x70 },b);
+            write(0x0042E5AE,new byte[] { 0xC7,0x46,0x70,b });                    //mov [esi+70],b
         }
         public override void setIBombFragment(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             //story and practice,spell practice no need
-            write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74 },b);
+            write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74,b });                    //mov [esi+74],00000003
         }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });
+            write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });  //mov [esi+54],b[]
 
             //Stop to set default values
             write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
@@ -134,18 +140,23 @@ namespace THSet {
         }
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i/10);
-            write(0x0042CD38,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x89,0x0D,0xB0,0x57,0x4A,
-                0x00,0xB9,0x00,0x00,0x00,0x00,0x89,0x0D,0xC0,0x57,0x4A,0x00,0x90,0x90,0x90 });
+            write(0x0042CD38,new byte[] { 0xB9,b[0],b[1],b[2],b[3],                         //mov ecx,b[]
+                                          0x89,0x0D,0xB0,0x57,0x4A,0x00,                    //mov [004A57B0],ecx
+                                          0xB9,0x00,0x00,0x00,0x00,                         //mov ecx,00000000
+                                          0x89,0x0D,0xC0,0x57,0x4A,0x00,0x90,0x90,0x90 });  //mov [004A57C0],ecx
         }
         public override void setIMaxPoint(int i) {
             byte[] b = BitConverter.GetBytes(i*100);
-            write(0x0042CD66,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90,0x90 });
+            write(0x0042CD66,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90,0x90 });       //mov ecx,b[]
         }
         public override void setISpecial1(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //story
-            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3],0x90 });   //practice
-            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });                  //spell practice
+            //story
+            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });     //mov[004A5808],b[]
+            //practice          
+            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3],0x90 });//mov [004A5808],b[]
+            //spell practice
+            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });     //mov [004A5808],b[]            
         }
         public override void setISpecial2(int i) {
             throw new NotImplementedException();
@@ -160,11 +171,6 @@ namespace THSet {
         }
         private void write(int addr,byte[] value) {
             mt.WriteBytes(addr,value);
-        }
-        private void write(int addr,byte[] opCode,byte value2) {
-            List<byte> tmp = opCode.ToList();
-            tmp.Add(value2);
-            mt.WriteBytes(addr,tmp.ToArray());
         }
     }
 }
