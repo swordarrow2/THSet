@@ -28,7 +28,9 @@ namespace THSet {
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
-
+        }
+        public override void StartCount() {
+            //miss
             write(0x004327ED,new byte[] { 0x57,                            //push edi
                                           0xE9,0x1F,0xF5,0xFF,0xFF,        //jmp 00431D12
                                           0xA3,0xF0,0x56,0x4A,0x00,        //mov [004A56F0],eax
@@ -51,7 +53,6 @@ namespace THSet {
                                           0xFF,0x05,0x84,0x5E,0x4A,0x00,   //inc [004A5E84]
                                           0xEB,0x07 });                    //jmp 00431C57
             write(0x00431C57,new byte[] { 0xE9,0x47,0xF6,0xFF,0xFF });     //jmp 004312A3
-
             write(0x004A5E84,0);
         }
         public override int getMissCount() {
@@ -61,7 +62,7 @@ namespace THSet {
             return mt.ReadInteger(0x004A5E84);
         }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,false,false,true,false,false,false,false,false,true };
+            return new bool[] { true,true,true,true,true,false,false,true,false,false,false,false,false,true,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x00431D12,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop

@@ -34,23 +34,22 @@ namespace THSet {
             write(0x0042D4BC,new byte[] { 0xC7,0x46,0x44,0x00,0x00,0x00,0x00,0x90,          //mov [esi+44],0
                                           0xC7,0x46,0x40,0x00,0x00,0x00,0x00,               //mov [esi+40],0
                                           0xE9,0x34,0xFF,0xFF,0xFF });                      //jmp 0042D404
-
-
+        }
+        public override void StartCount() {
+            //miss
             write(0x00444A52,new byte[] { 0xE9,0xEA,0xFC,0xFF,0xFF,0x90 });  //jmp 00444741
             write(0x00444741,new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00,     //dec [004BE7F4]
                                           0xE9,0xA7,0xFD,0xFF,0xFF });       //jmp 004444F3
             write(0x004444F3,new byte[] { 0xFF,0x05,0x80,0xEC,0x4B,0x00,0xE9,//inc [004BEC80]
                                           0x5A,0x05,0x00,0x00 });            //jmp 00444A58
             write(0x004BEC80,0);
-
-
+            //bomb
             write(0x0040A404,new byte[] { 0xEB,0x7B,0x90,0x90,0x90 });   //jmp 0040A481
             write(0x0040A481,new byte[] { 0xA3,0x00,0xE8,0x4B,0x00,      //mov [004BE800],eax
                                           0xFF,0x05,0x84,0xEC,0x4B,0x00, //inc [004BEC84]
                                           0xEB,0x35 });                  //jmp 0040A4C3
             write(0x0040A4C3,new byte[] { 0xE9,0x41,0xFF,0xFF,0xFF });   //jmp 0040A409
             write(0x004BEC84,0);
-
         }
         public override int getMissCount() {
             return mt.ReadInteger(0x004BEC80);
@@ -59,7 +58,7 @@ namespace THSet {
             return mt.ReadInteger(0x004BEC84);
         }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };
+            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x00444741,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop

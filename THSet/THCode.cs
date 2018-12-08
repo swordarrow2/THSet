@@ -12,6 +12,7 @@ namespace THSet {
         public abstract void setTitle(string s);
         public abstract void setMemoryTool(MemoryTool m);
         public abstract string[] getDefaultValue();
+        public abstract void StartCount();
         public abstract int getMissCount();
         public abstract int getBombCount();
 

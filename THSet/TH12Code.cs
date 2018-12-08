@@ -8,7 +8,7 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方红红蓝";
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true };
+            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true };
         }
         public override string getTitle() {
             if((new Random().Next())%2==0) { return gameTitle; }
@@ -32,17 +32,20 @@ namespace THSet {
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
 
+        }
+        public override void StartCount() {
+            //miss
             write(0x004381E7,new byte[] { 0xEB,0xE9,0x90,0x90,0x90,0x90 });//jmp 004381D2
             write(0x004381D2,new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00,   //sub [004B0C98],ebx
                                           0xFF,0x05,0xA0,0x10,0x4B,0x00,   //inc [004B10A0]
                                           0xEB,0x0D });                    //jmp 004381ED
             write(0x004B10A0,0);
-
-            write(0x00422F28,new byte[] { 0xE9,0xA4,0xFD,0xFF,0xFF });  //jmp 00422CD1
-            write(0x00422CD1,new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00,     //sub [004B0CA0],ebx
-                                          0xFF,0x05,0xA4,0x10,0x4B,0x00,//inc [004B10A4]
-                                          0xEB,0xA7 });                 //jmp 00422C85
-            write(0x00422C85,new byte[] { 0xE9,0xA3,0x02,0x00,0x00 });  //jmp 00422F2D
+            //bomb
+            write(0x00422F28,new byte[] { 0xE9,0xA4,0xFD,0xFF,0xFF });     //jmp 00422CD1
+            write(0x00422CD1,new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00,        //sub [004B0CA0],ebx
+                                          0xFF,0x05,0xA4,0x10,0x4B,0x00,   //inc [004B10A4]
+                                          0xEB,0xA7 });                    //jmp 00422C85
+            write(0x00422C85,new byte[] { 0xE9,0xA3,0x02,0x00,0x00 });     //jmp 00422F2D
             write(0x004B10A4,0);
         }
         public override int getMissCount() {

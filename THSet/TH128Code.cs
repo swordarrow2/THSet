@@ -40,6 +40,9 @@ namespace THSet {
                 write(0x004B51B0,0);
                 */
         }
+        public override void StartCount() {
+
+        }
         public override int getMissCount() {
             return 0;// mt.ReadInteger(0x004B51A0);
         }
@@ -47,7 +50,7 @@ namespace THSet {
             return 0;// mt.ReadInteger(0x004B51A4);
         }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,false,true,false,true,true,false,true,false,false,true };
+            return new bool[] { true,true,true,true,false,true,false,true,true,false,true,false,false,true,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 }  //nop

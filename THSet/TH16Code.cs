@@ -28,14 +28,16 @@ namespace THSet {
         }
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
+        }
+        public override void StartCount() {
+            //miss
             write(0x00443D3A,new byte[] { 0xEB,0x89,0x90,0x90,0x90 });  //jmp 00443CC5
             write(0x00443CC5,new byte[] { 0xA3,0xF4,0x57,0x4A,0x00,     //mov [004A57F4],eax
                                           0xE9,0x13,0xFE,0xFF,0xFF });  //jmp 00443AE2
             write(0x00443AE2,new byte[] { 0xFF,0x05,0x4C,0x59,0x4A,0x00,//inc [004A594C]
                                           0xE9,0x52,0x02,0x00,0x00 });  //jmp 00443D3F
             write(0x004A594C,0);
-
-
+            //bomb
             write(0x0040DB9C,new byte[] { 0xE9,0xE5,0xFE,0xFF,0xFF });  //jmp 0040DA86
             write(0x0040DA86,new byte[] { 0xA3,0x00,0x58,0x4A,0x00,     //mov [004A5800],eax
                                           0xEB,0xD8 });                 //jmp 0040DA65
@@ -50,7 +52,7 @@ namespace THSet {
             return mt.ReadInteger(0x004A5950);
         }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,false,true,true,true,true,true,true,false,false,true };
+            return new bool[] { true,true,true,true,false,true,true,true,true,true,true,false,false,true,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x00443CC5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } ://nop
