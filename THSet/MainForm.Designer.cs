@@ -46,7 +46,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.tbScore = new System.Windows.Forms.TextBox();
             this.btnScore = new System.Windows.Forms.Button();
-            this.choice = new System.Windows.Forms.CheckBox();
+            this.unbeatable = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnReadSpecial3 = new System.Windows.Forms.Button();
             this.btnReadSpecial2 = new System.Windows.Forms.Button();
@@ -101,21 +101,24 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnCountStart = new System.Windows.Forms.Button();
-            this.btnCountReset = new System.Windows.Forms.Button();
-            this.lbBomb = new System.Windows.Forms.Label();
-            this.lbMiss = new System.Windows.Forms.Label();
-            this.trackBar_FPS = new System.Windows.Forms.TrackBar();
-            this.tbFPS = new System.Windows.Forms.TextBox();
-            this.lbFPS = new System.Windows.Forms.Label();
+            this.groupBoxFPSChange = new System.Windows.Forms.GroupBox();
             this.btnFPS = new System.Windows.Forms.Button();
+            this.tbFPS = new System.Windows.Forms.TextBox();
+            this.trackBar_FPS = new System.Windows.Forms.TrackBar();
+            this.groupBoxSourceUse = new System.Windows.Forms.GroupBox();
+            this.btnCountStart = new System.Windows.Forms.Button();
+            this.lbMiss = new System.Windows.Forms.Label();
+            this.lbBomb = new System.Windows.Forms.Label();
+            this.timerProcessWatcher = new System.Windows.Forms.Timer(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBoxFPSChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
+            this.groupBoxSourceUse.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerMissAndBomb
@@ -314,16 +317,16 @@
             this.btnScore.UseVisualStyleBackColor = true;
             this.btnScore.Click += new System.EventHandler(this.btnScore_Click);
             // 
-            // choice
+            // unbeatable
             // 
-            this.choice.AutoSize = true;
-            this.choice.Location = new System.Drawing.Point(160, 12);
-            this.choice.Name = "choice";
-            this.choice.Size = new System.Drawing.Size(48, 16);
-            this.choice.TabIndex = 13;
-            this.choice.Text = "无敌";
-            this.choice.UseVisualStyleBackColor = true;
-            this.choice.CheckedChanged += new System.EventHandler(this.choice_CheckedChanged);
+            this.unbeatable.AutoSize = true;
+            this.unbeatable.Location = new System.Drawing.Point(160, 12);
+            this.unbeatable.Name = "unbeatable";
+            this.unbeatable.Size = new System.Drawing.Size(48, 16);
+            this.unbeatable.TabIndex = 13;
+            this.unbeatable.Text = "无敌";
+            this.unbeatable.UseVisualStyleBackColor = true;
+            this.unbeatable.CheckedChanged += new System.EventHandler(this.choice_CheckedChanged);
             // 
             // groupBox3
             // 
@@ -825,6 +828,7 @@
             this.tabControl1.Size = new System.Drawing.Size(220, 332);
             this.tabControl1.TabIndex = 17;
             this.tabControl1.Tag = "";
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabChange);
             // 
             // tabPage1
             // 
@@ -892,111 +896,114 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.btnCountStart);
-            this.tabPage3.Controls.Add(this.btnCountReset);
-            this.tabPage3.Controls.Add(this.lbBomb);
-            this.tabPage3.Controls.Add(this.lbMiss);
+            this.tabPage3.Controls.Add(this.groupBoxFPSChange);
+            this.tabPage3.Controls.Add(this.groupBoxSourceUse);
             this.tabPage3.Controls.Add(this.lockBomb);
-            this.tabPage3.Controls.Add(this.choice);
-            this.tabPage3.Controls.Add(this.trackBar_FPS);
+            this.tabPage3.Controls.Add(this.unbeatable);
             this.tabPage3.Controls.Add(this.lockPlayer);
-            this.tabPage3.Controls.Add(this.tbFPS);
-            this.tabPage3.Controls.Add(this.lbFPS);
-            this.tabPage3.Controls.Add(this.btnFPS);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(212, 306);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "其它修改";
+            this.tabPage3.Text = "其它";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxFPSChange
+            // 
+            this.groupBoxFPSChange.Controls.Add(this.btnFPS);
+            this.groupBoxFPSChange.Controls.Add(this.tbFPS);
+            this.groupBoxFPSChange.Controls.Add(this.trackBar_FPS);
+            this.groupBoxFPSChange.Location = new System.Drawing.Point(4, 34);
+            this.groupBoxFPSChange.Name = "groupBoxFPSChange";
+            this.groupBoxFPSChange.Size = new System.Drawing.Size(204, 86);
+            this.groupBoxFPSChange.TabIndex = 19;
+            this.groupBoxFPSChange.TabStop = false;
+            this.groupBoxFPSChange.Text = "FPS调节";
+            // 
+            // btnFPS
+            // 
+            this.btnFPS.Location = new System.Drawing.Point(97, 54);
+            this.btnFPS.Name = "btnFPS";
+            this.btnFPS.Size = new System.Drawing.Size(95, 23);
+            this.btnFPS.TabIndex = 0;
+            this.btnFPS.Text = "修改";
+            this.btnFPS.UseVisualStyleBackColor = true;
+            this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
+            // 
+            // tbFPS
+            // 
+            this.tbFPS.Location = new System.Drawing.Point(12, 56);
+            this.tbFPS.Name = "tbFPS";
+            this.tbFPS.Size = new System.Drawing.Size(79, 21);
+            this.tbFPS.TabIndex = 2;
+            this.tbFPS.Text = "60";
+            this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // trackBar_FPS
+            // 
+            this.trackBar_FPS.LargeChange = 30;
+            this.trackBar_FPS.Location = new System.Drawing.Point(4, 20);
+            this.trackBar_FPS.Maximum = 180;
+            this.trackBar_FPS.Minimum = 60;
+            this.trackBar_FPS.Name = "trackBar_FPS";
+            this.trackBar_FPS.Size = new System.Drawing.Size(198, 45);
+            this.trackBar_FPS.SmallChange = 5;
+            this.trackBar_FPS.TabIndex = 3;
+            this.trackBar_FPS.TickFrequency = 5;
+            this.trackBar_FPS.Value = 60;
+            this.trackBar_FPS.Scroll += new System.EventHandler(this.trackBar_FPS_Scroll);
+            // 
+            // groupBoxSourceUse
+            // 
+            this.groupBoxSourceUse.Controls.Add(this.btnCountStart);
+            this.groupBoxSourceUse.Controls.Add(this.lbMiss);
+            this.groupBoxSourceUse.Controls.Add(this.lbBomb);
+            this.groupBoxSourceUse.Location = new System.Drawing.Point(4, 126);
+            this.groupBoxSourceUse.Name = "groupBoxSourceUse";
+            this.groupBoxSourceUse.Size = new System.Drawing.Size(204, 68);
+            this.groupBoxSourceUse.TabIndex = 18;
+            this.groupBoxSourceUse.TabStop = false;
+            this.groupBoxSourceUse.Text = "资源消耗统计";
             // 
             // btnCountStart
             // 
-            this.btnCountStart.Location = new System.Drawing.Point(9, 128);
+            this.btnCountStart.Location = new System.Drawing.Point(6, 39);
             this.btnCountStart.Name = "btnCountStart";
-            this.btnCountStart.Size = new System.Drawing.Size(90, 23);
+            this.btnCountStart.Size = new System.Drawing.Size(188, 23);
             this.btnCountStart.TabIndex = 17;
             this.btnCountStart.Text = "开始";
             this.btnCountStart.UseVisualStyleBackColor = true;
             this.btnCountStart.Click += new System.EventHandler(this.btnCountStart_Click);
             // 
-            // btnCountReset
+            // lbMiss
             // 
-            this.btnCountReset.Location = new System.Drawing.Point(120, 128);
-            this.btnCountReset.Name = "btnCountReset";
-            this.btnCountReset.Size = new System.Drawing.Size(88, 23);
-            this.btnCountReset.TabIndex = 16;
-            this.btnCountReset.Text = "重置";
-            this.btnCountReset.UseVisualStyleBackColor = true;
-            this.btnCountReset.Click += new System.EventHandler(this.btnCountReset_Click);
+            this.lbMiss.AutoSize = true;
+            this.lbMiss.Location = new System.Drawing.Point(6, 17);
+            this.lbMiss.Name = "lbMiss";
+            this.lbMiss.Size = new System.Drawing.Size(95, 12);
+            this.lbMiss.TabIndex = 14;
+            this.lbMiss.Text = "miss次数:未使用";
             // 
             // lbBomb
             // 
             this.lbBomb.AutoSize = true;
-            this.lbBomb.Location = new System.Drawing.Point(116, 100);
+            this.lbBomb.Location = new System.Drawing.Point(106, 17);
             this.lbBomb.Name = "lbBomb";
-            this.lbBomb.Size = new System.Drawing.Size(53, 12);
+            this.lbBomb.Size = new System.Drawing.Size(95, 12);
             this.lbBomb.TabIndex = 15;
-            this.lbBomb.Text = "bomb次数";
+            this.lbBomb.Text = "bomb次数:未使用";
             // 
-            // lbMiss
+            // timerProcessWatcher
             // 
-            this.lbMiss.AutoSize = true;
-            this.lbMiss.Location = new System.Drawing.Point(7, 100);
-            this.lbMiss.Name = "lbMiss";
-            this.lbMiss.Size = new System.Drawing.Size(53, 12);
-            this.lbMiss.TabIndex = 14;
-            this.lbMiss.Text = "miss次数";
-            // 
-            // trackBar_FPS
-            // 
-            this.trackBar_FPS.LargeChange = 30;
-            this.trackBar_FPS.Location = new System.Drawing.Point(1, 63);
-            this.trackBar_FPS.Maximum = 180;
-            this.trackBar_FPS.Minimum = 60;
-            this.trackBar_FPS.Name = "trackBar_FPS";
-            this.trackBar_FPS.Size = new System.Drawing.Size(205, 45);
-            this.trackBar_FPS.SmallChange = 5;
-            this.trackBar_FPS.TabIndex = 3;
-            this.trackBar_FPS.TickFrequency = 5;
-            this.trackBar_FPS.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
-            this.trackBar_FPS.Value = 60;
-            this.trackBar_FPS.Scroll += new System.EventHandler(this.trackBar_FPS_Scroll);
-            // 
-            // tbFPS
-            // 
-            this.tbFPS.Location = new System.Drawing.Point(94, 36);
-            this.tbFPS.Name = "tbFPS";
-            this.tbFPS.Size = new System.Drawing.Size(49, 21);
-            this.tbFPS.TabIndex = 2;
-            this.tbFPS.Text = "60";
-            this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lbFPS
-            // 
-            this.lbFPS.AutoSize = true;
-            this.lbFPS.Location = new System.Drawing.Point(5, 39);
-            this.lbFPS.Name = "lbFPS";
-            this.lbFPS.Size = new System.Drawing.Size(83, 12);
-            this.lbFPS.TabIndex = 1;
-            this.lbFPS.Text = "游戏帧率(FPS)";
-            // 
-            // btnFPS
-            // 
-            this.btnFPS.Location = new System.Drawing.Point(149, 34);
-            this.btnFPS.Name = "btnFPS";
-            this.btnFPS.Size = new System.Drawing.Size(59, 23);
-            this.btnFPS.TabIndex = 0;
-            this.btnFPS.Text = "修改";
-            this.btnFPS.UseVisualStyleBackColor = true;
-            this.btnFPS.Click += new System.EventHandler(this.btnFPS_Click);
+            this.timerProcessWatcher.Interval = 1000;
+            this.timerProcessWatcher.Tick += new System.EventHandler(this.timerProcessWatcher_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(231, 375);
+            this.ClientSize = new System.Drawing.Size(231, 372);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.note);
             this.Controls.Add(this.showBug);
@@ -1017,7 +1024,11 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBoxFPSChange.ResumeLayout(false);
+            this.groupBoxFPSChange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).EndInit();
+            this.groupBoxSourceUse.ResumeLayout(false);
+            this.groupBoxSourceUse.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1076,7 +1087,7 @@
         private System.Windows.Forms.TextBox tbIBomb;
         private System.Windows.Forms.TextBox tbIPlayerFragment;
         private System.Windows.Forms.Button btnIPlayerFragment;
-        private System.Windows.Forms.CheckBox choice;
+        private System.Windows.Forms.CheckBox unbeatable;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox tbMaxPoint;
         private System.Windows.Forms.Button btnMaxPoint;
@@ -1101,13 +1112,14 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnFPS;
         private System.Windows.Forms.TextBox tbFPS;
-        private System.Windows.Forms.Label lbFPS;
         private System.Windows.Forms.TrackBar trackBar_FPS;
         private System.Windows.Forms.Label lbBomb;
         private System.Windows.Forms.Label lbMiss;
         private System.Windows.Forms.Timer timerMissAndBomb;
-        private System.Windows.Forms.Button btnCountReset;
         private System.Windows.Forms.Button btnCountStart;
+        private System.Windows.Forms.GroupBox groupBoxFPSChange;
+        private System.Windows.Forms.GroupBox groupBoxSourceUse;
+        private System.Windows.Forms.Timer timerProcessWatcher;
     }
 }
 
