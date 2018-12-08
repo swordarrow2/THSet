@@ -29,11 +29,14 @@ namespace THSet {
         public override void setMemoryTool(MemoryTool m) {
             mt=m;
 
-            write(0x004327F0,new byte[] { 0xE9,0x1D,0xF5,0xFF,0xFF,0x90 });//jmp 00431D12
+            write(0x004327ED,new byte[] { 0x57,                            //push edi
+                                          0xE9,0x1F,0xF5,0xFF,0xFF,        //jmp 00431D12
+                                          0xA3,0xF0,0x56,0x4A,0x00,        //mov [004A56F0],eax
+                                          0x39,0xC8,0x90 });               //cmp eax,ecx
             write(0x00431D12,new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00,   //mov [004A5718],edx
                                           0xEB,0x6B });                    //jmp 00431D85
             write(0x00431D85,new byte[] { 0xFF,0x05,0x80,0x5E,0x4A,0x00,   //inc [004A5E80]
-                                          0xE9,0x66,0x0A,0x00,0x00 });     //jmp 004327F6
+                                          0xE9,0x63,0x0A,0x00,0x00 });     //jmp 004327F3
             write(0x004A5E80,0);
             //主动
             write(0x004311F1,new byte[] { 0xE9,0x52,0xF0,0xFF,0xFF,0x90 });//jmp 00430248
