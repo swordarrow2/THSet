@@ -198,7 +198,6 @@ namespace THSet {
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
             lbMiss.Text="miss次数:"+tc.getMissCount();
             lbBomb.Text="bomb次数:"+tc.getBombCount();
-            timerMissAndBomb.Enabled=false;
         }
 
         private void btnCountReset_Click(object sender,EventArgs e) {
