@@ -15,6 +15,8 @@ namespace THSet {
         public abstract void StartCount();
         public abstract int getMissCount();
         public abstract int getBombCount();
+        public abstract int getBulletCount();
+        public abstract int getBossLife();
 
         public abstract bool[] getEnable();
 

@@ -13,8 +13,10 @@ namespace THSet {
         THCode tc;
         bool tipedWarning = false;
         bool[] enable;
-        string[] names = new string[] { "th10","th10c","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
+        string[] names = new string[] { "th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
         int pid = 0;
+        int lastLife = 0;
+        int thisLife = 0;
         int index = 0;
         public MainForm() {
             InitializeComponent();
@@ -28,18 +30,19 @@ namespace THSet {
             }
             switch(index) {
                 case 0:
-                case 1: tc=new TH10Code(); break;
-                case 2:
-                case 3: tc=new TH11Code(); break;
-                case 4:
-                case 5: tc=new TH12Code(); break;
-                case 6:
-                case 7: tc=new TH128Code(); break;
-                case 8:
-                case 9: tc=new TH13Code(); break;
-                case 10: tc=new TH14Code(); break;
-                case 11: tc=new TH15Code(); break;
-                case 12: tc=new TH16Code(); break;
+                case 1:
+                case 2: tc=new TH10Code(); break;
+                case 3:
+                case 4: tc=new TH11Code(); break;
+                case 5:
+                case 6: tc=new TH12Code(); break;
+                case 7:
+                case 8: tc=new TH128Code(); break;
+                case 9:
+                case 10: tc=new TH13Code(); break;
+                case 11: tc=new TH14Code(); break;
+                case 12: tc=new TH15Code(); break;
+                case 13: tc=new TH16Code(); break;
             }
             tc.setMemoryTool(new MemoryTool(names[index]));
             this.Text=tc.getTitle();
@@ -67,6 +70,8 @@ namespace THSet {
             tbSpecial3.Text=tbISpecial3.Text=d[2];
             groupBoxFPSChange.Enabled=false;
             groupBoxSourceUse.Enabled=false;
+            groupBoxBoss.Enabled=false;
+            groupBoxOther.Enabled=false;
             timerProcessWatcher.Enabled=true;
             if(GetPID("th128_CN")==pid||GetPID("th128")==pid) {
                 tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=tbIScore.Enabled=btnIScore.Enabled=false;
@@ -111,10 +116,19 @@ namespace THSet {
                 "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
                 "\n\n注意：如果重启游戏需重启修改器","",MessageBoxButtons.OK,MessageBoxIcon.Information);
-       
+
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
             lbMiss.Text="miss次数:"+tc.getMissCount();
             lbBomb.Text="bomb次数:"+tc.getBombCount();
+        }
+        private void timerEnemy_Tick(object sender,EventArgs e) {
+            lbBulletCount.Text="子弹数量:"+tc.getBulletCount();
+            lbLife.Text="血量:"+tc.getBossLife();
+        }
+        private void timerDPS_Tick(object sender,EventArgs e) {
+            thisLife=tc.getBossLife();
+            lbDPS.Text="DPS:"+(lastLife-thisLife);
+            lastLife=thisLife;
         }
         private void btnCountStart_Click(object sender,EventArgs e) {
             if(btnCountStart.Text.Equals("开始")) {
@@ -127,11 +141,15 @@ namespace THSet {
                 if(MessageBox.Show("这些功能可能会对游戏录像(.rpy)产生影响,如果产生了影响,则必须在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则不使用本页功能","",MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
                     tipedWarning=true;
                     tc.StartCount();
+                    timerEnemy.Enabled=true;
+                    timerDPS.Enabled=true;
                     lockPlayer.Enabled=enable[0];
                     lockBomb.Enabled=enable[1];
                     unbeatable.Enabled=enable[2];
                     groupBoxFPSChange.Enabled=enable[13];
                     groupBoxSourceUse.Enabled=enable[14];
+                    groupBoxBoss.Enabled=enable[15];
+                    groupBoxOther.Enabled=enable[16];
                 }
             }
         }
@@ -145,5 +163,6 @@ namespace THSet {
                 return 0;
             }
         }
+
     }
 }

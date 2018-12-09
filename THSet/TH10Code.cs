@@ -57,8 +57,15 @@ namespace THSet {
         public override int getBombCount() {
             return mt.ReadInteger(0x004750E4);
         }
+        public override int getBulletCount() {
+            return mt.ReadInteger(mt.ReadInteger(0x004776F0)+0x5C);
+        }
+        public override int getBossLife() {
+            return mt.ReadInteger(mt.ReadInteger(0x0047770C)+0x9E8C);
+        }
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,false,false,false,true,true,false,true,false,false,true,true };
+            return new bool[] { true,true,true,true,false,false,false,true,true,
+                false,true,false,false,true,true,true,true };
         }
         public override void setLockPlayer(bool b) {
             write(0x00424EC3,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop

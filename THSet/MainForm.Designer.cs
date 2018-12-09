@@ -101,6 +101,11 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.lbBulletCount = new System.Windows.Forms.Label();
+            this.groupBoxBoss = new System.Windows.Forms.GroupBox();
+            this.lbLife = new System.Windows.Forms.Label();
+            this.lbDPS = new System.Windows.Forms.Label();
             this.groupBoxFPSChange = new System.Windows.Forms.GroupBox();
             this.btnFPS = new System.Windows.Forms.Button();
             this.tbFPS = new System.Windows.Forms.TextBox();
@@ -110,12 +115,16 @@
             this.lbMiss = new System.Windows.Forms.Label();
             this.lbBomb = new System.Windows.Forms.Label();
             this.timerProcessWatcher = new System.Windows.Forms.Timer(this.components);
+            this.timerEnemy = new System.Windows.Forms.Timer(this.components);
+            this.timerDPS = new System.Windows.Forms.Timer(this.components);
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.groupBoxOther.SuspendLayout();
+            this.groupBoxBoss.SuspendLayout();
             this.groupBoxFPSChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
             this.groupBoxSourceUse.SuspendLayout();
@@ -896,6 +905,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.groupBoxOther);
+            this.tabPage3.Controls.Add(this.groupBoxBoss);
             this.tabPage3.Controls.Add(this.groupBoxFPSChange);
             this.tabPage3.Controls.Add(this.groupBoxSourceUse);
             this.tabPage3.Controls.Add(this.lockBomb);
@@ -907,6 +918,54 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "其它";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // groupBoxOther
+            // 
+            this.groupBoxOther.Controls.Add(this.lbBulletCount);
+            this.groupBoxOther.Location = new System.Drawing.Point(4, 244);
+            this.groupBoxOther.Name = "groupBoxOther";
+            this.groupBoxOther.Size = new System.Drawing.Size(204, 37);
+            this.groupBoxOther.TabIndex = 24;
+            this.groupBoxOther.TabStop = false;
+            this.groupBoxOther.Text = "其它";
+            // 
+            // lbBulletCount
+            // 
+            this.lbBulletCount.AutoSize = true;
+            this.lbBulletCount.Location = new System.Drawing.Point(6, 17);
+            this.lbBulletCount.Name = "lbBulletCount";
+            this.lbBulletCount.Size = new System.Drawing.Size(59, 12);
+            this.lbBulletCount.TabIndex = 20;
+            this.lbBulletCount.Text = "子弹数量:";
+            // 
+            // groupBoxBoss
+            // 
+            this.groupBoxBoss.Controls.Add(this.lbLife);
+            this.groupBoxBoss.Controls.Add(this.lbDPS);
+            this.groupBoxBoss.Location = new System.Drawing.Point(3, 200);
+            this.groupBoxBoss.Name = "groupBoxBoss";
+            this.groupBoxBoss.Size = new System.Drawing.Size(205, 37);
+            this.groupBoxBoss.TabIndex = 23;
+            this.groupBoxBoss.TabStop = false;
+            this.groupBoxBoss.Text = "Boss";
+            // 
+            // lbLife
+            // 
+            this.lbLife.AutoSize = true;
+            this.lbLife.Location = new System.Drawing.Point(7, 17);
+            this.lbLife.Name = "lbLife";
+            this.lbLife.Size = new System.Drawing.Size(35, 12);
+            this.lbLife.TabIndex = 21;
+            this.lbLife.Text = "血量:";
+            // 
+            // lbDPS
+            // 
+            this.lbDPS.AutoSize = true;
+            this.lbDPS.Location = new System.Drawing.Point(109, 17);
+            this.lbDPS.Name = "lbDPS";
+            this.lbDPS.Size = new System.Drawing.Size(29, 12);
+            this.lbDPS.TabIndex = 22;
+            this.lbDPS.Text = "DPS:";
             // 
             // groupBoxFPSChange
             // 
@@ -998,12 +1057,21 @@
             this.timerProcessWatcher.Interval = 1000;
             this.timerProcessWatcher.Tick += new System.EventHandler(this.timerProcessWatcher_Tick);
             // 
+            // timerEnemy
+            // 
+            this.timerEnemy.Tick += new System.EventHandler(this.timerEnemy_Tick);
+            // 
+            // timerDPS
+            // 
+            this.timerDPS.Interval = 1000;
+            this.timerDPS.Tick += new System.EventHandler(this.timerDPS_Tick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(231, 372);
+            this.ClientSize = new System.Drawing.Size(233, 373);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.note);
             this.Controls.Add(this.showBug);
@@ -1024,6 +1092,10 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBoxOther.ResumeLayout(false);
+            this.groupBoxOther.PerformLayout();
+            this.groupBoxBoss.ResumeLayout(false);
+            this.groupBoxBoss.PerformLayout();
             this.groupBoxFPSChange.ResumeLayout(false);
             this.groupBoxFPSChange.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).EndInit();
@@ -1120,6 +1192,13 @@
         private System.Windows.Forms.GroupBox groupBoxFPSChange;
         private System.Windows.Forms.GroupBox groupBoxSourceUse;
         private System.Windows.Forms.Timer timerProcessWatcher;
+        private System.Windows.Forms.Label lbBulletCount;
+        private System.Windows.Forms.Label lbLife;
+        private System.Windows.Forms.Timer timerEnemy;
+        private System.Windows.Forms.Label lbDPS;
+        private System.Windows.Forms.Timer timerDPS;
+        private System.Windows.Forms.GroupBox groupBoxBoss;
+        private System.Windows.Forms.GroupBox groupBoxOther;
     }
 }
 

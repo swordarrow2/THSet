@@ -8,7 +8,8 @@ namespace THSet {
         MemoryTool mt;
         string gameTitle = "东方红红蓝";
         public override bool[] getEnable() {
-            return new bool[] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true };
+            return new bool[] { true,true,true,true,true,true,true,true,
+                true,true,true,true,false,true,true,true,true };
         }
         public override string getTitle() {
             if((new Random().Next())%2==0) { return gameTitle; }
@@ -53,6 +54,12 @@ namespace THSet {
         }
         public override int getBombCount() {
             return mt.ReadInteger(0x004B10A4);
+        }
+        public override int getBulletCount() {
+            return mt.ReadInteger(mt.ReadInteger(0x004B43C8)+0x5C);
+        }
+        public override int getBossLife() {
+            return mt.ReadInteger(mt.ReadInteger(0x004B43E4)+0x6CF0);
         }
         public override void setLockPlayer(bool b) {
             write(0x004381D2,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
