@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.3.1";
+        private const string versonCode = "THSet v2.4.1";
         private THCode tc;
         private bool tipedWarning = false;
         private bool[] enable;
