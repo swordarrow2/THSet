@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     class TH10Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "东方炸比录" : "东方神曲录";
         public override string getAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免";
         public override string getAboutSpecial() => "信仰值初始为50000，最大值为999990";
@@ -33,11 +35,13 @@ namespace THSet {
             write(0x00426605,new byte[] { 0xFF,0x05,0xE4,0x50,0x47,0x00,               //inc [004750E4]
                                           0xE9,0x3B,0xF6,0xFF,0xFF });                 //jmp 00425C4B
             write(0x004750E4,0);
+            bulletCountAddr=mt.ReadInteger(0x004776F0);
+            bossLifeAddr=mt.ReadInteger(0x0047770C);
         }
         public override int getMissCount() => mt.ReadInteger(0x004750E0);
         public override int getBombCount() => mt.ReadInteger(0x004750E4);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004776F0)+0x5C);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x0047770C)+0x9E8C);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x9E8C);
         public override void killSelf() => write(mt.ReadInteger(0x00477834)+0x458,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,false,false,false,true,true,false,true,false,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00424EC3,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00 });//mov [00474C70],ecx

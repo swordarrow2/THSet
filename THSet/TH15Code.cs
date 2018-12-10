@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     class TH15Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "东方跟着转" : "东方199";
         public override string getAboutBug() => "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
         public override string getAboutSpecial() => "没啥好说的，使劲擦弹就得了（";
@@ -27,11 +29,13 @@ namespace THSet {
             write(0x004148E5,new byte[] { 0xFF,0x05,0x40,0x75,0x4E,0x00,   //inc [004E7540]
                                           0xE9,0x8F,0x00,0x00,0x00 });     //jmp 0041497F
             write(0x004E7540,0);
+            bulletCountAddr=mt.ReadInteger(0x004E9A6C);
+            bossLifeAddr=mt.ReadInteger(0x004E9A8C);
         }
         public override int getMissCount() => mt.ReadInteger(0x004E753C);
         public override int getBombCount() => mt.ReadInteger(0x004E7540);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004E9A6C)+0x40);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004E9A8C)+0x1D4);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x40);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x1D4);
         public override void killSelf() => write(mt.ReadInteger(0x004E9BB8)+0x16220,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,true,true,true,true,false,true,false,false,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00456732,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x50,0x74,0x4E,0x00 });                         //mov [004E7450],eax

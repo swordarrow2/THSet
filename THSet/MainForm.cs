@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.4.1";
+        private const string versonCode = "THSet v2.4.3";
         private THCode tc;
         private bool tipedWarning = false;
         private bool[] enable;
@@ -27,7 +27,7 @@ namespace THSet {
             }
             if(pid==0) {
                 MessageBox.Show("没有发现支持的车万进程\n目前支持TH10,11,12,12.8,13,14,15,16",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                System.Environment.Exit(System.Environment.ExitCode);
+                Environment.Exit(Environment.ExitCode);
             }
             switch(index) {
                 case 0:
@@ -79,7 +79,17 @@ namespace THSet {
             timerProcessWatcher.Enabled=true;
             if(GetPID("th128_CN")==pid||GetPID("th128")==pid) tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=tbIScore.Enabled=btnIScore.Enabled=false;
         }
-
+        protected override void OnResize(EventArgs e) {
+            base.OnResize(e);
+            if(WindowState==FormWindowState.Maximized) {
+                StringBuilder sb = new StringBuilder();
+                for(int i = 0;i<60;i++) {
+                    for(int j = 0;j<150;j++) sb.Append("发");
+                    sb.Append("\n");
+                }
+                lbfafafa1.Text=lbfafafa2.Text=sb.ToString();
+            }
+        }
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) => tc.setLockPlayer(lockPlayer.Checked);
         private void lockBomb_CheckedChanged(object sender,EventArgs e) => tc.setLockBomb(lockBomb.Checked);
         private void choice_CheckedChanged(object sender,EventArgs e) => tc.setUnbeatable(unbeatable.Checked);
@@ -132,19 +142,12 @@ namespace THSet {
             lbDPS.Text="DPS:"+(lastLife-thisLife);
             lastLife=thisLife;
         }
-        private void btnCountStart_Click(object sender,EventArgs e) {
-            if(btnCountStart.Text.Equals("开始")) {
-                timerMissAndBomb.Enabled=true;
-                btnCountStart.Text="重置";
-            }
-        }
+        private void btnCountStart_Click(object sender,EventArgs e) => tc.StartCount();
         private void tabChange(object sender,EventArgs e) {
             if(tabControl1.SelectedTab==tabPage3&&!tipedWarning) {
                 if(MessageBox.Show("这些功能可能会对游戏录像(.rpy)产生影响,如果产生了影响,则必须在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则不使用本页功能",versonCode,MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
-                    tipedWarning=true;
+                    tipedWarning=timerMissAndBomb.Enabled=timerEnemy.Enabled=timerDPS.Enabled=true;
                     tc.StartCount();
-                    timerEnemy.Enabled=true;
-                    timerDPS.Enabled=true;
                     lockPlayer.Enabled=enable[0];
                     lockBomb.Enabled=enable[1];
                     unbeatable.Enabled=enable[2];

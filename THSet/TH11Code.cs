@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     class TH11Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "多睡觉，少操心" : "东方弟灵殿";
         public override string getAboutBug() => "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         public override string getAboutSpecial() => "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";
@@ -37,11 +39,13 @@ namespace THSet {
                                           0xEB,0x07 });                    //jmp 00431C57
             write(0x00431C57,new byte[] { 0xE9,0x47,0xF6,0xFF,0xFF });     //jmp 004312A3
             write(0x004A5E84,0);
+            bulletCountAddr=mt.ReadInteger(0x004A8D68);
+            bossLifeAddr=mt.ReadInteger(0x004A8D84);
         }
         public override int getMissCount() => mt.ReadInteger(0x004A5E80);
         public override int getBombCount() => mt.ReadInteger(0x004A5E84);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A8D68)+0x5C);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A8D84)+0x43F8);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x43F8);
         public override void killSelf() => write(mt.ReadInteger(0x004A8EB4)+0x928,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,true,false,false,true,false,false,false,false,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00431D12,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 });//mov [004A5718],edx

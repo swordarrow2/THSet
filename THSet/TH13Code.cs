@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     class TH13Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "东方崩盘庙" : "东方神灵庙";
         public override string getAboutBug() => "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay(汉化版)如果从1面以外播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
         public override string getAboutSpecial() => "灵界槽初始为200，最大值为600\n已得奖残会影响获得下一残机时需要的残碎片(红灵)数量";
@@ -35,11 +37,13 @@ namespace THSet {
                                           0xEB,0x35 });                  //jmp 0040A4C3
             write(0x0040A4C3,new byte[] { 0xE9,0x41,0xFF,0xFF,0xFF });   //jmp 0040A409
             write(0x004BEC84,0);
+            bulletCountAddr=mt.ReadInteger(0x004C2174);
+            bossLifeAddr=mt.ReadInteger(0x004C2190);
         }
         public override int getMissCount() => mt.ReadInteger(0x004BEC80);
         public override int getBombCount() => mt.ReadInteger(0x004BEC84);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004C2174)+0x5C);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004C2190)+0x1B4);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x1B4);
         public override void killSelf() => write(mt.ReadInteger(0x004C22C4)+0x65C,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00444741,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 });//dec [004BE7F4]

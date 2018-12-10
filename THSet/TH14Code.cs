@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     class TH14Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "东方掉帧城" : "东方1.6";
         public override string getAboutBug() => "有时候播放replay出错，如果replay文件没问题，可重启游戏再播放此处\n\n魔理沙激光可能会歪，其中一部分会导致播放录像时出错而另一部分不会(录像中的激光也是歪的)";
         public override string getAboutSpecial() => "非2.0为收点系统中获得的非Bonus2.0奖励的次数，已得奖残在辉针城似乎用处不大，2un仅仅设置了可获得的上限";
@@ -26,11 +28,13 @@ namespace THSet {
             write(0x004120F5,new byte[] { 0xA3,0x70,0x58,0x4F,0x00,       //mov [004F5870],eax
                                           0xE9,0x90,0x00,0x00,0x00 });    //jmp 0041218F
             write(0x004F59C4,0);
+            bulletCountAddr=mt.ReadInteger(0x004DB530);
+            bossLifeAddr=mt.ReadInteger(0x004DB550);
         }
         public override int getMissCount() => mt.ReadInteger(0x004F59C0);
         public override int getBombCount() => mt.ReadInteger(0x004F59C4);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004DB530)+0x5C);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004DB550)+0x1B0);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x1B0);
         public override void killSelf() => write(mt.ReadInteger(0x004DB67C)+0x684,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x0044F5D1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x64,0x58,0x4F,0x00 });//mov [004F5864],eax

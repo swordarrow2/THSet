@@ -118,6 +118,8 @@
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
             this.btnKill = new System.Windows.Forms.Button();
+            this.lbfafafa1 = new System.Windows.Forms.Label();
+            this.lbfafafa2 = new System.Windows.Forms.Label();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -1032,7 +1034,7 @@
             this.btnCountStart.Name = "btnCountStart";
             this.btnCountStart.Size = new System.Drawing.Size(192, 23);
             this.btnCountStart.TabIndex = 17;
-            this.btnCountStart.Text = "开始";
+            this.btnCountStart.Text = "重置";
             this.btnCountStart.UseVisualStyleBackColor = true;
             this.btnCountStart.Click += new System.EventHandler(this.btnCountStart_Click);
             // 
@@ -1078,12 +1080,35 @@
             this.btnKill.UseVisualStyleBackColor = true;
             this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
             // 
+            // lbfafafa1
+            // 
+            this.lbfafafa1.AutoSize = true;
+            this.lbfafafa1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.lbfafafa1.ForeColor = System.Drawing.Color.Lime;
+            this.lbfafafa1.Location = new System.Drawing.Point(234, 29);
+            this.lbfafafa1.Name = "lbfafafa1";
+            this.lbfafafa1.Size = new System.Drawing.Size(29, 12);
+            this.lbfafafa1.TabIndex = 18;
+            this.lbfafafa1.Text = "  aa";
+            // 
+            // lbfafafa2
+            // 
+            this.lbfafafa2.AutoSize = true;
+            this.lbfafafa2.ForeColor = System.Drawing.Color.Lime;
+            this.lbfafafa2.Location = new System.Drawing.Point(6, 378);
+            this.lbfafafa2.Name = "lbfafafa2";
+            this.lbfafafa2.Size = new System.Drawing.Size(41, 12);
+            this.lbfafafa2.TabIndex = 19;
+            this.lbfafafa2.Text = "    aa";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(233, 373);
+            this.ClientSize = new System.Drawing.Size(232, 375);
+            this.Controls.Add(this.lbfafafa2);
+            this.Controls.Add(this.lbfafafa1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.note);
             this.Controls.Add(this.showBug);
@@ -1114,6 +1139,7 @@
             this.groupBoxSourceUse.ResumeLayout(false);
             this.groupBoxSourceUse.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1212,6 +1238,8 @@
         private System.Windows.Forms.GroupBox groupBoxBoss;
         private System.Windows.Forms.GroupBox groupBoxOther;
         private System.Windows.Forms.Button btnKill;
+        private System.Windows.Forms.Label lbfafafa1;
+        private System.Windows.Forms.Label lbfafafa2;
     }
 }
 

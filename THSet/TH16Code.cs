@@ -6,6 +6,8 @@ using System.Text;
 namespace THSet {
     public class TH16Code:THCode {
         MemoryTool mt;
+        int bulletCountAddr = 0;
+        int bossLifeAddr = 0;
         public override string getTitle() => (new Random().Next())%2==0 ? "东方Bug璋" : "东方CBC";
         public override string getAboutBug() => "太多了，我就不写了……";
         public override string getAboutSpecial() => "季节槽范围为0-1140";
@@ -27,11 +29,13 @@ namespace THSet {
             write(0x0040DA65,new byte[] { 0xFF,0x05,0x50,0x59,0x4A,0x00,//inc [004A5950]
                                           0xE9,0x31,0x01,0x00,0x00 });  //jmp 0040DBA1
             write(0x004A5950,0);
+            bulletCountAddr=mt.ReadInteger(0x004A6DAC);
+            bossLifeAddr=mt.ReadInteger(0x004A6DCC);
         }
         public override int getMissCount() => mt.ReadInteger(0x004A594C);
         public override int getBombCount() => mt.ReadInteger(0x004A5950);
-        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A6DAC)+0x40);
-        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A6DCC)+0x1E4);
+        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x40);
+        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x1E4);
         public override void killSelf() => write(mt.ReadInteger(0x004A6EF8)+0x165A8,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,false,true,true,true,true,true,true,false,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00443CC5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });//mov [004A57F4],eax
