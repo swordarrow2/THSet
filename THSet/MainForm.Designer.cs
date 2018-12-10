@@ -40,14 +40,14 @@
             this.btnBomb = new System.Windows.Forms.Button();
             this.tbPlayer = new System.Windows.Forms.TextBox();
             this.btnPlayer = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lbMaxpoint = new System.Windows.Forms.Label();
             this.tbMaxPoint = new System.Windows.Forms.TextBox();
             this.btnMaxPoint = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
+            this.lbScore = new System.Windows.Forms.Label();
             this.tbScore = new System.Windows.Forms.TextBox();
             this.btnScore = new System.Windows.Forms.Button();
             this.unbeatable = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxSpecial = new System.Windows.Forms.GroupBox();
             this.btnReadSpecial3 = new System.Windows.Forms.Button();
             this.btnReadSpecial2 = new System.Windows.Forms.Button();
             this.btnReadSpecial1 = new System.Windows.Forms.Button();
@@ -58,14 +58,14 @@
             this.btnSpecial3 = new System.Windows.Forms.Button();
             this.btnSpecial2 = new System.Windows.Forms.Button();
             this.tbSpecial2 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
+            this.lbPower = new System.Windows.Forms.Label();
+            this.lbBF = new System.Windows.Forms.Label();
+            this.lbBomb = new System.Windows.Forms.Label();
+            this.lbPF = new System.Windows.Forms.Label();
+            this.lbPlayer = new System.Windows.Forms.Label();
+            this.lbIMaxPoint = new System.Windows.Forms.Label();
             this.tbIMaxPoint = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBoxISpecial = new System.Windows.Forms.GroupBox();
             this.lbISp3 = new System.Windows.Forms.Label();
             this.tbISpecial1 = new System.Windows.Forms.TextBox();
             this.lbISp2 = new System.Windows.Forms.Label();
@@ -76,14 +76,14 @@
             this.btnISpecial2 = new System.Windows.Forms.Button();
             this.tbISpecial2 = new System.Windows.Forms.TextBox();
             this.btnIMaxPoint = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.lbIPower = new System.Windows.Forms.Label();
+            this.lbIScore = new System.Windows.Forms.Label();
+            this.lbIBF = new System.Windows.Forms.Label();
             this.tbIScore = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lbIBomb = new System.Windows.Forms.Label();
             this.btnIScore = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.lbIPF = new System.Windows.Forms.Label();
+            this.lbIplayer = new System.Windows.Forms.Label();
             this.tbIPower = new System.Windows.Forms.TextBox();
             this.tbIPlayer = new System.Windows.Forms.TextBox();
             this.btnIPower = new System.Windows.Forms.Button();
@@ -112,13 +112,14 @@
             this.trackBar_FPS = new System.Windows.Forms.TrackBar();
             this.groupBoxSourceUse = new System.Windows.Forms.GroupBox();
             this.btnCountStart = new System.Windows.Forms.Button();
-            this.lbMiss = new System.Windows.Forms.Label();
-            this.lbBomb = new System.Windows.Forms.Label();
+            this.lbMissCount = new System.Windows.Forms.Label();
+            this.lbBombCount = new System.Windows.Forms.Label();
             this.timerProcessWatcher = new System.Windows.Forms.Timer(this.components);
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.btnKill = new System.Windows.Forms.Button();
+            this.groupBoxSpecial.SuspendLayout();
+            this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -270,14 +271,14 @@
             this.btnPlayer.UseVisualStyleBackColor = true;
             this.btnPlayer.Click += new System.EventHandler(this.btnPlayer_Click);
             // 
-            // label19
+            // lbMaxpoint
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 171);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(53, 12);
-            this.label19.TabIndex = 19;
-            this.label19.Text = "最大得点";
+            this.lbMaxpoint.AutoSize = true;
+            this.lbMaxpoint.Location = new System.Drawing.Point(6, 171);
+            this.lbMaxpoint.Name = "lbMaxpoint";
+            this.lbMaxpoint.Size = new System.Drawing.Size(53, 12);
+            this.lbMaxpoint.TabIndex = 19;
+            this.lbMaxpoint.Text = "最大得点";
             // 
             // tbMaxPoint
             // 
@@ -298,14 +299,14 @@
             this.btnMaxPoint.UseVisualStyleBackColor = true;
             this.btnMaxPoint.Click += new System.EventHandler(this.btnMaxPoint_Click);
             // 
-            // label18
+            // lbScore
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 144);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(29, 12);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "得分";
+            this.lbScore.AutoSize = true;
+            this.lbScore.Location = new System.Drawing.Point(6, 144);
+            this.lbScore.Name = "lbScore";
+            this.lbScore.Size = new System.Drawing.Size(29, 12);
+            this.lbScore.TabIndex = 16;
+            this.lbScore.Text = "得分";
             // 
             // tbScore
             // 
@@ -337,26 +338,26 @@
             this.unbeatable.UseVisualStyleBackColor = true;
             this.unbeatable.CheckedChanged += new System.EventHandler(this.choice_CheckedChanged);
             // 
-            // groupBox3
+            // groupBoxSpecial
             // 
-            this.groupBox3.Controls.Add(this.btnReadSpecial3);
-            this.groupBox3.Controls.Add(this.btnReadSpecial2);
-            this.groupBox3.Controls.Add(this.btnReadSpecial1);
-            this.groupBox3.Controls.Add(this.lbSp3);
-            this.groupBox3.Controls.Add(this.tbSpecial1);
-            this.groupBox3.Controls.Add(this.lbSp2);
-            this.groupBox3.Controls.Add(this.btnSpecial1);
-            this.groupBox3.Controls.Add(this.tbSpecial3);
-            this.groupBox3.Controls.Add(this.lbSp1);
-            this.groupBox3.Controls.Add(this.btnSpecial3);
-            this.groupBox3.Controls.Add(this.btnSpecial2);
-            this.groupBox3.Controls.Add(this.tbSpecial2);
-            this.groupBox3.Location = new System.Drawing.Point(6, 194);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(200, 106);
-            this.groupBox3.TabIndex = 11;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "特殊值";
+            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial3);
+            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial2);
+            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial1);
+            this.groupBoxSpecial.Controls.Add(this.lbSp3);
+            this.groupBoxSpecial.Controls.Add(this.tbSpecial1);
+            this.groupBoxSpecial.Controls.Add(this.lbSp2);
+            this.groupBoxSpecial.Controls.Add(this.btnSpecial1);
+            this.groupBoxSpecial.Controls.Add(this.tbSpecial3);
+            this.groupBoxSpecial.Controls.Add(this.lbSp1);
+            this.groupBoxSpecial.Controls.Add(this.btnSpecial3);
+            this.groupBoxSpecial.Controls.Add(this.btnSpecial2);
+            this.groupBoxSpecial.Controls.Add(this.tbSpecial2);
+            this.groupBoxSpecial.Location = new System.Drawing.Point(6, 194);
+            this.groupBoxSpecial.Name = "groupBoxSpecial";
+            this.groupBoxSpecial.Size = new System.Drawing.Size(200, 106);
+            this.groupBoxSpecial.TabIndex = 11;
+            this.groupBoxSpecial.TabStop = false;
+            this.groupBoxSpecial.Text = "特殊值";
             // 
             // btnReadSpecial3
             // 
@@ -453,59 +454,59 @@
             this.tbSpecial2.Text = "0";
             this.tbSpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label5
+            // lbPower
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 117);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "灵力";
+            this.lbPower.AutoSize = true;
+            this.lbPower.Location = new System.Drawing.Point(6, 117);
+            this.lbPower.Name = "lbPower";
+            this.lbPower.Size = new System.Drawing.Size(29, 12);
+            this.lbPower.TabIndex = 12;
+            this.lbPower.Text = "灵力";
             // 
-            // label4
+            // lbBF
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Bomb碎片";
+            this.lbBF.AutoSize = true;
+            this.lbBF.Location = new System.Drawing.Point(6, 90);
+            this.lbBF.Name = "lbBF";
+            this.lbBF.Size = new System.Drawing.Size(53, 12);
+            this.lbBF.TabIndex = 12;
+            this.lbBF.Text = "Bomb碎片";
             // 
-            // label3
+            // lbBomb
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Bomb";
+            this.lbBomb.AutoSize = true;
+            this.lbBomb.Location = new System.Drawing.Point(6, 63);
+            this.lbBomb.Name = "lbBomb";
+            this.lbBomb.Size = new System.Drawing.Size(29, 12);
+            this.lbBomb.TabIndex = 12;
+            this.lbBomb.Text = "Bomb";
             // 
-            // label2
+            // lbPF
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "残机碎片";
+            this.lbPF.AutoSize = true;
+            this.lbPF.Location = new System.Drawing.Point(6, 36);
+            this.lbPF.Name = "lbPF";
+            this.lbPF.Size = new System.Drawing.Size(53, 12);
+            this.lbPF.TabIndex = 11;
+            this.lbPF.Text = "残机碎片";
             // 
-            // label1
+            // lbPlayer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "残机";
+            this.lbPlayer.AutoSize = true;
+            this.lbPlayer.Location = new System.Drawing.Point(6, 9);
+            this.lbPlayer.Name = "lbPlayer";
+            this.lbPlayer.Size = new System.Drawing.Size(29, 12);
+            this.lbPlayer.TabIndex = 10;
+            this.lbPlayer.Text = "残机";
             // 
-            // label22
+            // lbIMaxPoint
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(6, 171);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(53, 12);
-            this.label22.TabIndex = 19;
-            this.label22.Text = "最大得点";
+            this.lbIMaxPoint.AutoSize = true;
+            this.lbIMaxPoint.Location = new System.Drawing.Point(6, 171);
+            this.lbIMaxPoint.Name = "lbIMaxPoint";
+            this.lbIMaxPoint.Size = new System.Drawing.Size(53, 12);
+            this.lbIMaxPoint.TabIndex = 19;
+            this.lbIMaxPoint.Text = "最大得点";
             // 
             // tbIMaxPoint
             // 
@@ -516,23 +517,23 @@
             this.tbIMaxPoint.Text = "0";
             this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // groupBox4
+            // groupBoxISpecial
             // 
-            this.groupBox4.Controls.Add(this.lbISp3);
-            this.groupBox4.Controls.Add(this.tbISpecial1);
-            this.groupBox4.Controls.Add(this.lbISp2);
-            this.groupBox4.Controls.Add(this.btnISpecial1);
-            this.groupBox4.Controls.Add(this.tbISpecial3);
-            this.groupBox4.Controls.Add(this.lbISp1);
-            this.groupBox4.Controls.Add(this.btnISpecial3);
-            this.groupBox4.Controls.Add(this.btnISpecial2);
-            this.groupBox4.Controls.Add(this.tbISpecial2);
-            this.groupBox4.Location = new System.Drawing.Point(6, 194);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(198, 106);
-            this.groupBox4.TabIndex = 11;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "特殊值";
+            this.groupBoxISpecial.Controls.Add(this.lbISp3);
+            this.groupBoxISpecial.Controls.Add(this.tbISpecial1);
+            this.groupBoxISpecial.Controls.Add(this.lbISp2);
+            this.groupBoxISpecial.Controls.Add(this.btnISpecial1);
+            this.groupBoxISpecial.Controls.Add(this.tbISpecial3);
+            this.groupBoxISpecial.Controls.Add(this.lbISp1);
+            this.groupBoxISpecial.Controls.Add(this.btnISpecial3);
+            this.groupBoxISpecial.Controls.Add(this.btnISpecial2);
+            this.groupBoxISpecial.Controls.Add(this.tbISpecial2);
+            this.groupBoxISpecial.Location = new System.Drawing.Point(6, 194);
+            this.groupBoxISpecial.Name = "groupBoxISpecial";
+            this.groupBoxISpecial.Size = new System.Drawing.Size(198, 106);
+            this.groupBoxISpecial.TabIndex = 11;
+            this.groupBoxISpecial.TabStop = false;
+            this.groupBoxISpecial.Text = "特殊值";
             // 
             // lbISp3
             // 
@@ -628,32 +629,32 @@
             this.btnIMaxPoint.UseVisualStyleBackColor = true;
             this.btnIMaxPoint.Click += new System.EventHandler(this.btnIMaxPoint_Click);
             // 
-            // label12
+            // lbIPower
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 117);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "灵力";
+            this.lbIPower.AutoSize = true;
+            this.lbIPower.Location = new System.Drawing.Point(6, 117);
+            this.lbIPower.Name = "lbIPower";
+            this.lbIPower.Size = new System.Drawing.Size(29, 12);
+            this.lbIPower.TabIndex = 12;
+            this.lbIPower.Text = "灵力";
             // 
-            // label21
+            // lbIScore
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 144);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(29, 12);
-            this.label21.TabIndex = 16;
-            this.label21.Text = "得分";
+            this.lbIScore.AutoSize = true;
+            this.lbIScore.Location = new System.Drawing.Point(6, 144);
+            this.lbIScore.Name = "lbIScore";
+            this.lbIScore.Size = new System.Drawing.Size(29, 12);
+            this.lbIScore.TabIndex = 16;
+            this.lbIScore.Text = "得分";
             // 
-            // label13
+            // lbIBF
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 90);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(53, 12);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Bomb碎片";
+            this.lbIBF.AutoSize = true;
+            this.lbIBF.Location = new System.Drawing.Point(6, 90);
+            this.lbIBF.Name = "lbIBF";
+            this.lbIBF.Size = new System.Drawing.Size(53, 12);
+            this.lbIBF.TabIndex = 12;
+            this.lbIBF.Text = "Bomb碎片";
             // 
             // tbIScore
             // 
@@ -664,14 +665,14 @@
             this.tbIScore.Text = "0";
             this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label14
+            // lbIBomb
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 63);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(29, 12);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Bomb";
+            this.lbIBomb.AutoSize = true;
+            this.lbIBomb.Location = new System.Drawing.Point(6, 63);
+            this.lbIBomb.Name = "lbIBomb";
+            this.lbIBomb.Size = new System.Drawing.Size(29, 12);
+            this.lbIBomb.TabIndex = 12;
+            this.lbIBomb.Text = "Bomb";
             // 
             // btnIScore
             // 
@@ -683,23 +684,23 @@
             this.btnIScore.UseVisualStyleBackColor = true;
             this.btnIScore.Click += new System.EventHandler(this.btnIScore_Click);
             // 
-            // label15
+            // lbIPF
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 36);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(53, 12);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "残机碎片";
+            this.lbIPF.AutoSize = true;
+            this.lbIPF.Location = new System.Drawing.Point(6, 36);
+            this.lbIPF.Name = "lbIPF";
+            this.lbIPF.Size = new System.Drawing.Size(53, 12);
+            this.lbIPF.TabIndex = 11;
+            this.lbIPF.Text = "残机碎片";
             // 
-            // label16
+            // lbIplayer
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 9);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(29, 12);
-            this.label16.TabIndex = 10;
-            this.label16.Text = "残机";
+            this.lbIplayer.AutoSize = true;
+            this.lbIplayer.Location = new System.Drawing.Point(6, 9);
+            this.lbIplayer.Name = "lbIplayer";
+            this.lbIplayer.Size = new System.Drawing.Size(29, 12);
+            this.lbIplayer.TabIndex = 10;
+            this.lbIplayer.Text = "残机";
             // 
             // tbIPower
             // 
@@ -841,28 +842,28 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label19);
+            this.tabPage1.Controls.Add(this.lbMaxpoint);
             this.tabPage1.Controls.Add(this.tbMaxPoint);
             this.tabPage1.Controls.Add(this.btnPlayerFragment);
             this.tabPage1.Controls.Add(this.btnMaxPoint);
             this.tabPage1.Controls.Add(this.tbPlayerFragment);
-            this.tabPage1.Controls.Add(this.label18);
+            this.tabPage1.Controls.Add(this.lbScore);
             this.tabPage1.Controls.Add(this.tbBomb);
             this.tabPage1.Controls.Add(this.tbScore);
             this.tabPage1.Controls.Add(this.btnBombFragment);
             this.tabPage1.Controls.Add(this.btnScore);
             this.tabPage1.Controls.Add(this.btnBomb);
             this.tabPage1.Controls.Add(this.tbBombFragment);
-            this.tabPage1.Controls.Add(this.groupBox3);
+            this.tabPage1.Controls.Add(this.groupBoxSpecial);
             this.tabPage1.Controls.Add(this.btnPlayer);
-            this.tabPage1.Controls.Add(this.label5);
+            this.tabPage1.Controls.Add(this.lbPower);
             this.tabPage1.Controls.Add(this.btnPower);
-            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.lbBF);
             this.tabPage1.Controls.Add(this.tbPlayer);
-            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.lbBomb);
             this.tabPage1.Controls.Add(this.tbPower);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.lbPF);
+            this.tabPage1.Controls.Add(this.lbPlayer);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -873,27 +874,27 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label22);
-            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.lbIMaxPoint);
+            this.tabPage2.Controls.Add(this.lbIplayer);
             this.tabPage2.Controls.Add(this.tbIMaxPoint);
             this.tabPage2.Controls.Add(this.btnIPlayerFragment);
-            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBoxISpecial);
             this.tabPage2.Controls.Add(this.tbIPlayerFragment);
             this.tabPage2.Controls.Add(this.btnIMaxPoint);
             this.tabPage2.Controls.Add(this.tbIBomb);
-            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.lbIPower);
             this.tabPage2.Controls.Add(this.btnIBombFragment);
-            this.tabPage2.Controls.Add(this.label21);
+            this.tabPage2.Controls.Add(this.lbIScore);
             this.tabPage2.Controls.Add(this.btnIBomb);
-            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.lbIBF);
             this.tabPage2.Controls.Add(this.tbIBombFragment);
             this.tabPage2.Controls.Add(this.tbIScore);
             this.tabPage2.Controls.Add(this.btnIPlayer);
-            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.lbIBomb);
             this.tabPage2.Controls.Add(this.btnIPower);
             this.tabPage2.Controls.Add(this.btnIScore);
             this.tabPage2.Controls.Add(this.tbIPlayer);
-            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.lbIPF);
             this.tabPage2.Controls.Add(this.tbIPower);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -921,6 +922,7 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.Controls.Add(this.btnKill);
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
             this.groupBoxOther.Location = new System.Drawing.Point(4, 244);
             this.groupBoxOther.Name = "groupBoxOther";
@@ -1015,8 +1017,8 @@
             // groupBoxSourceUse
             // 
             this.groupBoxSourceUse.Controls.Add(this.btnCountStart);
-            this.groupBoxSourceUse.Controls.Add(this.lbMiss);
-            this.groupBoxSourceUse.Controls.Add(this.lbBomb);
+            this.groupBoxSourceUse.Controls.Add(this.lbMissCount);
+            this.groupBoxSourceUse.Controls.Add(this.lbBombCount);
             this.groupBoxSourceUse.Location = new System.Drawing.Point(4, 126);
             this.groupBoxSourceUse.Name = "groupBoxSourceUse";
             this.groupBoxSourceUse.Size = new System.Drawing.Size(204, 68);
@@ -1028,29 +1030,29 @@
             // 
             this.btnCountStart.Location = new System.Drawing.Point(6, 39);
             this.btnCountStart.Name = "btnCountStart";
-            this.btnCountStart.Size = new System.Drawing.Size(188, 23);
+            this.btnCountStart.Size = new System.Drawing.Size(192, 23);
             this.btnCountStart.TabIndex = 17;
             this.btnCountStart.Text = "开始";
             this.btnCountStart.UseVisualStyleBackColor = true;
             this.btnCountStart.Click += new System.EventHandler(this.btnCountStart_Click);
             // 
-            // lbMiss
+            // lbMissCount
             // 
-            this.lbMiss.AutoSize = true;
-            this.lbMiss.Location = new System.Drawing.Point(6, 17);
-            this.lbMiss.Name = "lbMiss";
-            this.lbMiss.Size = new System.Drawing.Size(95, 12);
-            this.lbMiss.TabIndex = 14;
-            this.lbMiss.Text = "miss次数:未使用";
+            this.lbMissCount.AutoSize = true;
+            this.lbMissCount.Location = new System.Drawing.Point(6, 17);
+            this.lbMissCount.Name = "lbMissCount";
+            this.lbMissCount.Size = new System.Drawing.Size(95, 12);
+            this.lbMissCount.TabIndex = 14;
+            this.lbMissCount.Text = "miss次数:未使用";
             // 
-            // lbBomb
+            // lbBombCount
             // 
-            this.lbBomb.AutoSize = true;
-            this.lbBomb.Location = new System.Drawing.Point(106, 17);
-            this.lbBomb.Name = "lbBomb";
-            this.lbBomb.Size = new System.Drawing.Size(95, 12);
-            this.lbBomb.TabIndex = 15;
-            this.lbBomb.Text = "bomb次数:未使用";
+            this.lbBombCount.AutoSize = true;
+            this.lbBombCount.Location = new System.Drawing.Point(106, 17);
+            this.lbBombCount.Name = "lbBombCount";
+            this.lbBombCount.Size = new System.Drawing.Size(95, 12);
+            this.lbBombCount.TabIndex = 15;
+            this.lbBombCount.Text = "bomb次数:未使用";
             // 
             // timerProcessWatcher
             // 
@@ -1065,6 +1067,16 @@
             // 
             this.timerDPS.Interval = 1000;
             this.timerDPS.Tick += new System.EventHandler(this.timerDPS_Tick);
+            // 
+            // btnKill
+            // 
+            this.btnKill.Location = new System.Drawing.Point(156, 10);
+            this.btnKill.Name = "btnKill";
+            this.btnKill.Size = new System.Drawing.Size(41, 23);
+            this.btnKill.TabIndex = 21;
+            this.btnKill.Text = "自爆";
+            this.btnKill.UseVisualStyleBackColor = true;
+            this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
             // 
             // MainForm
             // 
@@ -1081,10 +1093,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Form1";
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBoxSpecial.ResumeLayout(false);
+            this.groupBoxSpecial.PerformLayout();
+            this.groupBoxISpecial.ResumeLayout(false);
+            this.groupBoxISpecial.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1121,7 +1133,7 @@
         private System.Windows.Forms.Button btnPower;
         private System.Windows.Forms.TextBox tbSpecial1;
         private System.Windows.Forms.Button btnSpecial1;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBoxSpecial;
         private System.Windows.Forms.Label lbSp3;
         private System.Windows.Forms.Label lbSp2;
         private System.Windows.Forms.TextBox tbSpecial3;
@@ -1129,12 +1141,12 @@
         private System.Windows.Forms.Button btnSpecial3;
         private System.Windows.Forms.Button btnSpecial2;
         private System.Windows.Forms.TextBox tbSpecial2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label lbPower;
+        private System.Windows.Forms.Label lbBF;
+        private System.Windows.Forms.Label lbBomb;
+        private System.Windows.Forms.Label lbPF;
+        private System.Windows.Forms.Label lbPlayer;
+        private System.Windows.Forms.GroupBox groupBoxISpecial;
         private System.Windows.Forms.Label lbISp3;
         private System.Windows.Forms.TextBox tbISpecial1;
         private System.Windows.Forms.Label lbISp2;
@@ -1144,11 +1156,11 @@
         private System.Windows.Forms.Button btnISpecial3;
         private System.Windows.Forms.Button btnISpecial2;
         private System.Windows.Forms.TextBox tbISpecial2;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label lbIPower;
+        private System.Windows.Forms.Label lbIBF;
+        private System.Windows.Forms.Label lbIBomb;
+        private System.Windows.Forms.Label lbIPF;
+        private System.Windows.Forms.Label lbIplayer;
         private System.Windows.Forms.TextBox tbIPower;
         private System.Windows.Forms.TextBox tbIPlayer;
         private System.Windows.Forms.Button btnIPower;
@@ -1160,16 +1172,16 @@
         private System.Windows.Forms.TextBox tbIPlayerFragment;
         private System.Windows.Forms.Button btnIPlayerFragment;
         private System.Windows.Forms.CheckBox unbeatable;
-        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label lbMaxpoint;
         private System.Windows.Forms.TextBox tbMaxPoint;
         private System.Windows.Forms.Button btnMaxPoint;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label lbScore;
         private System.Windows.Forms.TextBox tbScore;
         private System.Windows.Forms.Button btnScore;
-        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label lbIMaxPoint;
         private System.Windows.Forms.TextBox tbIMaxPoint;
         private System.Windows.Forms.Button btnIMaxPoint;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lbIScore;
         private System.Windows.Forms.TextBox tbIScore;
         private System.Windows.Forms.Button btnIScore;
         private System.Windows.Forms.Button btnReadSpecial3;
@@ -1185,8 +1197,8 @@
         private System.Windows.Forms.Button btnFPS;
         private System.Windows.Forms.TextBox tbFPS;
         private System.Windows.Forms.TrackBar trackBar_FPS;
-        private System.Windows.Forms.Label lbBomb;
-        private System.Windows.Forms.Label lbMiss;
+        private System.Windows.Forms.Label lbBombCount;
+        private System.Windows.Forms.Label lbMissCount;
         private System.Windows.Forms.Timer timerMissAndBomb;
         private System.Windows.Forms.Button btnCountStart;
         private System.Windows.Forms.GroupBox groupBoxFPSChange;
@@ -1199,6 +1211,7 @@
         private System.Windows.Forms.Timer timerDPS;
         private System.Windows.Forms.GroupBox groupBoxBoss;
         private System.Windows.Forms.GroupBox groupBoxOther;
+        private System.Windows.Forms.Button btnKill;
     }
 }
 

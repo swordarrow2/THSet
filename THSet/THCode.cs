@@ -9,7 +9,6 @@ namespace THSet {
         public abstract string[] getSpecialTip();
         public abstract string getAboutBug();
         public abstract string getAboutSpecial();
-        public abstract void setTitle(string s);
         public abstract void setMemoryTool(MemoryTool m);
         public abstract string[] getDefaultValue();
         public abstract void StartCount();
@@ -17,6 +16,7 @@ namespace THSet {
         public abstract int getBombCount();
         public abstract int getBulletCount();
         public abstract int getBossLife();
+        public abstract void killSelf();
 
         public abstract bool[] getEnable();
 
