@@ -6,10 +6,8 @@ using System.Text;
 namespace THSet {
     class TH12Code:THCode {
         MemoryTool mt;
-        int bulletCountAddr = 0;
-        int bossLifeAddr = 0;
         public override bool[] getEnable() => new bool[18] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true };
-        public override string getTitle() => (new Random().Next())%2==0 ? "春之岸边播放器" : "东方红红蓝";
+        public override string getTitle() => new Random().Next()%2==0 ? "春之岸边播放器" : "东方红红蓝";
         public override string getAboutBug() => "得分超过2,147,483,647时继续获得分数会使计数倒退";
         public override string getAboutSpecial() => "0-无 1-红 2-蓝 3-绿";
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
@@ -29,13 +27,11 @@ namespace THSet {
                                           0xEB,0xA7 });                    //jmp 00422C85
             write(0x00422C85,new byte[] { 0xE9,0xA3,0x02,0x00,0x00 });     //jmp 00422F2D
             write(0x004B10A4,0);
-            bulletCountAddr=mt.ReadInteger(0x004B43C8);
-            bossLifeAddr=mt.ReadInteger(0x004B43E4);
         }
         public override int getMissCount() => mt.ReadInteger(0x004B10A0);
         public override int getBombCount() => mt.ReadInteger(0x004B10A4);
-        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
-        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x6CF0);
+        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B43C8)+0x5C);
+        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B43E4)+0x6CF0);
         public override void killSelf() => write(mt.ReadInteger(0x004B4514)+0xA28,4);
         public override void setLockPlayer(bool b) => write(0x004381D2,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00 });//sub [004B0C98],ebx
         public override void setLockBomb(bool b) => write(0x00422CD1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00 });//mov [004B0CA0],eax

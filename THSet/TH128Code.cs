@@ -6,9 +6,7 @@ using System.Text;
 namespace THSet {
     class TH128Code:THCode {
         MemoryTool mt;
-        int bulletCountAddr = 0;
-        int bossLifeAddr = 0;
-        public override string getTitle() => (new Random().Next())%2==0 ? "1+1=9" : "妖精大战争";
+        public override string getTitle() => new Random().Next()%2==0 ? "1+1=9" : "妖精大战争";
         public override string[] getSpecialTip() => new string[] { "蓄力","","" };
         public override string getAboutBug() => "终符若同时击破了两只妖精，则卡关……无解\n“满身疮痍”界面直接重新开始会导致录像爆炸，应返回主界面重新开始，若没有疮痍，则可以放心使用ESC+R\n难度\\路线选择界面如果按键频率过高可能会出现选择不正确的情况";
         public override string getAboutSpecial() => "";
@@ -28,13 +26,11 @@ namespace THSet {
                                           0xEB,0x17 });                     //jmp 0043B636
             write(0x0043B636,new byte[] { 0xE9,0xA5,0x01,0x00,0x00 });      //jmp 0043B7E0
             write(0x004B51B0,0);
-            bulletCountAddr=mt.ReadInteger(0x004B8930);
-            bossLifeAddr=mt.ReadInteger(0x004B8950);
         }
         public override int getMissCount() => mt.ReadInteger(0x004B51AC);
         public override int getBombCount() => mt.ReadInteger(0x004B51B0);
-        public override int getBulletCount() => mt.ReadInteger(bulletCountAddr+0x5C);
-        public override int getBossLife() => mt.ReadInteger(bossLifeAddr+0x5910);
+        public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B8930)+0x5C);
+        public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B8950)+0x5910);
         public override void killSelf() => write(mt.ReadInteger(0x004B8A80)+0xF78,4);
         public override bool[] getEnable() => new bool[18] { true,true,true,true,false,true,false,true,true,false,true,false,false,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 });//mov [004B4D64],ecx

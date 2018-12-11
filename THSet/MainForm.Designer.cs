@@ -102,6 +102,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
+            this.btnKill = new System.Windows.Forms.Button();
             this.lbBulletCount = new System.Windows.Forms.Label();
             this.groupBoxBoss = new System.Windows.Forms.GroupBox();
             this.lbLife = new System.Windows.Forms.Label();
@@ -117,9 +118,7 @@
             this.timerProcessWatcher = new System.Windows.Forms.Timer(this.components);
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
-            this.btnKill = new System.Windows.Forms.Button();
             this.lbfafafa1 = new System.Windows.Forms.Label();
-            this.lbfafafa2 = new System.Windows.Forms.Label();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -801,7 +800,7 @@
             // 
             // showBug
             // 
-            this.showBug.Location = new System.Drawing.Point(159, 345);
+            this.showBug.Location = new System.Drawing.Point(169, 345);
             this.showBug.Name = "showBug";
             this.showBug.Size = new System.Drawing.Size(58, 23);
             this.showBug.TabIndex = 14;
@@ -821,7 +820,7 @@
             // 
             // note
             // 
-            this.note.Location = new System.Drawing.Point(88, 345);
+            this.note.Location = new System.Drawing.Point(93, 345);
             this.note.Name = "note";
             this.note.Size = new System.Drawing.Size(64, 23);
             this.note.TabIndex = 16;
@@ -932,6 +931,16 @@
             this.groupBoxOther.TabIndex = 24;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "其它";
+            // 
+            // btnKill
+            // 
+            this.btnKill.Location = new System.Drawing.Point(156, 10);
+            this.btnKill.Name = "btnKill";
+            this.btnKill.Size = new System.Drawing.Size(41, 23);
+            this.btnKill.TabIndex = 21;
+            this.btnKill.Text = "自爆";
+            this.btnKill.UseVisualStyleBackColor = true;
+            this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
             // 
             // lbBulletCount
             // 
@@ -1070,49 +1079,28 @@
             this.timerDPS.Interval = 1000;
             this.timerDPS.Tick += new System.EventHandler(this.timerDPS_Tick);
             // 
-            // btnKill
-            // 
-            this.btnKill.Location = new System.Drawing.Point(156, 10);
-            this.btnKill.Name = "btnKill";
-            this.btnKill.Size = new System.Drawing.Size(41, 23);
-            this.btnKill.TabIndex = 21;
-            this.btnKill.Text = "自爆";
-            this.btnKill.UseVisualStyleBackColor = true;
-            this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
-            // 
             // lbfafafa1
             // 
             this.lbfafafa1.AutoSize = true;
             this.lbfafafa1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lbfafafa1.ForeColor = System.Drawing.Color.Lime;
-            this.lbfafafa1.Location = new System.Drawing.Point(234, 29);
+            this.lbfafafa1.Location = new System.Drawing.Point(5, 9);
             this.lbfafafa1.Name = "lbfafafa1";
             this.lbfafafa1.Size = new System.Drawing.Size(29, 12);
             this.lbfafafa1.TabIndex = 18;
             this.lbfafafa1.Text = "  aa";
-            // 
-            // lbfafafa2
-            // 
-            this.lbfafafa2.AutoSize = true;
-            this.lbfafafa2.ForeColor = System.Drawing.Color.Lime;
-            this.lbfafafa2.Location = new System.Drawing.Point(6, 378);
-            this.lbfafafa2.Name = "lbfafafa2";
-            this.lbfafafa2.Size = new System.Drawing.Size(41, 12);
-            this.lbfafafa2.TabIndex = 19;
-            this.lbfafafa2.Text = "    aa";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(232, 375);
-            this.Controls.Add(this.lbfafafa2);
-            this.Controls.Add(this.lbfafafa1);
+            this.ClientSize = new System.Drawing.Size(233, 373);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.note);
             this.Controls.Add(this.showBug);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.lbfafafa1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1239,7 +1227,6 @@
         private System.Windows.Forms.GroupBox groupBoxOther;
         private System.Windows.Forms.Button btnKill;
         private System.Windows.Forms.Label lbfafafa1;
-        private System.Windows.Forms.Label lbfafafa2;
     }
 }
 

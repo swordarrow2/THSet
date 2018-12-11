@@ -10,8 +10,9 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.4.3";
+        private const string versonCode = "THSet v2.4.5";
         private THCode tc;
+        private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
         private string[] names = new string[] { "th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
@@ -45,7 +46,7 @@ namespace THSet {
                 case 12: tc=new TH15Code(); break;
                 case 13: tc=new TH16Code(); break;
             }
-            tc.setMemoryTool(new MemoryTool(names[index]));
+            tc.setMemoryTool(new MemoryTool(THprocess));
             Text=tc.getTitle();
             enable=tc.getEnable();
             string[] sptip = tc.getSpecialTip();
@@ -83,11 +84,13 @@ namespace THSet {
             base.OnResize(e);
             if(WindowState==FormWindowState.Maximized) {
                 StringBuilder sb = new StringBuilder();
-                for(int i = 0;i<60;i++) {
+                for(int i = 0;i<150;i++) {
                     for(int j = 0;j<150;j++) sb.Append("发");
                     sb.Append("\n");
                 }
-                lbfafafa1.Text=lbfafafa2.Text=sb.ToString();
+                lbfafafa1.Text=sb.ToString();
+            } else {
+                lbfafafa1.Text="";
             }
         }
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) => tc.setLockPlayer(lockPlayer.Checked);
@@ -164,11 +167,11 @@ namespace THSet {
         }
         private int GetPID(string exeName) {
             try {
-                return Process.GetProcessesByName(exeName)[0].Id;
+                THprocess=Process.GetProcessesByName(exeName)[0];
+                return THprocess.Id;
             } catch {
                 return 0;
             }
         }
-
     }
 }

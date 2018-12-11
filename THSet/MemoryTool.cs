@@ -11,19 +11,13 @@ namespace THSet {
         [DllImport("kernel32.dll")]
         public static extern int ReadProcessMemory(IntPtr Handle,long Address,byte[] buffer,int Size,int BytesRead = 0);
 
-        public string ExeName { get; set; }
         Process pro;
-        public MemoryTool(string exeName) {
-            ExeName=exeName;
-            pro=Process.GetProcessesByName(exeName)[0];
-        }
+
+        public MemoryTool(Process p) => pro=p;
         public IntPtr GetProcessHandle() {
-            try {
-                return pro.Handle;
-            } catch {
-                return IntPtr.Zero;
-            }
+            return pro.Handle;
         }
+
         public int WriteBytes(long Address,byte[] Bytes) => WriteProcessMemory(GetProcessHandle(),Address,Bytes,Bytes.Length);
         public int WriteInteger(long Address,int Value) => WriteProcessMemory(GetProcessHandle(),Address,BitConverter.GetBytes(Value),4);
         public int ReadInteger(long Address) {
