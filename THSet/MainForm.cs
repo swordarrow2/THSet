@@ -10,16 +10,18 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.4.5";
-        private THCode tc;
+        private const string versonCode = "THSet v2.5";
+        private FormWindowState fwsPrevious;
+        private floatWindow myTopMost;
+        public THCode tc;
         private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
-        private string[] names = new string[] { "th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
+        public string[] names = new string[] { "th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16" };
         private int pid = 0;
         private int lastLife = 0;
         private int thisLife = 0;
-        private int index = 0;
+        public int index = 0;
         public MainForm() {
             InitializeComponent();
             for(;index<names.Length;index++) {
@@ -79,6 +81,20 @@ namespace THSet {
             groupBoxOther.Enabled=false;
             timerProcessWatcher.Enabled=true;
             if(GetPID("th128_CN")==pid||GetPID("th128")==pid) tbIPower.Enabled=btnIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=tbIScore.Enabled=btnIScore.Enabled=false;
+            cbTop.Checked=TopMost=Properties.Settings.Default.holdTop;
+            trackBarA.Value=Properties.Settings.Default.bgA;
+            trackBarR.Value=Properties.Settings.Default.bgR;
+            trackBarG.Value=Properties.Settings.Default.bgG;
+            trackBarB.Value=Properties.Settings.Default.bgB;
+            trackBarFontR.Value=Properties.Settings.Default.fontR;
+            trackBarFontG.Value=Properties.Settings.Default.fontG;
+            trackBarFontB.Value=Properties.Settings.Default.fontB;
+            lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
+            lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+        }
+        private void MainForm_Load(object sender,EventArgs e) {
+            fwsPrevious=WindowState;
+            myTopMost=new floatWindow(this);
         }
         protected override void OnResize(EventArgs e) {
             base.OnResize(e);
@@ -91,6 +107,12 @@ namespace THSet {
                 lbfafafa1.Text=sb.ToString();
             } else {
                 lbfafafa1.Text="";
+                if(WindowState==FormWindowState.Minimized&&tipedWarning) {
+                    myTopMost.Show();
+                    ShowInTaskbar=false;
+                } else if(WindowState!=fwsPrevious) {
+                    fwsPrevious=WindowState;
+                }
             }
         }
         private void lockPlayer_CheckedChanged(object sender,EventArgs e) => tc.setLockPlayer(lockPlayer.Checked);
@@ -173,5 +195,45 @@ namespace THSet {
                 return 0;
             }
         }
-    }
+        public void RestoreWindow() {
+            WindowState=fwsPrevious;
+            ShowInTaskbar=true;
+        }
+        private void cbTop_CheckedChanged(object sender,EventArgs e) {
+            TopMost=cbTop.Checked;
+            Properties.Settings.Default.holdTop=cbTop.Checked;
+            Properties.Settings.Default.Save();
+        }
+        private void trackBarR_Scroll(object sender,EventArgs e) => lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
+        private void trackBarG_Scroll(object sender,EventArgs e) => lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
+        private void trackBarB_Scroll(object sender,EventArgs e) => lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
+        private void trackBarFontR_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+        private void trackBarFontG_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+        private void trackBarFontB_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+        private void saveConfig(object sender,MouseEventArgs e) => saveConfig();
+        private void btnUseFloatWindow_Click(object sender,EventArgs e) => MessageBox.Show("启用数据监视的状态下把本软件主窗体最小化，将会自动打开悬浮窗……另外,不要点击最大化按钮,不要点不要点不要点",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+        private void btnDefault_Click(object sender,EventArgs e) {
+            trackBarA.Value=0x50;
+            trackBarR.Value=0x7F;
+            trackBarG.Value=0xCA;
+            trackBarB.Value=0x00;
+            trackBarFontR.Value=0x00;
+            trackBarFontG.Value=0x00;
+            trackBarFontB.Value=0x00;
+            lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
+            lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+            saveConfig();
+        }
+        private void saveConfig() {
+            Properties.Settings.Default.bgA=trackBarA.Value;
+            Properties.Settings.Default.bgR=trackBarR.Value;
+            Properties.Settings.Default.bgG=trackBarG.Value;
+            Properties.Settings.Default.bgB=trackBarB.Value;
+            Properties.Settings.Default.fontR=trackBarFontR.Value;
+            Properties.Settings.Default.fontG=trackBarFontG.Value;
+            Properties.Settings.Default.fontB=trackBarFontB.Value;
+            Properties.Settings.Default.Save();
+        }
+     }
 }

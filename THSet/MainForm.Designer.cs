@@ -115,6 +115,27 @@
             this.btnCountStart = new System.Windows.Forms.Button();
             this.lbMissCount = new System.Windows.Forms.Label();
             this.lbBombCount = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnUseFloatWindow = new System.Windows.Forms.Button();
+            this.btnDefault = new System.Windows.Forms.Button();
+            this.lbShowRGB = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.trackBarFontB = new System.Windows.Forms.TrackBar();
+            this.trackBarFontG = new System.Windows.Forms.TrackBar();
+            this.trackBarFontR = new System.Windows.Forms.TrackBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.trackBarB = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.trackBarG = new System.Windows.Forms.TrackBar();
+            this.trackBarR = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.trackBarA = new System.Windows.Forms.TrackBar();
+            this.cbTop = new System.Windows.Forms.CheckBox();
             this.timerProcessWatcher = new System.Windows.Forms.Timer(this.components);
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
@@ -130,6 +151,16 @@
             this.groupBoxFPSChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
             this.groupBoxSourceUse.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontR)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarA)).BeginInit();
             this.SuspendLayout();
             // 
             // timerMissAndBomb
@@ -833,6 +864,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(7, 7);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1065,6 +1097,241 @@
             this.lbBombCount.TabIndex = 15;
             this.lbBombCount.Text = "bomb次数:未使用";
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.btnUseFloatWindow);
+            this.tabPage4.Controls.Add(this.btnDefault);
+            this.tabPage4.Controls.Add(this.lbShowRGB);
+            this.tabPage4.Controls.Add(this.groupBox2);
+            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Controls.Add(this.cbTop);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(212, 306);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "设置";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnUseFloatWindow
+            // 
+            this.btnUseFloatWindow.Location = new System.Drawing.Point(124, 278);
+            this.btnUseFloatWindow.Name = "btnUseFloatWindow";
+            this.btnUseFloatWindow.Size = new System.Drawing.Size(83, 23);
+            this.btnUseFloatWindow.TabIndex = 28;
+            this.btnUseFloatWindow.Text = "如何开启？";
+            this.btnUseFloatWindow.UseVisualStyleBackColor = true;
+            this.btnUseFloatWindow.Click += new System.EventHandler(this.btnUseFloatWindow_Click);
+            // 
+            // btnDefault
+            // 
+            this.btnDefault.Location = new System.Drawing.Point(62, 278);
+            this.btnDefault.Name = "btnDefault";
+            this.btnDefault.Size = new System.Drawing.Size(56, 23);
+            this.btnDefault.TabIndex = 8;
+            this.btnDefault.Text = "默认值";
+            this.btnDefault.UseVisualStyleBackColor = true;
+            this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
+            // 
+            // lbShowRGB
+            // 
+            this.lbShowRGB.AutoSize = true;
+            this.lbShowRGB.Location = new System.Drawing.Point(7, 283);
+            this.lbShowRGB.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.lbShowRGB.Name = "lbShowRGB";
+            this.lbShowRGB.Padding = new System.Windows.Forms.Padding(0, 2, 0, 3);
+            this.lbShowRGB.Size = new System.Drawing.Size(53, 17);
+            this.lbShowRGB.TabIndex = 6;
+            this.lbShowRGB.Text = " 发发发 ";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.trackBarFontB);
+            this.groupBox2.Controls.Add(this.trackBarFontG);
+            this.groupBox2.Controls.Add(this.trackBarFontR);
+            this.groupBox2.Location = new System.Drawing.Point(1, 164);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(206, 111);
+            this.groupBox2.TabIndex = 27;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "悬浮窗字体颜色";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(0, 75);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(11, 12);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "B";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(0, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(11, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "G";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(0, 20);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(11, 12);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "R";
+            // 
+            // trackBarFontB
+            // 
+            this.trackBarFontB.AutoSize = false;
+            this.trackBarFontB.Location = new System.Drawing.Point(6, 75);
+            this.trackBarFontB.Maximum = 255;
+            this.trackBarFontB.Name = "trackBarFontB";
+            this.trackBarFontB.Size = new System.Drawing.Size(188, 30);
+            this.trackBarFontB.TabIndex = 2;
+            this.trackBarFontB.TickFrequency = 255;
+            this.trackBarFontB.Scroll += new System.EventHandler(this.trackBarFontB_Scroll);
+            this.trackBarFontB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // trackBarFontG
+            // 
+            this.trackBarFontG.AutoSize = false;
+            this.trackBarFontG.Location = new System.Drawing.Point(6, 48);
+            this.trackBarFontG.Maximum = 255;
+            this.trackBarFontG.Name = "trackBarFontG";
+            this.trackBarFontG.Size = new System.Drawing.Size(188, 30);
+            this.trackBarFontG.TabIndex = 1;
+            this.trackBarFontG.TickFrequency = 255;
+            this.trackBarFontG.Scroll += new System.EventHandler(this.trackBarFontG_Scroll);
+            this.trackBarFontG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // trackBarFontR
+            // 
+            this.trackBarFontR.AutoSize = false;
+            this.trackBarFontR.Location = new System.Drawing.Point(6, 20);
+            this.trackBarFontR.Maximum = 255;
+            this.trackBarFontR.Name = "trackBarFontR";
+            this.trackBarFontR.Size = new System.Drawing.Size(188, 30);
+            this.trackBarFontR.TabIndex = 0;
+            this.trackBarFontR.TickFrequency = 255;
+            this.trackBarFontR.Scroll += new System.EventHandler(this.trackBarFontR_Scroll);
+            this.trackBarFontR.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.trackBarB);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.trackBarG);
+            this.groupBox1.Controls.Add(this.trackBarR);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.trackBarA);
+            this.groupBox1.Location = new System.Drawing.Point(3, 25);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(206, 133);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "悬浮窗背景色";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(11, 12);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "B";
+            // 
+            // trackBarB
+            // 
+            this.trackBarB.AutoSize = false;
+            this.trackBarB.Location = new System.Drawing.Point(6, 98);
+            this.trackBarB.Maximum = 255;
+            this.trackBarB.Name = "trackBarB";
+            this.trackBarB.Size = new System.Drawing.Size(188, 30);
+            this.trackBarB.TabIndex = 2;
+            this.trackBarB.TickFrequency = 255;
+            this.trackBarB.Scroll += new System.EventHandler(this.trackBarB_Scroll);
+            this.trackBarB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(0, 72);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "G";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(0, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(11, 12);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "R";
+            // 
+            // trackBarG
+            // 
+            this.trackBarG.AutoSize = false;
+            this.trackBarG.Location = new System.Drawing.Point(6, 71);
+            this.trackBarG.Maximum = 255;
+            this.trackBarG.Name = "trackBarG";
+            this.trackBarG.Size = new System.Drawing.Size(188, 30);
+            this.trackBarG.TabIndex = 1;
+            this.trackBarG.TickFrequency = 255;
+            this.trackBarG.Scroll += new System.EventHandler(this.trackBarG_Scroll);
+            this.trackBarG.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // trackBarR
+            // 
+            this.trackBarR.AutoSize = false;
+            this.trackBarR.Location = new System.Drawing.Point(6, 43);
+            this.trackBarR.Maximum = 255;
+            this.trackBarR.Name = "trackBarR";
+            this.trackBarR.Size = new System.Drawing.Size(188, 30);
+            this.trackBarR.TabIndex = 0;
+            this.trackBarR.TickFrequency = 255;
+            this.trackBarR.Scroll += new System.EventHandler(this.trackBarR_Scroll);
+            this.trackBarR.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(0, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "A";
+            // 
+            // trackBarA
+            // 
+            this.trackBarA.AutoSize = false;
+            this.trackBarA.Location = new System.Drawing.Point(6, 16);
+            this.trackBarA.Maximum = 100;
+            this.trackBarA.Name = "trackBarA";
+            this.trackBarA.Size = new System.Drawing.Size(188, 30);
+            this.trackBarA.TabIndex = 7;
+            this.trackBarA.TickFrequency = 100;
+            this.trackBarA.MouseUp += new System.Windows.Forms.MouseEventHandler(this.saveConfig);
+            // 
+            // cbTop
+            // 
+            this.cbTop.AutoSize = true;
+            this.cbTop.Location = new System.Drawing.Point(3, 3);
+            this.cbTop.Name = "cbTop";
+            this.cbTop.Size = new System.Drawing.Size(96, 16);
+            this.cbTop.TabIndex = 25;
+            this.cbTop.Text = "窗口保持顶端";
+            this.cbTop.UseVisualStyleBackColor = true;
+            this.cbTop.CheckedChanged += new System.EventHandler(this.cbTop_CheckedChanged);
+            // 
             // timerProcessWatcher
             // 
             this.timerProcessWatcher.Interval = 1000;
@@ -1095,17 +1362,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(233, 373);
+            this.ClientSize = new System.Drawing.Size(234, 377);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.note);
             this.Controls.Add(this.showBug);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.lbfafafa1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "Form1";
+            this.TopMost = true;
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.groupBoxSpecial.ResumeLayout(false);
             this.groupBoxSpecial.PerformLayout();
             this.groupBoxISpecial.ResumeLayout(false);
@@ -1126,6 +1394,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).EndInit();
             this.groupBoxSourceUse.ResumeLayout(false);
             this.groupBoxSourceUse.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarFontR)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarA)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1227,6 +1508,27 @@
         private System.Windows.Forms.GroupBox groupBoxOther;
         private System.Windows.Forms.Button btnKill;
         private System.Windows.Forms.Label lbfafafa1;
+        private System.Windows.Forms.CheckBox cbTop;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TrackBar trackBarB;
+        public System.Windows.Forms.TrackBar trackBarG;
+        public System.Windows.Forms.TrackBar trackBarR;
+        private System.Windows.Forms.Label lbShowRGB;
+        private System.Windows.Forms.Label label4;
+        public System.Windows.Forms.TrackBar trackBarA;
+        private System.Windows.Forms.Button btnDefault;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.TrackBar trackBarFontB;
+        public System.Windows.Forms.TrackBar trackBarFontG;
+        public System.Windows.Forms.TrackBar trackBarFontR;
+        private System.Windows.Forms.Button btnUseFloatWindow;
     }
 }
 
