@@ -957,9 +957,9 @@
             // 
             this.groupBoxOther.Controls.Add(this.btnKill);
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
-            this.groupBoxOther.Location = new System.Drawing.Point(4, 244);
+            this.groupBoxOther.Location = new System.Drawing.Point(3, 228);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(204, 37);
+            this.groupBoxOther.Size = new System.Drawing.Size(208, 42);
             this.groupBoxOther.TabIndex = 24;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "其它";
@@ -987,7 +987,7 @@
             // 
             this.groupBoxBoss.Controls.Add(this.lbLife);
             this.groupBoxBoss.Controls.Add(this.lbDPS);
-            this.groupBoxBoss.Location = new System.Drawing.Point(3, 200);
+            this.groupBoxBoss.Location = new System.Drawing.Point(3, 185);
             this.groupBoxBoss.Name = "groupBoxBoss";
             this.groupBoxBoss.Size = new System.Drawing.Size(205, 37);
             this.groupBoxBoss.TabIndex = 23;
@@ -1019,14 +1019,14 @@
             this.groupBoxFPSChange.Controls.Add(this.trackBar_FPS);
             this.groupBoxFPSChange.Location = new System.Drawing.Point(4, 34);
             this.groupBoxFPSChange.Name = "groupBoxFPSChange";
-            this.groupBoxFPSChange.Size = new System.Drawing.Size(204, 86);
+            this.groupBoxFPSChange.Size = new System.Drawing.Size(204, 71);
             this.groupBoxFPSChange.TabIndex = 19;
             this.groupBoxFPSChange.TabStop = false;
             this.groupBoxFPSChange.Text = "FPS调节";
             // 
             // btnFPS
             // 
-            this.btnFPS.Location = new System.Drawing.Point(97, 54);
+            this.btnFPS.Location = new System.Drawing.Point(102, 41);
             this.btnFPS.Name = "btnFPS";
             this.btnFPS.Size = new System.Drawing.Size(95, 23);
             this.btnFPS.TabIndex = 0;
@@ -1036,21 +1036,22 @@
             // 
             // tbFPS
             // 
-            this.tbFPS.Location = new System.Drawing.Point(12, 56);
+            this.tbFPS.Location = new System.Drawing.Point(7, 41);
             this.tbFPS.Name = "tbFPS";
-            this.tbFPS.Size = new System.Drawing.Size(79, 21);
+            this.tbFPS.Size = new System.Drawing.Size(89, 21);
             this.tbFPS.TabIndex = 2;
             this.tbFPS.Text = "60";
             this.tbFPS.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // trackBar_FPS
             // 
+            this.trackBar_FPS.AutoSize = false;
             this.trackBar_FPS.LargeChange = 30;
-            this.trackBar_FPS.Location = new System.Drawing.Point(4, 20);
+            this.trackBar_FPS.Location = new System.Drawing.Point(0, 10);
             this.trackBar_FPS.Maximum = 180;
             this.trackBar_FPS.Minimum = 60;
             this.trackBar_FPS.Name = "trackBar_FPS";
-            this.trackBar_FPS.Size = new System.Drawing.Size(198, 45);
+            this.trackBar_FPS.Size = new System.Drawing.Size(198, 25);
             this.trackBar_FPS.SmallChange = 5;
             this.trackBar_FPS.TabIndex = 3;
             this.trackBar_FPS.TickFrequency = 5;
@@ -1062,7 +1063,7 @@
             this.groupBoxSourceUse.Controls.Add(this.btnCountStart);
             this.groupBoxSourceUse.Controls.Add(this.lbMissCount);
             this.groupBoxSourceUse.Controls.Add(this.lbBombCount);
-            this.groupBoxSourceUse.Location = new System.Drawing.Point(4, 126);
+            this.groupBoxSourceUse.Location = new System.Drawing.Point(4, 111);
             this.groupBoxSourceUse.Name = "groupBoxSourceUse";
             this.groupBoxSourceUse.Size = new System.Drawing.Size(204, 68);
             this.groupBoxSourceUse.TabIndex = 18;
@@ -1326,9 +1327,9 @@
             this.cbTop.AutoSize = true;
             this.cbTop.Location = new System.Drawing.Point(3, 3);
             this.cbTop.Name = "cbTop";
-            this.cbTop.Size = new System.Drawing.Size(96, 16);
+            this.cbTop.Size = new System.Drawing.Size(108, 16);
             this.cbTop.TabIndex = 25;
-            this.cbTop.Text = "窗口保持顶端";
+            this.cbTop.Text = "主窗口保持顶端";
             this.cbTop.UseVisualStyleBackColor = true;
             this.cbTop.CheckedChanged += new System.EventHandler(this.cbTop_CheckedChanged);
             // 

@@ -118,5 +118,29 @@ namespace THSet.Properties {
                 this["fontB"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int floatWindowX {
+            get {
+                return ((int)(this["floatWindowX"]));
+            }
+            set {
+                this["floatWindowX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int floatWindowY {
+            get {
+                return ((int)(this["floatWindowY"]));
+            }
+            set {
+                this["floatWindowY"] = value;
+            }
+        }
     }
 }

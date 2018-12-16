@@ -27,7 +27,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(floatWindow));
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
             this.lbBulletCount = new System.Windows.Forms.Label();
-            this.btnKill = new System.Windows.Forms.Button();
             this.groupBoxBoss = new System.Windows.Forms.GroupBox();
             this.lbLife = new System.Windows.Forms.Label();
             this.lbDPS = new System.Windows.Forms.Label();
@@ -35,9 +34,7 @@
             this.btnCountStart = new System.Windows.Forms.Button();
             this.lbMissCount = new System.Windows.Forms.Label();
             this.lbBombCount = new System.Windows.Forms.Label();
-            this.timerMissAndBomb = new System.Windows.Forms.Timer(this.components);
-            this.timerEnemy = new System.Windows.Forms.Timer(this.components);
-            this.timerDPS = new System.Windows.Forms.Timer(this.components);
+            this.timerFloatWindow = new System.Windows.Forms.Timer(this.components);
             this.btnBack = new System.Windows.Forms.Button();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxBoss.SuspendLayout();
@@ -62,17 +59,9 @@
             this.lbBulletCount.Size = new System.Drawing.Size(47, 12);
             this.lbBulletCount.TabIndex = 20;
             this.lbBulletCount.Text = "子弹数:";
-            // 
-            // btnKill
-            // 
-            this.btnKill.BackColor = System.Drawing.Color.Transparent;
-            this.btnKill.Location = new System.Drawing.Point(92, 106);
-            this.btnKill.Name = "btnKill";
-            this.btnKill.Size = new System.Drawing.Size(82, 23);
-            this.btnKill.TabIndex = 21;
-            this.btnKill.Text = "自爆";
-            this.btnKill.UseVisualStyleBackColor = false;
-            this.btnKill.Click += new System.EventHandler(this.btnKill_Click_1);
+            this.lbBulletCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.lbBulletCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.lbBulletCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             // 
             // groupBoxBoss
             // 
@@ -93,6 +82,9 @@
             this.lbLife.Size = new System.Drawing.Size(35, 12);
             this.lbLife.TabIndex = 21;
             this.lbLife.Text = "血量:";
+            this.lbLife.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.lbLife.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.lbLife.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             // 
             // lbDPS
             // 
@@ -102,6 +94,9 @@
             this.lbDPS.Size = new System.Drawing.Size(29, 12);
             this.lbDPS.TabIndex = 22;
             this.lbDPS.Text = "DPS:";
+            this.lbDPS.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.lbDPS.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.lbDPS.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             // 
             // groupBoxSourceUse
             // 
@@ -134,6 +129,9 @@
             this.lbMissCount.Size = new System.Drawing.Size(95, 12);
             this.lbMissCount.TabIndex = 14;
             this.lbMissCount.Text = "miss次数:未使用";
+            this.lbMissCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.lbMissCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.lbMissCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             // 
             // lbBombCount
             // 
@@ -143,29 +141,21 @@
             this.lbBombCount.Size = new System.Drawing.Size(95, 12);
             this.lbBombCount.TabIndex = 15;
             this.lbBombCount.Text = "bomb次数:未使用";
+            this.lbBombCount.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.lbBombCount.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.lbBombCount.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             // 
-            // timerMissAndBomb
+            // timerFloatWindow
             // 
-            this.timerMissAndBomb.Enabled = true;
-            this.timerMissAndBomb.Tick += new System.EventHandler(this.timerMissAndBomb_Tick);
-            // 
-            // timerEnemy
-            // 
-            this.timerEnemy.Enabled = true;
-            this.timerEnemy.Tick += new System.EventHandler(this.timerEnemy_Tick);
-            // 
-            // timerDPS
-            // 
-            this.timerDPS.Enabled = true;
-            this.timerDPS.Interval = 1000;
-            this.timerDPS.Tick += new System.EventHandler(this.timerDPS_Tick);
+            this.timerFloatWindow.Enabled = true;
+            this.timerFloatWindow.Tick += new System.EventHandler(this.timerFloatWindow_Tick);
             // 
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.Location = new System.Drawing.Point(12, 135);
+            this.btnBack.Location = new System.Drawing.Point(92, 106);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(162, 23);
+            this.btnBack.Size = new System.Drawing.Size(82, 23);
             this.btnBack.TabIndex = 28;
             this.btnBack.Text = "返回主窗体";
             this.btnBack.UseVisualStyleBackColor = false;
@@ -176,9 +166,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(187, 169);
+            this.ClientSize = new System.Drawing.Size(185, 141);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnKill);
             this.Controls.Add(this.groupBoxOther);
             this.Controls.Add(this.groupBoxBoss);
             this.Controls.Add(this.groupBoxSourceUse);
@@ -188,11 +177,11 @@
             this.Text = "发发发";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.setBG);
-            this.Load += new System.EventHandler(this.frmTopMost_Load);
-            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.frmTopMost_DoubleClick);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmTopMost_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmTopMost_MouseMove);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmTopMost_MouseUp);
+            this.Load += new System.EventHandler(this.floatWindow_Load);
+            this.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.floatWindow_DoubleClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.floatWindow_MouseUp);
             this.groupBoxOther.ResumeLayout(false);
             this.groupBoxOther.PerformLayout();
             this.groupBoxBoss.ResumeLayout(false);
@@ -206,7 +195,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBoxOther;
-        private System.Windows.Forms.Button btnKill;
         private System.Windows.Forms.Label lbBulletCount;
         private System.Windows.Forms.GroupBox groupBoxBoss;
         private System.Windows.Forms.Label lbLife;
@@ -215,9 +203,7 @@
         private System.Windows.Forms.Button btnCountStart;
         private System.Windows.Forms.Label lbMissCount;
         private System.Windows.Forms.Label lbBombCount;
-        private System.Windows.Forms.Timer timerMissAndBomb;
-        private System.Windows.Forms.Timer timerEnemy;
-        private System.Windows.Forms.Timer timerDPS;
+        private System.Windows.Forms.Timer timerFloatWindow;
         private System.Windows.Forms.Button btnBack;
     }
 }

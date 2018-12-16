@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.5";
+        private const string versonCode = "THSet v2.5.1";
         private FormWindowState fwsPrevious;
         private floatWindow myTopMost;
-        public THCode tc;
+        private THCode tc;
         private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
@@ -22,6 +22,12 @@ namespace THSet {
         private int lastLife = 0;
         private int thisLife = 0;
         public int index = 0;
+        public int missCount = 0;
+        public int bombCount = 0;
+        public int bulletCount = 0;
+        public int bossLife = 0;
+        public int dps = 0;
+
         public MainForm() {
             InitializeComponent();
             for(;index<names.Length;index++) {
@@ -35,20 +41,19 @@ namespace THSet {
             switch(index) {
                 case 0:
                 case 1:
-                case 2: tc=new TH10Code(); break;
+                case 2: tc=new TH10Code(new MemoryTool(THprocess)); break;
                 case 3:
-                case 4: tc=new TH11Code(); break;
+                case 4: tc=new TH11Code(new MemoryTool(THprocess)); break;
                 case 5:
-                case 6: tc=new TH12Code(); break;
+                case 6: tc=new TH12Code(new MemoryTool(THprocess)); break;
                 case 7:
-                case 8: tc=new TH128Code(); break;
+                case 8: tc=new TH128Code(new MemoryTool(THprocess)); break;
                 case 9:
-                case 10: tc=new TH13Code(); break;
-                case 11: tc=new TH14Code(); break;
-                case 12: tc=new TH15Code(); break;
-                case 13: tc=new TH16Code(); break;
+                case 10: tc=new TH13Code(new MemoryTool(THprocess)); break;
+                case 11: tc=new TH14Code(new MemoryTool(THprocess)); break;
+                case 12: tc=new TH15Code(new MemoryTool(THprocess)); break;
+                case 13: tc=new TH16Code(new MemoryTool(THprocess)); break;
             }
-            tc.setMemoryTool(new MemoryTool(THprocess));
             Text=tc.getTitle();
             enable=tc.getEnable();
             string[] sptip = tc.getSpecialTip();
@@ -152,22 +157,27 @@ namespace THSet {
         private void note_Click(object sender,EventArgs e) => MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常."+
                 "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
-                "\n\n注意：如果重启游戏需重启修改器",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-        private void btnKill_Click(object sender,EventArgs e) => tc.killSelf();
+                "\n\n注意：如果重启游戏需重启修改器\n……另外,不要点击最大化按钮,不要点不要点不要点",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+        private void btnKill_Click(object sender,EventArgs e) => killSelf();
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
-            lbMissCount.Text="miss次数:"+tc.getMissCount();
-            lbBombCount.Text="bomb次数:"+tc.getBombCount();
+            missCount=tc.getMissCount();
+            bombCount=tc.getBombCount();
+            lbMissCount.Text="miss次数:"+missCount;
+            lbBombCount.Text="bomb次数:"+bombCount;
         }
         private void timerEnemy_Tick(object sender,EventArgs e) {
-            lbBulletCount.Text="子弹数量:"+tc.getBulletCount();
-            lbLife.Text="血量:"+tc.getBossLife();
+            bulletCount=tc.getBulletCount();
+            bossLife=tc.getBossLife();
+            lbBulletCount.Text="子弹数量:"+bulletCount;
+            lbLife.Text="血量:"+bossLife;
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
             thisLife=tc.getBossLife();
-            lbDPS.Text="DPS:"+(lastLife-thisLife);
+            dps=lastLife-thisLife;
+            lbDPS.Text="DPS:"+dps;
             lastLife=thisLife;
         }
-        private void btnCountStart_Click(object sender,EventArgs e) => tc.StartCount();
+        private void btnCountStart_Click(object sender,EventArgs e) => restartCount();
         private void tabChange(object sender,EventArgs e) {
             if(tabControl1.SelectedTab==tabPage3&&!tipedWarning) {
                 if(MessageBox.Show("这些功能可能会对游戏录像(.rpy)产生影响,如果产生了影响,则必须在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则不使用本页功能",versonCode,MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
@@ -211,7 +221,7 @@ namespace THSet {
         private void trackBarFontG_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
         private void trackBarFontB_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
         private void saveConfig(object sender,MouseEventArgs e) => saveConfig();
-        private void btnUseFloatWindow_Click(object sender,EventArgs e) => MessageBox.Show("启用数据监视的状态下把本软件主窗体最小化，将会自动打开悬浮窗……另外,不要点击最大化按钮,不要点不要点不要点",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+        private void btnUseFloatWindow_Click(object sender,EventArgs e) => MessageBox.Show("启用数据监视的状态下把本软件主窗体最小化，将会自动打开悬浮窗,拖动边框即可改变悬浮窗位置",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
 
         private void btnDefault_Click(object sender,EventArgs e) {
             trackBarA.Value=0x50;
@@ -223,6 +233,9 @@ namespace THSet {
             trackBarFontB.Value=0x00;
             lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
             lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+            Properties.Settings.Default.floatWindowX=30;
+            Properties.Settings.Default.floatWindowY=30;
+            Properties.Settings.Default.Save();
             saveConfig();
         }
         private void saveConfig() {
@@ -233,7 +246,8 @@ namespace THSet {
             Properties.Settings.Default.fontR=trackBarFontR.Value;
             Properties.Settings.Default.fontG=trackBarFontG.Value;
             Properties.Settings.Default.fontB=trackBarFontB.Value;
-            Properties.Settings.Default.Save();
         }
-     }
+        public void restartCount() => tc.StartCount();
+        public void killSelf() => tc.killSelf();
+    }
 }
