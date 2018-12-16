@@ -6,12 +6,12 @@ using System.Text;
 namespace THSet {
     public class TH16Code:THCode {
         MemoryTool mt;
+        public TH16Code(MemoryTool m) => mt=m;
         public override string getTitle() => new Random().Next()%2==0 ? "东方Bug璋" : "东方CBC";
         public override string getAboutBug() => "太多了，我就不写了……";
         public override string getAboutSpecial() => "季节槽范围为0-1140";
         public override string[] getSpecialTip() => new string[] { "季节槽","","" };
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
-        public override void setMemoryTool(MemoryTool m) => mt=m;
         public override void StartCount() {
             //miss
             write(0x00443D3A,new byte[] { 0xEB,0x89,0x90,0x90,0x90 });  //jmp 00443CC5

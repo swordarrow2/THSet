@@ -6,12 +6,12 @@ using System.Text;
 namespace THSet {
     class TH15Code:THCode {
         MemoryTool mt;
+        public TH15Code(MemoryTool m) => mt=m;
         public override string getTitle() => new Random().Next()%2==0 ? "东方跟着转" : "东方199";
         public override string getAboutBug() => "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
         public override string getAboutSpecial() => "没啥好说的，使劲擦弹就得了（";
         public override string[] getSpecialTip() => new string[] { "","","" };
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
-        public override void setMemoryTool(MemoryTool m) => mt=m;
         public override void StartCount() {
             //miss
             write(0x00456398,new byte[] { 0xE9,0x95,0x03,0x00,0x00 });   //jmp 00456732

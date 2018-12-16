@@ -6,12 +6,12 @@ using System.Text;
 namespace THSet {
     class TH14Code:THCode {
         MemoryTool mt;
+        public TH14Code(MemoryTool m) => mt=m;
         public override string getTitle() => new Random().Next()%2==0 ? "东方掉帧城" : "东方1.6";
         public override string getAboutBug() => "有时候播放replay出错，如果replay文件没问题，可重启游戏再播放此处\n\n魔理沙激光可能会歪，其中一部分会导致播放录像时出错而另一部分不会(录像中的激光也是歪的)";
         public override string getAboutSpecial() => "非2.0为收点系统中获得的非Bonus2.0奖励的次数，已得奖残在辉针城似乎用处不大，2un仅仅设置了可获得的上限";
         public override string[] getSpecialTip() => new string[] { "非2.0","已得奖残","" };
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
-        public override void setMemoryTool(MemoryTool m) => mt=m;
         public override void StartCount() {
             //miss
             write(0x0044F618,new byte[] { 0xEB,0xB7,0x90,0x90,0x90 });    //jmp 0044F5D1

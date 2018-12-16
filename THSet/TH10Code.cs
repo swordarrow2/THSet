@@ -6,12 +6,12 @@ using System.Text;
 namespace THSet {
     class TH10Code:THCode {
         MemoryTool mt;
+        public TH10Code(MemoryTool m) => mt=m;
         public override string getTitle() => new Random().Next()%2==0 ? "东方炸比录" : "东方神曲录";
         public override string getAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免";
         public override string getAboutSpecial() => "信仰值初始为50000，最大值为999990";
         public override string[] getSpecialTip() => new string[] { "信仰值","","" };
         public override string[] getDefaultValue() => new string[] { "50000","0","0" };
-        public override void setMemoryTool(MemoryTool m) => mt=m;
         public override void StartCount() {
             //miss
             write(0x00426A1C,new byte[] { 0xE9,0xA2,0xE4,0xFF,0xFF,0x90 });            //jmp 00424EC3
@@ -51,12 +51,7 @@ namespace THSet {
                                  new byte[] { 0x66,0x81,0x05,0x48,0x4C,0x47,0x00,0xEC,0xFF });//add word ptr [00474C48],FFEC
         }
         public override void setUnbeatable(bool b) => write(0x00426CFF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x85,0x58,0x04,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [ebp+00000458],00000004
-        public override void setFPS(int i) {
-            if(write(0x60018AB4,i)==0) {
-                write(0x00439344,BitConverter.GetBytes((double)1/i));
-                write(0x004393D3,new byte[] { 0xDC,0x05,0x44,0x93,0x43,0x00 });//fadd qword ptr [00439344]
-            }
-        }
+        public override void setFPS(int i) => write(0x60018AB4,i);
         public override void setPlayer(int i) => write(0x00474C70,i);
         public override void setPlayerFragment(int i) => throw new NotImplementedException();
         public override void setBomb(int i) => throw new NotImplementedException();

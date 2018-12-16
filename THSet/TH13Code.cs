@@ -11,7 +11,7 @@ namespace THSet {
         public override string getAboutSpecial() => "灵界槽初始为200，最大值为600\n已得奖残会影响获得下一残机时需要的残碎片(红灵)数量";
         public override string[] getSpecialTip() => new string[] { "灵界槽","已得奖残","" };
         public override string[] getDefaultValue() => new string[] { "200","0","0" };
-        public override void setMemoryTool(MemoryTool m) {
+        public TH13Code(MemoryTool m) {
             mt=m;
             write(0x0042D3FB,new byte[] { 0xE9,0xD1,0x01,0x00,0x00,0x90,0x90,0x90,0x90 });  //jmp 0042D5D1
             write(0x0042D5D1,new byte[] { 0xC7,0x05,0x04,0xE8,0x4B,0x00,0x00,0x00,0x00,0x00,//mov [004BE804],0

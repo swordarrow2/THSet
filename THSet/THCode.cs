@@ -9,7 +9,6 @@ namespace THSet {
         public abstract string[] getSpecialTip();
         public abstract string getAboutBug();
         public abstract string getAboutSpecial();
-        public abstract void setMemoryTool(MemoryTool m);
         public abstract string[] getDefaultValue();
         public abstract void StartCount();
         public abstract int getMissCount();
