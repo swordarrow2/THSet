@@ -43,7 +43,10 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A8D68)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A8D84)+0x43F8);
         public override void killSelf() => write(mt.ReadInteger(0x004A8EB4)+0x928,4);
-        public override bool[] getEnable() => new bool[18] { true,true,true,true,true,false,false,true,false,false,false,false,false,true,true,true,true,true };
+        public override bool[] getEnable() => new bool[28] { true,true,false,false,true,false,false,false,false,false,
+                                                             true,true,false,false,true,false,false,false,false,false,
+                                                             true,true,true,
+                                                             true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00431D12,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 });//mov [004A5718],edx
         public override void setLockBomb(bool b) {
             write(0x00430248,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop

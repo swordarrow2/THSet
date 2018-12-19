@@ -41,7 +41,10 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004C2174)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004C2190)+0x1B4);
         public override void killSelf() => write(mt.ReadInteger(0x004C22C4)+0x65C,4);
-        public override bool[] getEnable() => new bool[18] { true,true,true,true,true,true,true,true,true,true,true,true,false,true,true,true,true,true };
+        public override bool[] getEnable() => new bool[28] { true,true,true,true,true,true,true,true,true,false,
+                                                             true,true,true,true,true,true,true,true,true,false,
+                                                             true,true,true,
+                                                             true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00444741,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 });//dec [004BE7F4]
         public override void setLockBomb(bool b) => write(0x0040A481,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x00,0xE8,0x4B,0x00 });//mov [004BE800],eax
         public override void setUnbeatable(bool b) => write(0x00444D75,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [edi+0000065C],00000004

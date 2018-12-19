@@ -28,8 +28,8 @@
             this.timerMissAndBomb = new System.Windows.Forms.Timer(this.components);
             this.lockPlayer = new System.Windows.Forms.CheckBox();
             this.lockBomb = new System.Windows.Forms.CheckBox();
-            this.tbSpecial1 = new System.Windows.Forms.TextBox();
-            this.btnSpecial1 = new System.Windows.Forms.Button();
+            this.tbSp1 = new System.Windows.Forms.TextBox();
+            this.btnSp1 = new System.Windows.Forms.Button();
             this.tbPower = new System.Windows.Forms.TextBox();
             this.btnPower = new System.Windows.Forms.Button();
             this.tbBombFragment = new System.Windows.Forms.TextBox();
@@ -48,16 +48,16 @@
             this.btnScore = new System.Windows.Forms.Button();
             this.unbeatable = new System.Windows.Forms.CheckBox();
             this.groupBoxSpecial = new System.Windows.Forms.GroupBox();
-            this.btnReadSpecial3 = new System.Windows.Forms.Button();
-            this.btnReadSpecial2 = new System.Windows.Forms.Button();
-            this.btnReadSpecial1 = new System.Windows.Forms.Button();
+            this.btnReadSp3 = new System.Windows.Forms.Button();
+            this.btnReadSp2 = new System.Windows.Forms.Button();
+            this.btnReadSp1 = new System.Windows.Forms.Button();
             this.lbSp3 = new System.Windows.Forms.Label();
             this.lbSp2 = new System.Windows.Forms.Label();
-            this.tbSpecial3 = new System.Windows.Forms.TextBox();
+            this.tbSp3 = new System.Windows.Forms.TextBox();
             this.lbSp1 = new System.Windows.Forms.Label();
-            this.btnSpecial3 = new System.Windows.Forms.Button();
-            this.btnSpecial2 = new System.Windows.Forms.Button();
-            this.tbSpecial2 = new System.Windows.Forms.TextBox();
+            this.btnSp3 = new System.Windows.Forms.Button();
+            this.btnSp2 = new System.Windows.Forms.Button();
+            this.tbSp2 = new System.Windows.Forms.TextBox();
             this.lbPower = new System.Windows.Forms.Label();
             this.lbBF = new System.Windows.Forms.Label();
             this.lbBomb = new System.Windows.Forms.Label();
@@ -67,14 +67,14 @@
             this.tbIMaxPoint = new System.Windows.Forms.TextBox();
             this.groupBoxISpecial = new System.Windows.Forms.GroupBox();
             this.lbISp3 = new System.Windows.Forms.Label();
-            this.tbISpecial1 = new System.Windows.Forms.TextBox();
+            this.tbISp1 = new System.Windows.Forms.TextBox();
             this.lbISp2 = new System.Windows.Forms.Label();
-            this.btnISpecial1 = new System.Windows.Forms.Button();
-            this.tbISpecial3 = new System.Windows.Forms.TextBox();
+            this.btnISpe1 = new System.Windows.Forms.Button();
+            this.tbISp3 = new System.Windows.Forms.TextBox();
             this.lbISp1 = new System.Windows.Forms.Label();
-            this.btnISpecial3 = new System.Windows.Forms.Button();
-            this.btnISpecial2 = new System.Windows.Forms.Button();
-            this.tbISpecial2 = new System.Windows.Forms.TextBox();
+            this.btnISp3 = new System.Windows.Forms.Button();
+            this.btnISp2 = new System.Windows.Forms.Button();
+            this.tbISp2 = new System.Windows.Forms.TextBox();
             this.btnIMaxPoint = new System.Windows.Forms.Button();
             this.lbIPower = new System.Windows.Forms.Label();
             this.lbIScore = new System.Windows.Forms.Label();
@@ -83,7 +83,7 @@
             this.lbIBomb = new System.Windows.Forms.Label();
             this.btnIScore = new System.Windows.Forms.Button();
             this.lbIPF = new System.Windows.Forms.Label();
-            this.lbIplayer = new System.Windows.Forms.Label();
+            this.lbIPlayer = new System.Windows.Forms.Label();
             this.tbIPower = new System.Windows.Forms.TextBox();
             this.tbIPlayer = new System.Windows.Forms.TextBox();
             this.btnIPower = new System.Windows.Forms.Button();
@@ -189,24 +189,24 @@
             this.lockBomb.UseVisualStyleBackColor = true;
             this.lockBomb.CheckedChanged += new System.EventHandler(this.lockBomb_CheckedChanged);
             // 
-            // tbSpecial1
+            // tbSp1
             // 
-            this.tbSpecial1.Location = new System.Drawing.Point(62, 20);
-            this.tbSpecial1.Name = "tbSpecial1";
-            this.tbSpecial1.Size = new System.Drawing.Size(39, 21);
-            this.tbSpecial1.TabIndex = 9;
-            this.tbSpecial1.Text = "0";
-            this.tbSpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSp1.Location = new System.Drawing.Point(62, 20);
+            this.tbSp1.Name = "tbSp1";
+            this.tbSp1.Size = new System.Drawing.Size(39, 21);
+            this.tbSp1.TabIndex = 9;
+            this.tbSp1.Text = "0";
+            this.tbSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // btnSpecial1
+            // btnSp1
             // 
-            this.btnSpecial1.Location = new System.Drawing.Point(107, 20);
-            this.btnSpecial1.Name = "btnSpecial1";
-            this.btnSpecial1.Size = new System.Drawing.Size(41, 23);
-            this.btnSpecial1.TabIndex = 8;
-            this.btnSpecial1.Text = "修改";
-            this.btnSpecial1.UseVisualStyleBackColor = true;
-            this.btnSpecial1.Click += new System.EventHandler(this.btnSpecial1_Click);
+            this.btnSp1.Location = new System.Drawing.Point(107, 20);
+            this.btnSp1.Name = "btnSp1";
+            this.btnSp1.Size = new System.Drawing.Size(41, 23);
+            this.btnSp1.TabIndex = 8;
+            this.btnSp1.Text = "修改";
+            this.btnSp1.UseVisualStyleBackColor = true;
+            this.btnSp1.Click += new System.EventHandler(this.btnSpecial1_Click);
             // 
             // tbPower
             // 
@@ -372,18 +372,18 @@
             // 
             // groupBoxSpecial
             // 
-            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial3);
-            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial2);
-            this.groupBoxSpecial.Controls.Add(this.btnReadSpecial1);
+            this.groupBoxSpecial.Controls.Add(this.btnReadSp3);
+            this.groupBoxSpecial.Controls.Add(this.btnReadSp2);
+            this.groupBoxSpecial.Controls.Add(this.btnReadSp1);
             this.groupBoxSpecial.Controls.Add(this.lbSp3);
-            this.groupBoxSpecial.Controls.Add(this.tbSpecial1);
+            this.groupBoxSpecial.Controls.Add(this.tbSp1);
             this.groupBoxSpecial.Controls.Add(this.lbSp2);
-            this.groupBoxSpecial.Controls.Add(this.btnSpecial1);
-            this.groupBoxSpecial.Controls.Add(this.tbSpecial3);
+            this.groupBoxSpecial.Controls.Add(this.btnSp1);
+            this.groupBoxSpecial.Controls.Add(this.tbSp3);
             this.groupBoxSpecial.Controls.Add(this.lbSp1);
-            this.groupBoxSpecial.Controls.Add(this.btnSpecial3);
-            this.groupBoxSpecial.Controls.Add(this.btnSpecial2);
-            this.groupBoxSpecial.Controls.Add(this.tbSpecial2);
+            this.groupBoxSpecial.Controls.Add(this.btnSp3);
+            this.groupBoxSpecial.Controls.Add(this.btnSp2);
+            this.groupBoxSpecial.Controls.Add(this.tbSp2);
             this.groupBoxSpecial.Location = new System.Drawing.Point(6, 194);
             this.groupBoxSpecial.Name = "groupBoxSpecial";
             this.groupBoxSpecial.Size = new System.Drawing.Size(200, 106);
@@ -391,35 +391,35 @@
             this.groupBoxSpecial.TabStop = false;
             this.groupBoxSpecial.Text = "特殊值";
             // 
-            // btnReadSpecial3
+            // btnReadSp3
             // 
-            this.btnReadSpecial3.Location = new System.Drawing.Point(147, 74);
-            this.btnReadSpecial3.Name = "btnReadSpecial3";
-            this.btnReadSpecial3.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSpecial3.TabIndex = 18;
-            this.btnReadSpecial3.Text = "读取";
-            this.btnReadSpecial3.UseVisualStyleBackColor = true;
-            this.btnReadSpecial3.Click += new System.EventHandler(this.btnReadSpecial3_Click);
+            this.btnReadSp3.Location = new System.Drawing.Point(147, 74);
+            this.btnReadSp3.Name = "btnReadSp3";
+            this.btnReadSp3.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSp3.TabIndex = 18;
+            this.btnReadSp3.Text = "读取";
+            this.btnReadSp3.UseVisualStyleBackColor = true;
+            this.btnReadSp3.Click += new System.EventHandler(this.btnReadSpecial3_Click);
             // 
-            // btnReadSpecial2
+            // btnReadSp2
             // 
-            this.btnReadSpecial2.Location = new System.Drawing.Point(147, 47);
-            this.btnReadSpecial2.Name = "btnReadSpecial2";
-            this.btnReadSpecial2.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSpecial2.TabIndex = 17;
-            this.btnReadSpecial2.Text = "读取";
-            this.btnReadSpecial2.UseVisualStyleBackColor = true;
-            this.btnReadSpecial2.Click += new System.EventHandler(this.btnReadSpecial2_Click);
+            this.btnReadSp2.Location = new System.Drawing.Point(147, 47);
+            this.btnReadSp2.Name = "btnReadSp2";
+            this.btnReadSp2.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSp2.TabIndex = 17;
+            this.btnReadSp2.Text = "读取";
+            this.btnReadSp2.UseVisualStyleBackColor = true;
+            this.btnReadSp2.Click += new System.EventHandler(this.btnReadSpecial2_Click);
             // 
-            // btnReadSpecial1
+            // btnReadSp1
             // 
-            this.btnReadSpecial1.Location = new System.Drawing.Point(147, 20);
-            this.btnReadSpecial1.Name = "btnReadSpecial1";
-            this.btnReadSpecial1.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSpecial1.TabIndex = 16;
-            this.btnReadSpecial1.Text = "读取";
-            this.btnReadSpecial1.UseVisualStyleBackColor = true;
-            this.btnReadSpecial1.Click += new System.EventHandler(this.btnReadSpecial1_Click);
+            this.btnReadSp1.Location = new System.Drawing.Point(147, 20);
+            this.btnReadSp1.Name = "btnReadSp1";
+            this.btnReadSp1.Size = new System.Drawing.Size(41, 23);
+            this.btnReadSp1.TabIndex = 16;
+            this.btnReadSp1.Text = "读取";
+            this.btnReadSp1.UseVisualStyleBackColor = true;
+            this.btnReadSp1.Click += new System.EventHandler(this.btnReadSpecial1_Click);
             // 
             // lbSp3
             // 
@@ -439,14 +439,14 @@
             this.lbSp2.TabIndex = 15;
             this.lbSp2.Text = "不可用";
             // 
-            // tbSpecial3
+            // tbSp3
             // 
-            this.tbSpecial3.Location = new System.Drawing.Point(62, 74);
-            this.tbSpecial3.Name = "tbSpecial3";
-            this.tbSpecial3.Size = new System.Drawing.Size(39, 21);
-            this.tbSpecial3.TabIndex = 14;
-            this.tbSpecial3.Text = "0";
-            this.tbSpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSp3.Location = new System.Drawing.Point(62, 74);
+            this.tbSp3.Name = "tbSp3";
+            this.tbSp3.Size = new System.Drawing.Size(39, 21);
+            this.tbSp3.TabIndex = 14;
+            this.tbSp3.Text = "0";
+            this.tbSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbSp1
             // 
@@ -457,34 +457,34 @@
             this.lbSp1.TabIndex = 12;
             this.lbSp1.Text = "不可用";
             // 
-            // btnSpecial3
+            // btnSp3
             // 
-            this.btnSpecial3.Location = new System.Drawing.Point(107, 74);
-            this.btnSpecial3.Name = "btnSpecial3";
-            this.btnSpecial3.Size = new System.Drawing.Size(41, 23);
-            this.btnSpecial3.TabIndex = 13;
-            this.btnSpecial3.Text = "修改";
-            this.btnSpecial3.UseVisualStyleBackColor = true;
-            this.btnSpecial3.Click += new System.EventHandler(this.btnSpecial3_Click);
+            this.btnSp3.Location = new System.Drawing.Point(107, 74);
+            this.btnSp3.Name = "btnSp3";
+            this.btnSp3.Size = new System.Drawing.Size(41, 23);
+            this.btnSp3.TabIndex = 13;
+            this.btnSp3.Text = "修改";
+            this.btnSp3.UseVisualStyleBackColor = true;
+            this.btnSp3.Click += new System.EventHandler(this.btnSpecial3_Click);
             // 
-            // btnSpecial2
+            // btnSp2
             // 
-            this.btnSpecial2.Location = new System.Drawing.Point(107, 47);
-            this.btnSpecial2.Name = "btnSpecial2";
-            this.btnSpecial2.Size = new System.Drawing.Size(41, 23);
-            this.btnSpecial2.TabIndex = 13;
-            this.btnSpecial2.Text = "修改";
-            this.btnSpecial2.UseVisualStyleBackColor = true;
-            this.btnSpecial2.Click += new System.EventHandler(this.btnSpecial2_Click);
+            this.btnSp2.Location = new System.Drawing.Point(107, 47);
+            this.btnSp2.Name = "btnSp2";
+            this.btnSp2.Size = new System.Drawing.Size(41, 23);
+            this.btnSp2.TabIndex = 13;
+            this.btnSp2.Text = "修改";
+            this.btnSp2.UseVisualStyleBackColor = true;
+            this.btnSp2.Click += new System.EventHandler(this.btnSpecial2_Click);
             // 
-            // tbSpecial2
+            // tbSp2
             // 
-            this.tbSpecial2.Location = new System.Drawing.Point(62, 47);
-            this.tbSpecial2.Name = "tbSpecial2";
-            this.tbSpecial2.Size = new System.Drawing.Size(39, 21);
-            this.tbSpecial2.TabIndex = 14;
-            this.tbSpecial2.Text = "0";
-            this.tbSpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbSp2.Location = new System.Drawing.Point(62, 47);
+            this.tbSp2.Name = "tbSp2";
+            this.tbSp2.Size = new System.Drawing.Size(39, 21);
+            this.tbSp2.TabIndex = 14;
+            this.tbSp2.Text = "0";
+            this.tbSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbPower
             // 
@@ -552,14 +552,14 @@
             // groupBoxISpecial
             // 
             this.groupBoxISpecial.Controls.Add(this.lbISp3);
-            this.groupBoxISpecial.Controls.Add(this.tbISpecial1);
+            this.groupBoxISpecial.Controls.Add(this.tbISp1);
             this.groupBoxISpecial.Controls.Add(this.lbISp2);
-            this.groupBoxISpecial.Controls.Add(this.btnISpecial1);
-            this.groupBoxISpecial.Controls.Add(this.tbISpecial3);
+            this.groupBoxISpecial.Controls.Add(this.btnISpe1);
+            this.groupBoxISpecial.Controls.Add(this.tbISp3);
             this.groupBoxISpecial.Controls.Add(this.lbISp1);
-            this.groupBoxISpecial.Controls.Add(this.btnISpecial3);
-            this.groupBoxISpecial.Controls.Add(this.btnISpecial2);
-            this.groupBoxISpecial.Controls.Add(this.tbISpecial2);
+            this.groupBoxISpecial.Controls.Add(this.btnISp3);
+            this.groupBoxISpecial.Controls.Add(this.btnISp2);
+            this.groupBoxISpecial.Controls.Add(this.tbISp2);
             this.groupBoxISpecial.Location = new System.Drawing.Point(6, 194);
             this.groupBoxISpecial.Name = "groupBoxISpecial";
             this.groupBoxISpecial.Size = new System.Drawing.Size(198, 106);
@@ -576,14 +576,14 @@
             this.lbISp3.TabIndex = 15;
             this.lbISp3.Text = "不可用";
             // 
-            // tbISpecial1
+            // tbISp1
             // 
-            this.tbISpecial1.Location = new System.Drawing.Point(62, 20);
-            this.tbISpecial1.Name = "tbISpecial1";
-            this.tbISpecial1.Size = new System.Drawing.Size(39, 21);
-            this.tbISpecial1.TabIndex = 9;
-            this.tbISpecial1.Text = "0";
-            this.tbISpecial1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbISp1.Location = new System.Drawing.Point(62, 20);
+            this.tbISp1.Name = "tbISp1";
+            this.tbISp1.Size = new System.Drawing.Size(39, 21);
+            this.tbISp1.TabIndex = 9;
+            this.tbISp1.Text = "0";
+            this.tbISp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbISp2
             // 
@@ -594,24 +594,24 @@
             this.lbISp2.TabIndex = 15;
             this.lbISp2.Text = "不可用";
             // 
-            // btnISpecial1
+            // btnISpe1
             // 
-            this.btnISpecial1.Location = new System.Drawing.Point(107, 20);
-            this.btnISpecial1.Name = "btnISpecial1";
-            this.btnISpecial1.Size = new System.Drawing.Size(41, 23);
-            this.btnISpecial1.TabIndex = 8;
-            this.btnISpecial1.Text = "修改";
-            this.btnISpecial1.UseVisualStyleBackColor = true;
-            this.btnISpecial1.Click += new System.EventHandler(this.btnISpecial1_Click);
+            this.btnISpe1.Location = new System.Drawing.Point(107, 20);
+            this.btnISpe1.Name = "btnISpe1";
+            this.btnISpe1.Size = new System.Drawing.Size(41, 23);
+            this.btnISpe1.TabIndex = 8;
+            this.btnISpe1.Text = "修改";
+            this.btnISpe1.UseVisualStyleBackColor = true;
+            this.btnISpe1.Click += new System.EventHandler(this.btnISpecial1_Click);
             // 
-            // tbISpecial3
+            // tbISp3
             // 
-            this.tbISpecial3.Location = new System.Drawing.Point(62, 74);
-            this.tbISpecial3.Name = "tbISpecial3";
-            this.tbISpecial3.Size = new System.Drawing.Size(39, 21);
-            this.tbISpecial3.TabIndex = 14;
-            this.tbISpecial3.Text = "0";
-            this.tbISpecial3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbISp3.Location = new System.Drawing.Point(62, 74);
+            this.tbISp3.Name = "tbISp3";
+            this.tbISp3.Size = new System.Drawing.Size(39, 21);
+            this.tbISp3.TabIndex = 14;
+            this.tbISp3.Text = "0";
+            this.tbISp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbISp1
             // 
@@ -622,34 +622,34 @@
             this.lbISp1.TabIndex = 12;
             this.lbISp1.Text = "不可用";
             // 
-            // btnISpecial3
+            // btnISp3
             // 
-            this.btnISpecial3.Location = new System.Drawing.Point(107, 74);
-            this.btnISpecial3.Name = "btnISpecial3";
-            this.btnISpecial3.Size = new System.Drawing.Size(41, 23);
-            this.btnISpecial3.TabIndex = 13;
-            this.btnISpecial3.Text = "修改";
-            this.btnISpecial3.UseVisualStyleBackColor = true;
-            this.btnISpecial3.Click += new System.EventHandler(this.btnISpecial3_Click);
+            this.btnISp3.Location = new System.Drawing.Point(107, 74);
+            this.btnISp3.Name = "btnISp3";
+            this.btnISp3.Size = new System.Drawing.Size(41, 23);
+            this.btnISp3.TabIndex = 13;
+            this.btnISp3.Text = "修改";
+            this.btnISp3.UseVisualStyleBackColor = true;
+            this.btnISp3.Click += new System.EventHandler(this.btnISpecial3_Click);
             // 
-            // btnISpecial2
+            // btnISp2
             // 
-            this.btnISpecial2.Location = new System.Drawing.Point(107, 47);
-            this.btnISpecial2.Name = "btnISpecial2";
-            this.btnISpecial2.Size = new System.Drawing.Size(41, 23);
-            this.btnISpecial2.TabIndex = 13;
-            this.btnISpecial2.Text = "修改";
-            this.btnISpecial2.UseVisualStyleBackColor = true;
-            this.btnISpecial2.Click += new System.EventHandler(this.btnISpecial2_Click);
+            this.btnISp2.Location = new System.Drawing.Point(107, 47);
+            this.btnISp2.Name = "btnISp2";
+            this.btnISp2.Size = new System.Drawing.Size(41, 23);
+            this.btnISp2.TabIndex = 13;
+            this.btnISp2.Text = "修改";
+            this.btnISp2.UseVisualStyleBackColor = true;
+            this.btnISp2.Click += new System.EventHandler(this.btnISpecial2_Click);
             // 
-            // tbISpecial2
+            // tbISp2
             // 
-            this.tbISpecial2.Location = new System.Drawing.Point(62, 47);
-            this.tbISpecial2.Name = "tbISpecial2";
-            this.tbISpecial2.Size = new System.Drawing.Size(39, 21);
-            this.tbISpecial2.TabIndex = 14;
-            this.tbISpecial2.Text = "0";
-            this.tbISpecial2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tbISp2.Location = new System.Drawing.Point(62, 47);
+            this.tbISp2.Name = "tbISp2";
+            this.tbISp2.Size = new System.Drawing.Size(39, 21);
+            this.tbISp2.TabIndex = 14;
+            this.tbISp2.Text = "0";
+            this.tbISp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnIMaxPoint
             // 
@@ -725,14 +725,14 @@
             this.lbIPF.TabIndex = 11;
             this.lbIPF.Text = "残机碎片";
             // 
-            // lbIplayer
+            // lbIPlayer
             // 
-            this.lbIplayer.AutoSize = true;
-            this.lbIplayer.Location = new System.Drawing.Point(6, 9);
-            this.lbIplayer.Name = "lbIplayer";
-            this.lbIplayer.Size = new System.Drawing.Size(29, 12);
-            this.lbIplayer.TabIndex = 10;
-            this.lbIplayer.Text = "残机";
+            this.lbIPlayer.AutoSize = true;
+            this.lbIPlayer.Location = new System.Drawing.Point(6, 9);
+            this.lbIPlayer.Name = "lbIPlayer";
+            this.lbIPlayer.Size = new System.Drawing.Size(29, 12);
+            this.lbIPlayer.TabIndex = 10;
+            this.lbIPlayer.Text = "残机";
             // 
             // tbIPower
             // 
@@ -908,7 +908,7 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.lbIMaxPoint);
-            this.tabPage2.Controls.Add(this.lbIplayer);
+            this.tabPage2.Controls.Add(this.lbIPlayer);
             this.tabPage2.Controls.Add(this.tbIMaxPoint);
             this.tabPage2.Controls.Add(this.btnIPlayerFragment);
             this.tabPage2.Controls.Add(this.groupBoxISpecial);
@@ -959,14 +959,14 @@
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
             this.groupBoxOther.Location = new System.Drawing.Point(3, 228);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(208, 42);
+            this.groupBoxOther.Size = new System.Drawing.Size(208, 75);
             this.groupBoxOther.TabIndex = 24;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "其它";
             // 
             // btnKill
             // 
-            this.btnKill.Location = new System.Drawing.Point(156, 10);
+            this.btnKill.Location = new System.Drawing.Point(158, 46);
             this.btnKill.Name = "btnKill";
             this.btnKill.Size = new System.Drawing.Size(41, 23);
             this.btnKill.TabIndex = 21;
@@ -1006,7 +1006,7 @@
             // lbDPS
             // 
             this.lbDPS.AutoSize = true;
-            this.lbDPS.Location = new System.Drawing.Point(109, 17);
+            this.lbDPS.Location = new System.Drawing.Point(107, 17);
             this.lbDPS.Name = "lbDPS";
             this.lbDPS.Size = new System.Drawing.Size(29, 12);
             this.lbDPS.TabIndex = 22;
@@ -1427,16 +1427,16 @@
         private System.Windows.Forms.Button btnPlayer;
         private System.Windows.Forms.TextBox tbPower;
         private System.Windows.Forms.Button btnPower;
-        private System.Windows.Forms.TextBox tbSpecial1;
-        private System.Windows.Forms.Button btnSpecial1;
+        private System.Windows.Forms.TextBox tbSp1;
+        private System.Windows.Forms.Button btnSp1;
         private System.Windows.Forms.GroupBox groupBoxSpecial;
         private System.Windows.Forms.Label lbSp3;
         private System.Windows.Forms.Label lbSp2;
-        private System.Windows.Forms.TextBox tbSpecial3;
+        private System.Windows.Forms.TextBox tbSp3;
         private System.Windows.Forms.Label lbSp1;
-        private System.Windows.Forms.Button btnSpecial3;
-        private System.Windows.Forms.Button btnSpecial2;
-        private System.Windows.Forms.TextBox tbSpecial2;
+        private System.Windows.Forms.Button btnSp3;
+        private System.Windows.Forms.Button btnSp2;
+        private System.Windows.Forms.TextBox tbSp2;
         private System.Windows.Forms.Label lbPower;
         private System.Windows.Forms.Label lbBF;
         private System.Windows.Forms.Label lbBomb;
@@ -1444,19 +1444,19 @@
         private System.Windows.Forms.Label lbPlayer;
         private System.Windows.Forms.GroupBox groupBoxISpecial;
         private System.Windows.Forms.Label lbISp3;
-        private System.Windows.Forms.TextBox tbISpecial1;
+        private System.Windows.Forms.TextBox tbISp1;
         private System.Windows.Forms.Label lbISp2;
-        private System.Windows.Forms.Button btnISpecial1;
-        private System.Windows.Forms.TextBox tbISpecial3;
+        private System.Windows.Forms.Button btnISpe1;
+        private System.Windows.Forms.TextBox tbISp3;
         private System.Windows.Forms.Label lbISp1;
-        private System.Windows.Forms.Button btnISpecial3;
-        private System.Windows.Forms.Button btnISpecial2;
-        private System.Windows.Forms.TextBox tbISpecial2;
+        private System.Windows.Forms.Button btnISp3;
+        private System.Windows.Forms.Button btnISp2;
+        private System.Windows.Forms.TextBox tbISp2;
         private System.Windows.Forms.Label lbIPower;
         private System.Windows.Forms.Label lbIBF;
         private System.Windows.Forms.Label lbIBomb;
         private System.Windows.Forms.Label lbIPF;
-        private System.Windows.Forms.Label lbIplayer;
+        private System.Windows.Forms.Label lbIPlayer;
         private System.Windows.Forms.TextBox tbIPower;
         private System.Windows.Forms.TextBox tbIPlayer;
         private System.Windows.Forms.Button btnIPower;
@@ -1480,9 +1480,9 @@
         private System.Windows.Forms.Label lbIScore;
         private System.Windows.Forms.TextBox tbIScore;
         private System.Windows.Forms.Button btnIScore;
-        private System.Windows.Forms.Button btnReadSpecial3;
-        private System.Windows.Forms.Button btnReadSpecial2;
-        private System.Windows.Forms.Button btnReadSpecial1;
+        private System.Windows.Forms.Button btnReadSp3;
+        private System.Windows.Forms.Button btnReadSp2;
+        private System.Windows.Forms.Button btnReadSp1;
         private System.Windows.Forms.Button showBug;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button note;

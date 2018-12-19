@@ -25,5 +25,10 @@ namespace THSet {
             ReadProcessMemory(GetProcessHandle(),Address,Buffer,4);
             return BitConverter.ToInt32(Buffer,0);
         }
+        public double ReadFloat(long Address) {
+            byte[] Buffer = new byte[4];
+            ReadProcessMemory(GetProcessHandle(),Address,Buffer,4);
+            return BitConverter.ToSingle(Buffer,0);
+        }
     }
 }
