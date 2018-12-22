@@ -1,5 +1,5 @@
 ﻿namespace THSet {
-    partial class floatWindow {
+    partial class FloatWindow {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(floatWindow));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FloatWindow));
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
             this.lbBulletCount = new System.Windows.Forms.Label();
             this.groupBoxBoss = new System.Windows.Forms.GroupBox();
@@ -36,6 +36,7 @@
             this.lbBombCount = new System.Windows.Forms.Label();
             this.timerFloatWindow = new System.Windows.Forms.Timer(this.components);
             this.btnBack = new System.Windows.Forms.Button();
+            this.sp1 = new System.Windows.Forms.Label();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxBoss.SuspendLayout();
             this.groupBoxSourceUse.SuspendLayout();
@@ -43,10 +44,11 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.Controls.Add(this.sp1);
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
             this.groupBoxOther.Location = new System.Drawing.Point(92, 70);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(82, 34);
+            this.groupBoxOther.Size = new System.Drawing.Size(82, 59);
             this.groupBoxOther.TabIndex = 27;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "其它";
@@ -153,27 +155,36 @@
             // btnBack
             // 
             this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.Location = new System.Drawing.Point(92, 106);
+            this.btnBack.Location = new System.Drawing.Point(12, 135);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(82, 23);
+            this.btnBack.Size = new System.Drawing.Size(161, 23);
             this.btnBack.TabIndex = 28;
             this.btnBack.Text = "返回主窗体";
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // floatWindow
+            // sp1
+            // 
+            this.sp1.AutoSize = true;
+            this.sp1.Location = new System.Drawing.Point(6, 41);
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(17, 12);
+            this.sp1.TabIndex = 21;
+            this.sp1.Text = "  ";
+            // 
+            // FloatWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(185, 141);
+            this.ClientSize = new System.Drawing.Size(185, 167);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.groupBoxOther);
             this.Controls.Add(this.groupBoxBoss);
             this.Controls.Add(this.groupBoxSourceUse);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "floatWindow";
+            this.Name = "FloatWindow";
             this.Text = "发发发";
             this.TopMost = true;
             this.Activated += new System.EventHandler(this.setBG);
@@ -205,5 +216,6 @@
         private System.Windows.Forms.Label lbBombCount;
         private System.Windows.Forms.Timer timerFloatWindow;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label sp1;
     }
 }

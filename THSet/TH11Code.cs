@@ -11,7 +11,7 @@ namespace THSet {
         public override string getAboutBug() => "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         public override string getAboutSpecial() => "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
-        public override string[] getSpecialTip() => new string[] { "","","" };
+        public override string[] getSpecialTip() => new string[] { "信仰","倍率","" };
         public override void StartCount() {
             //miss
             write(0x004327ED,new byte[] { 0x57,                            //push edi
@@ -43,7 +43,7 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A8D68)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A8D84)+0x43F8);
         public override void killSelf() => write(mt.ReadInteger(0x004A8EB4)+0x928,4);
-        public override bool[] getEnable() => new bool[28] { true,true,false,false,true,false,false,false,false,false,
+        public override bool[] getEnable() => new bool[28] { true,true,false,false,true,false,false,true,true,false,
                                                              true,true,false,false,true,false,false,false,false,false,
                                                              true,true,true,
                                                              true,true,true,true,true };
@@ -68,11 +68,11 @@ namespace THSet {
         public override void setPower(int i) => write(0x004A56E8,isMarisaA() ? (int)(i/8.333333333333f) : i/5);
         public override void setScore(int i) => write(0x004A56E4,i/10);
         public override void setMaxPoint(int i) => throw new NotImplementedException();
-        public override void setSpecial1(int i) => throw new NotImplementedException();
-        public override void setSpecial2(int i) => throw new NotImplementedException();
+        public override void setSpecial1(int i) => write(0x004A56F0,i*100);
+        public override void setSpecial2(int i) => write(0x004A56F4,i*100);
         public override void setSpecial3(int i) => throw new NotImplementedException();
-        public override int getSpecial1() => throw new NotImplementedException();
-        public override int getSpecial2() => throw new NotImplementedException();
+        public override int getSpecial1() => mt.ReadInteger(0x004A56F0)/100;
+        public override int getSpecial2() => mt.ReadInteger(0x004A56F4)/100;
         public override int getSpecial3() => throw new NotImplementedException();
         public override void setIPlayer(int i) {
             byte[] b = BitConverter.GetBytes(i);

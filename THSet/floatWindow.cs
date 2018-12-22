@@ -8,11 +8,11 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace THSet {
-    public partial class floatWindow:Form {
+    public partial class FloatWindow:Form {
         private Point ptMouseCurrrnetPos, ptMouseNewPos, ptFormPos, ptFormNewPos;
         private bool blnMouseDown = false;
         private MainForm parent;
-        public floatWindow(MainForm pMain) {
+        public FloatWindow(MainForm pMain) {
             InitializeComponent();
             parent=pMain;
         }
@@ -51,11 +51,12 @@ namespace THSet {
             Hide();
         }
         private void timerFloatWindow_Tick(object sender,EventArgs e) {
-            lbMissCount.Text="miss次数:"+parent.missCount;
-            lbBombCount.Text="bomb次数:"+parent.bombCount;
+            if(parent.missCount!=-1) lbMissCount.Text="miss次数:"+parent.missCount;
+            if(parent.bombCount!=-1) lbBombCount.Text="bomb次数:"+parent.bombCount;
             lbBulletCount.Text="子弹数:"+parent.bulletCount;
             lbLife.Text="血量:"+parent.bossLife;
             lbDPS.Text="DPS:"+parent.dps;
+            sp1.Text=parent.sp1;
         }
 
         private void setBG(object sender,EventArgs e) {
@@ -69,7 +70,7 @@ namespace THSet {
             parent.RestoreWindow();
             Hide();
         }
-        
+
         private void btnCountStart_Click(object sender,EventArgs e) => parent.restartCount();
         private void btnKill_Click_1(object sender,EventArgs e) => parent.killSelf();
     }

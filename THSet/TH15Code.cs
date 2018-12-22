@@ -10,7 +10,7 @@ namespace THSet {
         public override string getTitle() => new Random().Next()%2==0 ? "东方跟着转" : "东方199";
         public override string getAboutBug() => "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
         public override string getAboutSpecial() => "没啥好说的，使劲擦弹就得了（";
-        public override string[] getSpecialTip() => new string[] { "","","" };
+        public override string[] getSpecialTip() => new string[] { "章节擦弹","","" };
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
         public override void StartCount() {
             //miss
@@ -33,7 +33,7 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004E9A6C)+0x40);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004E9A8C)+0x1D4);
         public override void killSelf() => write(mt.ReadInteger(0x004E9BB8)+0x16220,4);
-        public override bool[] getEnable() => new bool[28] { true,true,true,true,true,false,true,false,false,false,
+        public override bool[] getEnable() => new bool[28] { true,true,true,true,true,false,true,true,false,false,
                                                              true,true,true,true,true,false,true,false,false,false,
                                                              true,true,true,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00456732,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x50,0x74,0x4E,0x00 });                         //mov [004E7450],eax
@@ -52,10 +52,10 @@ namespace THSet {
         public override void setPower(int i) => write(0x004E7440,i);
         public override void setScore(int i) => write(0x004E740C,i/10);
         public override void setMaxPoint(int i) => write(0x004E7434,i*100);
-        public override void setSpecial1(int i) => throw new NotImplementedException();
+        public override void setSpecial1(int i) => write(0x004E7420,i);
         public override void setSpecial2(int i) => throw new NotImplementedException();
         public override void setSpecial3(int i) => throw new NotImplementedException();
-        public override int getSpecial1() => throw new NotImplementedException();
+        public override int getSpecial1() => mt.ReadInteger(0x004E7420);
         public override int getSpecial2() => throw new NotImplementedException();
         public override int getSpecial3() => throw new NotImplementedException();
         public override void setIPlayer(int i) {

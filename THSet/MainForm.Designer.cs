@@ -48,9 +48,6 @@
             this.btnScore = new System.Windows.Forms.Button();
             this.unbeatable = new System.Windows.Forms.CheckBox();
             this.groupBoxSpecial = new System.Windows.Forms.GroupBox();
-            this.btnReadSp3 = new System.Windows.Forms.Button();
-            this.btnReadSp2 = new System.Windows.Forms.Button();
-            this.btnReadSp1 = new System.Windows.Forms.Button();
             this.lbSp3 = new System.Windows.Forms.Label();
             this.lbSp2 = new System.Windows.Forms.Label();
             this.tbSp3 = new System.Windows.Forms.TextBox();
@@ -140,6 +137,9 @@
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
             this.lbfafafa1 = new System.Windows.Forms.Label();
+            this.lbShowSp1 = new System.Windows.Forms.Label();
+            this.lbShowSp2 = new System.Windows.Forms.Label();
+            this.lbShowSp3 = new System.Windows.Forms.Label();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -191,16 +191,16 @@
             // 
             // tbSp1
             // 
-            this.tbSp1.Location = new System.Drawing.Point(62, 20);
+            this.tbSp1.Location = new System.Drawing.Point(76, 20);
             this.tbSp1.Name = "tbSp1";
-            this.tbSp1.Size = new System.Drawing.Size(39, 21);
+            this.tbSp1.Size = new System.Drawing.Size(74, 21);
             this.tbSp1.TabIndex = 9;
             this.tbSp1.Text = "0";
             this.tbSp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnSp1
             // 
-            this.btnSp1.Location = new System.Drawing.Point(107, 20);
+            this.btnSp1.Location = new System.Drawing.Point(156, 20);
             this.btnSp1.Name = "btnSp1";
             this.btnSp1.Size = new System.Drawing.Size(41, 23);
             this.btnSp1.TabIndex = 8;
@@ -210,9 +210,9 @@
             // 
             // tbPower
             // 
-            this.tbPower.Location = new System.Drawing.Point(68, 114);
+            this.tbPower.Location = new System.Drawing.Point(82, 114);
             this.tbPower.Name = "tbPower";
-            this.tbPower.Size = new System.Drawing.Size(88, 21);
+            this.tbPower.Size = new System.Drawing.Size(74, 21);
             this.tbPower.TabIndex = 7;
             this.tbPower.Text = "0";
             this.tbPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -229,9 +229,9 @@
             // 
             // tbBombFragment
             // 
-            this.tbBombFragment.Location = new System.Drawing.Point(68, 87);
+            this.tbBombFragment.Location = new System.Drawing.Point(82, 87);
             this.tbBombFragment.Name = "tbBombFragment";
-            this.tbBombFragment.Size = new System.Drawing.Size(88, 21);
+            this.tbBombFragment.Size = new System.Drawing.Size(74, 21);
             this.tbBombFragment.TabIndex = 5;
             this.tbBombFragment.Text = "0";
             this.tbBombFragment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -248,9 +248,9 @@
             // 
             // tbPlayerFragment
             // 
-            this.tbPlayerFragment.Location = new System.Drawing.Point(68, 33);
+            this.tbPlayerFragment.Location = new System.Drawing.Point(82, 33);
             this.tbPlayerFragment.Name = "tbPlayerFragment";
-            this.tbPlayerFragment.Size = new System.Drawing.Size(88, 21);
+            this.tbPlayerFragment.Size = new System.Drawing.Size(74, 21);
             this.tbPlayerFragment.TabIndex = 3;
             this.tbPlayerFragment.Text = "0";
             this.tbPlayerFragment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -267,9 +267,9 @@
             // 
             // tbBomb
             // 
-            this.tbBomb.Location = new System.Drawing.Point(68, 60);
+            this.tbBomb.Location = new System.Drawing.Point(82, 60);
             this.tbBomb.Name = "tbBomb";
-            this.tbBomb.Size = new System.Drawing.Size(88, 21);
+            this.tbBomb.Size = new System.Drawing.Size(74, 21);
             this.tbBomb.TabIndex = 3;
             this.tbBomb.Text = "0";
             this.tbBomb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -286,9 +286,9 @@
             // 
             // tbPlayer
             // 
-            this.tbPlayer.Location = new System.Drawing.Point(68, 6);
+            this.tbPlayer.Location = new System.Drawing.Point(82, 6);
             this.tbPlayer.Name = "tbPlayer";
-            this.tbPlayer.Size = new System.Drawing.Size(88, 21);
+            this.tbPlayer.Size = new System.Drawing.Size(74, 21);
             this.tbPlayer.TabIndex = 1;
             this.tbPlayer.Text = "0";
             this.tbPlayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -314,9 +314,9 @@
             // 
             // tbMaxPoint
             // 
-            this.tbMaxPoint.Location = new System.Drawing.Point(68, 168);
+            this.tbMaxPoint.Location = new System.Drawing.Point(82, 168);
             this.tbMaxPoint.Name = "tbMaxPoint";
-            this.tbMaxPoint.Size = new System.Drawing.Size(88, 21);
+            this.tbMaxPoint.Size = new System.Drawing.Size(74, 21);
             this.tbMaxPoint.TabIndex = 18;
             this.tbMaxPoint.Text = "0";
             this.tbMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -342,9 +342,9 @@
             // 
             // tbScore
             // 
-            this.tbScore.Location = new System.Drawing.Point(68, 141);
+            this.tbScore.Location = new System.Drawing.Point(82, 141);
             this.tbScore.Name = "tbScore";
-            this.tbScore.Size = new System.Drawing.Size(88, 21);
+            this.tbScore.Size = new System.Drawing.Size(74, 21);
             this.tbScore.TabIndex = 15;
             this.tbScore.Text = "0";
             this.tbScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -372,9 +372,6 @@
             // 
             // groupBoxSpecial
             // 
-            this.groupBoxSpecial.Controls.Add(this.btnReadSp3);
-            this.groupBoxSpecial.Controls.Add(this.btnReadSp2);
-            this.groupBoxSpecial.Controls.Add(this.btnReadSp1);
             this.groupBoxSpecial.Controls.Add(this.lbSp3);
             this.groupBoxSpecial.Controls.Add(this.tbSp1);
             this.groupBoxSpecial.Controls.Add(this.lbSp2);
@@ -390,36 +387,6 @@
             this.groupBoxSpecial.TabIndex = 11;
             this.groupBoxSpecial.TabStop = false;
             this.groupBoxSpecial.Text = "特殊值";
-            // 
-            // btnReadSp3
-            // 
-            this.btnReadSp3.Location = new System.Drawing.Point(147, 74);
-            this.btnReadSp3.Name = "btnReadSp3";
-            this.btnReadSp3.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSp3.TabIndex = 18;
-            this.btnReadSp3.Text = "读取";
-            this.btnReadSp3.UseVisualStyleBackColor = true;
-            this.btnReadSp3.Click += new System.EventHandler(this.btnReadSpecial3_Click);
-            // 
-            // btnReadSp2
-            // 
-            this.btnReadSp2.Location = new System.Drawing.Point(147, 47);
-            this.btnReadSp2.Name = "btnReadSp2";
-            this.btnReadSp2.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSp2.TabIndex = 17;
-            this.btnReadSp2.Text = "读取";
-            this.btnReadSp2.UseVisualStyleBackColor = true;
-            this.btnReadSp2.Click += new System.EventHandler(this.btnReadSpecial2_Click);
-            // 
-            // btnReadSp1
-            // 
-            this.btnReadSp1.Location = new System.Drawing.Point(147, 20);
-            this.btnReadSp1.Name = "btnReadSp1";
-            this.btnReadSp1.Size = new System.Drawing.Size(41, 23);
-            this.btnReadSp1.TabIndex = 16;
-            this.btnReadSp1.Text = "读取";
-            this.btnReadSp1.UseVisualStyleBackColor = true;
-            this.btnReadSp1.Click += new System.EventHandler(this.btnReadSpecial1_Click);
             // 
             // lbSp3
             // 
@@ -441,9 +408,9 @@
             // 
             // tbSp3
             // 
-            this.tbSp3.Location = new System.Drawing.Point(62, 74);
+            this.tbSp3.Location = new System.Drawing.Point(76, 74);
             this.tbSp3.Name = "tbSp3";
-            this.tbSp3.Size = new System.Drawing.Size(39, 21);
+            this.tbSp3.Size = new System.Drawing.Size(74, 21);
             this.tbSp3.TabIndex = 14;
             this.tbSp3.Text = "0";
             this.tbSp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -459,7 +426,7 @@
             // 
             // btnSp3
             // 
-            this.btnSp3.Location = new System.Drawing.Point(107, 74);
+            this.btnSp3.Location = new System.Drawing.Point(156, 74);
             this.btnSp3.Name = "btnSp3";
             this.btnSp3.Size = new System.Drawing.Size(41, 23);
             this.btnSp3.TabIndex = 13;
@@ -469,7 +436,7 @@
             // 
             // btnSp2
             // 
-            this.btnSp2.Location = new System.Drawing.Point(107, 47);
+            this.btnSp2.Location = new System.Drawing.Point(156, 47);
             this.btnSp2.Name = "btnSp2";
             this.btnSp2.Size = new System.Drawing.Size(41, 23);
             this.btnSp2.TabIndex = 13;
@@ -479,9 +446,9 @@
             // 
             // tbSp2
             // 
-            this.tbSp2.Location = new System.Drawing.Point(62, 47);
+            this.tbSp2.Location = new System.Drawing.Point(76, 47);
             this.tbSp2.Name = "tbSp2";
-            this.tbSp2.Size = new System.Drawing.Size(39, 21);
+            this.tbSp2.Size = new System.Drawing.Size(74, 21);
             this.tbSp2.TabIndex = 14;
             this.tbSp2.Text = "0";
             this.tbSp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -542,9 +509,9 @@
             // 
             // tbIMaxPoint
             // 
-            this.tbIMaxPoint.Location = new System.Drawing.Point(68, 168);
+            this.tbIMaxPoint.Location = new System.Drawing.Point(82, 168);
             this.tbIMaxPoint.Name = "tbIMaxPoint";
-            this.tbIMaxPoint.Size = new System.Drawing.Size(88, 21);
+            this.tbIMaxPoint.Size = new System.Drawing.Size(74, 21);
             this.tbIMaxPoint.TabIndex = 18;
             this.tbIMaxPoint.Text = "0";
             this.tbIMaxPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -578,9 +545,9 @@
             // 
             // tbISp1
             // 
-            this.tbISp1.Location = new System.Drawing.Point(62, 20);
+            this.tbISp1.Location = new System.Drawing.Point(76, 20);
             this.tbISp1.Name = "tbISp1";
-            this.tbISp1.Size = new System.Drawing.Size(39, 21);
+            this.tbISp1.Size = new System.Drawing.Size(74, 21);
             this.tbISp1.TabIndex = 9;
             this.tbISp1.Text = "0";
             this.tbISp1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -596,7 +563,7 @@
             // 
             // btnISpe1
             // 
-            this.btnISpe1.Location = new System.Drawing.Point(107, 20);
+            this.btnISpe1.Location = new System.Drawing.Point(156, 20);
             this.btnISpe1.Name = "btnISpe1";
             this.btnISpe1.Size = new System.Drawing.Size(41, 23);
             this.btnISpe1.TabIndex = 8;
@@ -606,9 +573,9 @@
             // 
             // tbISp3
             // 
-            this.tbISp3.Location = new System.Drawing.Point(62, 74);
+            this.tbISp3.Location = new System.Drawing.Point(76, 74);
             this.tbISp3.Name = "tbISp3";
-            this.tbISp3.Size = new System.Drawing.Size(39, 21);
+            this.tbISp3.Size = new System.Drawing.Size(74, 21);
             this.tbISp3.TabIndex = 14;
             this.tbISp3.Text = "0";
             this.tbISp3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -624,7 +591,7 @@
             // 
             // btnISp3
             // 
-            this.btnISp3.Location = new System.Drawing.Point(107, 74);
+            this.btnISp3.Location = new System.Drawing.Point(156, 74);
             this.btnISp3.Name = "btnISp3";
             this.btnISp3.Size = new System.Drawing.Size(41, 23);
             this.btnISp3.TabIndex = 13;
@@ -634,7 +601,7 @@
             // 
             // btnISp2
             // 
-            this.btnISp2.Location = new System.Drawing.Point(107, 47);
+            this.btnISp2.Location = new System.Drawing.Point(156, 47);
             this.btnISp2.Name = "btnISp2";
             this.btnISp2.Size = new System.Drawing.Size(41, 23);
             this.btnISp2.TabIndex = 13;
@@ -644,9 +611,9 @@
             // 
             // tbISp2
             // 
-            this.tbISp2.Location = new System.Drawing.Point(62, 47);
+            this.tbISp2.Location = new System.Drawing.Point(76, 47);
             this.tbISp2.Name = "tbISp2";
-            this.tbISp2.Size = new System.Drawing.Size(39, 21);
+            this.tbISp2.Size = new System.Drawing.Size(74, 21);
             this.tbISp2.TabIndex = 14;
             this.tbISp2.Text = "0";
             this.tbISp2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -690,9 +657,9 @@
             // 
             // tbIScore
             // 
-            this.tbIScore.Location = new System.Drawing.Point(68, 141);
+            this.tbIScore.Location = new System.Drawing.Point(82, 141);
             this.tbIScore.Name = "tbIScore";
-            this.tbIScore.Size = new System.Drawing.Size(88, 21);
+            this.tbIScore.Size = new System.Drawing.Size(74, 21);
             this.tbIScore.TabIndex = 15;
             this.tbIScore.Text = "0";
             this.tbIScore.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -736,18 +703,18 @@
             // 
             // tbIPower
             // 
-            this.tbIPower.Location = new System.Drawing.Point(68, 114);
+            this.tbIPower.Location = new System.Drawing.Point(82, 114);
             this.tbIPower.Name = "tbIPower";
-            this.tbIPower.Size = new System.Drawing.Size(88, 21);
+            this.tbIPower.Size = new System.Drawing.Size(74, 21);
             this.tbIPower.TabIndex = 7;
             this.tbIPower.Text = "0";
             this.tbIPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbIPlayer
             // 
-            this.tbIPlayer.Location = new System.Drawing.Point(68, 6);
+            this.tbIPlayer.Location = new System.Drawing.Point(82, 6);
             this.tbIPlayer.Name = "tbIPlayer";
-            this.tbIPlayer.Size = new System.Drawing.Size(88, 21);
+            this.tbIPlayer.Size = new System.Drawing.Size(74, 21);
             this.tbIPlayer.TabIndex = 1;
             this.tbIPlayer.Text = "0";
             this.tbIPlayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -774,9 +741,9 @@
             // 
             // tbIBombFragment
             // 
-            this.tbIBombFragment.Location = new System.Drawing.Point(68, 87);
+            this.tbIBombFragment.Location = new System.Drawing.Point(82, 87);
             this.tbIBombFragment.Name = "tbIBombFragment";
-            this.tbIBombFragment.Size = new System.Drawing.Size(88, 21);
+            this.tbIBombFragment.Size = new System.Drawing.Size(74, 21);
             this.tbIBombFragment.TabIndex = 5;
             this.tbIBombFragment.Text = "0";
             this.tbIBombFragment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -803,18 +770,18 @@
             // 
             // tbIBomb
             // 
-            this.tbIBomb.Location = new System.Drawing.Point(68, 60);
+            this.tbIBomb.Location = new System.Drawing.Point(82, 60);
             this.tbIBomb.Name = "tbIBomb";
-            this.tbIBomb.Size = new System.Drawing.Size(88, 21);
+            this.tbIBomb.Size = new System.Drawing.Size(74, 21);
             this.tbIBomb.TabIndex = 3;
             this.tbIBomb.Text = "0";
             this.tbIBomb.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tbIPlayerFragment
             // 
-            this.tbIPlayerFragment.Location = new System.Drawing.Point(68, 33);
+            this.tbIPlayerFragment.Location = new System.Drawing.Point(82, 33);
             this.tbIPlayerFragment.Name = "tbIPlayerFragment";
-            this.tbIPlayerFragment.Size = new System.Drawing.Size(88, 21);
+            this.tbIPlayerFragment.Size = new System.Drawing.Size(74, 21);
             this.tbIPlayerFragment.TabIndex = 3;
             this.tbIPlayerFragment.Text = "0";
             this.tbIPlayerFragment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -955,6 +922,9 @@
             // 
             // groupBoxOther
             // 
+            this.groupBoxOther.Controls.Add(this.lbShowSp3);
+            this.groupBoxOther.Controls.Add(this.lbShowSp2);
+            this.groupBoxOther.Controls.Add(this.lbShowSp1);
             this.groupBoxOther.Controls.Add(this.btnKill);
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
             this.groupBoxOther.Location = new System.Drawing.Point(3, 228);
@@ -966,7 +936,7 @@
             // 
             // btnKill
             // 
-            this.btnKill.Location = new System.Drawing.Point(158, 46);
+            this.btnKill.Location = new System.Drawing.Point(161, 46);
             this.btnKill.Name = "btnKill";
             this.btnKill.Size = new System.Drawing.Size(41, 23);
             this.btnKill.TabIndex = 21;
@@ -1358,6 +1328,33 @@
             this.lbfafafa1.TabIndex = 18;
             this.lbfafafa1.Text = "  aa";
             // 
+            // lbShowSp1
+            // 
+            this.lbShowSp1.AutoSize = true;
+            this.lbShowSp1.Location = new System.Drawing.Point(7, 38);
+            this.lbShowSp1.Name = "lbShowSp1";
+            this.lbShowSp1.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp1.TabIndex = 22;
+            this.lbShowSp1.Text = " ";
+            // 
+            // lbShowSp2
+            // 
+            this.lbShowSp2.AutoSize = true;
+            this.lbShowSp2.Location = new System.Drawing.Point(7, 57);
+            this.lbShowSp2.Name = "lbShowSp2";
+            this.lbShowSp2.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp2.TabIndex = 23;
+            this.lbShowSp2.Text = " ";
+            // 
+            // lbShowSp3
+            // 
+            this.lbShowSp3.AutoSize = true;
+            this.lbShowSp3.Location = new System.Drawing.Point(107, 17);
+            this.lbShowSp3.Name = "lbShowSp3";
+            this.lbShowSp3.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp3.TabIndex = 24;
+            this.lbShowSp3.Text = " ";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1480,9 +1477,6 @@
         private System.Windows.Forms.Label lbIScore;
         private System.Windows.Forms.TextBox tbIScore;
         private System.Windows.Forms.Button btnIScore;
-        private System.Windows.Forms.Button btnReadSp3;
-        private System.Windows.Forms.Button btnReadSp2;
-        private System.Windows.Forms.Button btnReadSp1;
         private System.Windows.Forms.Button showBug;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button note;
@@ -1530,6 +1524,9 @@
         public System.Windows.Forms.TrackBar trackBarFontG;
         public System.Windows.Forms.TrackBar trackBarFontR;
         private System.Windows.Forms.Button btnUseFloatWindow;
+        private System.Windows.Forms.Label lbShowSp2;
+        private System.Windows.Forms.Label lbShowSp1;
+        private System.Windows.Forms.Label lbShowSp3;
     }
 }
 

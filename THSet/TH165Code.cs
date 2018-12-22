@@ -8,8 +8,8 @@ namespace THSet {
         MemoryTool mt;
         public TH165Code(MemoryTool m) => mt=m;
         public override string getTitle() => new Random().Next()%2==0 ? "bug日记" : "TH16.5";
-        public override string[] getSpecialTip() => new string[] { "拍照","","" };
-        public override string getAboutBug() => "撞弹后进入游戏说明再回到游戏可以复活";
+        public override string[] getSpecialTip() => new string[] { "拍照能量","","" };
+        public override string getAboutBug() => "ESC+R并不会让游戏重新开始，而且还会多一层菜单遮挡视线\n撞弹后进入游戏说明再回到游戏可以复活";
         public override string getAboutSpecial() => "拍照能量为0-100";
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
         public override void StartCount() { }
