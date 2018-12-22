@@ -33,16 +33,14 @@ namespace THSet {
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B8950)+0x5910);
         public override void killSelf() => write(mt.ReadInteger(0x004B8A80)+0xF78,4);
         public override bool[] getEnable() => new bool[28] { true,false,true,false,true,true,false,true,false,false,
-                                                             true,false,true,false,false,false,false,true,false,false,
+                                                             true,false,true,false,true,false,false,true,false,false,
                                                              true,true,true,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 });//mov [004B4D64],ecx
         public override void setLockBomb(bool b) => write(0x0043B7C1,b ? new byte[] { 0x90,0x90 } : new byte[] { 0x7C,0x30 }); //jl 0043B7F3
         public override void setUnbeatable(bool b) => write(0x0043D0CF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [eax+00000F78],00000004
         public override void setFPS(int i) {
-            if(write(0x60018A24,i)==0) {
-                write(0x00454938,BitConverter.GetBytes((double)1/i));
-                write(0x00454C48,new byte[] { 0xDD,0x05,0x38,0x49,0x45,0x00 });//fld qword ptr [00454938]
-            }
+                write(0x00455158,BitConverter.GetBytes((double)1/i));
+                write(0x00454C48,new byte[] { 0xDD,0x05,0x58,0x51,0x45,0x00 });//fld qword ptr [00455158]
         }
         public override void setPlayer(int i) => write(0x004B4D64,i*100);
         public override void setPlayerFragment(int i) => throw new NotImplementedException();
@@ -67,7 +65,11 @@ namespace THSet {
             write(0x00425DC7,new byte[] { 0xE9,0x43,0x02,0x00,0x00 });                      //jmp 0042600F
         }
         public override void setIBombFragment(int i) => throw new NotImplementedException();
-        public override void setIPower(int i) => throw new NotImplementedException();
+        public override void setIPower(int i) {
+            byte[] b = BitConverter.GetBytes((float)i);
+            write(0x00425FEE,new byte[] { 0xE9,0x0E,0x09,0x00,0x00,0x90 });                     //jmp 00426901
+            write(0x00426901,new byte[] { 0xC7,0x05,0x60,0x4D,0x4B,0x00,b[0],b[1],b[2],b[3] }); //jmp 0042600F
+        }
         public override void setIScore(int i) => throw new NotImplementedException();
         public override void setIMaxPoint(int i) => throw new NotImplementedException();
         public override void setISpecial1(int i) => write(0x00425F08,i*100);
