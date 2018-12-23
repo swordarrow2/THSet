@@ -30,7 +30,8 @@ namespace THSet {
             if(getPID("th09")!=0||getPID("th09c")!=0) {
                 mt=new MemoryTool(pro);
             }
-            timer1.Enabled=true;
+            timerTitle.Enabled=true;
+            timerLily.Enabled=true;
         }
 
         private void bplayer1HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetHP,Convert.ToInt32(tplayer1HP.Text));
@@ -45,6 +46,8 @@ namespace THSet {
             write(mt.ReadInteger(p1Addr.playerScoreBase)+p1Addr.offsetScore1,Convert.ToInt32(tplayer1Score.Text)/10);
             write(mt.ReadInteger(p1Addr.playerScoreBase)+p1Addr.offsetScore2,Convert.ToInt32(tplayer1Score.Text)/10);
         }
+
+        private void btnPlayer_Click(object sender,EventArgs e) => write(mt.ReadInteger(0x004A7DAC),BitConverter.GetBytes(Convert.ToSingle(tbPlayer.Text)));
         private void cplayer1HP_CheckedChanged(object sender,EventArgs e) {
             write(p1Addr.codeAddressHP1,getOriginOrHookedValue(p1Addr.codeLockHP1,cplayer1HP.Checked));
             write(p1Addr.codeAddressHP2,getOriginOrHookedValue(p1Addr.codeLockHP2,cplayer1HP.Checked));
@@ -61,6 +64,8 @@ namespace THSet {
             write(p1Addr.codeAddressCapacity3,getOriginOrHookedValue(p1Addr.codeLockCapacity3,cplayer1QiCao.Checked));
             write(p1Addr.codeAddressCapacity4,getOriginOrHookedValue(p1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
         }
+        private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(p1Addr.codeAddressPlayer,getOriginOrHookedValue(p1Addr.codeLockPlayer,cbPlayer.Checked));
+        private void btnNote_Click(object sender,EventArgs e) => MessageBox.Show("血量1-10,气槽0-400.莉莉白计时到达10000时,莉莉白将出现.\n\n本程序在Window7 64位系统测试可用",MainForm.versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
 
         private void bplayer2HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHP,Convert.ToInt32(tplayer2HP.Text));
         private void bplayer2Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHit,Convert.ToInt32(tplayer2Hit.Text));
@@ -89,16 +94,18 @@ namespace THSet {
             write(p2Addr.codeAddressCapacity3,getOriginOrHookedValue(p2Addr.codeLockCapacity3,cplayer2QiCao.Checked));
             write(p2Addr.codeAddressCapacity4,getOriginOrHookedValue(p2Addr.codeLockCapacity4,cplayer2QiCao.Checked));
         }
-        private int getPID(string exeName) {
-            try {
-                pro=Process.GetProcessesByName(exeName)[0];
-                return pro.Id;
-            } catch {
-                return 0;
-            }
-        }
+
         private void write(int address,int value) => mt.WriteInteger(address,value);
         private void write(int address,byte[] value) => mt.WriteBytes(address,value);
+
+        private void timerTitle_Tick(object sender,EventArgs e) {
+            if(getPID("th09")==0&&getPID("th09c")==0) Environment.Exit(Environment.ExitCode);
+            Text=titles[mt.ReadInteger(0x004A7DB0)];
+        }
+
+        private void timerLily_Tick(object sender,EventArgs e) => lbLilyWhite.Text=Convert.ToString(mt.ReadInteger(0x004A7E5C));
+        private void btnLilyWhite_Click(object sender,EventArgs e) => write(0x004A7E5C,Convert.ToInt32(tbLilyWhite.Text));
+
         private byte[] getOriginOrHookedValue(byte[] array,bool isHooked) {
             if(isHooked) {
                 int le = array.Length;
@@ -109,11 +116,18 @@ namespace THSet {
                 return array;
             }
         }
-        private void timer1_Tick(object sender,EventArgs e) {
-            if(getPID("th09")==0&&getPID("th09c")==0) Environment.Exit(Environment.ExitCode);
-            Text=titles[mt.ReadInteger(0x004A7DB0)];
+        private int getPID(string exeName) {
+            try {
+                pro=Process.GetProcessesByName(exeName)[0];
+                return pro.Id;
+            } catch {
+                return 0;
+            }
         }
+
     }
+
+
     public class p1Addr {
         public const int playerBase = 0x004A7D94;
         public const int playerScoreBase = 0x004A7DAC;
@@ -136,6 +150,7 @@ namespace THSet {
         public const int codeAddressCapacity2 = 0x0041CABF;
         public const int codeAddressCapacity3 = 0x0041CB00;
         public const int codeAddressCapacity4 = 0x0041F339;
+        public const int codeAddressPlayer = 0x00417AB7;
 
         public static readonly byte[] codeLockHP1 = new byte[] { 0x89,0x9E,0xA8,0x00,0x00,0x00 };
         public static readonly byte[] codeLockHP2 = new byte[] { 0x89,0x86,0xA8,0x00,0x00,0x00 };
@@ -147,6 +162,7 @@ namespace THSet {
         public static readonly byte[] codeLockCapacity2 = new byte[] { 0x89,0x86,0x88,0x03,0x03,0x00 };
         public static readonly byte[] codeLockCapacity3 = new byte[] { 0x89,0xBE,0x88,0x03,0x03,0x00 };
         public static readonly byte[] codeLockCapacity4 = new byte[] { 0xD9,0x99,0x88,0x03,0x03,0x00 };
+        public static readonly byte[] codeLockPlayer = new byte[] { 0x9D,0x19 };
     }
     public class p2Addr {
         public const int playerBase = 0x004A7DCC;

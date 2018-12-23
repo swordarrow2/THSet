@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.7";
+        public const string versonCode = "THSet v2.7.1";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
