@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        private const string versonCode = "THSet v2.6.1";
+        private const string versonCode = "THSet v2.7";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
         private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
-        public string[] names = new string[] { "th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
+        public string[] names = new string[] { "th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
         private string[] sptip;
         private int pid = 0;
         private int lastLife = 0;
@@ -46,21 +46,21 @@ namespace THSet {
                 Environment.Exit(Environment.ExitCode);
             }
             switch(index) {
-                case 0:
-                case 1:
-                case 2: tc=new TH10Code(new MemoryTool(THprocess)); break;
+                case 2:
                 case 3:
-                case 4: tc=new TH11Code(new MemoryTool(THprocess)); break;
+                case 4: tc=new TH10Code(new MemoryTool(THprocess)); break;
                 case 5:
-                case 6: tc=new TH12Code(new MemoryTool(THprocess)); break;
+                case 6: tc=new TH11Code(new MemoryTool(THprocess)); break;
                 case 7:
-                case 8: tc=new TH128Code(new MemoryTool(THprocess)); break;
+                case 8: tc=new TH12Code(new MemoryTool(THprocess)); break;
                 case 9:
-                case 10: tc=new TH13Code(new MemoryTool(THprocess)); break;
-                case 11: tc=new TH14Code(new MemoryTool(THprocess)); break;
-                case 12: tc=new TH15Code(new MemoryTool(THprocess)); break;
-                case 13: tc=new TH16Code(new MemoryTool(THprocess)); break;
-                case 14: tc=new TH165Code(new MemoryTool(THprocess)); break;
+                case 10: tc=new TH128Code(new MemoryTool(THprocess)); break;
+                case 11:
+                case 12: tc=new TH13Code(new MemoryTool(THprocess)); break;
+                case 13: tc=new TH14Code(new MemoryTool(THprocess)); break;
+                case 14: tc=new TH15Code(new MemoryTool(THprocess)); break;
+                case 15: tc=new TH16Code(new MemoryTool(THprocess)); break;
+                case 16: tc=new TH165Code(new MemoryTool(THprocess)); break;
             }
             Text=tc.getTitle();
             enable=tc.getEnable();

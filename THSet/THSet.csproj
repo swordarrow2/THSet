@@ -89,6 +89,12 @@
     <Compile Include="floatWindow.Designer.cs">
       <DependentUpon>floatWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="TH09Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TH09Form.designer.cs">
+      <DependentUpon>TH09Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     <Compile Include="TH16Code.cs" />
     <EmbeddedResource Include="floatWindow.resx">
       <DependentUpon>floatWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TH09Form.resx">
+      <DependentUpon>TH09Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
