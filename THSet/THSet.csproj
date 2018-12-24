@@ -89,6 +89,7 @@
     <Compile Include="floatWindow.Designer.cs">
       <DependentUpon>floatWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="TH07Code.cs" />
     <Compile Include="TH09Form.cs">
       <SubType>Form</SubType>
     </Compile>

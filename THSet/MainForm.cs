@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v2.7.1";
+        public const string versonCode = "THSet v2.8.0";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
         private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
-        public string[] names = new string[] { "th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
+        public string[] names = new string[] { "th07","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
         private string[] sptip;
         private int pid = 0;
         private int lastLife = 0;
@@ -29,6 +29,7 @@ namespace THSet {
         public int bossLife = 0;
         public int dps = 0;
         public string sp1 = "";
+        private int THNo = 0;
 
         public MainForm() {
             InitializeComponent();
@@ -46,21 +47,27 @@ namespace THSet {
                 Environment.Exit(Environment.ExitCode);
             }
             switch(index) {
-                case 2:
+                case 0:
+                    tc=new TH07Code(new MemoryTool(THprocess));
+                    lbPF.Text=lbIPF.Text="蓝点数";
+                    lbMaxpoint.Text=lbIMaxPoint.Text="分子";
+                    THNo=7;
+                    break;
                 case 3:
-                case 4: tc=new TH10Code(new MemoryTool(THprocess)); break;
-                case 5:
-                case 6: tc=new TH11Code(new MemoryTool(THprocess)); break;
-                case 7:
-                case 8: tc=new TH12Code(new MemoryTool(THprocess)); break;
-                case 9:
-                case 10: tc=new TH128Code(new MemoryTool(THprocess)); break;
-                case 11:
-                case 12: tc=new TH13Code(new MemoryTool(THprocess)); break;
-                case 13: tc=new TH14Code(new MemoryTool(THprocess)); break;
-                case 14: tc=new TH15Code(new MemoryTool(THprocess)); break;
-                case 15: tc=new TH16Code(new MemoryTool(THprocess)); break;
-                case 16: tc=new TH165Code(new MemoryTool(THprocess)); break;
+                case 4:
+                case 5: tc=new TH10Code(new MemoryTool(THprocess)); break;
+                case 6:
+                case 7: tc=new TH11Code(new MemoryTool(THprocess)); break;
+                case 8:
+                case 9: tc=new TH12Code(new MemoryTool(THprocess)); break;
+                case 10:
+                case 11: tc=new TH128Code(new MemoryTool(THprocess)); break;
+                case 12:
+                case 13: tc=new TH13Code(new MemoryTool(THprocess)); break;
+                case 14: tc=new TH14Code(new MemoryTool(THprocess)); break;
+                case 15: tc=new TH15Code(new MemoryTool(THprocess)); break;
+                case 16: tc=new TH16Code(new MemoryTool(THprocess)); break;
+                case 17: tc=new TH165Code(new MemoryTool(THprocess)); break;
             }
             Text=tc.getTitle();
             enable=tc.getEnable();
@@ -214,7 +221,12 @@ namespace THSet {
             if(!enable[8]) return;
             lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
             if(!enable[9]) return;
-            lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
+            if(THNo==7) {
+                lbShowSp3.Text="樱道具值:"+(1000+100*tc.getSpecial3());
+            } else {
+                lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
+            }
+            
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
             if(enable[25]) {
@@ -237,6 +249,11 @@ namespace THSet {
                     btnKill.Enabled=enable[27];
                 } else {
                     tipedWarning=timerEnemy.Enabled=timerDPS.Enabled=true;
+                }
+                if(lbPF.Text.Equals("蓝点数")) {
+                    timerMissAndBomb.Enabled=true;
+                    groupBoxSourceUse.Enabled=enable[24];
+                    btnCountStart.Enabled=false;
                 }
             }
         }
