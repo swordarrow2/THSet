@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace THSet {
-    class TH165Code:THCode {
+    public class TH165Code:THCode {
         MemoryTool mt;
         public TH165Code(MemoryTool m) => mt=m;
+        public override void setBoss(ComboBox boss) {
+            throw new NotImplementedException();
+        }
+        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+            throw new NotImplementedException();
+        }
         public override string getTitle() => new Random().Next()%2==0 ? "bug日记" : "TH16.5";
         public override string[] getSpecialTip() => new string[] { "拍照能量","","" };
         public override string getAboutBug() => "ESC+R并不会让游戏重新开始，而且还会多一层菜单遮挡视线\n撞弹后进入游戏说明再回到游戏可以复活";
@@ -19,9 +26,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B550C)+0x40);
         public override int getBossLife() => throw new NotImplementedException();
         public override void killSelf() => write(mt.ReadInteger(0x004B5654)+0x165A4,4);
-        public override bool[] getEnable() => new bool[28] { false,false,false,false,false,false,false,true,false,false,
+        public override bool[] getEnable() => new bool[29] { false,false,false,false,false,false,false,true,false,false,
                                                              false,false,false,false,false,false,false,false,false,false,
-                                                             false,true,true,true,false,false,true,true };
+                                                             false,true,true,true,false,false,true,true,false };
         public override void setLockPlayer(bool b) => throw new NotImplementedException();
         public override void setLockBomb(bool b) {
             write(0x0044A1D7,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xF3,0x0F,0x11,0x47,0x7C });                    //movss [edi+7C],xmm0

@@ -2,10 +2,52 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace THSet {
-    class TH13Code:THCode {
+    public class TH13Code:THCode {
         MemoryTool mt;
+        private int bossEclAddress = 0;
+        public override void setBoss(ComboBox boss) {
+            byte[] memory = new byte[0x1000];
+            byte[] bossEcl = g4EclCode.g4MainBossEcl;
+            int index = 0;
+            byte b = (byte)'1';
+            switch(boss.Text) {
+                case "Boss1": b=(byte)'1'; break;
+                case "Boss2": b=(byte)'2'; break;
+                case "Boss3": b=(byte)'3'; break;
+                case "Boss4": b=(byte)'4'; break;
+                case "Boss5": b=(byte)'5'; break;
+                case "Boss6": b=(byte)'6'; break;
+                case "Boss7": b=(byte)'7'; break;
+            }
+            if(bossEclAddress!=0) {
+                mt.WriteBytes(bossEclAddress,new byte[] { b });
+            } else {
+                for(int i = 0x00400000;i<0x30000000;i+=0x1000) {
+                    memory=mt.ReadBytes(i,0x1000);
+                    if((index=getIndexOf(memory,bossEcl))!=-1) {
+                        mt.WriteBytes(i+index+20,new byte[] { b });
+                        bossEclAddress=i+index+20;
+                        break;
+                    }
+                }
+            }
+        }
+        public override void setStageAndBossList(ComboBox stageBox,ComboBox bossBox) {
+            bossEclAddress=0;
+            bossBox.Items.Clear();
+            switch(stageBox.Text) {
+                case "Stage1": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4" }); break;
+                case "Stage2": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
+                case "Stage3": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
+                case "Stage4": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
+                case "Stage5": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4" }); break;
+                case "Stage6": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4","Boss5","Boss6","Boss7" }); break;
+            }
+            setStEcl(stageBox.Text);
+        }
         public override string getTitle() => new Random().Next()%2==0 ? "东方崩盘庙" : "东方神灵庙";
         public override string getAboutBug() => "符卡练习模式有些boss的位置与实际游戏中不同\n\n魔理沙的replay(汉化版)如果从1面以外播放可能录像爆炸(金发孩子真可怜.jpg)\n\n妖梦\"低速状态判定极小\"无效";
         public override string getAboutSpecial() => "灵界槽初始为200，最大值为600\n已得奖残会影响获得下一残机时需要的残碎片(红灵)数量";
@@ -41,10 +83,10 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004C2174)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004C2190)+0x1B4);
         public override void killSelf() => write(mt.ReadInteger(0x004C22C4)+0x65C,4);
-        public override bool[] getEnable() => new bool[28] { true,true,true,true,true,true,true,true,true,false,
+        public override bool[] getEnable() => new bool[29] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,
-                                                             true,true,true,true,true };
+                                                             true,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00444741,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 });//dec [004BE7F4]
         public override void setLockBomb(bool b) => write(0x0040A481,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x00,0xE8,0x4B,0x00 });//mov [004BE800],eax
         public override void setUnbeatable(bool b) => write(0x00444D75,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [edi+0000065C],00000004
@@ -97,6 +139,36 @@ namespace THSet {
         public override void setISpecial1(int i) => write(0x0042D407,i);
         public override void setISpecial2(int i) => write(0x0042D4BF,i);
         public override void setISpecial3(int i) => throw new NotImplementedException();
+        private int getIndexOf(byte[] b,byte[] bb) {
+            try {
+                if(b==null||b==null||b.Length==0||bb.Length==0) return -1;
+                int i, j;
+                for(i=0;i<b.Length;i++) {
+                    if(b[i]==bb[0]) {
+                        for(j=1;j<bb.Length;j++) {
+                            if(b[i+j]!=bb[j]) break;
+                        }
+                        if(j==bb.Length) return i;
+                    }
+                }
+                return -1;
+            } catch(Exception e) {
+                return -1;
+            }
+        }
+        private void setStEcl(string stage) {
+            byte[] memory = new byte[0x1000];
+            byte[] eclBefore = eclBefore=g4EclCode.g4EclBefore;
+            byte[] eclAfter = eclAfter=g4EclCode.g4EclAfter;
+            int index = 0;
+            for(int i = 0x00400000;i<0x30000000;i+=0x1000) {
+                memory=mt.ReadBytes(i,0x1000);
+                if((index=getIndexOf(memory,eclBefore))!=-1) {
+                    mt.WriteBytes(i+index,eclAfter);
+                    break;
+                }
+            }
+        }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

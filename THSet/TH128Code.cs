@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace THSet {
-    class TH128Code:THCode {
+    public class TH128Code:THCode {
         MemoryTool mt;
         public TH128Code(MemoryTool m) => mt=m;
+        public override void setBoss(ComboBox boss) {
+            throw new NotImplementedException();
+        }
+        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+            throw new NotImplementedException();
+        }
         public override string getTitle() => new Random().Next()%2==0 ? "1+1=9" : "妖精大战争";
         public override string[] getSpecialTip() => new string[] { "蓄力","","" };
         public override string getAboutBug() => "终符若同时击破了两只妖精，则卡关……无解\n“满身疮痍”界面直接重新开始会导致录像爆炸，应返回主界面重新开始，若没有疮痍，则可以放心使用ESC+R\n难度\\路线选择界面如果按键频率过高可能会出现选择不正确的情况";
@@ -32,9 +39,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B8930)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B8950)+0x5910);
         public override void killSelf() => write(mt.ReadInteger(0x004B8A80)+0xF78,4);
-        public override bool[] getEnable() => new bool[28] { true,false,true,false,true,true,false,true,false,false,
+        public override bool[] getEnable() => new bool[29] { true,false,true,false,true,true,false,true,false,false,
                                                              true,false,true,false,true,false,false,true,false,false,
-                                                             true,true,true,true,true,true,true,true };
+                                                             true,true,true,true,true,true,true,true,false };
         public override void setLockPlayer(bool b) => write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 });//mov [004B4D64],ecx
         public override void setLockBomb(bool b) => write(0x0043B7C1,b ? new byte[] { 0x90,0x90 } : new byte[] { 0x7C,0x30 }); //jl 0043B7F3
         public override void setUnbeatable(bool b) => write(0x0043D0CF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [eax+00000F78],00000004

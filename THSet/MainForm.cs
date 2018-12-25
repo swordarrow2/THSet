@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v2.8.0";
+        public const string versonCode = "THSet v3.0";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
@@ -22,7 +22,7 @@ namespace THSet {
         private int pid = 0;
         private int lastLife = 0;
         private int thisLife = 0;
-        public int index = 0;
+        private int gameIndex = 0;
         public int missCount = -1;
         public int bombCount = -1;
         public int bulletCount = 0;
@@ -30,11 +30,13 @@ namespace THSet {
         public int dps = 0;
         public string sp1 = "";
         private int THNo = 0;
+        public static int bossEclIndex = 0;
+        public static int lastStage = 0;
 
         public MainForm() {
             InitializeComponent();
-            for(;index<names.Length;index++) {
-                pid=GetPID(names[index]);
+            for(;gameIndex<names.Length;gameIndex++) {
+                pid=GetPID(names[gameIndex]);
                 if(pid!=0) { break; }
             }
             if(pid==0) {
@@ -46,7 +48,7 @@ namespace THSet {
                 MessageBox.Show("没有发现支持的车万进程\n目前支持:\n"+sb.ToString(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 Environment.Exit(Environment.ExitCode);
             }
-            switch(index) {
+            switch(gameIndex) {
                 case 0:
                     tc=new TH07Code(new MemoryTool(THprocess));
                     lbPF.Text=lbIPF.Text="蓝点数";
@@ -55,19 +57,19 @@ namespace THSet {
                     break;
                 case 3:
                 case 4:
-                case 5: tc=new TH10Code(new MemoryTool(THprocess)); break;
+                case 5: tc=new TH10Code(new MemoryTool(THprocess)); THNo=10; break;
                 case 6:
-                case 7: tc=new TH11Code(new MemoryTool(THprocess)); break;
+                case 7: tc=new TH11Code(new MemoryTool(THprocess)); THNo=11; break;
                 case 8:
-                case 9: tc=new TH12Code(new MemoryTool(THprocess)); break;
+                case 9: tc=new TH12Code(new MemoryTool(THprocess)); THNo=12; break;
                 case 10:
-                case 11: tc=new TH128Code(new MemoryTool(THprocess)); break;
+                case 11: tc=new TH128Code(new MemoryTool(THprocess)); THNo=128; break;
                 case 12:
-                case 13: tc=new TH13Code(new MemoryTool(THprocess)); break;
-                case 14: tc=new TH14Code(new MemoryTool(THprocess)); break;
-                case 15: tc=new TH15Code(new MemoryTool(THprocess)); break;
-                case 16: tc=new TH16Code(new MemoryTool(THprocess)); break;
-                case 17: tc=new TH165Code(new MemoryTool(THprocess)); break;
+                case 13: tc=new TH13Code(new MemoryTool(THprocess)); THNo=13; break;
+                case 14: tc=new TH14Code(new MemoryTool(THprocess)); THNo=14; break;
+                case 15: tc=new TH15Code(new MemoryTool(THprocess)); THNo=15; break;
+                case 16: tc=new TH16Code(new MemoryTool(THprocess)); THNo=16; break;
+                case 17: tc=new TH165Code(new MemoryTool(THprocess)); THNo=165; break;
             }
             Text=tc.getTitle();
             enable=tc.getEnable();
@@ -106,7 +108,7 @@ namespace THSet {
 
             groupBoxSourceUse.Enabled=false;
             btnKill.Enabled=false;
-
+            gbBossPractice.Enabled=enable[28];
             lbSp1.Text=lbSp1.Enabled ? sptip[0] : "不可用";
             lbSp2.Text=lbSp2.Enabled ? sptip[1] : "不可用";
             lbSp3.Text=lbSp3.Enabled ? sptip[2] : "不可用";
@@ -226,7 +228,7 @@ namespace THSet {
             } else {
                 lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
             }
-            
+
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
             if(enable[25]) {
@@ -238,8 +240,8 @@ namespace THSet {
         }
         private void btnCountStart_Click(object sender,EventArgs e) => restartCount();
         private void tabChange(object sender,EventArgs e) {
-            if(tabControl1.SelectedTab==tabPage3&&!tipedWarning) {
-                if(MessageBox.Show("使用了本页部分功能打出来的录像可能需要在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则仅使用不会影响录像的功能",versonCode,MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
+            if(!tipedWarning) {
+                if(MessageBox.Show("使用了某些功能之后打出来的replay可能需要在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则仅使用不会影响录像的功能",versonCode,MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
                     tipedWarning=timerMissAndBomb.Enabled=timerEnemy.Enabled=timerDPS.Enabled=true;
                     tc.StartCount();
                     lockPlayer.Enabled=enable[20];
@@ -258,7 +260,7 @@ namespace THSet {
             }
         }
         private void timerProcessWatcher_Tick(object sender,EventArgs e) {
-            if(GetPID(names[index])==0) Environment.Exit(Environment.ExitCode);
+            if(GetPID(names[gameIndex])==0) Environment.Exit(Environment.ExitCode);
         }
         private int GetPID(string exeName) {
             try {
@@ -312,5 +314,8 @@ namespace THSet {
         }
         public void restartCount() => tc.StartCount();
         public void killSelf() => tc.killSelf();
+        private void btnStartPractice_Click(object sender,EventArgs e) => tc.setBoss(comboBoxBoss);
+        private void setBossComboBox(object sender,EventArgs e) => tc.setStageAndBossList(comboBoxStage,comboBoxBoss);
+        private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,点击开始后在游戏中ESC+R即可开始使用.回到游戏主界面时修改失效,再次练习时需要重新选择",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
     }
 }

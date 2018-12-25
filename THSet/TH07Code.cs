@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace THSet {
-    class TH07Code:THCode {
+    public class TH07Code:THCode {
         MemoryTool mt;
         public TH07Code(MemoryTool m) => mt=m;
+        public override void setBoss(ComboBox boss) {
+            throw new NotImplementedException();
+        }
+        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+            throw new NotImplementedException();
+        }
         public override string getTitle() => new Random().Next()%2==0 ? "东方妖妖梦" : "东方999";
         public override string[] getSpecialTip() => new string[] { "结界","分母","收卡数" };
         public override string getAboutBug() => "";
@@ -19,9 +26,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(0x009A9A80);
         public override int getBossLife() => throw new NotImplementedException();
         public override void killSelf() => throw new NotImplementedException();
-        public override bool[] getEnable() => new bool[28] { false,true,false,false,true,false,true,true,true,true,
+        public override bool[] getEnable() => new bool[29] { false,true,false,false,true,false,true,true,true,true,
                                                              true,true,true,false,true,false,true,true,true,true,
-                                                             true,true,false,true,true,false,true,false };
+                                                             true,true,false,true,true,false,true,false,false };
         public override void setLockPlayer(bool b) => write(0x0042D602,b ? new byte[] { 0x90,0x90,0x90 } : new byte[] { 0xD9,0x58,0x5C });
         public override void setLockBomb(bool b) => write(0x0042D647,b ? new byte[] { 0x90,0x90,0x90 } : new byte[] { 0xD9,0x58,0x68 });
         public override void setUnbeatable(bool b) => write(0x00,b ? new byte[] { } : new byte[] { });

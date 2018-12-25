@@ -95,12 +95,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.note = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBoxOther = new System.Windows.Forms.GroupBox();
-            this.btnKill = new System.Windows.Forms.Button();
+            this.lbShowSp3 = new System.Windows.Forms.Label();
+            this.lbShowSp2 = new System.Windows.Forms.Label();
+            this.lbShowSp1 = new System.Windows.Forms.Label();
             this.lbBulletCount = new System.Windows.Forms.Label();
+            this.btnKill = new System.Windows.Forms.Button();
             this.groupBoxBoss = new System.Windows.Forms.GroupBox();
             this.lbLife = new System.Windows.Forms.Label();
             this.lbDPS = new System.Windows.Forms.Label();
@@ -112,7 +114,6 @@
             this.btnCountStart = new System.Windows.Forms.Button();
             this.lbMissCount = new System.Windows.Forms.Label();
             this.lbBombCount = new System.Windows.Forms.Label();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.btnUseFloatWindow = new System.Windows.Forms.Button();
             this.btnDefault = new System.Windows.Forms.Button();
             this.lbShowRGB = new System.Windows.Forms.Label();
@@ -137,21 +138,27 @@
             this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.timerDPS = new System.Windows.Forms.Timer(this.components);
             this.lbfafafa1 = new System.Windows.Forms.Label();
-            this.lbShowSp1 = new System.Windows.Forms.Label();
-            this.lbShowSp2 = new System.Windows.Forms.Label();
-            this.lbShowSp3 = new System.Windows.Forms.Label();
+            this.tabControl2 = new System.Windows.Forms.TabControl();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxStage = new System.Windows.Forms.ComboBox();
+            this.btnStartPractice = new System.Windows.Forms.Button();
+            this.comboBoxBoss = new System.Windows.Forms.ComboBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.gbBossPractice = new System.Windows.Forms.GroupBox();
+            this.btnPracticeNote = new System.Windows.Forms.Button();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.groupBoxOther.SuspendLayout();
             this.groupBoxBoss.SuspendLayout();
             this.groupBoxFPSChange.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).BeginInit();
             this.groupBoxSourceUse.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFontB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFontG)).BeginInit();
@@ -161,6 +168,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarR)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarA)).BeginInit();
+            this.tabControl2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.gbBossPractice.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerMissAndBomb
@@ -170,7 +183,7 @@
             // lockPlayer
             // 
             this.lockPlayer.AutoSize = true;
-            this.lockPlayer.Location = new System.Drawing.Point(4, 12);
+            this.lockPlayer.Location = new System.Drawing.Point(3, 3);
             this.lockPlayer.Name = "lockPlayer";
             this.lockPlayer.Size = new System.Drawing.Size(72, 16);
             this.lockPlayer.TabIndex = 0;
@@ -181,7 +194,7 @@
             // lockBomb
             // 
             this.lockBomb.AutoSize = true;
-            this.lockBomb.Location = new System.Drawing.Point(82, 12);
+            this.lockBomb.Location = new System.Drawing.Point(113, 3);
             this.lockBomb.Name = "lockBomb";
             this.lockBomb.Size = new System.Drawing.Size(72, 16);
             this.lockBomb.TabIndex = 1;
@@ -362,7 +375,7 @@
             // unbeatable
             // 
             this.unbeatable.AutoSize = true;
-            this.unbeatable.Location = new System.Drawing.Point(160, 12);
+            this.unbeatable.Location = new System.Drawing.Point(3, 25);
             this.unbeatable.Name = "unbeatable";
             this.unbeatable.Size = new System.Drawing.Size(48, 16);
             this.unbeatable.TabIndex = 13;
@@ -798,7 +811,7 @@
             // 
             // showBug
             // 
-            this.showBug.Location = new System.Drawing.Point(169, 345);
+            this.showBug.Location = new System.Drawing.Point(158, 307);
             this.showBug.Name = "showBug";
             this.showBug.Size = new System.Drawing.Size(58, 23);
             this.showBug.TabIndex = 14;
@@ -808,7 +821,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(7, 345);
+            this.button2.Location = new System.Drawing.Point(7, 307);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 15;
@@ -818,7 +831,7 @@
             // 
             // note
             // 
-            this.note.Location = new System.Drawing.Point(93, 345);
+            this.note.Location = new System.Drawing.Point(88, 307);
             this.note.Name = "note";
             this.note.Size = new System.Drawing.Size(64, 23);
             this.note.TabIndex = 16;
@@ -828,49 +841,15 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(7, 7);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.ItemSize = new System.Drawing.Size(30, 18);
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(220, 332);
             this.tabControl1.TabIndex = 17;
             this.tabControl1.Tag = "";
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabChange);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.lbMaxpoint);
-            this.tabPage1.Controls.Add(this.tbMaxPoint);
-            this.tabPage1.Controls.Add(this.btnPlayerFragment);
-            this.tabPage1.Controls.Add(this.btnMaxPoint);
-            this.tabPage1.Controls.Add(this.tbPlayerFragment);
-            this.tabPage1.Controls.Add(this.lbScore);
-            this.tabPage1.Controls.Add(this.tbBomb);
-            this.tabPage1.Controls.Add(this.tbScore);
-            this.tabPage1.Controls.Add(this.btnBombFragment);
-            this.tabPage1.Controls.Add(this.btnScore);
-            this.tabPage1.Controls.Add(this.btnBomb);
-            this.tabPage1.Controls.Add(this.tbBombFragment);
-            this.tabPage1.Controls.Add(this.groupBoxSpecial);
-            this.tabPage1.Controls.Add(this.btnPlayer);
-            this.tabPage1.Controls.Add(this.lbPower);
-            this.tabPage1.Controls.Add(this.btnPower);
-            this.tabPage1.Controls.Add(this.lbBF);
-            this.tabPage1.Controls.Add(this.tbPlayer);
-            this.tabPage1.Controls.Add(this.lbBomb);
-            this.tabPage1.Controls.Add(this.tbPower);
-            this.tabPage1.Controls.Add(this.lbPF);
-            this.tabPage1.Controls.Add(this.lbPlayer);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(212, 306);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "即时修改";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
@@ -901,48 +880,80 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(212, 306);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Init";
+            this.tabPage2.Text = "初始值";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tabPage1
             // 
-            this.tabPage3.Controls.Add(this.groupBoxOther);
-            this.tabPage3.Controls.Add(this.groupBoxBoss);
-            this.tabPage3.Controls.Add(this.groupBoxFPSChange);
-            this.tabPage3.Controls.Add(this.groupBoxSourceUse);
-            this.tabPage3.Controls.Add(this.lockBomb);
-            this.tabPage3.Controls.Add(this.unbeatable);
-            this.tabPage3.Controls.Add(this.lockPlayer);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(212, 306);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "其它";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.lbMaxpoint);
+            this.tabPage1.Controls.Add(this.tbMaxPoint);
+            this.tabPage1.Controls.Add(this.btnPlayerFragment);
+            this.tabPage1.Controls.Add(this.btnMaxPoint);
+            this.tabPage1.Controls.Add(this.tbPlayerFragment);
+            this.tabPage1.Controls.Add(this.lbScore);
+            this.tabPage1.Controls.Add(this.tbBomb);
+            this.tabPage1.Controls.Add(this.tbScore);
+            this.tabPage1.Controls.Add(this.btnBombFragment);
+            this.tabPage1.Controls.Add(this.btnScore);
+            this.tabPage1.Controls.Add(this.btnBomb);
+            this.tabPage1.Controls.Add(this.tbBombFragment);
+            this.tabPage1.Controls.Add(this.groupBoxSpecial);
+            this.tabPage1.Controls.Add(this.btnPlayer);
+            this.tabPage1.Controls.Add(this.lbPower);
+            this.tabPage1.Controls.Add(this.btnPower);
+            this.tabPage1.Controls.Add(this.lbBF);
+            this.tabPage1.Controls.Add(this.tbPlayer);
+            this.tabPage1.Controls.Add(this.lbBomb);
+            this.tabPage1.Controls.Add(this.tbPower);
+            this.tabPage1.Controls.Add(this.lbPF);
+            this.tabPage1.Controls.Add(this.lbPlayer);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(212, 306);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "当前值";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBoxOther
             // 
             this.groupBoxOther.Controls.Add(this.lbShowSp3);
             this.groupBoxOther.Controls.Add(this.lbShowSp2);
             this.groupBoxOther.Controls.Add(this.lbShowSp1);
-            this.groupBoxOther.Controls.Add(this.btnKill);
             this.groupBoxOther.Controls.Add(this.lbBulletCount);
-            this.groupBoxOther.Location = new System.Drawing.Point(3, 228);
+            this.groupBoxOther.Location = new System.Drawing.Point(6, 200);
             this.groupBoxOther.Name = "groupBoxOther";
-            this.groupBoxOther.Size = new System.Drawing.Size(208, 75);
+            this.groupBoxOther.Size = new System.Drawing.Size(204, 75);
             this.groupBoxOther.TabIndex = 24;
             this.groupBoxOther.TabStop = false;
             this.groupBoxOther.Text = "其它";
             // 
-            // btnKill
+            // lbShowSp3
             // 
-            this.btnKill.Location = new System.Drawing.Point(161, 46);
-            this.btnKill.Name = "btnKill";
-            this.btnKill.Size = new System.Drawing.Size(41, 23);
-            this.btnKill.TabIndex = 21;
-            this.btnKill.Text = "自爆";
-            this.btnKill.UseVisualStyleBackColor = true;
-            this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
+            this.lbShowSp3.AutoSize = true;
+            this.lbShowSp3.Location = new System.Drawing.Point(107, 17);
+            this.lbShowSp3.Name = "lbShowSp3";
+            this.lbShowSp3.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp3.TabIndex = 24;
+            this.lbShowSp3.Text = " ";
+            // 
+            // lbShowSp2
+            // 
+            this.lbShowSp2.AutoSize = true;
+            this.lbShowSp2.Location = new System.Drawing.Point(7, 57);
+            this.lbShowSp2.Name = "lbShowSp2";
+            this.lbShowSp2.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp2.TabIndex = 23;
+            this.lbShowSp2.Text = " ";
+            // 
+            // lbShowSp1
+            // 
+            this.lbShowSp1.AutoSize = true;
+            this.lbShowSp1.Location = new System.Drawing.Point(7, 38);
+            this.lbShowSp1.Name = "lbShowSp1";
+            this.lbShowSp1.Size = new System.Drawing.Size(11, 12);
+            this.lbShowSp1.TabIndex = 22;
+            this.lbShowSp1.Text = " ";
             // 
             // lbBulletCount
             // 
@@ -953,13 +964,23 @@
             this.lbBulletCount.TabIndex = 20;
             this.lbBulletCount.Text = "子弹数量:";
             // 
+            // btnKill
+            // 
+            this.btnKill.Location = new System.Drawing.Point(113, 21);
+            this.btnKill.Name = "btnKill";
+            this.btnKill.Size = new System.Drawing.Size(72, 23);
+            this.btnKill.TabIndex = 21;
+            this.btnKill.Text = "自爆";
+            this.btnKill.UseVisualStyleBackColor = true;
+            this.btnKill.Click += new System.EventHandler(this.btnKill_Click);
+            // 
             // groupBoxBoss
             // 
             this.groupBoxBoss.Controls.Add(this.lbLife);
             this.groupBoxBoss.Controls.Add(this.lbDPS);
-            this.groupBoxBoss.Location = new System.Drawing.Point(3, 185);
+            this.groupBoxBoss.Location = new System.Drawing.Point(6, 157);
             this.groupBoxBoss.Name = "groupBoxBoss";
-            this.groupBoxBoss.Size = new System.Drawing.Size(205, 37);
+            this.groupBoxBoss.Size = new System.Drawing.Size(204, 37);
             this.groupBoxBoss.TabIndex = 23;
             this.groupBoxBoss.TabStop = false;
             this.groupBoxBoss.Text = "Boss";
@@ -987,7 +1008,7 @@
             this.groupBoxFPSChange.Controls.Add(this.btnFPS);
             this.groupBoxFPSChange.Controls.Add(this.tbFPS);
             this.groupBoxFPSChange.Controls.Add(this.trackBar_FPS);
-            this.groupBoxFPSChange.Location = new System.Drawing.Point(4, 34);
+            this.groupBoxFPSChange.Location = new System.Drawing.Point(6, 6);
             this.groupBoxFPSChange.Name = "groupBoxFPSChange";
             this.groupBoxFPSChange.Size = new System.Drawing.Size(204, 71);
             this.groupBoxFPSChange.TabIndex = 19;
@@ -1033,7 +1054,7 @@
             this.groupBoxSourceUse.Controls.Add(this.btnCountStart);
             this.groupBoxSourceUse.Controls.Add(this.lbMissCount);
             this.groupBoxSourceUse.Controls.Add(this.lbBombCount);
-            this.groupBoxSourceUse.Location = new System.Drawing.Point(4, 111);
+            this.groupBoxSourceUse.Location = new System.Drawing.Point(6, 83);
             this.groupBoxSourceUse.Name = "groupBoxSourceUse";
             this.groupBoxSourceUse.Size = new System.Drawing.Size(204, 68);
             this.groupBoxSourceUse.TabIndex = 18;
@@ -1068,28 +1089,13 @@
             this.lbBombCount.TabIndex = 15;
             this.lbBombCount.Text = "bomb次数:未使用";
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.btnUseFloatWindow);
-            this.tabPage4.Controls.Add(this.btnDefault);
-            this.tabPage4.Controls.Add(this.lbShowRGB);
-            this.tabPage4.Controls.Add(this.groupBox2);
-            this.tabPage4.Controls.Add(this.groupBox1);
-            this.tabPage4.Controls.Add(this.cbTop);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(212, 306);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "设置";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // btnUseFloatWindow
             // 
             this.btnUseFloatWindow.Location = new System.Drawing.Point(124, 278);
             this.btnUseFloatWindow.Name = "btnUseFloatWindow";
             this.btnUseFloatWindow.Size = new System.Drawing.Size(83, 23);
             this.btnUseFloatWindow.TabIndex = 28;
-            this.btnUseFloatWindow.Text = "如何开启？";
+            this.btnUseFloatWindow.Text = "开启悬浮窗";
             this.btnUseFloatWindow.UseVisualStyleBackColor = true;
             this.btnUseFloatWindow.Click += new System.EventHandler(this.btnUseFloatWindow_Click);
             // 
@@ -1097,9 +1103,9 @@
             // 
             this.btnDefault.Location = new System.Drawing.Point(62, 278);
             this.btnDefault.Name = "btnDefault";
-            this.btnDefault.Size = new System.Drawing.Size(56, 23);
+            this.btnDefault.Size = new System.Drawing.Size(53, 23);
             this.btnDefault.TabIndex = 8;
-            this.btnDefault.Text = "默认值";
+            this.btnDefault.Text = "默认";
             this.btnDefault.UseVisualStyleBackColor = true;
             this.btnDefault.Click += new System.EventHandler(this.btnDefault_Click);
             // 
@@ -1122,7 +1128,7 @@
             this.groupBox2.Controls.Add(this.trackBarFontB);
             this.groupBox2.Controls.Add(this.trackBarFontG);
             this.groupBox2.Controls.Add(this.trackBarFontR);
-            this.groupBox2.Location = new System.Drawing.Point(1, 164);
+            this.groupBox2.Location = new System.Drawing.Point(7, 164);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(206, 111);
             this.groupBox2.TabIndex = 27;
@@ -1202,7 +1208,7 @@
             this.groupBox1.Controls.Add(this.trackBarR);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.trackBarA);
-            this.groupBox1.Location = new System.Drawing.Point(3, 25);
+            this.groupBox1.Location = new System.Drawing.Point(7, 25);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(206, 133);
             this.groupBox1.TabIndex = 26;
@@ -1295,7 +1301,7 @@
             // cbTop
             // 
             this.cbTop.AutoSize = true;
-            this.cbTop.Location = new System.Drawing.Point(3, 3);
+            this.cbTop.Location = new System.Drawing.Point(7, 3);
             this.cbTop.Name = "cbTop";
             this.cbTop.Size = new System.Drawing.Size(108, 16);
             this.cbTop.TabIndex = 25;
@@ -1328,43 +1334,152 @@
             this.lbfafafa1.TabIndex = 18;
             this.lbfafafa1.Text = "  aa";
             // 
-            // lbShowSp1
+            // tabControl2
             // 
-            this.lbShowSp1.AutoSize = true;
-            this.lbShowSp1.Location = new System.Drawing.Point(7, 38);
-            this.lbShowSp1.Name = "lbShowSp1";
-            this.lbShowSp1.Size = new System.Drawing.Size(11, 12);
-            this.lbShowSp1.TabIndex = 22;
-            this.lbShowSp1.Text = " ";
+            this.tabControl2.Controls.Add(this.tabPage5);
+            this.tabControl2.Controls.Add(this.tabPage6);
+            this.tabControl2.Controls.Add(this.tabPage8);
+            this.tabControl2.Controls.Add(this.tabPage7);
+            this.tabControl2.Location = new System.Drawing.Point(1, 2);
+            this.tabControl2.Name = "tabControl2";
+            this.tabControl2.SelectedIndex = 0;
+            this.tabControl2.Size = new System.Drawing.Size(226, 362);
+            this.tabControl2.TabIndex = 19;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.tabChange);
             // 
-            // lbShowSp2
+            // tabPage5
             // 
-            this.lbShowSp2.AutoSize = true;
-            this.lbShowSp2.Location = new System.Drawing.Point(7, 57);
-            this.lbShowSp2.Name = "lbShowSp2";
-            this.lbShowSp2.Size = new System.Drawing.Size(11, 12);
-            this.lbShowSp2.TabIndex = 23;
-            this.lbShowSp2.Text = " ";
+            this.tabPage5.Controls.Add(this.tabControl1);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(218, 336);
+            this.tabPage5.TabIndex = 0;
+            this.tabPage5.Text = "数值修改";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // lbShowSp3
+            // tabPage6
             // 
-            this.lbShowSp3.AutoSize = true;
-            this.lbShowSp3.Location = new System.Drawing.Point(107, 17);
-            this.lbShowSp3.Name = "lbShowSp3";
-            this.lbShowSp3.Size = new System.Drawing.Size(11, 12);
-            this.lbShowSp3.TabIndex = 24;
-            this.lbShowSp3.Text = " ";
+            this.tabPage6.Controls.Add(this.groupBoxOther);
+            this.tabPage6.Controls.Add(this.groupBoxFPSChange);
+            this.tabPage6.Controls.Add(this.groupBoxBoss);
+            this.tabPage6.Controls.Add(this.groupBoxSourceUse);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(218, 336);
+            this.tabPage6.TabIndex = 1;
+            this.tabPage6.Text = "基本";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.gbBossPractice);
+            this.tabPage8.Controls.Add(this.lockPlayer);
+            this.tabPage8.Controls.Add(this.unbeatable);
+            this.tabPage8.Controls.Add(this.btnKill);
+            this.tabPage8.Controls.Add(this.lockBomb);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Size = new System.Drawing.Size(218, 336);
+            this.tabPage8.TabIndex = 3;
+            this.tabPage8.Text = "练习";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(8, 17);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 36);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "stage\r\n\r\nboss";
+            // 
+            // comboBoxStage
+            // 
+            this.comboBoxStage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStage.FormattingEnabled = true;
+            this.comboBoxStage.Items.AddRange(new object[] {
+            "Stage1",
+            "Stage2",
+            "Stage3",
+            "Stage4",
+            "Stage5",
+            "Stage6"});
+            this.comboBoxStage.Location = new System.Drawing.Point(49, 14);
+            this.comboBoxStage.Name = "comboBoxStage";
+            this.comboBoxStage.Size = new System.Drawing.Size(68, 20);
+            this.comboBoxStage.TabIndex = 24;
+            this.comboBoxStage.DropDownClosed += new System.EventHandler(this.setBossComboBox);
+            // 
+            // btnStartPractice
+            // 
+            this.btnStartPractice.Location = new System.Drawing.Point(123, 40);
+            this.btnStartPractice.Name = "btnStartPractice";
+            this.btnStartPractice.Size = new System.Drawing.Size(61, 23);
+            this.btnStartPractice.TabIndex = 23;
+            this.btnStartPractice.Text = "开始";
+            this.btnStartPractice.UseVisualStyleBackColor = true;
+            this.btnStartPractice.Click += new System.EventHandler(this.btnStartPractice_Click);
+            // 
+            // comboBoxBoss
+            // 
+            this.comboBoxBoss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBoss.FormattingEnabled = true;
+            this.comboBoxBoss.Location = new System.Drawing.Point(49, 40);
+            this.comboBoxBoss.Name = "comboBoxBoss";
+            this.comboBoxBoss.Size = new System.Drawing.Size(68, 20);
+            this.comboBoxBoss.TabIndex = 22;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.btnUseFloatWindow);
+            this.tabPage7.Controls.Add(this.button2);
+            this.tabPage7.Controls.Add(this.cbTop);
+            this.tabPage7.Controls.Add(this.note);
+            this.tabPage7.Controls.Add(this.showBug);
+            this.tabPage7.Controls.Add(this.groupBox1);
+            this.tabPage7.Controls.Add(this.btnDefault);
+            this.tabPage7.Controls.Add(this.groupBox2);
+            this.tabPage7.Controls.Add(this.lbShowRGB);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Size = new System.Drawing.Size(218, 336);
+            this.tabPage7.TabIndex = 2;
+            this.tabPage7.Text = "其它";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // gbBossPractice
+            // 
+            this.gbBossPractice.Controls.Add(this.btnPracticeNote);
+            this.gbBossPractice.Controls.Add(this.label5);
+            this.gbBossPractice.Controls.Add(this.btnStartPractice);
+            this.gbBossPractice.Controls.Add(this.comboBoxStage);
+            this.gbBossPractice.Controls.Add(this.comboBoxBoss);
+            this.gbBossPractice.Location = new System.Drawing.Point(3, 50);
+            this.gbBossPractice.Name = "gbBossPractice";
+            this.gbBossPractice.Size = new System.Drawing.Size(200, 72);
+            this.gbBossPractice.TabIndex = 26;
+            this.gbBossPractice.TabStop = false;
+            this.gbBossPractice.Text = "Boss练习";
+            // 
+            // btnPracticeNote
+            // 
+            this.btnPracticeNote.Location = new System.Drawing.Point(123, 14);
+            this.btnPracticeNote.Name = "btnPracticeNote";
+            this.btnPracticeNote.Size = new System.Drawing.Size(61, 23);
+            this.btnPracticeNote.TabIndex = 26;
+            this.btnPracticeNote.Text = "使用方式";
+            this.btnPracticeNote.UseVisualStyleBackColor = true;
+            this.btnPracticeNote.Click += new System.EventHandler(this.btnPracticeNote_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(234, 377);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.note);
-            this.Controls.Add(this.showBug);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(227, 365);
+            this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.lbfafafa1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1377,12 +1492,10 @@
             this.groupBoxISpecial.ResumeLayout(false);
             this.groupBoxISpecial.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupBoxOther.ResumeLayout(false);
             this.groupBoxOther.PerformLayout();
             this.groupBoxBoss.ResumeLayout(false);
@@ -1392,8 +1505,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_FPS)).EndInit();
             this.groupBoxSourceUse.ResumeLayout(false);
             this.groupBoxSourceUse.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarFontB)).EndInit();
@@ -1405,6 +1516,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.trackBarG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarR)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarA)).EndInit();
+            this.tabControl2.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.gbBossPractice.ResumeLayout(false);
+            this.gbBossPractice.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1483,7 +1603,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button btnFPS;
         private System.Windows.Forms.TextBox tbFPS;
         private System.Windows.Forms.TrackBar trackBar_FPS;
@@ -1504,7 +1623,6 @@
         private System.Windows.Forms.Button btnKill;
         private System.Windows.Forms.Label lbfafafa1;
         private System.Windows.Forms.CheckBox cbTop;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -1527,6 +1645,17 @@
         private System.Windows.Forms.Label lbShowSp2;
         private System.Windows.Forms.Label lbShowSp1;
         private System.Windows.Forms.Label lbShowSp3;
+        private System.Windows.Forms.TabControl tabControl2;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.Button btnStartPractice;
+        public System.Windows.Forms.ComboBox comboBoxStage;
+        public System.Windows.Forms.ComboBox comboBoxBoss;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.GroupBox gbBossPractice;
+        private System.Windows.Forms.Button btnPracticeNote;
     }
 }
 

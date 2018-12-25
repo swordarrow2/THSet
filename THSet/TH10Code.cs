@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace THSet {
-    class TH10Code:THCode {
+    public class TH10Code:THCode {
         MemoryTool mt;
         public TH10Code(MemoryTool m) => mt=m;
+        public override void setBoss(ComboBox boss) {
+            throw new NotImplementedException();
+        }
+        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+            throw new NotImplementedException();
+        }
         public override string getTitle() => new Random().Next()%2==0 ? "东方炸比录" : "东方神曲录";
         public override string getAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免\n\nreplay保存多次将会爆炸";
         public override string getAboutSpecial() => "信仰值初始为50000，最大值为999990";
@@ -39,11 +46,11 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004776F0)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x0047770C)+0x9E8C);
         public override void killSelf() => write(mt.ReadInteger(0x00477834)+0x458,4);
-        public override bool[] getEnable() => new bool[28] { true,false,false,false,true,true,false,true,false,false,
+        public override bool[] getEnable() => new bool[29] { true,false,false,false,true,true,false,true,false,false,
                                                              true,false,false,false,true,true,false,true,false,false,
                                                              true,true,true,
                                                              mt.ReadInteger(0x00439397)==107752 ? false : true,
-                                                             true,true,true,true };
+                                                             true,true,true,true,false };
 
         public override void setLockPlayer(bool b) => write(0x00424EC3,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00 });//mov [00474C70],ecx
         public override void setLockBomb(bool b) {
