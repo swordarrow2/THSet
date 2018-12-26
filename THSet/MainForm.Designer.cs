@@ -142,13 +142,11 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxStage = new System.Windows.Forms.ComboBox();
-            this.btnStartPractice = new System.Windows.Forms.Button();
-            this.comboBoxBoss = new System.Windows.Forms.ComboBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.gbBossPractice = new System.Windows.Forms.GroupBox();
             this.btnPracticeNote = new System.Windows.Forms.Button();
+            this.comboBoxStage = new System.Windows.Forms.ComboBox();
+            this.comboBoxBoss = new System.Windows.Forms.ComboBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -172,8 +170,8 @@
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            this.tabPage7.SuspendLayout();
             this.gbBossPractice.SuspendLayout();
+            this.tabPage7.SuspendLayout();
             this.SuspendLayout();
             // 
             // timerMissAndBomb
@@ -1386,17 +1384,31 @@
             this.tabPage8.Text = "练习";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // gbBossPractice
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 17);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 36);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "stage\r\n\r\nboss";
+            this.gbBossPractice.Controls.Add(this.btnPracticeNote);
+            this.gbBossPractice.Controls.Add(this.comboBoxStage);
+            this.gbBossPractice.Controls.Add(this.comboBoxBoss);
+            this.gbBossPractice.Location = new System.Drawing.Point(3, 50);
+            this.gbBossPractice.Name = "gbBossPractice";
+            this.gbBossPractice.Size = new System.Drawing.Size(207, 45);
+            this.gbBossPractice.TabIndex = 26;
+            this.gbBossPractice.TabStop = false;
+            this.gbBossPractice.Text = "Boss练习";
+            // 
+            // btnPracticeNote
+            // 
+            this.btnPracticeNote.Location = new System.Drawing.Point(140, 12);
+            this.btnPracticeNote.Name = "btnPracticeNote";
+            this.btnPracticeNote.Size = new System.Drawing.Size(61, 23);
+            this.btnPracticeNote.TabIndex = 26;
+            this.btnPracticeNote.Text = "使用方式";
+            this.btnPracticeNote.UseVisualStyleBackColor = true;
+            this.btnPracticeNote.Click += new System.EventHandler(this.btnPracticeNote_Click);
             // 
             // comboBoxStage
             // 
+            this.comboBoxStage.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxStage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxStage.FormattingEnabled = true;
             this.comboBoxStage.Items.AddRange(new object[] {
@@ -1405,31 +1417,24 @@
             "Stage3",
             "Stage4",
             "Stage5",
-            "Stage6"});
-            this.comboBoxStage.Location = new System.Drawing.Point(49, 14);
+            "Stage6",
+            "Extra"});
+            this.comboBoxStage.Location = new System.Drawing.Point(6, 14);
             this.comboBoxStage.Name = "comboBoxStage";
-            this.comboBoxStage.Size = new System.Drawing.Size(68, 20);
+            this.comboBoxStage.Size = new System.Drawing.Size(61, 20);
             this.comboBoxStage.TabIndex = 24;
-            this.comboBoxStage.DropDownClosed += new System.EventHandler(this.setBossComboBox);
-            // 
-            // btnStartPractice
-            // 
-            this.btnStartPractice.Location = new System.Drawing.Point(123, 40);
-            this.btnStartPractice.Name = "btnStartPractice";
-            this.btnStartPractice.Size = new System.Drawing.Size(61, 23);
-            this.btnStartPractice.TabIndex = 23;
-            this.btnStartPractice.Text = "开始";
-            this.btnStartPractice.UseVisualStyleBackColor = true;
-            this.btnStartPractice.Click += new System.EventHandler(this.btnStartPractice_Click);
+            this.comboBoxStage.DropDownClosed += new System.EventHandler(this.comboBoxStage_selected);
             // 
             // comboBoxBoss
             // 
+            this.comboBoxBoss.BackColor = System.Drawing.SystemColors.Window;
             this.comboBoxBoss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxBoss.FormattingEnabled = true;
-            this.comboBoxBoss.Location = new System.Drawing.Point(49, 40);
+            this.comboBoxBoss.Location = new System.Drawing.Point(73, 14);
             this.comboBoxBoss.Name = "comboBoxBoss";
-            this.comboBoxBoss.Size = new System.Drawing.Size(68, 20);
+            this.comboBoxBoss.Size = new System.Drawing.Size(61, 20);
             this.comboBoxBoss.TabIndex = 22;
+            this.comboBoxBoss.DropDownClosed += new System.EventHandler(this.comboBoxBoss_selected);
             // 
             // tabPage7
             // 
@@ -1448,30 +1453,6 @@
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "其它";
             this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // gbBossPractice
-            // 
-            this.gbBossPractice.Controls.Add(this.btnPracticeNote);
-            this.gbBossPractice.Controls.Add(this.label5);
-            this.gbBossPractice.Controls.Add(this.btnStartPractice);
-            this.gbBossPractice.Controls.Add(this.comboBoxStage);
-            this.gbBossPractice.Controls.Add(this.comboBoxBoss);
-            this.gbBossPractice.Location = new System.Drawing.Point(3, 50);
-            this.gbBossPractice.Name = "gbBossPractice";
-            this.gbBossPractice.Size = new System.Drawing.Size(200, 72);
-            this.gbBossPractice.TabIndex = 26;
-            this.gbBossPractice.TabStop = false;
-            this.gbBossPractice.Text = "Boss练习";
-            // 
-            // btnPracticeNote
-            // 
-            this.btnPracticeNote.Location = new System.Drawing.Point(123, 14);
-            this.btnPracticeNote.Name = "btnPracticeNote";
-            this.btnPracticeNote.Size = new System.Drawing.Size(61, 23);
-            this.btnPracticeNote.TabIndex = 26;
-            this.btnPracticeNote.Text = "使用方式";
-            this.btnPracticeNote.UseVisualStyleBackColor = true;
-            this.btnPracticeNote.Click += new System.EventHandler(this.btnPracticeNote_Click);
             // 
             // MainForm
             // 
@@ -1521,10 +1502,9 @@
             this.tabPage6.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.gbBossPractice.ResumeLayout(false);
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
-            this.gbBossPractice.ResumeLayout(false);
-            this.gbBossPractice.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1650,10 +1630,8 @@
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Button btnStartPractice;
         public System.Windows.Forms.ComboBox comboBoxStage;
         public System.Windows.Forms.ComboBox comboBoxBoss;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox gbBossPractice;
         private System.Windows.Forms.Button btnPracticeNote;
     }
