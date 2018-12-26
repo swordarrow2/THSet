@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.0";
+        public const string versonCode = "THSet v3.0.1";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
@@ -316,6 +316,6 @@ namespace THSet {
         public void killSelf() => tc.killSelf();
         private void btnStartPractice_Click(object sender,EventArgs e) => tc.setBoss(comboBoxBoss);
         private void setBossComboBox(object sender,EventArgs e) => tc.setStageAndBossList(comboBoxStage,comboBoxBoss);
-        private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,点击开始后在游戏中ESC+R即可开始使用.回到游戏主界面时修改失效,再次练习时需要重新选择",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+        private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,点击开始后在游戏中ESC+R即可开始使用.回到游戏主界面时修改失效,再次练习时需要重新选择.遇到玄学问题可尝试重新进入关卡火重启,还是不行的话请联系开发者",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
     }
 }

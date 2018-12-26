@@ -25,7 +25,7 @@ namespace THSet {
             if(bossEclAddress!=0) {
                 mt.WriteBytes(bossEclAddress,new byte[] { b });
             } else {
-                for(int i = 0x00400000;i<0x30000000;i+=0x1000) {
+                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                     memory=mt.ReadBytes(i,0x1000);
                     if((index=getIndexOf(memory,bossEcl))!=-1) {
                         mt.WriteBytes(i+index+20,new byte[] { b });
@@ -43,7 +43,7 @@ namespace THSet {
                 case "Stage2": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
                 case "Stage3": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
                 case "Stage4": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
-                case "Stage5": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4","Boss5" }); break;
+                case "Stage5": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4" }); break;
                 case "Stage6": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4","Boss5","Boss6" }); break;
             }
             setStEcl(stageBox.Text);
@@ -162,10 +162,10 @@ namespace THSet {
             byte[] eclBefore = eclBefore=g4EclCode.g4EclBefore;
             byte[] eclAfter = eclAfter=g4EclCode.g4EclAfter;
             int index = 0;
-            for(int i = 0x00400000;i<0x30000000;i+=0x1000) {
+            for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                 memory=mt.ReadBytes(i,0x1000);
                 if((index=getIndexOf(memory,eclBefore))!=-1) {
-                    mt.WriteBytes(i+index,eclAfter);
+                    mt.WriteBytes(i+index,stage.Equals("Stage5") ? g4EclCode.TH16St5After : eclAfter);
                     break;
                 }
             }
