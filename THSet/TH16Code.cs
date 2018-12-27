@@ -11,21 +11,9 @@ namespace THSet {
         public TH16Code(MemoryTool m) => mt=m;
         public override void setBoss(ComboBox boss) {
             byte[] memory = new byte[0x1000];
-            byte[] bossEcl = g4EclCode.mainBossEcl;
+            byte[] bossEcl = g4EclCode.eclMainBossNum;
             int index = 0;
-            byte[] b = new byte[] { };
-            switch(boss.Text) {
-                case "Boss1": b=new byte[] { 0x31 }; break;
-                case "Boss2": b=new byte[] { 0x32 }; break;
-                case "Boss3": b=new byte[] { 0x33 }; break;
-                case "Boss4": b=new byte[] { 0x34 }; break;
-                case "Boss5": b=new byte[] { 0x35 }; break;
-                case "Boss6": b=new byte[] { 0x36 }; break;
-                case "Boss7": b=new byte[] { 0x37 }; break;
-                case "Boss8": b=new byte[] { 0x38 }; break;
-                case "Boss9": b=new byte[] { 0x39 }; break;
-                case "Boss10": b=new byte[] { 0x31,0x30 }; break;
-            }
+            byte[] b = g4EclCode.getBossNumArray(boss.Text);
             if(bossEclAddress!=0) {
                 mt.WriteBytes(bossEclAddress,b);
             } else {
@@ -43,13 +31,13 @@ namespace THSet {
             bossEclAddress=0;
             bossBox.Items.Clear();
             switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(new object[] { "Boss1","Boss2" }); break;
-                case "Stage2": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
-                case "Stage3": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
-                case "Stage4": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3" }); break;
-                case "Stage5": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4" }); break;
-                case "Stage6": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4","Boss5","Boss6" }); break;
-                case "Extra": bossBox.Items.AddRange(new object[] { "Boss1","Boss2","Boss3","Boss4","Boss5","Boss6","Boss7","Boss8","Boss9","Boss10" }); break;
+                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH16.stage1); break;
+                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH16.stage2); break;
+                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH16.stage3); break;
+                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH16.stage4); break;
+                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH16.stage5); break;
+                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH16.stage6); break;
+                case "Extra": bossBox.Items.AddRange(g4EclCode.TH16.stage7); break;
             }
             setStEcl(stageBox.Text);
         }
@@ -164,13 +152,13 @@ namespace THSet {
         }
         private void setStEcl(string stage) {
             byte[] memory = new byte[0x1000];
-            byte[] eclBefore = eclBefore=g4EclCode.eclBefore;
-            byte[] eclAfter = eclAfter=g4EclCode.eclAfter;
+            byte[] eclBefore = g4EclCode.eclLogoEnemy;
+            byte[] eclAfter = stage.Equals("Stage5") ? g4EclCode.TH16.eclTH16Stage5CreateMainBoss : g4EclCode.celCreateMainBoss;
             int index = 0;
             for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                 memory=mt.ReadBytes(i,0x1000);
                 if((index=getIndexOf(memory,eclBefore))!=-1) {
-                    mt.WriteBytes(i+index,stage.Equals("Stage5") ? g4EclCode.TH16St5Before : eclAfter);
+                    mt.WriteBytes(i+index,eclAfter);
                     break;
                 }
             }
