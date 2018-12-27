@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.1.1";
+        public const string versonCode = "THSet v3.2";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
         private Process THprocess;
         private bool tipedWarning = false;
         private bool[] enable;
-        public string[] names = new string[] { "th07","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
+        public string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
         private string[] sptip;
         private int pid = 0;
         private int lastLife = 0;
@@ -51,25 +51,29 @@ namespace THSet {
             switch(gameIndex) {
                 case 0:
                     tc=new TH07Code(new MemoryTool(THprocess));
-                    lbPF.Text=lbIPF.Text="蓝点数";
                     lbMaxpoint.Text=lbIMaxPoint.Text="分子";
                     THNo=7;
                     break;
-                case 3:
+                case 1:
+                    tc=new TH08Code(new MemoryTool(THprocess));
+                    lbMaxpoint.Text=lbIMaxPoint.Text="Time";
+                    THNo=8;
+                    break;
                 case 4:
-                case 5: tc=new TH10Code(new MemoryTool(THprocess)); THNo=10; break;
-                case 6:
-                case 7: tc=new TH11Code(new MemoryTool(THprocess)); THNo=11; break;
-                case 8:
-                case 9: tc=new TH12Code(new MemoryTool(THprocess)); THNo=12; break;
-                case 10:
-                case 11: tc=new TH128Code(new MemoryTool(THprocess)); THNo=128; break;
-                case 12:
-                case 13: tc=new TH13Code(new MemoryTool(THprocess)); THNo=13; break;
-                case 14: tc=new TH14Code(new MemoryTool(THprocess)); THNo=14; break;
-                case 15: tc=new TH15Code(new MemoryTool(THprocess)); THNo=15; break;
-                case 16: tc=new TH16Code(new MemoryTool(THprocess)); THNo=16; break;
-                case 17: tc=new TH165Code(new MemoryTool(THprocess)); THNo=165; break;
+                case 5:
+                case 6: tc=new TH10Code(new MemoryTool(THprocess)); THNo=10; break;
+                case 7:
+                case 8: tc=new TH11Code(new MemoryTool(THprocess)); THNo=11; break;
+                case 9:
+                case 10: tc=new TH12Code(new MemoryTool(THprocess)); THNo=12; break;
+                case 11:
+                case 12: tc=new TH128Code(new MemoryTool(THprocess)); THNo=128; break;
+                case 13:
+                case 14: tc=new TH13Code(new MemoryTool(THprocess)); THNo=13; break;
+                case 15: tc=new TH14Code(new MemoryTool(THprocess)); THNo=14; break;
+                case 16: tc=new TH15Code(new MemoryTool(THprocess)); THNo=15; break;
+                case 17: tc=new TH16Code(new MemoryTool(THprocess)); THNo=16; break;
+                case 18: tc=new TH165Code(new MemoryTool(THprocess)); THNo=165; break;
             }
             Text=tc.getTitle();
             enable=tc.getEnable();
@@ -89,7 +93,6 @@ namespace THSet {
             lbSp2.Enabled=tbSp2.Enabled=btnSp2.Enabled=enable[8];
             lbSp3.Enabled=tbSp3.Enabled=btnSp3.Enabled=enable[9];
 
-
             lbIPlayer.Enabled=tbIPlayer.Enabled=btnIPlayer.Enabled=enable[10];
             lbIPF.Enabled=tbIPlayerFragment.Enabled=btnIPlayerFragment.Enabled=enable[11];
             lbIBomb.Enabled=tbIBomb.Enabled=btnIBomb.Enabled=enable[12];
@@ -100,7 +103,6 @@ namespace THSet {
             lbISp1.Enabled=tbISp1.Enabled=btnISpe1.Enabled=enable[17];
             lbISp2.Enabled=tbISp2.Enabled=btnISp2.Enabled=enable[18];
             lbISp3.Enabled=tbISp3.Enabled=btnISp3.Enabled=enable[19];
-
 
             groupBoxFPSChange.Enabled=enable[23];
             groupBoxBoss.Enabled=enable[25];
@@ -138,6 +140,13 @@ namespace THSet {
             trackBarFontB.Value=Properties.Settings.Default.fontB;
             lbShowRGB.BackColor=Color.FromArgb(trackBarR.Value,trackBarG.Value,trackBarB.Value);
             lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
+
+            if(THNo==7||THNo==8) {
+                lbPF.Text=lbIPF.Text="蓝点数";
+                timerMissAndBomb.Enabled=true;
+                groupBoxSourceUse.Enabled=enable[24];
+                btnCountStart.Enabled=false;
+            }
         }
         private void MainForm_Load(object sender,EventArgs e) {
             fwsPrevious=WindowState;
@@ -252,11 +261,6 @@ namespace THSet {
                 } else {
                     tipedWarning=timerEnemy.Enabled=timerDPS.Enabled=true;
                 }
-                if(lbPF.Text.Equals("蓝点数")) {
-                    timerMissAndBomb.Enabled=true;
-                    groupBoxSourceUse.Enabled=enable[24];
-                    btnCountStart.Enabled=false;
-                }
             }
         }
         private void timerProcessWatcher_Tick(object sender,EventArgs e) {
@@ -318,12 +322,10 @@ namespace THSet {
             if(comboBoxBoss.Text.Equals("")) return;
             tc.setBossNum(comboBoxBoss);
         }
-
         private void comboBoxStage_selected(object sender,EventArgs e) {
             if(comboBoxStage.Text.Equals("")) return;
             tc.setStageEclAndBossList(comboBoxStage,comboBoxBoss);
         }
-
         private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,然后在游戏中ESC+R即可开始使用.\n回到游戏主界面时修改失效,再次练习时需要重新选择.遇到玄学问题可尝试重新进入关卡或重启修改器,还是不行的话请联系开发者（\n选择练习内容时软件可能会有短暂的无响应,稍等即可.",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
     }
 }
