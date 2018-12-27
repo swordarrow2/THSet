@@ -20,7 +20,7 @@ namespace THSet {
             } else {
                 for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                     memory=mt.ReadBytes(i,0x1000);
-                    if((index=getIndexOf(memory,bossEcl))!=-1) {
+                    if((index=g4EclCode.getIndexOf(memory,bossEcl))!=-1) {
                         mt.WriteBytes(i+index+(isExtra ? bossEcl.Length-1 : 20),b);
                         bossEclAddress=i+index+(isExtra ? bossEcl.Length-1 : 20);
                         break;
@@ -114,23 +114,6 @@ namespace THSet {
         public override void setISpecial1(int i) => throw new NotImplementedException();
         public override void setISpecial2(int i) => throw new NotImplementedException();
         public override void setISpecial3(int i) => throw new NotImplementedException();
-        private int getIndexOf(byte[] b,byte[] bb) {
-            try {
-                if(b==null||b==null||b.Length==0||bb.Length==0) return -1;
-                int i, j;
-                for(i=0;i<b.Length;i++) {
-                    if(b[i]==bb[0]) {
-                        for(j=1;j<bb.Length;j++) {
-                            if(b[i+j]!=bb[j]) break;
-                        }
-                        if(j==bb.Length) return i;
-                    }
-                }
-                return -1;
-            } catch(Exception e) {
-                return -1;
-            }
-        }
         private void setStEcl(string stage) {
             byte[] memory = new byte[0x1000];
             byte[] eclBefore = g4EclCode.eclLogoEnemy;
@@ -140,7 +123,7 @@ namespace THSet {
             int i = 0;
             for(i=0x00400000;i<0x30000000;i+=0x1000) {
                 memory=mt.ReadBytes(i,0x1000);
-                if((index=getIndexOf(memory,eclBefore))!=-1) {
+                if((index=g4EclCode.getIndexOf(memory,eclBefore))!=-1) {
                     mt.WriteBytes(i+index,eclAfter);
                     break;
                 }
