@@ -8,10 +8,10 @@ namespace THSet {
     public class TH165Code:THCode {
         MemoryTool mt;
         public TH165Code(MemoryTool m) => mt=m;
-        public override void setBoss(ComboBox boss) {
+        public override void setBossNum(ComboBox boss) {
             throw new NotImplementedException();
         }
-        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
             throw new NotImplementedException();
         }
         public override string getTitle() => new Random().Next()%2==0 ? "bug日记" : "TH16.5";

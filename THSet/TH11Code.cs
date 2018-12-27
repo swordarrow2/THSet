@@ -8,10 +8,10 @@ namespace THSet {
     public class TH11Code:THCode {
         MemoryTool mt;
         public TH11Code(MemoryTool m) => mt=m;
-        public override void setBoss(ComboBox boss) {
+        public override void setBossNum(ComboBox boss) {
             throw new NotImplementedException();
         }
-        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
             throw new NotImplementedException();
         }
         public override string getTitle() => new Random().Next()%2==0 ? "多睡觉，少操心" : "东方弟灵殿";

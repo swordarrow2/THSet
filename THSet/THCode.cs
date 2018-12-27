@@ -11,8 +11,8 @@ namespace THSet {
         public abstract string getAboutBug();
         public abstract string getAboutSpecial();
         public abstract string[] getDefaultValue();
-        public abstract void setBoss(ComboBox boss);
-        public abstract void setStageAndBossList(ComboBox stage,ComboBox bossBox);
+        public abstract void setBossNum(ComboBox boss);
+        public abstract void setStageEclAndBossList(ComboBox stage,ComboBox bossBox);
         public abstract void StartCount();
         public abstract int getMissCount();
         public abstract int getBombCount();

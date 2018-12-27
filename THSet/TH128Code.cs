@@ -8,10 +8,10 @@ namespace THSet {
     public class TH128Code:THCode {
         MemoryTool mt;
         public TH128Code(MemoryTool m) => mt=m;
-        public override void setBoss(ComboBox boss) {
+        public override void setBossNum(ComboBox boss) {
             throw new NotImplementedException();
         }
-        public override void setStageAndBossList(ComboBox stage,ComboBox bossBox) {
+        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
             throw new NotImplementedException();
         }
         public override string getTitle() => new Random().Next()%2==0 ? "1+1=9" : "妖精大战争";

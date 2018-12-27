@@ -8,7 +8,7 @@ namespace THSet {
     public class TH13Code:THCode {
         MemoryTool mt;
         private int bossEclAddress = 0;
-        public override void setBoss(ComboBox boss) {
+        public override void setBossNum(ComboBox boss) {
             byte[] memory = new byte[0x1000];
             byte[] bossEcl = g4EclCode.eclMainBossNum;
             int index = 0;
@@ -26,7 +26,7 @@ namespace THSet {
                 }
             }
         }
-        public override void setStageAndBossList(ComboBox stageBox,ComboBox bossBox) {
+        public override void setStageEclAndBossList(ComboBox stageBox,ComboBox bossBox) {
             bossEclAddress=0;
             bossBox.Items.Clear();
             switch(stageBox.Text) {
