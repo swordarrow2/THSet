@@ -71,9 +71,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[29] { true,true,true,true,true,false,true,true,false,false,
                                                              true,true,true,true,true,false,true,false,false,false,
                                                              true,true,true,true,true,true,true,true,true };
-        public override void setLockPlayer(bool b) => write(0x00456732,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x50,0x74,0x4E,0x00 });                         //mov [004E7450],eax
-        public override void setLockBomb(bool b) => write(0x004148D5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 });                         //mov [004E745C],eax
-        public override void setUnbeatable(bool b) => write(0x0045669F,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 });//mov [edi+00016220],00000004
+        public override void setLockPlayer(bool b) => write(0x00456732,g4EclCode.getValueArray(new byte[] { 0xA3,0x50,0x74,0x4E,0x00 },b));            //mov [004E7450],eax
+        public override void setLockBomb(bool b) => write(0x004148D5,g4EclCode.getValueArray(new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 },b));              //mov [004E745C],eax
+        public override void setUnbeatable(bool b) => write(0x0045669F,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00016220],00000004
         public override void setFPS(int i) {
             if(write(0x60940A34,i)==0) {
                 write(0x00472931,BitConverter.GetBytes((double)1/i));
@@ -101,9 +101,9 @@ namespace THSet {
         public override void setIBomb(int i) => write(0x0043E6F1,i);
         public override void setIBombFragment(int i) => write(0x0043E70F,i);
         public override void setIPower(int i) {
-            write(0x0043C32B,new byte[] { 0x90,0x90,0x90,0x90,0x90 });               //nop
-            write(0x0043C383,new byte[] { 0x90,0x90,0x90,0x90,0x90 });               //nop
-            write(0x0043C353,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });          //nop
+            write(0x0043C32B,g4EclCode.getNop(5));
+            write(0x0043C383,g4EclCode.getNop(5));
+            write(0x0043C353,g4EclCode.getNop(6));
             write(0x0043E6E3,i);
         }
         public override void setIScore(int i) => throw new NotImplementedException();

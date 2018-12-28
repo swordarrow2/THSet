@@ -29,8 +29,8 @@ namespace THSet {
         public override bool[] getEnable() => new bool[29] { false,true,false,false,false,false,false,false,false,false,
                                                              true,true,true,false,true,false,false,false,false,false,
                                                              true,true,false,true,true,false,true,false,false };
-        public override void setLockPlayer(bool b) => write(0x0043C676,b ? new byte[] { 0x90,0x90,0x90 } : new byte[] { 0xD9,0x58,0x74 });//fstp dword ptr [eax+74]
-        public override void setLockBomb(bool b) => write(0x004398BB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xD9,0x98,0x80,0x00,0x00,0x00 }); //fstp dword ptr [eax+00000080]
+        public override void setLockPlayer(bool b) => write(0x0043C676,g4EclCode.getValueArray( new byte[] { 0xD9,0x58,0x74 },b));//fstp dword ptr [eax+74]
+        public override void setLockBomb(bool b) => write(0x004398BB,g4EclCode.getValueArray(new byte[] { 0xD9,0x98,0x80,0x00,0x00,0x00 },b)); //fstp dword ptr [eax+00000080]
 
         public override void setUnbeatable(bool b) => throw new NotImplementedException();
         public override void setFPS(int i) => write(0x00460F46,write(0x60015A4C,i));
@@ -94,15 +94,15 @@ namespace THSet {
 
             write(0x00406F21,new byte[] { 0xE8,0x60,0x57,0x03,0x00,                           //call 0043C686
                                           0xE9,0x44,0x3F,0x03,0x00 });                        //jmp 0043AE6F
-
         }
 
         public override void setIBombFragment(int i) => throw new NotImplementedException();
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
-            write(0x0043B2D0,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });
-            write(0x0043B2EC,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });
-            write(0x0043B308,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });
+            
+            write(0x0043B2D0,g4EclCode.getNop(6));
+            write(0x0043B2EC,g4EclCode.getNop(6));
+            write(0x0043B308,g4EclCode.getNop(6));
 
             write(0x0043AE77,new byte[] { 0xE9,0x47,0x19,0x00,0x00,0x90 });//jmp 0043C7C3
             write(0x0043C7C3,new byte[] { 0xC7,0x80,0x98,0x00,0x00,0x00,b[0],b[1],b[2],b[3],//mov [eax+00000098],b[]

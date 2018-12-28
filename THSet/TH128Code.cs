@@ -42,12 +42,12 @@ namespace THSet {
         public override bool[] getEnable() => new bool[29] { true,false,true,false,true,true,false,true,false,false,
                                                              true,false,true,false,true,false,false,true,false,false,
                                                              true,true,true,true,true,true,true,true,false };
-        public override void setLockPlayer(bool b) => write(0x0042729C,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 });//mov [004B4D64],ecx
-        public override void setLockBomb(bool b) => write(0x0043B7C1,b ? new byte[] { 0x90,0x90 } : new byte[] { 0x7C,0x30 }); //jl 0043B7F3
-        public override void setUnbeatable(bool b) => write(0x0043D0CF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [eax+00000F78],00000004
+        public override void setLockPlayer(bool b) => write(0x0042729C,g4EclCode.getValueArray(new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 },b));//mov [004B4D64],ecx
+        public override void setLockBomb(bool b) => write(0x0043B7C1,g4EclCode.getValueArray(new byte[] { 0x7C,0x30 },b)); //jl 0043B7F3
+        public override void setUnbeatable(bool b) => write(0x0043D0CF,g4EclCode.getValueArray(new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [eax+00000F78],00000004
         public override void setFPS(int i) {
-                write(0x00455158,BitConverter.GetBytes((double)1/i));
-                write(0x00454C48,new byte[] { 0xDD,0x05,0x58,0x51,0x45,0x00 });//fld qword ptr [00455158]
+            write(0x00455158,BitConverter.GetBytes((double)1/i));
+            write(0x00454C48,new byte[] { 0xDD,0x05,0x58,0x51,0x45,0x00 });//fld qword ptr [00455158]
         }
         public override void setPlayer(int i) => write(0x004B4D64,i*100);
         public override void setPlayerFragment(int i) => throw new NotImplementedException();

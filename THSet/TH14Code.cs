@@ -69,9 +69,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[29] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true };
-        public override void setLockPlayer(bool b) => write(0x0044F5D1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x64,0x58,0x4F,0x00 });//mov [004F5864],eax
-        public override void setLockBomb(bool b) => write(0x004120F5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x70,0x58,0x4F,0x00 });//mov [004F5870],eax
-        public override void setUnbeatable(bool b) => write(0x0044F871,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [edi+00000684],00000004
+        public override void setLockPlayer(bool b) => write(0x0044F5D1,g4EclCode.getValueArray(new byte[] { 0xA3,0x64,0x58,0x4F,0x00 },b));//mov [004F5864],eax
+        public override void setLockBomb(bool b) => write(0x004120F5,g4EclCode.getValueArray(new byte[] { 0xA3,0x70,0x58,0x4F,0x00 },b));//mov [004F5870],eax
+        public override void setUnbeatable(bool b) => write(0x0044F871,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00000684],00000004
         public override void setFPS(int i) {
             mt.WriteBytes(0x0046A715,BitConverter.GetBytes((double)1/i));
             mt.WriteBytes(0x0046A78E,new byte[] { 0xF2,0x0F,0x10,0x15,0x15,0xA7,0x46,0x00 });//movsd xmm2,[0046A715]
@@ -98,9 +98,9 @@ namespace THSet {
         public override void setIBombFragment(int i) => write(0x004375DD,i);
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x00435DBA,new byte[] { 0x90,0x90,0x90,0x90,0x90 });                      //nop
-            write(0x00435E12,new byte[] { 0x90,0x90,0x90,0x90,0x90 });                      //nop
-            write(0x00435DE2,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });                 //nop
+            write(0x00435DBA,g4EclCode.getNop(5));
+            write(0x00435E12,g4EclCode.getNop(5));
+            write(0x00435DE2,g4EclCode.getNop(6));
             write(0x00435D86,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90 });            //mov ecx,b[]
             write(0x004375B3,i);
         }

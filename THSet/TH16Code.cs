@@ -71,9 +71,9 @@ namespace THSet {
                                                              true,false,true,true,true,true,true,true,false,false,
                                                              true,true,true,
                                                              true,true,true,true,true,true };
-        public override void setLockPlayer(bool b) => write(0x00443CC5,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 });//mov [004A57F4],eax
-        public override void setLockBomb(bool b) => write(0x0040DA86,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xA3,0x00,0x58,0x4A,0x00 });//mov [004A5800],eax
-        public override void setUnbeatable(bool b) => write(0x00443FDB,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 });// mov[edi+165A8],4
+        public override void setLockPlayer(bool b) => write(0x00443CC5,g4EclCode.getValueArray(new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 },b));//mov [004A57F4],eax
+        public override void setLockBomb(bool b) => write(0x0040DA86,g4EclCode.getValueArray(new byte[] { 0xA3,0x00,0x58,0x4A,0x00 },b));//mov [004A5800],eax
+        public override void setUnbeatable(bool b) => write(0x00443FDB,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 },b));// mov[edi+165A8],4
         public override void setFPS(int i) {
             mt.WriteBytes(0x0045AC45,BitConverter.GetBytes((double)1/i));
             mt.WriteBytes(0x0045ACBD,new byte[] { 0xF2,0x0F,0x10,0x15,0x45,0xAC,0x45,0x00 });
@@ -93,10 +93,11 @@ namespace THSet {
         public override int getSpecial3() => throw new NotImplementedException();
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
+            byte[] by = new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b }; // mov [004A57F4],b
             //story
-            write(0x0042CDEE,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b });    // mov [004A57F4],b
+            write(0x0042CDEE,by);
             //practice
-            write(0x0042CE03,new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b });    //mov [004A57F4],b
+            write(0x0042CE03,by);
             //spell practice no need
         }
         public override void setIPlayerFragment(int i) => throw new NotImplementedException();
@@ -106,10 +107,10 @@ namespace THSet {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });  //mov [esi+54],b[]
             //Stop to set default values
-            write(0x0042CE91,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });       //story
-            write(0x0042CEEC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //practice
-            write(0x0042CEBC,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //extra
-            write(0x0042CE51,new byte[] { 0x90,0x90,0x90,0x90,0x90 });            //spell practice
+            write(0x0042CE91,g4EclCode.getNop(6));            //story
+            write(0x0042CEEC,g4EclCode.getNop(5));            //practice
+            write(0x0042CEBC,g4EclCode.getNop(5));            //extra
+            write(0x0042CE51,g4EclCode.getNop(5));            //spell practice
         }
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i/10);
@@ -125,9 +126,9 @@ namespace THSet {
             if(i>=250000000&&i<500000000) { gettedPlayer=8; } else
             if(i>=500000000&&i<1000000000) { gettedPlayer=9; }
             write(0x0042CD38,new byte[] { 0xC7,0x05,0xB0,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],//mov [004A57B0],b[]
-                                          0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,
-             //                             0xC7,0x05,0xFC,0x57,0x4A,0x00,c[0],c[1],c[2],c[3],//mov [004A57FC],00000001
-                                          0xA3,0xC0,0x57,0x4A,0x00  });                     //mov [004A57C0],ecx
+                                          0xB8,0x00,0x00,0x00,0x00,
+                                          0xA3,0xC0,0x57,0x4A,0x00 });  //mov [004A57C0],ecx
+            write(0x0042CD4C,g4EclCode.getNop(5));
             write(0x0042E5DD,gettedPlayer);
         }
         public override void setIMaxPoint(int i) {
@@ -136,12 +137,14 @@ namespace THSet {
         }
         public override void setISpecial1(int i) {
             byte[] b = BitConverter.GetBytes(i);
+            byte[] by = new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] };
             //story
-            write(0x0042CEC6,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });     //mov[004A5808],b[]
+            write(0x0042CEC6,by);     //mov[004A5808],b[]
             //practice          
-            write(0x0042CEF8,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3],0x90 });//mov [004A5808],b[]
+            write(0x0042CEF8,by);
+            write(0x0042CF02,g4EclCode.getNop(1));
             //spell practice
-            write(0x0042CE5B,new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] });     //mov [004A5808],b[]            
+            write(0x0042CE5B,by);          
         }
         public override void setISpecial2(int i) => throw new NotImplementedException();
         public override void setISpecial3(int i) => throw new NotImplementedException();

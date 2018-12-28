@@ -49,22 +49,22 @@ namespace THSet {
 
         private void btnPlayer_Click(object sender,EventArgs e) => write(mt.ReadInteger(0x004A7DAC),BitConverter.GetBytes(Convert.ToSingle(tbPlayer.Text)));
         private void cplayer1HP_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressHP1,getOriginOrHookedValue(p1Addr.codeLockHP1,cplayer1HP.Checked));
-            write(p1Addr.codeAddressHP2,getOriginOrHookedValue(p1Addr.codeLockHP2,cplayer1HP.Checked));
+            write(p1Addr.codeAddressHP1,g4EclCode.getValueArray(p1Addr.codeLockHP1,cplayer1HP.Checked));
+            write(p1Addr.codeAddressHP2,g4EclCode.getValueArray(p1Addr.codeLockHP2,cplayer1HP.Checked));
         }
         private void cplayer1NoName_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressNoName11,getOriginOrHookedValue(p1Addr.codeLockNoName11,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName12,getOriginOrHookedValue(p1Addr.codeLockNoName12,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName21,getOriginOrHookedValue(p1Addr.codeLockNoName21,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName22,getOriginOrHookedValue(p1Addr.codeLockNoName22,cplayer1NoName.Checked));
+            write(p1Addr.codeAddressNoName11,g4EclCode.getValueArray(p1Addr.codeLockNoName11,cplayer1NoName.Checked));
+            write(p1Addr.codeAddressNoName12,g4EclCode.getValueArray(p1Addr.codeLockNoName12,cplayer1NoName.Checked));
+            write(p1Addr.codeAddressNoName21,g4EclCode.getValueArray(p1Addr.codeLockNoName21,cplayer1NoName.Checked));
+            write(p1Addr.codeAddressNoName22,g4EclCode.getValueArray(p1Addr.codeLockNoName22,cplayer1NoName.Checked));
         }
         private void cplayer1QiCao_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressCapacity1,getOriginOrHookedValue(p1Addr.codeLockCapacity1,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity2,getOriginOrHookedValue(p1Addr.codeLockCapacity2,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity3,getOriginOrHookedValue(p1Addr.codeLockCapacity3,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity4,getOriginOrHookedValue(p1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
+            write(p1Addr.codeAddressCapacity1,g4EclCode.getValueArray(p1Addr.codeLockCapacity1,cplayer1QiCao.Checked));
+            write(p1Addr.codeAddressCapacity2,g4EclCode.getValueArray(p1Addr.codeLockCapacity2,cplayer1QiCao.Checked));
+            write(p1Addr.codeAddressCapacity3,g4EclCode.getValueArray(p1Addr.codeLockCapacity3,cplayer1QiCao.Checked));
+            write(p1Addr.codeAddressCapacity4,g4EclCode.getValueArray(p1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
         }
-        private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(p1Addr.codeAddressPlayer,getOriginOrHookedValue(p1Addr.codeLockPlayer,cbPlayer.Checked));
+        private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(p1Addr.codeAddressPlayer,g4EclCode.getValueArray(p1Addr.codeLockPlayer,cbPlayer.Checked));
         private void btnNote_Click(object sender,EventArgs e) => MessageBox.Show("血量1-10,气槽0-400.莉莉白计时到达10000时,莉莉白将出现.\n\n本程序在Window7 64位系统测试可用",MainForm.versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
 
         private void bplayer2HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHP,Convert.ToInt32(tplayer2HP.Text));
@@ -79,20 +79,20 @@ namespace THSet {
             write(mt.ReadInteger(p2Addr.playerScoreBase)+p2Addr.offsetScore2,Convert.ToInt32(tplayer2Score.Text)/10);
         }
         private void cplayer2HP_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressHP1,getOriginOrHookedValue(p2Addr.codeLockHP1,cplayer2HP.Checked));
-            write(p2Addr.codeAddressHP2,getOriginOrHookedValue(p2Addr.codeLockHP2,cplayer2HP.Checked));
+            write(p2Addr.codeAddressHP1,g4EclCode.getValueArray(p2Addr.codeLockHP1,cplayer2HP.Checked));
+            write(p2Addr.codeAddressHP2,g4EclCode.getValueArray(p2Addr.codeLockHP2,cplayer2HP.Checked));
         }
         private void cplayer2NoName_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressNoName11,getOriginOrHookedValue(p2Addr.codeLockNoName11,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName12,getOriginOrHookedValue(p2Addr.codeLockNoName12,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName21,getOriginOrHookedValue(p2Addr.codeLockNoName21,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName22,getOriginOrHookedValue(p2Addr.codeLockNoName22,cplayer2NoName.Checked));
+            write(p2Addr.codeAddressNoName11,g4EclCode.getValueArray(p2Addr.codeLockNoName11,cplayer2NoName.Checked));
+            write(p2Addr.codeAddressNoName12,g4EclCode.getValueArray(p2Addr.codeLockNoName12,cplayer2NoName.Checked));
+            write(p2Addr.codeAddressNoName21,g4EclCode.getValueArray(p2Addr.codeLockNoName21,cplayer2NoName.Checked));
+            write(p2Addr.codeAddressNoName22,g4EclCode.getValueArray(p2Addr.codeLockNoName22,cplayer2NoName.Checked));
         }
         private void cplayer2QiCao_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressCapacity1,getOriginOrHookedValue(p2Addr.codeLockCapacity1,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity2,getOriginOrHookedValue(p2Addr.codeLockCapacity2,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity3,getOriginOrHookedValue(p2Addr.codeLockCapacity3,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity4,getOriginOrHookedValue(p2Addr.codeLockCapacity4,cplayer2QiCao.Checked));
+            write(p2Addr.codeAddressCapacity1,g4EclCode.getValueArray(p2Addr.codeLockCapacity1,cplayer2QiCao.Checked));
+            write(p2Addr.codeAddressCapacity2,g4EclCode.getValueArray(p2Addr.codeLockCapacity2,cplayer2QiCao.Checked));
+            write(p2Addr.codeAddressCapacity3,g4EclCode.getValueArray(p2Addr.codeLockCapacity3,cplayer2QiCao.Checked));
+            write(p2Addr.codeAddressCapacity4,g4EclCode.getValueArray(p2Addr.codeLockCapacity4,cplayer2QiCao.Checked));
         }
 
         private void write(int address,int value) => mt.WriteInteger(address,value);
@@ -106,16 +106,7 @@ namespace THSet {
         private void timerLily_Tick(object sender,EventArgs e) => lbLilyWhite.Text=Convert.ToString(mt.ReadInteger(0x004A7E5C));
         private void btnLilyWhite_Click(object sender,EventArgs e) => write(0x004A7E5C,Convert.ToInt32(tbLilyWhite.Text));
 
-        private byte[] getOriginOrHookedValue(byte[] array,bool isHooked) {
-            if(isHooked) {
-                int le = array.Length;
-                byte[] tmp = new byte[le];
-                for(int i = 0;i<le;i++) tmp[i]=0x90;
-                return tmp;
-            } else {
-                return array;
-            }
-        }
+
         private int getPID(string exeName) {
             try {
                 pro=Process.GetProcessesByName(exeName)[0];

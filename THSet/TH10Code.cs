@@ -52,14 +52,13 @@ namespace THSet {
                                                              mt.ReadInteger(0x00439397)==107752 ? false : true,
                                                              true,true,true,true,false };
 
-        public override void setLockPlayer(bool b) => write(0x00424EC3,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00 });//mov [00474C70],ecx
+        public override void setLockPlayer(bool b) => write(0x00424EC3,g4EclCode.getValueArray(new byte[] { 0x89,0x0D,0x70,0x4C,0x47,0x00 },b));//mov [00474C70],ecx
         public override void setLockBomb(bool b) {
-            write(0x00424EA1,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
-                                 new byte[] { 0x66,0x81,0x05,0x48,0x4C,0x47,0x00,0xEC,0xFF });//add word ptr [00474C48],FFEC
-            write(0x00426653,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
-                                 new byte[] { 0x66,0x81,0x05,0x48,0x4C,0x47,0x00,0xEC,0xFF });//add word ptr [00474C48],FFEC
+            byte[] by = new byte[] { 0x66,0x81,0x05,0x48,0x4C,0x47,0x00,0xEC,0xFF }; //add word ptr [00474C48],FFEC
+            write(0x00424EA1,g4EclCode.getValueArray(by,b)); 
+            write(0x00426653,g4EclCode.getValueArray(by,b)); 
         }
-        public override void setUnbeatable(bool b) => write(0x00426CFF,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x85,0x58,0x04,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [ebp+00000458],00000004
+        public override void setUnbeatable(bool b) => write(0x00426CFF,g4EclCode.getValueArray(new byte[] { 0xC7,0x85,0x58,0x04,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [ebp+00000458],00000004
         public override void setFPS(int i) => write(0x60018AB4,i);
         public override void setPlayer(int i) => write(0x00474C70,i);
         public override void setPlayerFragment(int i) => throw new NotImplementedException();
@@ -76,8 +75,9 @@ namespace THSet {
         public override int getSpecial3() => throw new NotImplementedException();
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
-            write(0x0041794F,new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b }); //mov[00474C70],b
-            write(0x00417964,new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b }); //mov[00474C70],b
+            byte[] by = new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b };//mov[00474C70],b
+            write(0x0041794F,by); 
+            write(0x00417964,by);
         }
         public override void setIPlayerFragment(int i) => throw new NotImplementedException();
         public override void setIBomb(int i) => throw new NotImplementedException();
@@ -100,8 +100,7 @@ namespace THSet {
             write(0x00465AA7,new byte[] { 0xC7,0x05,0x44,0x4C,0x47,0x00,b[0],b[1],b[2],b[3],//mov [00474C44],b[]
                                           0xC7,0x05,0x9C,0x4C,0x47,0x00,c[0],c[1],c[2],c[3],//mov [00474C9C],c[]
                                           0xE9,0x81,0x1E,0xFB,0xFF });                      //jmp 00417941
-            write(0x004179D5,new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 });  
-
+            write(0x004179D5,g4EclCode.getNop(6));
         }
         public override void setIMaxPoint(int i) => throw new NotImplementedException();
         public override void setISpecial1(int i) {

@@ -36,7 +36,6 @@ namespace THSet {
                                           0xEB,0x12 });                    //jmp 00430262
             write(0x00430262,new byte[] { 0xFF,0x05,0x84,0x5E,0x4A,0x00,   //inc [004A5E84]
                                           0xE9,0x8A,0x0F,0x00,0x00 });     //jmp 004311F7
-
             //决死
             write(0x0043129D,new byte[] { 0xE9,0xA0,0x09,0x00,0x00,0x90 });//jmp 00431C42
             write(0x00431C42,new byte[] { 0x29,0x05,0xE8,0x56,0x4A,0x00,   //sub [004A56E8],eax
@@ -54,14 +53,13 @@ namespace THSet {
                                                              true,true,false,false,true,false,false,false,false,false,
                                                              true,true,true,
                                                              true,true,true,true,true,false };
-        public override void setLockPlayer(bool b) => write(0x00431D12,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 });//mov [004A5718],edx
+        public override void setLockPlayer(bool b) => write(0x00431D12,g4EclCode.getValueArray(new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 },b));//mov [004A5718],edx
         public override void setLockBomb(bool b) {
-            write(0x00430248,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
-                                 new byte[] { 0x29,0x15,0xE8,0x56,0x4A,0x00 });//sub [004A56E8],edx
-            write(0x00431C42,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90 } ://nop
-                                 new byte[] { 0x29,0x05,0xE8,0x56,0x4A,0x00 });//sub [004A56E8],eax
+            byte[] by = new byte[] { 0x29,0x15,0xE8,0x56,0x4A,0x00 };
+            write(0x00430248,g4EclCode.getValueArray(by,b));//sub [004A56E8],edx
+            write(0x00431C42,g4EclCode.getValueArray(by,b));//sub [004A56E8],eax
         }
-        public override void setUnbeatable(bool b) => write(0x00432A9E,b ? new byte[] { 0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90 } : new byte[] { 0xC7,0x87,0x28,0x09,0x00,0x00,0x04,0x00,0x00,0x00 });//mov [edi+00000928],00000004
+        public override void setUnbeatable(bool b) => write(0x00432A9E,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x28,0x09,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00000928],00000004
         public override void setFPS(int i) {
             if(write(0x71CD8ABC,i)==0) {
                 write(0x004461E6,BitConverter.GetBytes((double)1/i));

@@ -108,7 +108,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TH10Code.cs" />
     <Compile Include="TH11Code.cs" />
-    <Compile Include="THEclCode.cs" />
+    <Compile Include="g4EclCode.cs" />
     <Compile Include="TH165Code.cs" />
     <Compile Include="TH128Code.cs" />
     <Compile Include="TH12Code.cs" />
