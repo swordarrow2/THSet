@@ -94,5 +94,23 @@ namespace THSet {
                 return -1;
             }
         }
+
+        public static byte[] getValueArray(byte[] array,bool isHooked) {
+            if(isHooked) {
+                int le = array.Length;
+                byte[] tmp = new byte[le];
+                for(int i = 0;i<le;i++) tmp[i]=0x90;
+                return tmp;
+            } else {
+                return array;
+            }
+        }
+        public static byte[] getNop(int count) {
+            byte[] b = new byte[count];
+            for(int i = 0;i<count;i++) {
+                b[i]=0x90;
+            }
+            return b;
+        }
     }
 }
