@@ -113,10 +113,22 @@ namespace THSet {
         }
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i/10);
-            write(0x0042CD38,new byte[] { 0xB9,b[0],b[1],b[2],b[3],                         //mov ecx,b[]
-                                          0x89,0x0D,0xB0,0x57,0x4A,0x00,                    //mov [004A57B0],ecx
-                                          0xB9,0x00,0x00,0x00,0x00,                         //mov ecx,00000000
-                                          0x89,0x0D,0xC0,0x57,0x4A,0x00,0x90,0x90,0x90 });  //mov [004A57C0],ecx
+            int gettedPlayer = 0;
+            if(i<5000000) { gettedPlayer=0; } else
+            if(i>=5000000&&i<10000000) { gettedPlayer=1; } else
+            if(i>=10000000&&i<20000000) { gettedPlayer=2; } else
+            if(i>=20000000&&i<40000000) { gettedPlayer=3; } else
+            if(i>=40000000&&i<70000000) { gettedPlayer=4; } else
+            if(i>=70000000&&i<100000000) { gettedPlayer=5; } else
+            if(i>=100000000&&i<150000000) { gettedPlayer=6; } else
+            if(i>=150000000&&i<250000000) { gettedPlayer=7; } else
+            if(i>=250000000&&i<500000000) { gettedPlayer=8; } else
+            if(i>=500000000&&i<1000000000) { gettedPlayer=9; }
+            write(0x0042CD38,new byte[] { 0xC7,0x05,0xB0,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],//mov [004A57B0],b[]
+                                          0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,0x90,
+             //                             0xC7,0x05,0xFC,0x57,0x4A,0x00,c[0],c[1],c[2],c[3],//mov [004A57FC],00000001
+                                          0xA3,0xC0,0x57,0x4A,0x00  });                     //mov [004A57C0],ecx
+            write(0x0042E5DD,gettedPlayer);
         }
         public override void setIMaxPoint(int i) {
             byte[] b = BitConverter.GetBytes(i*100);
