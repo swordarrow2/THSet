@@ -97,10 +97,7 @@ namespace THSet {
 
         public static byte[] getValueArray(byte[] array,bool isHooked) {
             if(isHooked) {
-                int le = array.Length;
-                byte[] tmp = new byte[le];
-                for(int i = 0;i<le;i++) tmp[i]=0x90;
-                return tmp;
+                return getNop(array.Length);
             } else {
                 return array;
             }
