@@ -157,6 +157,7 @@ namespace THSet {
                 memory=mt.ReadBytes(i,0x1000);
                 if((index=g4EclCode.getIndexOf(memory,eclBefore))!=-1) {
                     mt.WriteBytes(i+index,eclAfter);
+                //    mt.WriteBytes(i+index,g4EclCode.createEcl(new byte[][] { g4EclCode.TH16.stage1Ecl[3] }));
                     break;
                 }
             }
