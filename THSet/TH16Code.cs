@@ -124,7 +124,7 @@ namespace THSet {
             if(i>=100000000&&i<150000000) { gettedPlayer=6; } else
             if(i>=150000000&&i<250000000) { gettedPlayer=7; } else
             if(i>=250000000&&i<500000000) { gettedPlayer=8; } else
-            if(i>=500000000&&i<1000000000) { gettedPlayer=9; }
+            if(i>=500000000&&i<1000000000) { gettedPlayer=9; } else { gettedPlayer=10; }
             write(0x0042CD38,new byte[] { 0xC7,0x05,0xB0,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],//mov [004A57B0],b[]
                                           0xB8,0x00,0x00,0x00,0x00,
                                           0xA3,0xC0,0x57,0x4A,0x00 });  //mov [004A57C0],ecx
