@@ -8,12 +8,8 @@ namespace THSet {
     public class TH128Code:THCode {
         MemoryTool mt;
         public TH128Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "1+1=9" : "妖精大战争";
         public override string[] getSpecialTip() => new string[] { "蓄力","","" };
         public override string getAboutBug() => "终符若同时击破了两只妖精，则卡关……无解\n“满身疮痍”界面直接重新开始会导致录像爆炸，应返回主界面重新开始，若没有疮痍，则可以放心使用ESC+R\n难度\\路线选择界面如果按键频率过高可能会出现选择不正确的情况";

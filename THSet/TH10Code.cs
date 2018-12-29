@@ -8,12 +8,8 @@ namespace THSet {
     public class TH10Code:THCode {
         MemoryTool mt;
         public TH10Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "东方炸比录" : "东方神曲录";
         public override string getAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免\n\nreplay保存多次将会爆炸";
         public override string getAboutSpecial() => "信仰值初始为50000，最大值为999990";

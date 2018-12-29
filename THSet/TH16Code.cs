@@ -27,19 +27,21 @@ namespace THSet {
                 }
             }
         }
-        public override void setStageEclAndBossList(ComboBox stageBox,ComboBox bossBox) {
+        public override void setComboBox(ComboBox stageBox,ComboBox chapterBox,ComboBox bossBox) {
             bossEclAddress=0;
             bossBox.Items.Clear();
+            chapterBox.Items.Clear();
+            chapterBox.Items.AddRange(g4EclCode.chapter);
             switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH16.stage1); break;
-                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH16.stage2); break;
-                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH16.stage3); break;
-                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH16.stage4); break;
-                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH16.stage5); break;
-                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH16.stage6); break;
-                case "Extra": bossBox.Items.AddRange(g4EclCode.TH16.stage7); break;
+                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH16.stage1BossList); break;
+                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH16.stage2BossList); break;
+                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH16.stage3BossList); break;
+                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH16.stage4BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","后半","太田飞行阵","关底Boss" }); break;
+                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH16.stage5BossList); break;
+                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH16.stage6BossList); break;
+                case "Extra": bossBox.Items.AddRange(g4EclCode.TH16.stage7BossList); break;
             }
-            setStEcl(stageBox.Text);
+            setStEcl(stageBox,chapterBox);
         }
         public override string getTitle() => new Random().Next()%2==0 ? "东方Bug璋" : "东方CBC";
         public override string getAboutBug() => "太多了，我就不写了……";
@@ -144,20 +146,27 @@ namespace THSet {
             write(0x0042CEF8,by);
             write(0x0042CF02,g4EclCode.getNop(1));
             //spell practice
-            write(0x0042CE5B,by);          
+            write(0x0042CE5B,by);
         }
         public override void setISpecial2(int i) => throw new NotImplementedException();
         public override void setISpecial3(int i) => throw new NotImplementedException();
-        private void setStEcl(string stage) {
+        private void setStEcl(ComboBox stageBox,ComboBox chapterBox) {
             byte[] memory = new byte[0x1000];
             byte[] eclBefore = g4EclCode.eclLogoEnemy;
-            byte[] eclAfter = stage.Equals("Stage5") ? g4EclCode.TH16.eclTH16Stage5CreateMainBoss : g4EclCode.celCreateMainBoss;
+            byte[] eclAfter = stageBox.Equals("Stage5") ? g4EclCode.TH16.eclTH16Stage5CreateMainBoss : g4EclCode.celCreateMainBoss;
             int index = 0;
             for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                 memory=mt.ReadBytes(i,0x1000);
                 if((index=g4EclCode.getIndexOf(memory,eclBefore))!=-1) {
-                    mt.WriteBytes(i+index,eclAfter);
-                //    mt.WriteBytes(i+index,g4EclCode.createEcl(new byte[][] { g4EclCode.TH16.stage1Ecl[3] }));
+                    //mt.WriteBytes(i+index,eclAfter);
+                    byte[][] eclByte = new byte[][] { g4EclCode.TH16.stage1Ecl[0],g4EclCode.TH16.stage1Ecl[1],g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] };
+                    switch(chapterBox.Text) {
+                        case "前半": break;
+                        case "道中Boss": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[1],g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }; break;
+                        case "后半": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }; break;
+                        case "关底Boss": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[3] }; break;
+                    }
+                    mt.WriteBytes(i+index,g4EclCode.createEcl(eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }));
                     break;
                 }
             }

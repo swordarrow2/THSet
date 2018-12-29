@@ -27,17 +27,17 @@ namespace THSet {
                 }
             }
         }
-        public override void setStageEclAndBossList(ComboBox stageBox,ComboBox bossBox) {
+        public override void setComboBox(ComboBox stageBox,ComboBox chapterBox,ComboBox bossBox) {
             bossEclAddress=0;
             bossBox.Items.Clear();
             switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH14.stage1); break;
-                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH14.stage2); break;
-                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH14.stage3); break;
-                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH14.stage4); break;
-                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH14.stage5); break;
-                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH14.stage6); break;
-                case "Extra": bossBox.Items.AddRange(g4EclCode.TH14.stage7); break;
+                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH14.stage1BossList); break;
+                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH14.stage2BossList); break;
+                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH14.stage3BossList); break;
+                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH14.stage4BossList); break;
+                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH14.stage5BossList); break;
+                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH14.stage6BossList); break;
+                case "Extra": bossBox.Items.AddRange(g4EclCode.TH14.stage7BossList); break;
             }
             setStEcl(stageBox.Text);
         }

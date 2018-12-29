@@ -8,12 +8,8 @@ namespace THSet {
     public class TH11Code:THCode {
         MemoryTool mt;
         public TH11Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "多睡觉，少操心" : "东方弟灵殿";
         public override string getAboutBug() => "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         public override string getAboutSpecial() => "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";

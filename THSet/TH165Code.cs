@@ -8,12 +8,8 @@ namespace THSet {
     public class TH165Code:THCode {
         MemoryTool mt;
         public TH165Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stageBox,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "bug日记" : "TH16.5";
         public override string[] getSpecialTip() => new string[] { "拍照能量","","" };
         public override string getAboutBug() => "ESC+R并不会让游戏重新开始，而且还会多一层菜单遮挡视线\n撞弹后进入游戏说明再回到游戏可以复活";

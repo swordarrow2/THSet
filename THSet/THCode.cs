@@ -12,7 +12,7 @@ namespace THSet {
         public abstract string getAboutSpecial();
         public abstract string[] getDefaultValue();
         public abstract void setBossNum(ComboBox boss);
-        public abstract void setStageEclAndBossList(ComboBox stage,ComboBox bossBox);
+        public abstract void setComboBox(ComboBox stageBox,ComboBox chapterBox,ComboBox bossBox);
         public abstract void StartCount();
         public abstract int getMissCount();
         public abstract int getBombCount();

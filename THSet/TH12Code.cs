@@ -8,12 +8,8 @@ namespace THSet {
     public class TH12Code:THCode {
         MemoryTool mt;
         public TH12Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "春之岸边播放器" : "东方红红蓝";
         public override string getAboutBug() => "得分超过2,147,483,647时继续获得分数会使计数倒退";
         public override string getAboutSpecial() => "0-无 1-红 2-蓝 3-绿";

@@ -8,12 +8,8 @@ namespace THSet {
     public class TH07Code:THCode {
         MemoryTool mt;
         public TH07Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            throw new NotImplementedException();
-        }
-        public override void setStageEclAndBossList(ComboBox stage,ComboBox bossBox) {
-            throw new NotImplementedException();
-        }
+        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
+        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
         public override string getTitle() => new Random().Next()%2==0 ? "东方妖妖梦" : "东方999";
         public override string[] getSpecialTip() => new string[] { "结界","分母","收卡数" };
         public override string getAboutBug() => "";
