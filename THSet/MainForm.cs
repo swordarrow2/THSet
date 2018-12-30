@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.2.3";
+        public const string versonCode = "THSet v3.3";
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
@@ -318,13 +318,21 @@ namespace THSet {
         }
         public void restartCount() => tc.StartCount();
         public void killSelf() => tc.killSelf();
-        private void comboBoxBoss_selected(object sender,EventArgs e) {
-            if(comboBoxBoss.Text.Equals("")) return;
-            tc.setBossNum(comboBoxBoss);
-        }
         private void comboBoxStage_selected(object sender,EventArgs e) {
             if(comboBoxStage.Text.Equals("")) return;
-            tc.setComboBox(comboBoxStage,comboBoxChapter,comboBoxBoss);
+            tc.setStage(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+        }
+        private void comboBoxChapter_selected(object sender,EventArgs e) {
+            if(comboBoxChapter.Text.Equals("")) return;
+            tc.setChapter(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+        }
+        private void comboBoxMBoss_selected(object sender,EventArgs e) {
+            if(comboBoxMBoss.Text.Equals("")) return;
+            tc.setMBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+        }
+        private void comboBoxBoss_selected(object sender,EventArgs e) {
+            if(comboBoxBoss.Text.Equals("")) return;
+            tc.setBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,然后在游戏中ESC+R即可开始使用.\n回到游戏主界面时修改失效,再次练习时需要重新选择.遇到玄学问题可尝试重新进入关卡或重启修改器,还是不行的话请联系开发者（\n选择练习内容时软件可能会有短暂的无响应,稍等即可.",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
     }

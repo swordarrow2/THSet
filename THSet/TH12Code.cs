@@ -8,8 +8,10 @@ namespace THSet {
     public class TH12Code:THCode {
         MemoryTool mt;
         public TH12Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
-        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
+        public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override string getTitle() => new Random().Next()%2==0 ? "春之岸边播放器" : "东方红红蓝";
         public override string getAboutBug() => "得分超过2,147,483,647时继续获得分数会使计数倒退";
         public override string getAboutSpecial() => "0-无 1-红 2-蓝 3-绿";
@@ -56,10 +58,10 @@ namespace THSet {
         public override void setMaxPoint(int i) => write(0x004B0C78,i*100);
         public override void setSpecial1(int i) => write(0x004B0C4C,i);
         public override void setSpecial2(int i) => write(0x004B0C50,i);
-        public override void setSpecial3(int i) => throw new NotImplementedException();
+        public override void setSpecial3(int i){ }
         public override int getSpecial1() => mt.ReadInteger(0x004B0C4C);
         public override int getSpecial2() => mt.ReadInteger(0x004B0C50);
-        public override int getSpecial3() => throw new NotImplementedException();
+        public override int getSpecial3(){ return 0; }
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E81,new byte[] { 0xE9,0x5A,0x5C,0x07,0x00,0x90 });              //jmp 00497AE0
@@ -116,7 +118,7 @@ namespace THSet {
             write(0x00497B58,new byte[] { 0xC7,0x05,0x50,0x0C,0x4B,0x00,b[0],b[1],b[2],b[3],//mov [004B0C50],b[]
                                           0xE9,0xE0,0xA2,0xF8,0xFF });                      //jmp 00421E47
         }
-        public override void setISpecial3(int i) => throw new NotImplementedException();
+        public override void setISpecial3(int i){ }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

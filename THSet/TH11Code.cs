@@ -8,8 +8,10 @@ namespace THSet {
     public class TH11Code:THCode {
         MemoryTool mt;
         public TH11Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
-        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
+        public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override string getTitle() => new Random().Next()%2==0 ? "多睡觉，少操心" : "东方弟灵殿";
         public override string getAboutBug() => "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         public override string getAboutSpecial() => "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";
@@ -64,17 +66,17 @@ namespace THSet {
         }
         public override void setPlayer(int i) => write(0x004A5718,i);
         public override void setPlayerFragment(int i) => write(0x004A571C,i);
-        public override void setBomb(int i) => throw new NotImplementedException();
-        public override void setBombFragment(int i) => throw new NotImplementedException();
+        public override void setBomb(int i){ }
+        public override void setBombFragment(int i){ }
         public override void setPower(int i) => write(0x004A56E8,isMarisaA() ? (int)(i/8.333333333333f) : i/5);
         public override void setScore(int i) => write(0x004A56E4,i/10);
-        public override void setMaxPoint(int i) => throw new NotImplementedException();
+        public override void setMaxPoint(int i){ }
         public override void setSpecial1(int i) => write(0x004A56F0,i*100);
         public override void setSpecial2(int i) => write(0x004A56F4,i*100);
-        public override void setSpecial3(int i) => throw new NotImplementedException();
+        public override void setSpecial3(int i){ }
         public override int getSpecial1() => mt.ReadInteger(0x004A56F0)/100;
         public override int getSpecial2() => mt.ReadInteger(0x004A56F4)/100;
-        public override int getSpecial3() => throw new NotImplementedException();
+        public override int getSpecial3(){ return 0; }
         public override void setIPlayer(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0041FA38,new byte[] { 0xE9,0x84,0xFE,0xFF,0xFF,0x90 });                 //jmp 0041F8C1
@@ -91,8 +93,8 @@ namespace THSet {
             write(0x0041F85A,i);
 
         }
-        public override void setIBomb(int i) => throw new NotImplementedException();
-        public override void setIBombFragment(int i) => throw new NotImplementedException();
+        public override void setIBomb(int i){ }
+        public override void setIBombFragment(int i){ }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(isMarisaA() ? (int)(i/8.3333333333f) : i/5);
             write(0x0041FA8C,new byte[] { 0xE9,0x12,0xFD,0xFF,0xFF,0x90 });                 //jmp 0041F7A3
@@ -105,11 +107,11 @@ namespace THSet {
             write(0x0041F748,new byte[] { 0xE9,0x36,0x03,0x00,0x00 });                      //jmp 0041FA83
 
         }
-        public override void setIScore(int i) => throw new NotImplementedException();
-        public override void setIMaxPoint(int i) => throw new NotImplementedException();
-        public override void setISpecial1(int i) => throw new NotImplementedException();
-        public override void setISpecial2(int i) => throw new NotImplementedException();
-        public override void setISpecial3(int i) => throw new NotImplementedException();
+        public override void setIScore(int i){ }
+        public override void setIMaxPoint(int i){ }
+        public override void setISpecial1(int i){ }
+        public override void setISpecial2(int i){ }
+        public override void setISpecial3(int i){ }
         private bool isMarisaA() => ((mt.ReadInteger(0x004A5710)==1)&&(mt.ReadInteger(0x004A5714)==0));
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);

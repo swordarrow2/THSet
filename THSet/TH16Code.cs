@@ -7,42 +7,85 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH16Code:THCode {
         MemoryTool mt;
-        private int bossEclAddress = 0;
+        private int bossNumAddress = 0;
+        private int logoEnemyAddress = 0;
         public TH16Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) {
-            byte[] memory = new byte[0x1000];
-            byte[] bossEcl = g4EclCode.eclMainBossNum;
-            int index = 0;
-            byte[] b = g4EclCode.getBossNumArray(boss.Text);
-            if(bossEclAddress!=0) {
-                mt.WriteBytes(bossEclAddress,b);
-            } else {
-                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
-                    memory=mt.ReadBytes(i,0x1000);
-                    if((index=g4EclCode.getIndexOf(memory,bossEcl))!=-1) {
-                        mt.WriteBytes(i+index+20,b);
-                        bossEclAddress=i+index+20;
-                        break;
-                    }
-                }
-            }
-        }
-        public override void setComboBox(ComboBox stageBox,ComboBox chapterBox,ComboBox bossBox) {
-            bossEclAddress=0;
+        public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+            bossNumAddress=0;
+            logoEnemyAddress=0;
             bossBox.Items.Clear();
             chapterBox.Items.Clear();
             chapterBox.Items.AddRange(g4EclCode.chapter);
             switch(stageBox.Text) {
                 case "Stage1": bossBox.Items.AddRange(g4EclCode.TH16.stage1BossList); break;
-                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH16.stage2BossList); break;
+                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH16.stage2BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","关底Boss" }); break;
                 case "Stage3": bossBox.Items.AddRange(g4EclCode.TH16.stage3BossList); break;
                 case "Stage4": bossBox.Items.AddRange(g4EclCode.TH16.stage4BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","后半","太田飞行阵","关底Boss" }); break;
                 case "Stage5": bossBox.Items.AddRange(g4EclCode.TH16.stage5BossList); break;
-                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH16.stage6BossList); break;
+                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH16.stage6BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "关底Boss" }); break;
                 case "Extra": bossBox.Items.AddRange(g4EclCode.TH16.stage7BossList); break;
             }
-            setStEcl(stageBox,chapterBox);
         }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+            byte[] memory = new byte[0x1000];
+            byte[] eclLogoEnemy = g4EclCode.eclLogoEnemy;
+            byte[] eclMainFront = g4EclCode.stageEcl[0];
+            byte[] eclMBoss = stageBox.Text.Equals("Extra") ? g4EclCode.TH16.eclExtraMBoss : g4EclCode.stageEcl[1];
+            byte[] eclMainLatter = stageBox.Text.Equals("Stage2") ? new byte[] { } : g4EclCode.stageEcl[2];
+            byte[] eclMainBoss = stageBox.Text.Equals("Stage5") ? g4EclCode.TH16.eclStage5CreateMainBoss : g4EclCode.stageEcl[3];
+            int index = 0;
+            if(logoEnemyAddress!=0) {
+                byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
+                switch(chapterBox.Text) {
+                    case "前半": break;
+                    case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
+                    case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
+                    case "太田飞行阵": eclByte=new byte[][] { g4EclCode.TH16.eclTaiTianFeiXingZhen,eclMainBoss }; break;
+                    case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+                }
+                mt.WriteBytes(logoEnemyAddress,g4EclCode.createEcl(eclByte));
+            } else {
+                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
+                    memory=mt.ReadBytes(i,0x1000);
+                    if((index=g4EclCode.getIndexOf(memory,eclLogoEnemy))!=-1) {
+                        //mt.WriteBytes(i+index,eclAfter);
+                        byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
+                        switch(chapterBox.Text) {
+                            case "前半": break;
+                            case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
+                            case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
+                            case "太田飞行阵": eclByte=new byte[][] { g4EclCode.TH16.eclTaiTianFeiXingZhen,eclMainBoss }; break;
+                            case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+                        }
+                        mt.WriteBytes(i+index,g4EclCode.createEcl(eclByte));
+                        logoEnemyAddress=i+index;
+                        break;
+                    }
+                }
+            }
+        }
+        public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+
+        }
+        public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+            byte[] memory = new byte[0x1000];
+            byte[] bossEcl = g4EclCode.eclMainBossNum;
+            int index = 0;
+            byte[] b = g4EclCode.getBossNumArray(bossBox.Text);
+            if(bossNumAddress!=0) {
+                mt.WriteBytes(bossNumAddress,b);
+            } else {
+                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
+                    memory=mt.ReadBytes(i,0x1000);
+                    if((index=g4EclCode.getIndexOf(memory,bossEcl))!=-1) {
+                        mt.WriteBytes(i+index+20,b);
+                        bossNumAddress=i+index+20;
+                        break;
+                    }
+                }
+            }
+        }
+
         public override string getTitle() => new Random().Next()%2==0 ? "东方Bug璋" : "东方CBC";
         public override string getAboutBug() => "太多了，我就不写了……";
         public override string getAboutSpecial() => "季节槽范围为0-1140";
@@ -81,34 +124,34 @@ namespace THSet {
             mt.WriteBytes(0x0045ACBD,new byte[] { 0xF2,0x0F,0x10,0x15,0x45,0xAC,0x45,0x00 });
         }
         public override void setPlayer(int i) => write(0x004A57F4,i);
-        public override void setPlayerFragment(int i) => throw new NotImplementedException();
+        public override void setPlayerFragment(int i) { }
         public override void setBomb(int i) => write(0x004A5800,i);
         public override void setBombFragment(int i) => write(0x004A5804,i);
         public override void setPower(int i) => write(0x004A57E4,i);
         public override void setScore(int i) => write(0x004A57B0,i/10);
         public override void setMaxPoint(int i) => write(0x004A57D8,i*100);
         public override void setSpecial1(int i) => write(0x004A5808,i);
-        public override void setSpecial2(int i) => throw new NotImplementedException();
-        public override void setSpecial3(int i) => throw new NotImplementedException();
+        public override void setSpecial2(int i) { }
+        public override void setSpecial3(int i) { }
         public override int getSpecial1() => mt.ReadInteger(0x004A5808);
-        public override int getSpecial2() => throw new NotImplementedException();
-        public override int getSpecial3() => throw new NotImplementedException();
+        public override int getSpecial2() { return 0; }
+        public override int getSpecial3() { return 0; }
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             byte[] by = new byte[] { 0xC7,0x05,0xF4,0x57,0x4A,0x00,b }; // mov [004A57F4],b
-            //story
+                                                                        //story
             write(0x0042CDEE,by);
             //practice
             write(0x0042CE03,by);
             //spell practice no need
         }
-        public override void setIPlayerFragment(int i) => throw new NotImplementedException();
+        public override void setIPlayerFragment(int i) { }
         public override void setIBomb(int i) => write(0x0042E5AE,new byte[] { 0xC7,0x46,0x70,BitConverter.GetBytes(i)[0] });                    //mov [esi+70],b
         public override void setIBombFragment(int i) => write(0x0042E5CC,new byte[] { 0xC7,0x46,0x74,BitConverter.GetBytes(i)[0] });                    //mov [esi+74],00000003
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });  //mov [esi+54],b[]
-            //Stop to set default values
+                                                                                  //Stop to set default values
             write(0x0042CE91,g4EclCode.getNop(6));            //story
             write(0x0042CEEC,g4EclCode.getNop(5));            //practice
             write(0x0042CEBC,g4EclCode.getNop(5));            //extra
@@ -142,35 +185,14 @@ namespace THSet {
             byte[] by = new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] };
             //story
             write(0x0042CEC6,by);     //mov[004A5808],b[]
-            //practice          
+                                      //practice          
             write(0x0042CEF8,by);
             write(0x0042CF02,g4EclCode.getNop(1));
             //spell practice
             write(0x0042CE5B,by);
         }
-        public override void setISpecial2(int i) => throw new NotImplementedException();
-        public override void setISpecial3(int i) => throw new NotImplementedException();
-        private void setStEcl(ComboBox stageBox,ComboBox chapterBox) {
-            byte[] memory = new byte[0x1000];
-            byte[] eclBefore = g4EclCode.eclLogoEnemy;
-            byte[] eclAfter = stageBox.Equals("Stage5") ? g4EclCode.TH16.eclTH16Stage5CreateMainBoss : g4EclCode.celCreateMainBoss;
-            int index = 0;
-            for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
-                memory=mt.ReadBytes(i,0x1000);
-                if((index=g4EclCode.getIndexOf(memory,eclBefore))!=-1) {
-                    //mt.WriteBytes(i+index,eclAfter);
-                    byte[][] eclByte = new byte[][] { g4EclCode.TH16.stage1Ecl[0],g4EclCode.TH16.stage1Ecl[1],g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] };
-                    switch(chapterBox.Text) {
-                        case "前半": break;
-                        case "道中Boss": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[1],g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }; break;
-                        case "后半": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }; break;
-                        case "关底Boss": eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[3] }; break;
-                    }
-                    mt.WriteBytes(i+index,g4EclCode.createEcl(eclByte=new byte[][] { g4EclCode.TH16.stage1Ecl[2],g4EclCode.TH16.stage1Ecl[3] }));
-                    break;
-                }
-            }
-        }
+        public override void setISpecial2(int i) { }
+        public override void setISpecial3(int i) { }
         private void write(int addr,int value) => mt.WriteInteger(addr,value);
         private void write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

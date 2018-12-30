@@ -8,8 +8,10 @@ namespace THSet {
     public class TH10Code:THCode {
         MemoryTool mt;
         public TH10Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
-        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
+        public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override string getTitle() => new Random().Next()%2==0 ? "东方炸比录" : "东方神曲录";
         public override string getAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免\n\nreplay保存多次将会爆炸";
         public override string getAboutSpecial() => "信仰值初始为50000，最大值为999990";
@@ -57,27 +59,27 @@ namespace THSet {
         public override void setUnbeatable(bool b) => write(0x00426CFF,g4EclCode.getValueArray(new byte[] { 0xC7,0x85,0x58,0x04,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [ebp+00000458],00000004
         public override void setFPS(int i) => write(0x60018AB4,i);
         public override void setPlayer(int i) => write(0x00474C70,i);
-        public override void setPlayerFragment(int i) => throw new NotImplementedException();
-        public override void setBomb(int i) => throw new NotImplementedException();
-        public override void setBombFragment(int i) => throw new NotImplementedException();
+        public override void setPlayerFragment(int i){ }
+        public override void setBomb(int i){ }
+        public override void setBombFragment(int i){ }
         public override void setPower(int i) => write(0x00474C48,i/5);
         public override void setScore(int i) => write(0x00474C44,i/10);
-        public override void setMaxPoint(int i) => throw new NotImplementedException();
+        public override void setMaxPoint(int i){ }
         public override void setSpecial1(int i) => write(0x00474C4C,i/10);
-        public override void setSpecial2(int i) => throw new NotImplementedException();
-        public override void setSpecial3(int i) => throw new NotImplementedException();
+        public override void setSpecial2(int i){ }
+        public override void setSpecial3(int i){ }
         public override int getSpecial1() => mt.ReadInteger(0x00474C4C)*10;
-        public override int getSpecial2() => throw new NotImplementedException();
-        public override int getSpecial3() => throw new NotImplementedException();
+        public override int getSpecial2(){ return 0; }
+        public override int getSpecial3(){ return 0; }
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             byte[] by = new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b };//mov[00474C70],b
             write(0x0041794F,by); 
             write(0x00417964,by);
         }
-        public override void setIPlayerFragment(int i) => throw new NotImplementedException();
-        public override void setIBomb(int i) => throw new NotImplementedException();
-        public override void setIBombFragment(int i) => throw new NotImplementedException();
+        public override void setIPlayerFragment(int i){ }
+        public override void setIBomb(int i){ }
+        public override void setIBombFragment(int i){ }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i/5);
             write(0x0041798C,new byte[] { 0xE9,0xF5,0xE0,0x04,0x00,0x90 });                 //jmp 00465A86
@@ -98,7 +100,7 @@ namespace THSet {
                                           0xE9,0x81,0x1E,0xFB,0xFF });                      //jmp 00417941
             write(0x004179D5,g4EclCode.getNop(6));
         }
-        public override void setIMaxPoint(int i) => throw new NotImplementedException();
+        public override void setIMaxPoint(int i){ }
         public override void setISpecial1(int i) {
             byte[] b = BitConverter.GetBytes(i/10);
             write(0x00418B93,new byte[] { 0xE9,0xFD,0xCE,0x04,0x00,0x90 });                 //jmp 00465A95
@@ -106,8 +108,8 @@ namespace THSet {
                                           0x8B,0x41,0x24,                                   //mov eax,[ecx+24]
                                           0xE9,0xF2,0x30,0xFB,0xFF });                      //jmp 00418B99
         }
-        public override void setISpecial2(int i) => throw new NotImplementedException();
-        public override void setISpecial3(int i) => throw new NotImplementedException();
+        public override void setISpecial2(int i){ }
+        public override void setISpecial3(int i){ }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

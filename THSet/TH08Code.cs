@@ -8,8 +8,10 @@ namespace THSet {
     public class TH08Code:THCode {
         MemoryTool mt;
         public TH08Code(MemoryTool m) => mt=m;
-        public override void setBossNum(ComboBox boss) => throw new NotImplementedException();
-        public override void setComboBox(ComboBox stage,ComboBox chapterBox,ComboBox bossBox) => throw new NotImplementedException();
+        public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override string getTitle() => new Random().Next()%2==0 ? "东方永夜抄" : "TH08";
         public override string[] getSpecialTip() => new string[] { "","","" };
         public override string getAboutBug() => "不知道（";
@@ -20,29 +22,29 @@ namespace THSet {
         public override int getMissCount() => mt.ReadInteger(0x0164CFA4);
         public override int getBombCount() => mt.ReadInteger(0x0164CFA8);
         public override int getBulletCount() => mt.ReadInteger(0x0160F3C8);
-        public override int getBossLife() => throw new NotImplementedException();
-        public override void killSelf() => throw new NotImplementedException();
+        public override int getBossLife(){ return 0; }
+        public override void killSelf(){ }
         public override bool[] getEnable() => new bool[29] { false,true,false,false,false,false,false,false,false,false,
                                                              true,true,true,false,true,false,false,false,false,false,
                                                              true,true,false,true,true,false,true,false,false };
         public override void setLockPlayer(bool b) => write(0x0043C676,g4EclCode.getValueArray( new byte[] { 0xD9,0x58,0x74 },b));//fstp dword ptr [eax+74]
         public override void setLockBomb(bool b) => write(0x004398BB,g4EclCode.getValueArray(new byte[] { 0xD9,0x98,0x80,0x00,0x00,0x00 },b)); //fstp dword ptr [eax+00000080]
 
-        public override void setUnbeatable(bool b) => throw new NotImplementedException();
+        public override void setUnbeatable(bool b){ }
         public override void setFPS(int i) => write(0x00460F46,write(0x60015A4C,i));
-        public override void setPlayer(int i) => throw new NotImplementedException();
-        public override void setPlayerFragment(int i) => throw new NotImplementedException();
-        public override void setBomb(int i) => throw new NotImplementedException();
-        public override void setBombFragment(int i) => throw new NotImplementedException();
-        public override void setPower(int i) => throw new NotImplementedException();
-        public override void setScore(int i) => throw new NotImplementedException();
-        public override void setMaxPoint(int i) => throw new NotImplementedException();
-        public override void setSpecial1(int i) => throw new NotImplementedException();
-        public override void setSpecial2(int i) => throw new NotImplementedException();
-        public override void setSpecial3(int i) => throw new NotImplementedException();
-        public override int getSpecial1() => throw new NotImplementedException();
-        public override int getSpecial2() => throw new NotImplementedException();
-        public override int getSpecial3() => throw new NotImplementedException();
+        public override void setPlayer(int i){ }
+        public override void setPlayerFragment(int i){ }
+        public override void setBomb(int i){ }
+        public override void setBombFragment(int i){ }
+        public override void setPower(int i){ }
+        public override void setScore(int i){ }
+        public override void setMaxPoint(int i){ }
+        public override void setSpecial1(int i){ }
+        public override void setSpecial2(int i){ }
+        public override void setSpecial3(int i){ }
+        public override int getSpecial1(){ return 0; }
+        public override int getSpecial2(){ return 0; }
+        public override int getSpecial3(){ return 0; }
         public override void setIPlayer(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x0043AE42,new byte[] { 0xE9,0x8B,0x78,0xFF,0xFF,0x90,0x90,0x90 });//jmp 004326D2
@@ -92,7 +94,7 @@ namespace THSet {
                                           0xE9,0x44,0x3F,0x03,0x00 });                        //jmp 0043AE6F
         }
 
-        public override void setIBombFragment(int i) => throw new NotImplementedException();
+        public override void setIBombFragment(int i){ }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             
@@ -106,11 +108,11 @@ namespace THSet {
             write(0x0043C75B,new byte[] { 0xE9,0x1D,0xE7,0xFF,0xFF });//jmp 0043AE7D
         }
 
-        public override void setIScore(int i) => throw new NotImplementedException();
-        public override void setIMaxPoint(int i) => throw new NotImplementedException();
-        public override void setISpecial1(int i) => throw new NotImplementedException();
-        public override void setISpecial2(int i) => throw new NotImplementedException();
-        public override void setISpecial3(int i) => throw new NotImplementedException();
+        public override void setIScore(int i){ }
+        public override void setIMaxPoint(int i){ }
+        public override void setISpecial1(int i){ }
+        public override void setISpecial2(int i){ }
+        public override void setISpecial3(int i){ }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }
