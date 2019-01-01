@@ -56,7 +56,7 @@ namespace THSet {
             lbBulletCount.Text="子弹数:"+parent.bulletCount;
             lbLife.Text="血量:"+parent.bossLife;
             lbDPS.Text="DPS:"+parent.dps;
-            sp1.Text=parent.sp1;
+            sp1.Text=parent.sp1.Replace("樱道具值","樱道具");
         }
 
         private void setBG(object sender,EventArgs e) {

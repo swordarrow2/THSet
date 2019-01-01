@@ -14,7 +14,7 @@ namespace THSet {
         public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
 
         public override string getTitle() => new Random().Next()%2==0 ? "东方妖妖梦" : "东方999";
-        public override string[] getSpecialTip() => new string[] { "结界","分母","收卡数" };
+        public override string[] getSpecialTip() => new string[] {"收卡数" , "结界","分母"};
         public override string getAboutBug() => "";
         public override string getAboutSpecial() => "";
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
@@ -39,12 +39,12 @@ namespace THSet {
         public override void setPower(int i) { }
         public override void setScore(int i) { }
         public override void setMaxPoint(int i) { }
-        public override void setSpecial1(int i) => write(0x0062F890,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
-        public override void setSpecial2(int i) => write(0x0062F888,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
-        public override void setSpecial3(int i) => write(mt.ReadInteger(0x00626278)+0x1C,i);
-        public override int getSpecial1() => mt.ReadInteger(0x0062F890)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
-        public override int getSpecial2() => mt.ReadInteger(0x0062F888)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
-        public override int getSpecial3() => mt.ReadInteger(mt.ReadInteger(0x00626278)+0x1C);
+        public override void setSpecial1(int i) => write(mt.ReadInteger(0x00626278)+0x1C,i); 
+        public override void setSpecial2(int i) =>write(0x0062F890,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
+        public override void setSpecial3(int i) => write(0x0062F888,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
+        public override int getSpecial1() => mt.ReadInteger(mt.ReadInteger(0x00626278)+0x1C);
+        public override int getSpecial2() => mt.ReadInteger(0x0062F890)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
+        public override int getSpecial3() =>mt.ReadInteger(0x0062F888)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
         public override void setIPlayer(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x0042EA14,new byte[] { 0xA1,0x78,0x62,0x62,0x00,           //mov eax,[00626278]
@@ -116,13 +116,22 @@ namespace THSet {
 
         public override void setISpecial1(int i) {
             byte[] b = BitConverter.GetBytes(i);
+            write(0x0042EB29,new byte[] { 0xE9,0x6F,0xE2,0x05,0x00,0x90,0x90 });//jmp 0048CD9D
+            write(0x0048CD9D,new byte[] { 0x8B,0x40,0x08,
+                                          0xC7,0x40,0x1C,b[0],b[1],b[2],b[3],
+                                          0xE9,0x84,0x1D,0xFA,0xFF
+            });
+        }
+
+        public override void setISpecial2(int i) {
+            byte[] b = BitConverter.GetBytes(i);
             write(0x0042E9A5,new byte[] { 0xE9,0xE3,0xE3,0x05,0x00,0x90 }); //jmp 0048CD8D
             write(0x0048CD8D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,b[]
                                           0x89,0x81,0x20,0x96,0x00,0x00,    //mov [ecx+00009620],eax
                                           0xE9,0x0E,0x1C,0xFA,0xFF });      //jmp 0042E9AB
 
         }
-        public override void setISpecial2(int i) {
+        public override void setISpecial3(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EC00,i);//extra
             write(0x0042EC36,i);//phantasm
@@ -131,15 +140,6 @@ namespace THSet {
             write(0x0042EDA5,g4EclCode.getNop(6));
             write(0x0042EDD0,g4EclCode.getNop(6));
             write(0x0042ECAE,i);//p1 p2 p3 p4 p5 p6
-        }
-
-        public override void setISpecial3(int i) {
-            byte[] b = BitConverter.GetBytes(i);
-            write(0x0042EB29,new byte[] { 0xE9,0x6F,0xE2,0x05,0x00,0x90,0x90 });//jmp 0048CD9D
-            write(0x0048CD9D,new byte[] { 0x8B,0x40,0x08,
-                                          0xC7,0x40,0x1C,b[0],b[1],b[2],b[3],
-                                          0xE9,0x84,0x1D,0xFA,0xFF
-            });
         }
 
         private int write(int addr,int value) => mt.WriteInteger(addr,value);

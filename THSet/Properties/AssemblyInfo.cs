@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("THSet")]
+[assembly: AssemblyTitle("发发发修改器")]
 [assembly: AssemblyDescription("车万简易修改器")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("S")]
