@@ -6,11 +6,16 @@ using System.Windows.Forms;
 
 namespace THSet {
     public class MemoryTool {
+
         [DllImport("kernel32.dll")]
         public static extern int WriteProcessMemory(IntPtr Handle,long Address,byte[] buffer,int Size,int BytesWritten = 0);
         [DllImport("kernel32.dll")]
         public static extern int ReadProcessMemory(IntPtr Handle,long Address,byte[] buffer,int Size,int BytesRead = 0);
-
+        [DllImport("user32.dll",EntryPoint = "keybd_event",SetLastError = true)]
+        public static extern void keybd_event(Keys bVk,byte bScan,uint dwFlags,uint dwExtraInfo);
+        [DllImport("user32.dll")]
+        public static extern byte MapVirtualKey(byte wCode,int wMap);       
+        
         Process pro;
 
         public MemoryTool(Process p) => pro=p;
@@ -34,6 +39,12 @@ namespace THSet {
             byte[] Buffer = new byte[length];
             ReadProcessMemory(GetProcessHandle(),Address,Buffer,length);
             return Buffer;
+        }
+        public void clickKey(Keys bVk,byte bScan,uint dwFlags,uint dwExtraInfo) {
+            keybd_event(bVk,bScan,dwFlags,dwExtraInfo);
+        }
+        public byte virtualKey(byte wCode,int wMap) {
+            return MapVirtualKey(wCode,wMap);
         }
     }
 }

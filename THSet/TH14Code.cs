@@ -7,6 +7,19 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH14Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1;
+        int autoBombCount = 0;
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004DB67C)+0x684);
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004F59C8,autoBombCount++);
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         private int logoEnemyAddress = 0;
         private int bossEclAddress = 0;
         public TH14Code(MemoryTool m) => mt=m;
@@ -31,11 +44,11 @@ namespace THSet {
             byte[] eclLogoEnemy = g4EclCode.eclLogoEnemy;
             byte[] eclMainFront = g4EclCode.stageEcl[0];
             byte[] eclMBoss = stageBox.Text.Equals("Extra") ? g4EclCode.TH14.eclExtraMBoss : g4EclCode.stageEcl[1];
-            byte[] eclMainLatter =  g4EclCode.stageEcl[2];
+            byte[] eclMainLatter = g4EclCode.stageEcl[2];
             byte[] eclMainBoss = g4EclCode.stageEcl[3];
             if(stageBox.Text.Equals("Stage6")) {
                 eclMBoss=g4EclCode.TH14.eclStage6MBoss;
-                eclMainLatter =new byte[] { };
+                eclMainLatter=new byte[] { };
             }
             int index = 0;
             byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
@@ -108,9 +121,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004DB530)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004DB550)+0x1B0);
         public override void killSelf() => write(mt.ReadInteger(0x004DB67C)+0x684,4);
-        public override bool[] getEnable() => new bool[29] { true,true,true,true,true,true,true,true,true,false,
+        public override bool[] getEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
-                                                             true,true,true,true,true,true,true,true,true };
+                                                             true,true,true,true,true,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x0044F5D1,g4EclCode.getValueArray(new byte[] { 0xA3,0x64,0x58,0x4F,0x00 },b));//mov [004F5864],eax
         public override void setLockBomb(bool b) => write(0x004120F5,g4EclCode.getValueArray(new byte[] { 0xA3,0x70,0x58,0x4F,0x00 },b));//mov [004F5870],eax
         public override void setUnbeatable(bool b) => write(0x0044F871,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00000684],00000004

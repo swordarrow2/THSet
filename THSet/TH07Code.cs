@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH07Code:THCode {
         MemoryTool mt;
+        public override void checkNeedBomb() {
+            throw new NotImplementedException();
+        }
         public TH07Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox, ComboBox MBossBox,ComboBox bossBox) { }
@@ -25,9 +28,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(0x009A9A80);
         public override int getBossLife() { return 0; }
         public override void killSelf() { }
-        public override bool[] getEnable() => new bool[29] { false,true,false,false,true,false,true,true,true,true,
+        public override bool[] getEnable() => new bool[30] { false,true,false,false,true,false,true,true,true,true,
                                                              true,true,true,false,true,false,true,true,true,true,
-                                                             true,true,false,true,true,false,true,false,false };
+                                                             true,true,false,true,true,false,true,false,false,false };
         public override void setLockPlayer(bool b) => write(0x0042D602,g4EclCode.getValueArray(new byte[] { 0xD9,0x58,0x5C },b));
         public override void setLockBomb(bool b) => write(0x0042D647,g4EclCode.getValueArray(new byte[] { 0xD9,0x58,0x68 },b));
         public override void setUnbeatable(bool b) { }

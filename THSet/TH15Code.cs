@@ -7,7 +7,20 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH15Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1;
+        int autoBombCount = 0;
         public TH15Code(MemoryTool m) => mt=m;
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004E9BB8)+0x16220);
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004E7544,autoBombCount++);
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         private int logoEnemyAddress = 0;
         private int bossEclAddress = 0;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
@@ -17,7 +30,8 @@ namespace THSet {
             chapterBox.Items.Clear();
             chapterBox.Items.AddRange(g4EclCode.chapter);
             switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH15.stage1BossList);
+                case "Stage1":
+                    bossBox.Items.AddRange(g4EclCode.TH15.stage1BossList);
                     chapterBox.Items.Clear();
                     chapterBox.Items.AddRange(new object[] { "前半","道中Boss","中","道中Boss2","后半","关底Boss" });
                     break;
@@ -117,9 +131,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004E9A6C)+0x40);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004E9A8C)+0x1D4);
         public override void killSelf() => write(mt.ReadInteger(0x004E9BB8)+0x16220,4);
-        public override bool[] getEnable() => new bool[29] { true,true,true,true,true,false,true,true,false,false,
+        public override bool[] getEnable() => new bool[30] { true,true,true,true,true,false,true,true,false,false,
                                                              true,true,true,true,true,false,true,false,false,false,
-                                                             true,true,true,true,true,true,true,true,false };
+                                                             true,true,true,true,true,true,true,true,false,true };
         public override void setLockPlayer(bool b) => write(0x00456732,g4EclCode.getValueArray(new byte[] { 0xA3,0x50,0x74,0x4E,0x00 },b));            //mov [004E7450],eax
         public override void setLockBomb(bool b) => write(0x004148D5,g4EclCode.getValueArray(new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 },b));              //mov [004E745C],eax
         public override void setUnbeatable(bool b) => write(0x0045669F,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00016220],00000004

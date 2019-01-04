@@ -21,6 +21,7 @@ namespace THSet {
         public abstract int getBulletCount();
         public abstract int getBossLife();
         public abstract void killSelf();
+        public abstract void checkNeedBomb();
 
         public abstract bool[] getEnable();
 

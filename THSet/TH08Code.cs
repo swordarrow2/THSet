@@ -7,6 +7,9 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH08Code:THCode {
         MemoryTool mt;
+        public override void checkNeedBomb() {
+            throw new NotImplementedException();
+        }
         public TH08Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
@@ -24,9 +27,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(0x0160F3C8);
         public override int getBossLife(){ return 0; }
         public override void killSelf(){ }
-        public override bool[] getEnable() => new bool[29] { false,true,false,false,false,false,false,false,false,false,
+        public override bool[] getEnable() => new bool[30] { false,true,false,false,false,false,false,false,false,false,
                                                              true,true,true,false,true,false,false,false,false,false,
-                                                             true,true,false,true,true,false,true,false,false };
+                                                             true,true,false,true,true,false,true,false,false,false };
         public override void setLockPlayer(bool b) => write(0x0043C676,g4EclCode.getValueArray( new byte[] { 0xD9,0x58,0x74 },b));//fstp dword ptr [eax+74]
         public override void setLockBomb(bool b) => write(0x004398BB,g4EclCode.getValueArray(new byte[] { 0xD9,0x98,0x80,0x00,0x00,0x00 },b)); //fstp dword ptr [eax+00000080]
 

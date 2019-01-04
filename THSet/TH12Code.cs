@@ -7,6 +7,19 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH12Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1; 
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004B4514)+0xA28);
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004B10A8,getBombCount());
+                write(0x004B0CC4,getBombCount());
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         public TH12Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
@@ -37,9 +50,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B43C8)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B43E4)+0x6CF0);
         public override void killSelf() => write(mt.ReadInteger(0x004B4514)+0xA28,4);
-        public override bool[] getEnable() => new bool[29] { true,true,true,true,true,true,true,true,true,false,
+        public override bool[] getEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
-                                                             true,true,true,true,true,true,true,true,false };
+                                                             true,true,true,true,true,true,true,true,false,true };
         public override void setLockPlayer(bool b) => write(0x004381D2,g4EclCode.getValueArray(new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00 },b));//sub [004B0C98],ebx
         public override void setLockBomb(bool b) => write(0x00422CD1,g4EclCode.getValueArray(new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00 },b));//mov [004B0CA0],eax
         public override void setUnbeatable(bool b) => write(0x00438379,g4EclCode.getValueArray(new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [esi+00000A28],00000004
@@ -58,10 +71,10 @@ namespace THSet {
         public override void setMaxPoint(int i) => write(0x004B0C78,i*100);
         public override void setSpecial1(int i) => write(0x004B0C4C,i);
         public override void setSpecial2(int i) => write(0x004B0C50,i);
-        public override void setSpecial3(int i){ }
+        public override void setSpecial3(int i) { }
         public override int getSpecial1() => mt.ReadInteger(0x004B0C4C);
         public override int getSpecial2() => mt.ReadInteger(0x004B0C50);
-        public override int getSpecial3(){ return 0; }
+        public override int getSpecial3() { return 0; }
         public override void setIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E81,new byte[] { 0xE9,0x5A,0x5C,0x07,0x00,0x90 });              //jmp 00497AE0
@@ -118,7 +131,7 @@ namespace THSet {
             write(0x00497B58,new byte[] { 0xC7,0x05,0x50,0x0C,0x4B,0x00,b[0],b[1],b[2],b[3],//mov [004B0C50],b[]
                                           0xE9,0xE0,0xA2,0xF8,0xFF });                      //jmp 00421E47
         }
-        public override void setISpecial3(int i){ }
+        public override void setISpecial3(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

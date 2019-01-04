@@ -5,12 +5,15 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.3.1";
+        public const string versonCode = "THSet v3.4";
+        private bool useAutoBomb = false;
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
@@ -32,6 +35,9 @@ namespace THSet {
         private int THNo = 0;
         public static int bossEclIndex = 0;
         public static int lastStage = 0;
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetActiveWindow();//获得当前活动窗体  
 
         public MainForm() {
             InitializeComponent();
@@ -79,9 +85,6 @@ namespace THSet {
             enable=tc.getEnable();
             sptip=tc.getSpecialTip();
             string[] d = tc.getDefaultValue();
-            lockPlayer.Enabled=false;
-            lockBomb.Enabled=false;
-            unbeatable.Enabled=false;
             lbPlayer.Enabled=tbPlayer.Enabled=btnPlayer.Enabled=enable[0];
             lbPF.Enabled=tbPlayerFragment.Enabled=btnPlayerFragment.Enabled=enable[1];
             lbBomb.Enabled=tbBomb.Enabled=btnBomb.Enabled=enable[2];
@@ -108,8 +111,6 @@ namespace THSet {
             groupBoxBoss.Enabled=enable[25];
             lbBulletCount.Enabled=enable[26];
 
-            groupBoxSourceUse.Enabled=false;
-            btnKill.Enabled=false;
             gbBossPractice.Enabled=enable[28];
             lbSp1.Text=lbSp1.Enabled ? sptip[0] : "不可用";
             lbSp2.Text=lbSp2.Enabled ? sptip[1] : "不可用";
@@ -148,6 +149,9 @@ namespace THSet {
                 btnCountStart.Enabled=false;
             }
         }
+
+        public IntPtr getActiveWindow() => GetActiveWindow();
+
         private void MainForm_Load(object sender,EventArgs e) {
             fwsPrevious=WindowState;
             floatWindow=new FloatWindow(this);
@@ -210,7 +214,10 @@ namespace THSet {
                 "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
                 "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
                 "\n\n注意：如果重启游戏需重启修改器\n……另外,不要点击最大化按钮，如果进六了就更不能点了",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-        private void btnKill_Click(object sender,EventArgs e) => killSelf();
+        private void btnKill_Click(object sender,EventArgs e) {
+            killSelf();
+        }
+
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
             if(!enable[24]) return;
             missCount=tc.getMissCount();
@@ -219,24 +226,28 @@ namespace THSet {
             lbBombCount.Text="bomb次数:"+bombCount;
         }
         private void timerEnemy_Tick(object sender,EventArgs e) {
-            if(enable[25]) {
-                bossLife=tc.getBossLife();
-                lbLife.Text="血量:"+bossLife;
+            if(getActiveWindow()==IntPtr.Zero&&useAutoBomb) {
+                tc.checkNeedBomb();
             }
-            if(enable[26]) {
-                bulletCount=tc.getBulletCount();
-                lbBulletCount.Text="子弹数量:"+bulletCount;
-            }
-            if(!enable[7]) return;
-            if(THNo==7) {
-                lbShowSp1.Text=sp1="樱道具值:"+(1000+100*tc.getSpecial1());
-            } else {
-                lbShowSp1.Text=sptip[0]+":"+tc.getSpecial1();
-            }
-            if(!enable[8]) return;
-            lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
-            if(!enable[9]) return;
-            if(THNo==7) lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
+            lbLife.Text="游戏"+THprocess.Handle+"\n当前"+getActiveWindow();
+            /*  if(enable[25]) {
+                  bossLife=tc.getBossLife();
+                  lbLife.Text="血量:"+bossLife;
+              }
+              if(enable[26]) {
+                  bulletCount=tc.getBulletCount();
+                  lbBulletCount.Text="子弹数量:"+bulletCount;
+              }
+              if(!enable[7]) return;
+              if(THNo==7) {
+                  lbShowSp1.Text=sp1="樱道具值:"+(1000+100*tc.getSpecial1());
+              } else {
+                  lbShowSp1.Text=sptip[0]+":"+tc.getSpecial1();
+              }
+              if(!enable[8]) return;
+              lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
+              if(!enable[9]) return;
+              if(THNo==7) lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();*/
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
             if(enable[25]) {
@@ -257,6 +268,7 @@ namespace THSet {
                     unbeatable.Enabled=enable[22];
                     groupBoxSourceUse.Enabled=enable[24];
                     btnKill.Enabled=enable[27];
+                    cbAutoBomb.Enabled=enable[29];
                 } else {
                     tipedWarning=timerEnemy.Enabled=timerDPS.Enabled=true;
                 }
@@ -334,5 +346,7 @@ namespace THSet {
             tc.setBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,然后在游戏中ESC+R即可开始使用.\n回到游戏主界面时修改失效,再次练习时需要重新选择.遇到玄学问题可尝试重新进入关卡或重启修改器,还是不行的话请联系开发者（\n选择练习内容时软件可能会有短暂的无响应,稍等即可.",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+        private void cbAutoBomb_CheckedChanged(object sender,EventArgs e) => useAutoBomb=cbAutoBomb.Checked;
     }
 }

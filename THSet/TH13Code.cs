@@ -7,6 +7,20 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH13Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1;
+        int autoBombCount = 0;
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004C22C4)+0x65C);
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004BEC88,getBombCount());
+                write(0x004BE7C8,getBombCount());
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         private int logoEnemyAddress = 0;
         private int bossEclAddress = 0;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
@@ -119,10 +133,10 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004C2174)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004C2190)+0x1B4);
         public override void killSelf() => write(mt.ReadInteger(0x004C22C4)+0x65C,4);
-        public override bool[] getEnable() => new bool[29] { true,true,true,true,true,true,true,true,true,false,
+        public override bool[] getEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,
-                                                             true,true,true,true,true,true };
+                                                             true,true,true,true,true,true,true };
         public override void setLockPlayer(bool b) => write(0x00444741,g4EclCode.getValueArray(new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 },b));//dec [004BE7F4]
         public override void setLockBomb(bool b) => write(0x0040A481,g4EclCode.getValueArray(new byte[] { 0xA3,0x00,0xE8,0x4B,0x00 },b));//mov [004BE800],eax
         public override void setUnbeatable(bool b) => write(0x00444D75,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+0000065C],00000004

@@ -7,6 +7,19 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH128Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1;
+        int autoBombCount = 0;
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004B8A80)+0xF78) ;
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004B51B4,autoBombCount++);
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         public TH128Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
@@ -37,9 +50,9 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B8930)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B8950)+0x5910);
         public override void killSelf() => write(mt.ReadInteger(0x004B8A80)+0xF78,4);
-        public override bool[] getEnable() => new bool[29] { true,false,true,false,true,true,false,true,false,false,
+        public override bool[] getEnable() => new bool[30] { true,false,true,false,true,true,false,true,false,false,
                                                              true,false,true,false,true,false,false,true,false,false,
-                                                             true,true,true,true,true,true,true,true,false };
+                                                             true,true,true,true,true,true,true,true,false,true };
         public override void setLockPlayer(bool b) => write(0x0042729C,g4EclCode.getValueArray(new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 },b));//mov [004B4D64],ecx
         public override void setLockBomb(bool b) => write(0x0043B7C1,g4EclCode.getValueArray(new byte[] { 0x7C,0x30 },b)); //jl 0043B7F3
         public override void setUnbeatable(bool b) => write(0x0043D0CF,g4EclCode.getValueArray(new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [eax+00000F78],00000004
@@ -48,20 +61,20 @@ namespace THSet {
             write(0x00454C48,new byte[] { 0xDD,0x05,0x58,0x51,0x45,0x00 });//fld qword ptr [00455158]
         }
         public override void setPlayer(int i) => write(0x004B4D64,i*100);
-        public override void setPlayerFragment(int i){ }
+        public override void setPlayerFragment(int i) { }
         public override void setBomb(int i) => write(0x004B4D70,i*100);
-        public override void setBombFragment(int i){ }
+        public override void setBombFragment(int i) { }
         public override void setPower(int i) => write(0x004B4D60,BitConverter.GetBytes((float)i));
-        public override void setScore(int i){ }
-        public override void setMaxPoint(int i){ }
+        public override void setScore(int i) { }
+        public override void setMaxPoint(int i) { }
         public override void setSpecial1(int i) => write(0x004B4D6C,i*100);
-        public override void setSpecial2(int i){ }
-        public override void setSpecial3(int i){ }
+        public override void setSpecial2(int i) { }
+        public override void setSpecial3(int i) { }
         public override int getSpecial1() => mt.ReadInteger(0x004B4D6C)/100;
-        public override int getSpecial2(){ return 0; }
-        public override int getSpecial3(){ return 0; }
+        public override int getSpecial2() { return 0; }
+        public override int getSpecial3() { return 0; }
         public override void setIPlayer(int i) => write(0x00425FFF,i*100);
-        public override void setIPlayerFragment(int i){ }
+        public override void setIPlayerFragment(int i) { }
         public override void setIBomb(int i) {
             byte[] b = BitConverter.GetBytes(i*100);
             write(0x00426009,new byte[] { 0xE9,0x24,0xFE,0xFF,0xFF,0x90 });                 //jmp 00425E32
@@ -69,17 +82,17 @@ namespace THSet {
                                           0xEB,0x89 });                                     //jmp 00425DC7
             write(0x00425DC7,new byte[] { 0xE9,0x43,0x02,0x00,0x00 });                      //jmp 0042600F
         }
-        public override void setIBombFragment(int i){ }
+        public override void setIBombFragment(int i) { }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x00425FEE,new byte[] { 0xE9,0x0E,0x09,0x00,0x00,0x90 });                     //jmp 00426901
             write(0x00426901,new byte[] { 0xC7,0x05,0x60,0x4D,0x4B,0x00,b[0],b[1],b[2],b[3] }); //jmp 0042600F
         }
-        public override void setIScore(int i){ }
-        public override void setIMaxPoint(int i){ }
+        public override void setIScore(int i) { }
+        public override void setIMaxPoint(int i) { }
         public override void setISpecial1(int i) => write(0x00425F08,i*100);
-        public override void setISpecial2(int i){ }
-        public override void setISpecial3(int i){ }
+        public override void setISpecial2(int i) { }
+        public override void setISpecial3(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

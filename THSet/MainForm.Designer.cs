@@ -142,13 +142,14 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.cbAutoBomb = new System.Windows.Forms.CheckBox();
             this.gbBossPractice = new System.Windows.Forms.GroupBox();
             this.comboBoxChapter = new System.Windows.Forms.ComboBox();
             this.btnPracticeNote = new System.Windows.Forms.Button();
             this.comboBoxStage = new System.Windows.Forms.ComboBox();
             this.comboBoxBoss = new System.Windows.Forms.ComboBox();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.comboBoxMBoss = new System.Windows.Forms.ComboBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBoxSpecial.SuspendLayout();
             this.groupBoxISpecial.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -183,6 +184,7 @@
             // lockPlayer
             // 
             this.lockPlayer.AutoSize = true;
+            this.lockPlayer.Enabled = false;
             this.lockPlayer.Location = new System.Drawing.Point(3, 3);
             this.lockPlayer.Name = "lockPlayer";
             this.lockPlayer.Size = new System.Drawing.Size(72, 16);
@@ -194,6 +196,7 @@
             // lockBomb
             // 
             this.lockBomb.AutoSize = true;
+            this.lockBomb.Enabled = false;
             this.lockBomb.Location = new System.Drawing.Point(113, 3);
             this.lockBomb.Name = "lockBomb";
             this.lockBomb.Size = new System.Drawing.Size(72, 16);
@@ -375,6 +378,7 @@
             // unbeatable
             // 
             this.unbeatable.AutoSize = true;
+            this.unbeatable.Enabled = false;
             this.unbeatable.Location = new System.Drawing.Point(3, 25);
             this.unbeatable.Name = "unbeatable";
             this.unbeatable.Size = new System.Drawing.Size(48, 16);
@@ -966,7 +970,8 @@
             // 
             // btnKill
             // 
-            this.btnKill.Location = new System.Drawing.Point(113, 21);
+            this.btnKill.Enabled = false;
+            this.btnKill.Location = new System.Drawing.Point(113, 47);
             this.btnKill.Name = "btnKill";
             this.btnKill.Size = new System.Drawing.Size(72, 23);
             this.btnKill.TabIndex = 21;
@@ -1054,6 +1059,7 @@
             this.groupBoxSourceUse.Controls.Add(this.btnCountStart);
             this.groupBoxSourceUse.Controls.Add(this.lbMissCount);
             this.groupBoxSourceUse.Controls.Add(this.lbBombCount);
+            this.groupBoxSourceUse.Enabled = false;
             this.groupBoxSourceUse.Location = new System.Drawing.Point(6, 83);
             this.groupBoxSourceUse.Name = "groupBoxSourceUse";
             this.groupBoxSourceUse.Size = new System.Drawing.Size(204, 68);
@@ -1316,6 +1322,7 @@
             // 
             // timerEnemy
             // 
+            this.timerEnemy.Interval = 10;
             this.timerEnemy.Tick += new System.EventHandler(this.timerEnemy_Tick);
             // 
             // timerDPS
@@ -1374,6 +1381,7 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.cbAutoBomb);
             this.tabPage8.Controls.Add(this.gbBossPractice);
             this.tabPage8.Controls.Add(this.lockPlayer);
             this.tabPage8.Controls.Add(this.unbeatable);
@@ -1386,6 +1394,18 @@
             this.tabPage8.Text = "练习";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
+            // cbAutoBomb
+            // 
+            this.cbAutoBomb.AutoSize = true;
+            this.cbAutoBomb.Enabled = false;
+            this.cbAutoBomb.Location = new System.Drawing.Point(113, 25);
+            this.cbAutoBomb.Name = "cbAutoBomb";
+            this.cbAutoBomb.Size = new System.Drawing.Size(60, 16);
+            this.cbAutoBomb.TabIndex = 27;
+            this.cbAutoBomb.Text = "自动雷";
+            this.cbAutoBomb.UseVisualStyleBackColor = true;
+            this.cbAutoBomb.CheckedChanged += new System.EventHandler(this.cbAutoBomb_CheckedChanged);
+            // 
             // gbBossPractice
             // 
             this.gbBossPractice.Controls.Add(this.comboBoxChapter);
@@ -1393,7 +1413,8 @@
             this.gbBossPractice.Controls.Add(this.comboBoxStage);
             this.gbBossPractice.Controls.Add(this.comboBoxBoss);
             this.gbBossPractice.Controls.Add(this.comboBoxMBoss);
-            this.gbBossPractice.Location = new System.Drawing.Point(3, 50);
+            this.gbBossPractice.Enabled = false;
+            this.gbBossPractice.Location = new System.Drawing.Point(3, 76);
             this.gbBossPractice.Name = "gbBossPractice";
             this.gbBossPractice.Size = new System.Drawing.Size(207, 73);
             this.gbBossPractice.TabIndex = 26;
@@ -1456,6 +1477,17 @@
             this.comboBoxBoss.TabIndex = 22;
             this.comboBoxBoss.DropDownClosed += new System.EventHandler(this.comboBoxBoss_selected);
             // 
+            // comboBoxMBoss
+            // 
+            this.comboBoxMBoss.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxMBoss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMBoss.FormattingEnabled = true;
+            this.comboBoxMBoss.Location = new System.Drawing.Point(121, 40);
+            this.comboBoxMBoss.Name = "comboBoxMBoss";
+            this.comboBoxMBoss.Size = new System.Drawing.Size(61, 20);
+            this.comboBoxMBoss.TabIndex = 28;
+            this.comboBoxMBoss.DropDownClosed += new System.EventHandler(this.comboBoxMBoss_selected);
+            // 
             // tabPage7
             // 
             this.tabPage7.Controls.Add(this.btnUseFloatWindow);
@@ -1473,17 +1505,6 @@
             this.tabPage7.TabIndex = 2;
             this.tabPage7.Text = "其它";
             this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxMBoss
-            // 
-            this.comboBoxMBoss.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBoxMBoss.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMBoss.FormattingEnabled = true;
-            this.comboBoxMBoss.Location = new System.Drawing.Point(121, 40);
-            this.comboBoxMBoss.Name = "comboBoxMBoss";
-            this.comboBoxMBoss.Size = new System.Drawing.Size(61, 20);
-            this.comboBoxMBoss.TabIndex = 28;
-            this.comboBoxMBoss.DropDownClosed += new System.EventHandler(this.comboBoxMBoss_selected);
             // 
             // MainForm
             // 
@@ -1667,6 +1688,7 @@
         private System.Windows.Forms.Button btnPracticeNote;
         public System.Windows.Forms.ComboBox comboBoxChapter;
         public System.Windows.Forms.ComboBox comboBoxMBoss;
+        private System.Windows.Forms.CheckBox cbAutoBomb;
     }
 }
 

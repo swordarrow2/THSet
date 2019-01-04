@@ -7,6 +7,19 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH11Code:THCode {
         MemoryTool mt;
+        int lastStatu = 1;
+        int thisStatu = 1;
+        public override void checkNeedBomb() {
+            thisStatu=mt.ReadInteger(mt.ReadInteger(0x004A8EB4)+0x928);
+            if(lastStatu!=4&&thisStatu==4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
+                write(0x004A5E88,getBombCount());
+                write(0x004A573C,getBombCount());
+            } else if(lastStatu==4&&thisStatu!=4) {
+                mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
+            }
+            lastStatu=thisStatu;
+        }
         public TH11Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
@@ -47,10 +60,10 @@ namespace THSet {
         public override int getBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A8D68)+0x5C);
         public override int getBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A8D84)+0x43F8);
         public override void killSelf() => write(mt.ReadInteger(0x004A8EB4)+0x928,4);
-        public override bool[] getEnable() => new bool[29] { true,true,false,false,true,false,false,true,true,false,
+        public override bool[] getEnable() => new bool[30] { true,true,false,false,true,false,false,true,true,false,
                                                              true,true,false,false,true,false,false,false,false,false,
                                                              true,true,true,
-                                                             true,true,true,true,true,false };
+                                                             true,true,true,true,true,false,true };
         public override void setLockPlayer(bool b) => write(0x00431D12,g4EclCode.getValueArray(new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 },b));//mov [004A5718],edx
         public override void setLockBomb(bool b) {
             byte[] by = new byte[] { 0x29,0x15,0xE8,0x56,0x4A,0x00 };
