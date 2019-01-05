@@ -9,13 +9,12 @@ namespace THSet {
         MemoryTool mt;
         int lastStatu = 1;
         int thisStatu = 1;
-        int autoBombCount = 0;
         public override void checkNeedBomb() {
             thisStatu=mt.ReadInteger(mt.ReadInteger(0x004C22C4)+0x65C);
             if(lastStatu!=4&&thisStatu==4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
-                write(0x004BEC88,getBombCount());
-                write(0x004BE7C8,getBombCount());
+                write(0x004BEC88,5);
+                write(0x004BE7C8,5);
             } else if(lastStatu==4&&thisStatu!=4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
             }

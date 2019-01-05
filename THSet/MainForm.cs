@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.4";
+        public const string versonCode = "THSet v3.4.1";
         private bool useAutoBomb = false;
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
@@ -229,25 +229,25 @@ namespace THSet {
             if(getActiveWindow()==IntPtr.Zero&&useAutoBomb) {
                 tc.checkNeedBomb();
             }
-            lbLife.Text="游戏"+THprocess.Handle+"\n当前"+getActiveWindow();
-            /*  if(enable[25]) {
-                  bossLife=tc.getBossLife();
-                  lbLife.Text="血量:"+bossLife;
-              }
-              if(enable[26]) {
-                  bulletCount=tc.getBulletCount();
-                  lbBulletCount.Text="子弹数量:"+bulletCount;
-              }
-              if(!enable[7]) return;
-              if(THNo==7) {
-                  lbShowSp1.Text=sp1="樱道具值:"+(1000+100*tc.getSpecial1());
-              } else {
-                  lbShowSp1.Text=sptip[0]+":"+tc.getSpecial1();
-              }
-              if(!enable[8]) return;
-              lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
-              if(!enable[9]) return;
-              if(THNo==7) lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();*/
+            // lbLife.Text="游戏"+THprocess.Handle+"\n当前"+getActiveWindow();
+            if(enable[25]) {
+                bossLife=tc.getBossLife();
+                lbLife.Text="血量:"+bossLife;
+            }
+            if(enable[26]) {
+                bulletCount=tc.getBulletCount();
+                lbBulletCount.Text="子弹数量:"+bulletCount;
+            }
+            if(!enable[7]) return;
+            if(THNo==7) {
+                lbShowSp1.Text=sp1="樱道具值:"+(1000+100*tc.getSpecial1());
+            } else {
+                lbShowSp1.Text=sptip[0]+":"+tc.getSpecial1();
+            }
+            if(!enable[8]) return;
+            lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
+            if(!enable[9]) return;
+            if(THNo==7) lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
             if(enable[25]) {
