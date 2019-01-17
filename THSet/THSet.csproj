@@ -117,6 +117,7 @@
     <Compile Include="TH15Code.cs" />
     <Compile Include="THCode.cs" />
     <Compile Include="TH16Code.cs" />
+    <Compile Include="THmhjCode.cs" />
     <EmbeddedResource Include="floatWindow.resx">
       <DependentUpon>floatWindow.cs</DependentUpon>
     </EmbeddedResource>

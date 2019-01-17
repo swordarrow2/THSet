@@ -43,12 +43,16 @@ namespace THSet {
             byte[] memory = new byte[0x1000];
             byte[] eclLogoEnemy = g4EclCode.eclLogoEnemy;
             byte[] eclMainFront = g4EclCode.stageEcl[0];
-            byte[] eclMBoss = stageBox.Text.Equals("Extra") ? g4EclCode.TH14.eclExtraMBoss : g4EclCode.stageEcl[1];
+            byte[] eclMBoss = g4EclCode.stageEcl[1];
             byte[] eclMainLatter = g4EclCode.stageEcl[2];
             byte[] eclMainBoss = g4EclCode.stageEcl[3];
             if(stageBox.Text.Equals("Stage6")) {
                 eclMBoss=g4EclCode.TH14.eclStage6MBoss;
                 eclMainLatter=new byte[] { };
+            } else if(stageBox.Text.Equals("Stage4")) {
+                eclMBoss=g4EclCode.TH14.eclStage4MBoss;
+            } else if(stageBox.Text.Equals("Extra")) {
+                eclMBoss=g4EclCode.TH14.eclExtraMBoss;
             }
             int index = 0;
             byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
