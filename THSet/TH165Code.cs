@@ -7,8 +7,6 @@ using System.Windows.Forms;
 namespace THSet {
     public class TH165Code:THCode {
         MemoryTool mt;
-        int lastStatu = 1;
-        int thisStatu = 1;
         public TH165Code(MemoryTool m) => mt=m;
         public override void checkNeedBomb() { }
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
@@ -32,12 +30,12 @@ namespace THSet {
                                                              false,true,true,true,false,false,true,true,false,false };
         public override void setLockPlayer(bool b) { }
         public override void setLockBomb(bool b) {
-            write(0x0044A1D7,g4EclCode.getValueArray(new byte[] { 0xF3,0x0F,0x11,0x47,0x7C },b));                    //movss [edi+7C],xmm0
-            write(0x0044A1DE,g4EclCode.getValueArray(new byte[] { 0xC7,0x47,0x7C,0x00,0x00,0x00,0x00 },b));//mov [edi+7C],00000000
-            write(0x00447F88,g4EclCode.getValueArray(new byte[] { 0xF3,0x0F,0x11,0x47,0x7C },b));                    //movss [edi+7C],xmm0
+            write(0x0044A1D7,AsmHelper.getValueArray(new byte[] { 0xF3,0x0F,0x11,0x47,0x7C },b));                    //movss [edi+7C],xmm0
+            write(0x0044A1DE,AsmHelper.getValueArray(new byte[] { 0xC7,0x47,0x7C,0x00,0x00,0x00,0x00 },b));//mov [edi+7C],00000000
+            write(0x00447F88,AsmHelper.getValueArray(new byte[] { 0xF3,0x0F,0x11,0x47,0x7C },b));                    //movss [edi+7C],xmm0
         }
 
-        public override void setUnbeatable(bool b) => write(0x00446A7A,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0xA4,0x65,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+000165A4],00000004
+        public override void setUnbeatable(bool b) => write(0x00446A7A,AsmHelper.getValueArray(new byte[] { 0xC7,0x87,0xA4,0x65,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+000165A4],00000004
         public override void setFPS(int i) {
             write(0x00460F46,BitConverter.GetBytes((double)1/i));
             write(0x00460FD3,new byte[] { 0xF2,0x0F,0x10,0x0D,0x46,0x0F,0x46,0x00 });//movsd xmm1,[00460F46]

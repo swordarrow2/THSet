@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace THSet {
-    public class g4EclCode {
+    public class EclHelper {
 
         public static readonly byte[] eclMainBossNum = new byte[] { 0x0B,0x00,0x1C,0x00,0x00,0x00,0xFF,0x01,0x00,0x00,0x00,0x00,0x08,0x00,0x00,0x00,0x42,0x6F,0x73,0x73 };
         public static readonly byte[] eclLogoEnemy = new byte[] { 0x0F,0x00,0x20,0x00,0x00,0x00,0xFF,0x01,0x00,0x00,0x00,0x00,0x0C,0x00,0x00,0x00,0x4C,0x6F,0x67,0x6F,0x45,0x6E,0x65,0x6D,0x79 };
@@ -81,7 +81,6 @@ namespace THSet {
             public static readonly object[] stage5BossList = bossCount.count4;
             public static readonly object[] stage6BossList = bossCount.count6;
             public static readonly object[] stage7BossList = bossCount.count10;
-
         }
 
         public static byte[] getBossNumArray(string boss) {
@@ -116,22 +115,6 @@ namespace THSet {
             } catch {
                 return -1;
             }
-        }
-
-        public static byte[] getValueArray(byte[] array,bool isHooked) {
-            if(isHooked) {
-                return getNop(array.Length);
-            } else {
-                return array;
-            }
-        }
-
-        public static byte[] getNop(int count) {
-            byte[] b = new byte[count];
-            for(int i = 0;i<count;i++) {
-                b[i]=0x90;
-            }
-            return b;
         }
 
         public static byte[] createEcl(byte[][] b) {

@@ -31,8 +31,8 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { false,true,false,false,true,false,true,true,true,true,
                                                              true,true,true,false,true,false,true,true,true,true,
                                                              true,true,false,true,true,false,true,false,false,false };
-        public override void setLockPlayer(bool b) => write(0x0042D602,g4EclCode.getValueArray(new byte[] { 0xD9,0x58,0x5C },b));
-        public override void setLockBomb(bool b) => write(0x0042D647,g4EclCode.getValueArray(new byte[] { 0xD9,0x58,0x68 },b));
+        public override void setLockPlayer(bool b) => write(0x0042D602,AsmHelper.getValueArray(new byte[] { 0xD9,0x58,0x5C },b));
+        public override void setLockBomb(bool b) => write(0x0042D647,AsmHelper.getValueArray(new byte[] { 0xD9,0x58,0x68 },b));
         public override void setUnbeatable(bool b) { }
         public override void setFPS(int i) => write(0x60015A4C,i);
         public override void setPlayer(int i) { }
@@ -75,8 +75,8 @@ namespace THSet {
             byte[] c = BitConverter.GetBytes(gettedPlayer);
             byte[] d = BitConverter.GetBytes(needPoint);
             write(0x0042EAAA,new byte[] { 0xE9,0xB1,0xE2,0x05,0x00,0x90,0x90 });
-            write(0x0042EAE3,g4EclCode.getNop(4));
-            write(0x0042EABD,g4EclCode.getNop(7));
+            write(0x0042EAE3,AsmHelper.getNop(4));
+            write(0x0042EABD,AsmHelper.getNop(7));
             write(0x0048CD60,new byte[] { 0xC7,0x40,0x28,b[0],b[1],b[2],b[3],//mov [eax+28],0
                                           0xC7,0x40,0x2C,c[0],c[1],c[2],c[3],//mov [eax+2C],c[]
                                           0xC7,0x40,0x30,d[0],d[1],d[2],d[3],//mov [eax+30],d[]
@@ -95,7 +95,7 @@ namespace THSet {
         public override void setIBombFragment(int i) { }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
-            write(0x0042F04F,g4EclCode.getNop(3));
+            write(0x0042F04F,AsmHelper.getNop(3));
             write(0x0042EA51,new byte[] { 0xE9,0xFB,0xE2,0x05,0x00,0x90 });
             write(0x0048CD51,new byte[] {0xC7,0x40,0x7C,b[0],b[1],b[2],b[3],//mov [eax+7C],b[]
                                          0x8B,0x4D,0xD4,                    //mov ecx,[ebp-2C]
@@ -104,13 +104,13 @@ namespace THSet {
         public override void setIScore(int i) { }
         public override void setIMaxPoint(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x0042EC57,g4EclCode.getNop(6));
-            write(0x0042ED33,g4EclCode.getNop(6));
-            write(0x0042ED61,g4EclCode.getNop(6));
-            write(0x0042EDE2,g4EclCode.getNop(6));
-            write(0x0042EDB7,g4EclCode.getNop(6));
-            write(0x0042ED8C,g4EclCode.getNop(6));
-            write(0x0042EC21,g4EclCode.getNop(6));
+            write(0x0042EC57,AsmHelper.getNop(6));
+            write(0x0042ED33,AsmHelper.getNop(6));
+            write(0x0042ED61,AsmHelper.getNop(6));
+            write(0x0042EDE2,AsmHelper.getNop(6));
+            write(0x0042EDB7,AsmHelper.getNop(6));
+            write(0x0042ED8C,AsmHelper.getNop(6));
+            write(0x0042EC21,AsmHelper.getNop(6));
             write(0x0042E990,new byte[] { 0xE9,0xE8,0xE3,0x05,0x00,0x90 }); //jmp 0048CD7D
             write(0x0048CD7D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,123456
                                           0x89,0x81,0x1C,0x96,0x00,0x00,    //mov dword ptr [ecx+961C],eax
@@ -138,10 +138,10 @@ namespace THSet {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EC00,i);//extra
             write(0x0042EC36,i);//phantasm
-            write(0x0042ED4F,g4EclCode.getNop(6));
-            write(0x0042ED7A,g4EclCode.getNop(6));
-            write(0x0042EDA5,g4EclCode.getNop(6));
-            write(0x0042EDD0,g4EclCode.getNop(6));
+            write(0x0042ED4F,AsmHelper.getNop(6));
+            write(0x0042ED7A,AsmHelper.getNop(6));
+            write(0x0042EDA5,AsmHelper.getNop(6));
+            write(0x0042EDD0,AsmHelper.getNop(6));
             write(0x0042ECAE,i);//p1 p2 p3 p4 p5 p6
         }
 

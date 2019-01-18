@@ -28,31 +28,31 @@ namespace THSet {
             logoEnemyAddress=0;
             bossBox.Items.Clear();
             chapterBox.Items.Clear();
-            chapterBox.Items.AddRange(g4EclCode.chapter);
+            chapterBox.Items.AddRange(EclHelper.chapter);
             switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(g4EclCode.TH14.stage1BossList); break;
-                case "Stage2": bossBox.Items.AddRange(g4EclCode.TH14.stage2BossList); break;
-                case "Stage3": bossBox.Items.AddRange(g4EclCode.TH14.stage3BossList); break;
-                case "Stage4": bossBox.Items.AddRange(g4EclCode.TH14.stage4BossList); break;
-                case "Stage5": bossBox.Items.AddRange(g4EclCode.TH14.stage5BossList); break;
-                case "Stage6": bossBox.Items.AddRange(g4EclCode.TH14.stage6BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","关底Boss" }); break;
-                case "Extra": bossBox.Items.AddRange(g4EclCode.TH14.stage7BossList); break;
+                case "Stage1": bossBox.Items.AddRange(EclHelper.TH14.stage1BossList); break;
+                case "Stage2": bossBox.Items.AddRange(EclHelper.TH14.stage2BossList); break;
+                case "Stage3": bossBox.Items.AddRange(EclHelper.TH14.stage3BossList); break;
+                case "Stage4": bossBox.Items.AddRange(EclHelper.TH14.stage4BossList); break;
+                case "Stage5": bossBox.Items.AddRange(EclHelper.TH14.stage5BossList); break;
+                case "Stage6": bossBox.Items.AddRange(EclHelper.TH14.stage6BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","关底Boss" }); break;
+                case "Extra": bossBox.Items.AddRange(EclHelper.TH14.stage7BossList); break;
             }
         }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
             byte[] memory = new byte[0x1000];
-            byte[] eclLogoEnemy = g4EclCode.eclLogoEnemy;
-            byte[] eclMainFront = g4EclCode.stageEcl[0];
-            byte[] eclMBoss = g4EclCode.stageEcl[1];
-            byte[] eclMainLatter = g4EclCode.stageEcl[2];
-            byte[] eclMainBoss = g4EclCode.stageEcl[3];
+            byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
+            byte[] eclMainFront = EclHelper.stageEcl[0];
+            byte[] eclMBoss = EclHelper.stageEcl[1];
+            byte[] eclMainLatter = EclHelper.stageEcl[2];
+            byte[] eclMainBoss = EclHelper.stageEcl[3];
             if(stageBox.Text.Equals("Stage6")) {
-                eclMBoss=g4EclCode.TH14.eclStage6MBoss;
+                eclMBoss=EclHelper.TH14.eclStage6MBoss;
                 eclMainLatter=new byte[] { };
             } else if(stageBox.Text.Equals("Stage4")) {
-                eclMBoss=g4EclCode.TH14.eclStage4MBoss;
+                eclMBoss=EclHelper.TH14.eclStage4MBoss;
             } else if(stageBox.Text.Equals("Extra")) {
-                eclMBoss=g4EclCode.TH14.eclExtraMBoss;
+                eclMBoss=EclHelper.TH14.eclExtraMBoss;
             }
             int index = 0;
             byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
@@ -63,18 +63,18 @@ namespace THSet {
                     case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
                     case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
                 }
-                mt.WriteBytes(logoEnemyAddress,g4EclCode.createEcl(eclByte));
+                mt.WriteBytes(logoEnemyAddress,EclHelper.createEcl(eclByte));
             } else {
                 for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                     memory=mt.ReadBytes(i,0x1000);
-                    if((index=g4EclCode.getIndexOf(memory,eclLogoEnemy))!=-1) {
+                    if((index=EclHelper.getIndexOf(memory,eclLogoEnemy))!=-1) {
                         switch(chapterBox.Text) {
                             case "前半": break;
                             case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
                             case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
                             case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
                         }
-                        mt.WriteBytes(i+index,g4EclCode.createEcl(eclByte));
+                        mt.WriteBytes(i+index,EclHelper.createEcl(eclByte));
                         logoEnemyAddress=i+index;
                         break;
                     }
@@ -84,15 +84,15 @@ namespace THSet {
         public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
             byte[] memory = new byte[0x1000];
-            byte[] bossEcl = g4EclCode.eclMainBossNum;
+            byte[] bossEcl = EclHelper.eclMainBossNum;
             int index = 0;
-            byte[] b = g4EclCode.getBossNumArray(bossBox.Text);
+            byte[] b = EclHelper.getBossNumArray(bossBox.Text);
             if(bossEclAddress!=0) {
                 mt.WriteBytes(bossEclAddress,b);
             } else {
                 for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
                     memory=mt.ReadBytes(i,0x1000);
-                    if((index=g4EclCode.getIndexOf(memory,bossEcl))!=-1) {
+                    if((index=EclHelper.getIndexOf(memory,bossEcl))!=-1) {
                         mt.WriteBytes(i+index+20,b);
                         bossEclAddress=i+index+20;
                         break;
@@ -128,9 +128,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,true };
-        public override void setLockPlayer(bool b) => write(0x0044F5D1,g4EclCode.getValueArray(new byte[] { 0xA3,0x64,0x58,0x4F,0x00 },b));//mov [004F5864],eax
-        public override void setLockBomb(bool b) => write(0x004120F5,g4EclCode.getValueArray(new byte[] { 0xA3,0x70,0x58,0x4F,0x00 },b));//mov [004F5870],eax
-        public override void setUnbeatable(bool b) => write(0x0044F871,g4EclCode.getValueArray(new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00000684],00000004
+        public override void setLockPlayer(bool b) => write(0x0044F5D1,AsmHelper.getValueArray(new byte[] { 0xA3,0x64,0x58,0x4F,0x00 },b));//mov [004F5864],eax
+        public override void setLockBomb(bool b) => write(0x004120F5,AsmHelper.getValueArray(new byte[] { 0xA3,0x70,0x58,0x4F,0x00 },b));//mov [004F5870],eax
+        public override void setUnbeatable(bool b) => write(0x0044F871,AsmHelper.getValueArray(new byte[] { 0xC7,0x87,0x84,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00000684],00000004
         public override void setFPS(int i) {
             mt.WriteBytes(0x0046A715,BitConverter.GetBytes((double)1/i));
             mt.WriteBytes(0x0046A78E,new byte[] { 0xF2,0x0F,0x10,0x15,0x15,0xA7,0x46,0x00 });//movsd xmm2,[0046A715]
@@ -157,9 +157,9 @@ namespace THSet {
         public override void setIBombFragment(int i) => write(0x004375DD,i);
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x00435DBA,g4EclCode.getNop(5));
-            write(0x00435E12,g4EclCode.getNop(5));
-            write(0x00435DE2,g4EclCode.getNop(6));
+            write(0x00435DBA,AsmHelper.getNop(5));
+            write(0x00435E12,AsmHelper.getNop(5));
+            write(0x00435DE2,AsmHelper.getNop(6));
             write(0x00435D86,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90 });            //mov ecx,b[]
             write(0x004375B3,i);
         }
