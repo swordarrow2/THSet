@@ -40,6 +40,7 @@ namespace THSet {
             private const int PROCESS_VM_WRITE = 0x20;
             */
         public static byte[] stringToAsm(string asmPram) {
+            asmPram=asmPram.Replace(" ","").Replace("0x","").Replace(",","");
             byte[] reAsmCode = new byte[asmPram.Length/2];
             for(int i = 0;i<reAsmCode.Length;i++) {
                 reAsmCode[i]=Convert.ToByte(Int32.Parse(asmPram.Substring(i*2,2),System.Globalization.NumberStyles.AllowHexSpecifier));
@@ -47,11 +48,11 @@ namespace THSet {
             return reAsmCode;
         }
 
-        public static string intTohex(int value,int num) {
+        public static string intTohex(int value) {
             string str1 = ""; ;
             string str2 = "";
             str1="0000000"+value.ToString("X");
-            str1=str1.Substring(str1.Length-num,num);
+            str1=str1.Substring(str1.Length-8,8);
             for(int i = 0;i<str1.Length/2;i++) {
                 str2=str2+str1.Substring(str1.Length-2-2*i,2);
             }
