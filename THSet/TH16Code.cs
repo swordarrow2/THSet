@@ -190,18 +190,13 @@ namespace THSet {
             write(0x0042E5DD,gettedPlayer);
         }
         public override void setIMaxPoint(int i) {
-            //        byte[] b = BitConverter.GetBytes(i*100);
-            //        write(0x0042CD66,new byte[] { 0xB9,b[0],b[1],b[2],b[3],0x90,0x90,0x90 });       //mov ecx,b[]
-            string hexValue = AsmHelper.intTohex(i*100,8);
-            string asm = "b9"+hexValue+"90 90 90";
-            write(0x0042CD66,AsmHelper.stringToAsm(asm.Replace(" ","")));
+            write(0x0042CD66,AsmHelper.stringToAsm("b9 "+AsmHelper.intTohex(i*100)+" 90 90 90"));//mov ecx,i
         }
         public override void setISpecial1(int i) {
-            byte[] b = BitConverter.GetBytes(i);
-            byte[] by = new byte[] { 0xC7,0x05,0x08,0x58,0x4A,0x00,b[0],b[1],b[2],b[3] };
+            byte[] by = AsmHelper.stringToAsm("C7 05 08 58 4A 00 "+AsmHelper.intTohex(i));  //mov[004A5808],by[]
             //story
-            write(0x0042CEC6,by);     //mov[004A5808],b[]
-                                      //practice          
+            write(0x0042CEC6,by);
+            //practice          
             write(0x0042CEF8,by);
             write(0x0042CF02,AsmHelper.getNop(1));
             //spell practice

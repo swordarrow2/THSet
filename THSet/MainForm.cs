@@ -12,13 +12,12 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.4.3";
+        public const string versonCode = "THSet v3.4.4";
         private bool useAutoBomb = false;
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
         private THCode tc;
         private Process THprocess;
-        private bool tipedWarning = false;
         private bool[] enable;
         public string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
         private string[] sptip;
@@ -148,6 +147,16 @@ namespace THSet {
                 groupBoxSourceUse.Enabled=enable[24];
                 btnCountStart.Enabled=false;
             }
+
+            timerMissAndBomb.Enabled=timerEnemy.Enabled=timerDPS.Enabled=true;
+            tc.StartCount();
+            lockPlayer.Enabled=enable[20];
+            lockBomb.Enabled=enable[21];
+            unbeatable.Enabled=enable[22];
+            groupBoxSourceUse.Enabled=enable[24];
+            btnKill.Enabled=enable[27];
+            cbAutoBomb.Enabled=enable[29];
+
         }
 
         public IntPtr getActiveWindow() => GetActiveWindow();
@@ -168,7 +177,7 @@ namespace THSet {
             } else {
                 lbfafafa1.Text="";
                 if(WindowState==FormWindowState.Minimized) {
-                    tipedWarning=timerEnemy.Enabled=timerDPS.Enabled=true;
+                    timerEnemy.Enabled=timerDPS.Enabled=true;
                     floatWindow.Show();
                     ShowInTaskbar=false;
                 } else if(WindowState!=fwsPrevious) {
@@ -210,14 +219,7 @@ namespace THSet {
         private void btnISpecial3_Click(object sender,EventArgs e) => tc.setISpecial3(Convert.ToInt32(tbISp3.Text));
         private void showBug_Click(object sender,EventArgs e) => MessageBox.Show(tc.getAboutBug(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
         private void button2_Click(object sender,EventArgs e) => MessageBox.Show(tc.getAboutSpecial(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-        private void note_Click(object sender,EventArgs e) => MessageBox.Show("这个修改器主要为原版程序设计，如果你使用了修改过的游戏，可能有功能不正常."+
-                "\n\n修改器在Windows7 64位系统中运行正常，其他系统暂未测试\n\n即时修改页为游戏中的当前数值，修改内容不会记录到录像中，有些数值修改后不会立刻显示(如残机),但值确实是已经改变了\n\n"+
-                "Init页修改的为各项的初始值，修改内容会记录到录像中。此部分修改尽量不要和THInit同时使用，可能会造成游戏爆炸\n\n调速前请关闭垂直同步(custom.exe-->输入方式-->快速)\n对使用了vpatch的程序调速小于60FPS时,游戏可能会无响应,一般稍等即可恢复"+
-                "\n\n注意：如果重启游戏需重启修改器\n……另外,不要点击最大化按钮，如果进六了就更不能点了",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-        private void btnKill_Click(object sender,EventArgs e) {
-            killSelf();
-        }
-
+        private void btnKill_Click(object sender,EventArgs e) => killSelf();
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
             if(!enable[24]) return;
             missCount=tc.getMissCount();
@@ -258,22 +260,6 @@ namespace THSet {
             }
         }
         private void btnCountStart_Click(object sender,EventArgs e) => restartCount();
-        private void tabChange(object sender,EventArgs e) {
-            if(!tipedWarning) {
-                if(MessageBox.Show("使用了某些功能之后打出来的replay可能需要在本修改器开启且使用相同设置的状态下才能正常播放.\n对于计数功能,开启后若想关闭,需重启游戏.\n\n点击确定开始使用,点击取消则仅使用不会影响录像的功能",versonCode,MessageBoxButtons.OKCancel,MessageBoxIcon.Warning)==DialogResult.OK) {
-                    tipedWarning=timerMissAndBomb.Enabled=timerEnemy.Enabled=timerDPS.Enabled=true;
-                    tc.StartCount();
-                    lockPlayer.Enabled=enable[20];
-                    lockBomb.Enabled=enable[21];
-                    unbeatable.Enabled=enable[22];
-                    groupBoxSourceUse.Enabled=enable[24];
-                    btnKill.Enabled=enable[27];
-                    cbAutoBomb.Enabled=enable[29];
-                } else {
-                    tipedWarning=timerEnemy.Enabled=timerDPS.Enabled=true;
-                }
-            }
-        }
         private void timerProcessWatcher_Tick(object sender,EventArgs e) {
             if(GetPID(names[gameIndex])==0) Environment.Exit(Environment.ExitCode);
         }
@@ -301,8 +287,6 @@ namespace THSet {
         private void trackBarFontG_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
         private void trackBarFontB_Scroll(object sender,EventArgs e) => lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
         private void saveConfig(object sender,MouseEventArgs e) => saveConfig();
-        private void btnUseFloatWindow_Click(object sender,EventArgs e) => MessageBox.Show("把本软件主窗体最小化，将会自动打开悬浮窗,拖动边框即可改变悬浮窗位置，双击悬浮窗空白处或点击返回按钮回到主窗体",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-
         private void btnDefault_Click(object sender,EventArgs e) {
             trackBarA.Value=0x50;
             trackBarR.Value=0x7F;
@@ -315,7 +299,6 @@ namespace THSet {
             lbShowRGB.ForeColor=Color.FromArgb(trackBarFontR.Value,trackBarFontG.Value,trackBarFontB.Value);
             Properties.Settings.Default.floatWindowX=30;
             Properties.Settings.Default.floatWindowY=30;
-            Properties.Settings.Default.Save();
             saveConfig();
         }
         private void saveConfig() {
@@ -326,6 +309,7 @@ namespace THSet {
             Properties.Settings.Default.fontR=trackBarFontR.Value;
             Properties.Settings.Default.fontG=trackBarFontG.Value;
             Properties.Settings.Default.fontB=trackBarFontB.Value;
+            Properties.Settings.Default.Save();
         }
         public void restartCount() => tc.StartCount();
         public void killSelf() => tc.killSelf();
@@ -345,8 +329,6 @@ namespace THSet {
             if(comboBoxBoss.Text.Equals("")) return;
             tc.setBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
-        private void btnPracticeNote_Click(object sender,EventArgs e) => MessageBox.Show("首先进入想要练习的单面,然后在修改器中选择要练习的内容,然后在游戏中ESC+R即可开始使用.\n回到游戏主界面时修改失效,再次练习时需要重新选择.遇到玄学问题可尝试重新进入关卡或重启修改器,还是不行的话请联系开发者（\n选择练习内容时软件可能会有短暂的无响应,稍等即可.",versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-
         private void cbAutoBomb_CheckedChanged(object sender,EventArgs e) => useAutoBomb=cbAutoBomb.Checked;
     }
 }

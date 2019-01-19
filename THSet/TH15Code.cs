@@ -21,10 +21,10 @@ namespace THSet {
             }
             lastStatu=thisStatu;
         }
-        private int logoEnemyAddress = 0;
-        private int bossEclAddress = 0;
+    //    private int logoEnemyAddress = 0;
+    //    private int bossEclAddress = 0;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-            bossEclAddress=0;
+     /*       bossEclAddress=0;
             logoEnemyAddress=0;
             bossBox.Items.Clear();
             chapterBox.Items.Clear();
@@ -45,9 +45,10 @@ namespace THSet {
                 case "Stage6": bossBox.Items.AddRange(EclHelper.TH15.stage6BossList); break;
                 case "Extra": bossBox.Items.AddRange(EclHelper.TH15.stage7BossList); break;
             }
+            */
         }
         public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-            byte[] memory = new byte[0x1000];
+        /*    byte[] memory = new byte[0x1000];
             byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
             byte[] eclMainFront = EclHelper.stageEcl[0];
             byte[] eclMBoss = EclHelper.stageEcl[1];
@@ -85,10 +86,11 @@ namespace THSet {
                     }
                 }
             }
+            */
         }
         public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-            byte[] memory = new byte[0x1000];
+         /*   byte[] memory = new byte[0x1000];
             byte[] bossEcl = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclTH15ExtraMainBossNum : EclHelper.eclMainBossNum;
             int index = 0;
             byte[] b = EclHelper.getBossNumArray(bossBox.Text);
@@ -103,7 +105,7 @@ namespace THSet {
                         break;
                     }
                 }
-            }
+            }*/
         }
         public override string getTitle() => new Random().Next()%2==0 ? "东方跟着转" : "东方199";
         public override string getAboutBug() => "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
