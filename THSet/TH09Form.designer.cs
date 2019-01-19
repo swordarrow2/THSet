@@ -68,7 +68,6 @@
             this.lbLilyWhite = new System.Windows.Forms.Label();
             this.timerLily = new System.Windows.Forms.Timer(this.components);
             this.label6 = new System.Windows.Forms.Label();
-            this.btnNote = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -488,22 +487,11 @@
             this.label6.Text = "残机";
             this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnNote
-            // 
-            this.btnNote.Location = new System.Drawing.Point(366, 201);
-            this.btnNote.Name = "btnNote";
-            this.btnNote.Size = new System.Drawing.Size(75, 23);
-            this.btnNote.TabIndex = 25;
-            this.btnNote.Text = "使用说明";
-            this.btnNote.UseVisualStyleBackColor = true;
-            this.btnNote.Click += new System.EventHandler(this.btnNote_Click);
-            // 
             // TH09Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(452, 232);
-            this.Controls.Add(this.btnNote);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lbLilyWhite);
             this.Controls.Add(this.btnLilyWhite);
@@ -574,7 +562,6 @@
         private System.Windows.Forms.Button btnPlayer;
         private System.Windows.Forms.TextBox tbPlayer;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnNote;
     }
 }
 

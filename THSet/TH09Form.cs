@@ -65,8 +65,6 @@ namespace THSet {
             write(p1Addr.codeAddressCapacity4,AsmHelper.getValueArray(p1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
         }
         private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(p1Addr.codeAddressPlayer,AsmHelper.getValueArray(p1Addr.codeLockPlayer,cbPlayer.Checked));
-        private void btnNote_Click(object sender,EventArgs e) => MessageBox.Show("血量1-10,气槽0-400.莉莉白计时到达10000时,莉莉白将出现.\n\n本程序在Window7 64位系统测试可用",MainForm.versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-
         private void bplayer2HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHP,Convert.ToInt32(tplayer2HP.Text));
         private void bplayer2Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHit,Convert.ToInt32(tplayer2Hit.Text));
         private void bplayer2QiCao_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetCapacity,BitConverter.GetBytes(Convert.ToSingle(tplayer2QiCao.Text)));
@@ -117,7 +115,6 @@ namespace THSet {
         }
 
     }
-
 
     public class p1Addr {
         public const int playerBase = 0x004A7D94;
