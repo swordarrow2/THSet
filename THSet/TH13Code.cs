@@ -136,9 +136,9 @@ namespace THSet {
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,
                                                              true,true,true,true,true,true,true };
-        public override void setLockPlayer(bool b) => write(0x00444741,AsmHelper.getValueArray(new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 },b));//dec [004BE7F4]
-        public override void setLockBomb(bool b) => write(0x0040A481,AsmHelper.getValueArray(new byte[] { 0xA3,0x00,0xE8,0x4B,0x00 },b));//mov [004BE800],eax
-        public override void setUnbeatable(bool b) => write(0x00444D75,AsmHelper.getValueArray(new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+0000065C],00000004
+        public override void setLockPlayer(bool b) => write(0x00444741,HexCodeHelper.getValueArray(new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 },b));//dec [004BE7F4]
+        public override void setLockBomb(bool b) => write(0x0040A481,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x00,0xE8,0x4B,0x00 },b));//mov [004BE800],eax
+        public override void setUnbeatable(bool b) => write(0x00444D75,HexCodeHelper.getValueArray(new byte[] { 0xC7,0x87,0x5C,0x06,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+0000065C],00000004
         public override void setFPS(int i) {
             if(write(0x60016A8C,i)==0) {
                 write(0x0045CE87,BitConverter.GetBytes((double)1/i));
@@ -167,8 +167,8 @@ namespace THSet {
         public override void setIBombFragment(int i) => write(0x0042D5D7,i);
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x0042BC69,AsmHelper.getNop(5));
-            write(0x0042BC87,AsmHelper.getNop(5));
+            write(0x0042BC69,HexCodeHelper.getNop(5));
+            write(0x0042BC87,HexCodeHelper.getNop(5));
             write(0x0042D3CD,new byte[] { 0xEB,0xB5,0x90 });                 //jmp 0042D384
             write(0x0042D384,new byte[] { 0xC7,0x46,0x30,b[0],b[1],b[2],b[3],//mov [esi+30],b[]
                                           0xEB,0x43 });                      //jmp 0042D3D0

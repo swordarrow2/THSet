@@ -53,9 +53,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,true,false,
                                                              true,true,true,true,true,true,true,true,false,true };
-        public override void setLockPlayer(bool b) => write(0x004381D2,AsmHelper.getValueArray(new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00 },b));//sub [004B0C98],ebx
-        public override void setLockBomb(bool b) => write(0x00422CD1,AsmHelper.getValueArray(new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00 },b));//mov [004B0CA0],eax
-        public override void setUnbeatable(bool b) => write(0x00438379,AsmHelper.getValueArray(new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [esi+00000A28],00000004
+        public override void setLockPlayer(bool b) => write(0x004381D2,HexCodeHelper.getValueArray(new byte[] { 0x29,0x1D,0x98,0x0C,0x4B,0x00 },b));//sub [004B0C98],ebx
+        public override void setLockBomb(bool b) => write(0x00422CD1,HexCodeHelper.getValueArray(new byte[] { 0xA3,0xA0,0x0C,0x4B,0x00 },b));//mov [004B0CA0],eax
+        public override void setUnbeatable(bool b) => write(0x00438379,HexCodeHelper.getValueArray(new byte[] { 0xC7,0x86,0x28,0x0A,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [esi+00000A28],00000004
         public override void setFPS(int i) {
             if(write(0x60018ABC,i)==0) {
                 write(0x00450014,BitConverter.GetBytes((double)1/i));

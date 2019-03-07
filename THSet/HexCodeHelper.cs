@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 
 namespace THSet {
-    class AsmHelper {
+    class HexCodeHelper {
         /*    [DllImport("kernel32.dll",EntryPoint = "CloseHandle")]
             public static extern int CloseHandle(int hObject);
 
@@ -47,16 +47,29 @@ namespace THSet {
             }
             return reAsmCode;
         }
-
-        public static string intTohex(int value) {
-            string str1 = ""; ;
-            string str2 = "";
-            str1="0000000"+value.ToString("X");
-            str1=str1.Substring(str1.Length-8,8);
-            for(int i = 0;i<str1.Length/2;i++) {
-                str2=str2+str1.Substring(str1.Length-2-2*i,2);
-            }
-            return str2;
+        /*  
+           public static string valueToHex(int value) {
+               string str1 = ""; ;
+               string str2 = "";
+               str1="0000000"+value.ToString("X");
+               str1=str1.Substring(str1.Length-8,8);
+               for(int i = 0;i<str1.Length/2;i++) {
+                   str2=str2+str1.Substring(str1.Length-2-2*i,2);
+               }
+               return str2;
+           } 
+           */
+        public static string toHex(int value) {
+            byte[] b = BitConverter.GetBytes(value);
+            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16);
+        }
+        public static string toHex(float value) {
+            byte[] b = BitConverter.GetBytes(value);
+            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16);
+        }
+        public static string valueToHex(double value) {
+            byte[] b = BitConverter.GetBytes(value);
+            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16)+Convert.ToString(b[4],16)+Convert.ToString(b[5],16)+Convert.ToString(b[6],16)+Convert.ToString(b[7],16);
         }
 
         public static byte[] getValueArray(byte[] array,bool isHooked) {

@@ -52,9 +52,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { true,false,true,false,true,true,false,true,false,false,
                                                              true,false,true,false,true,false,false,true,false,false,
                                                              true,true,true,true,true,true,true,true,false,true };
-        public override void setLockPlayer(bool b) => write(0x0042729C,AsmHelper.getValueArray(new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 },b));//mov [004B4D64],ecx
-        public override void setLockBomb(bool b) => write(0x0043B7C1,AsmHelper.getValueArray(new byte[] { 0x7C,0x30 },b)); //jl 0043B7F3
-        public override void setUnbeatable(bool b) => write(0x0043D0CF,AsmHelper.getValueArray(new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [eax+00000F78],00000004
+        public override void setLockPlayer(bool b) => write(0x0042729C,HexCodeHelper.getValueArray(new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 },b));//mov [004B4D64],ecx
+        public override void setLockBomb(bool b) => write(0x0043B7C1,HexCodeHelper.getValueArray(new byte[] { 0x7C,0x30 },b)); //jl 0043B7F3
+        public override void setUnbeatable(bool b) => write(0x0043D0CF,HexCodeHelper.getValueArray(new byte[] { 0xC7,0x80,0x78,0x0F,0x00,0x00,0x04,0x00,0x00,0x00 },b));//mov [eax+00000F78],00000004
         public override void setFPS(int i) {
             write(0x00455158,BitConverter.GetBytes((double)1/i));
             write(0x00454C48,new byte[] { 0xDD,0x05,0x58,0x51,0x45,0x00 });//fld qword ptr [00455158]

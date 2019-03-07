@@ -148,7 +148,7 @@ namespace THSet {
                 btnCountStart.Enabled=false;
             }
 
-            timerMissAndBomb.Enabled=timerEnemy.Enabled=timerDPS.Enabled=true;
+            timerMissAndBomb.Enabled=true; timerEnemy.Enabled=timerDPS.Enabled=true;
             tc.StartCount();
             lockPlayer.Enabled=enable[20];
             lockBomb.Enabled=enable[21];

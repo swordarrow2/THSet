@@ -136,9 +136,9 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { true,true,true,true,true,false,true,true,false,false,
                                                              true,true,true,true,true,false,true,false,false,false,
                                                              true,true,true,true,true,true,true,true,false,true };
-        public override void setLockPlayer(bool b) => write(0x00456732,AsmHelper.getValueArray(new byte[] { 0xA3,0x50,0x74,0x4E,0x00 },b));            //mov [004E7450],eax
-        public override void setLockBomb(bool b) => write(0x004148D5,AsmHelper.getValueArray(new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 },b));              //mov [004E745C],eax
-        public override void setUnbeatable(bool b) => write(0x0045669F,AsmHelper.getValueArray(new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00016220],00000004
+        public override void setLockPlayer(bool b) => write(0x00456732,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x50,0x74,0x4E,0x00 },b));            //mov [004E7450],eax
+        public override void setLockBomb(bool b) => write(0x004148D5,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 },b));              //mov [004E745C],eax
+        public override void setUnbeatable(bool b) => write(0x0045669F,HexCodeHelper.getValueArray(new byte[] { 0xC7,0x87,0x20,0x62,0x01,0x00,0x04,0x00,0x00,0x00 },b));//mov [edi+00016220],00000004
         public override void setFPS(int i) {
             if(write(0x60940A34,i)==0) {
                 write(0x00472931,BitConverter.GetBytes((double)1/i));
@@ -166,9 +166,9 @@ namespace THSet {
         public override void setIBomb(int i) => write(0x0043E6F1,i);
         public override void setIBombFragment(int i) => write(0x0043E70F,i);
         public override void setIPower(int i) {
-            write(0x0043C32B,AsmHelper.getNop(5));
-            write(0x0043C383,AsmHelper.getNop(5));
-            write(0x0043C353,AsmHelper.getNop(6));
+            write(0x0043C32B,HexCodeHelper.getNop(5));
+            write(0x0043C383,HexCodeHelper.getNop(5));
+            write(0x0043C353,HexCodeHelper.getNop(6));
             write(0x0043E6E3,i);
         }
         public override void setIScore(int i) { }

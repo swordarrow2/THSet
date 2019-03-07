@@ -12,12 +12,12 @@ namespace THSet {
         }
         public TH07Code(MemoryTool m) => mt=m;
         public override void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void setChapter(ComboBox stageBox,ComboBox chapterBox, ComboBox MBossBox,ComboBox bossBox) { }
+        public override void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
 
         public override string getTitle() => new Random().Next()%2==0 ? "东方妖妖梦" : "东方999";
-        public override string[] getSpecialTip() => new string[] {"收卡数" , "结界","分母"};
+        public override string[] getSpecialTip() => new string[] { "收卡数","结界","分母" };
         public override string getAboutBug() => "";
         public override string getAboutSpecial() => "";
         public override string[] getDefaultValue() => new string[] { "0","0","0" };
@@ -31,8 +31,8 @@ namespace THSet {
         public override bool[] getEnable() => new bool[30] { false,true,false,false,true,false,true,true,true,true,
                                                              true,true,true,false,true,false,true,true,true,true,
                                                              true,true,false,true,true,false,true,false,false,false };
-        public override void setLockPlayer(bool b) => write(0x0042D602,AsmHelper.getValueArray(new byte[] { 0xD9,0x58,0x5C },b));
-        public override void setLockBomb(bool b) => write(0x0042D647,AsmHelper.getValueArray(new byte[] { 0xD9,0x58,0x68 },b));
+        public override void setLockPlayer(bool b) => write(0x0042D602,HexCodeHelper.getValueArray(new byte[] { 0xD9,0x58,0x5C },b));
+        public override void setLockBomb(bool b) => write(0x0042D647,HexCodeHelper.getValueArray(new byte[] { 0xD9,0x58,0x68 },b));
         public override void setUnbeatable(bool b) { }
         public override void setFPS(int i) => write(0x60015A4C,i);
         public override void setPlayer(int i) { }
@@ -42,12 +42,12 @@ namespace THSet {
         public override void setPower(int i) { }
         public override void setScore(int i) { }
         public override void setMaxPoint(int i) { }
-        public override void setSpecial1(int i) => write(mt.ReadInteger(0x00626278)+0x1C,i); 
-        public override void setSpecial2(int i) =>write(0x0062F890,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
-        public override void setSpecial3(int i) => write(0x0062F888,i+mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88));
-        public override int getSpecial1() => mt.ReadInteger(mt.ReadInteger(0x00626278)+0x1C);
-        public override int getSpecial2() => mt.ReadInteger(0x0062F890)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
-        public override int getSpecial3() =>mt.ReadInteger(0x0062F888)-mt.ReadInteger(mt.ReadInteger(0x00626278)+0x88);
+        public override void setSpecial1(int i) => write(mt.ReadInteger(0x00626278)+0x1C,i);
+        public override void setSpecial2(int i) => write(0x0062F890,i+mt.ReadInteger(0x00626278,0x88));
+        public override void setSpecial3(int i) => write(0x0062F888,i+mt.ReadInteger(0x00626278,0x88));
+        public override int getSpecial1() => mt.ReadInteger(0x00626278,0x1C);
+        public override int getSpecial2() => mt.ReadInteger(0x0062F890)-mt.ReadInteger(0x00626278,0x88);
+        public override int getSpecial3() => mt.ReadInteger(0x0062F888)-mt.ReadInteger(0x00626278,0x88);
         public override void setIPlayer(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x0042EA14,new byte[] { 0xA1,0x78,0x62,0x62,0x00,           //mov eax,[00626278]
@@ -75,8 +75,8 @@ namespace THSet {
             byte[] c = BitConverter.GetBytes(gettedPlayer);
             byte[] d = BitConverter.GetBytes(needPoint);
             write(0x0042EAAA,new byte[] { 0xE9,0xB1,0xE2,0x05,0x00,0x90,0x90 });
-            write(0x0042EAE3,AsmHelper.getNop(4));
-            write(0x0042EABD,AsmHelper.getNop(7));
+            write(0x0042EAE3,HexCodeHelper.getNop(4));
+            write(0x0042EABD,HexCodeHelper.getNop(7));
             write(0x0048CD60,new byte[] { 0xC7,0x40,0x28,b[0],b[1],b[2],b[3],//mov [eax+28],0
                                           0xC7,0x40,0x2C,c[0],c[1],c[2],c[3],//mov [eax+2C],c[]
                                           0xC7,0x40,0x30,d[0],d[1],d[2],d[3],//mov [eax+30],d[]
@@ -95,22 +95,22 @@ namespace THSet {
         public override void setIBombFragment(int i) { }
         public override void setIPower(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
-            write(0x0042F04F,AsmHelper.getNop(3));
+            write(0x0042F04F,HexCodeHelper.getNop(3));
             write(0x0042EA51,new byte[] { 0xE9,0xFB,0xE2,0x05,0x00,0x90 });
-            write(0x0048CD51,new byte[] {0xC7,0x40,0x7C,b[0],b[1],b[2],b[3],//mov [eax+7C],b[]
-                                         0x8B,0x4D,0xD4,                    //mov ecx,[ebp-2C]
-                                         0xE9,0xF7,0x1C,0xFA,0xFF });       //jmp 0042EA57
+            write(0x0048CD51,new byte[] { 0xC7,0x40,0x7C,b[0],b[1],b[2],b[3],//mov [eax+7C],b[]
+                                          0x8B,0x4D,0xD4,                    //mov ecx,[ebp-2C]
+                                          0xE9,0xF7,0x1C,0xFA,0xFF });       //jmp 0042EA57
         }
         public override void setIScore(int i) { }
         public override void setIMaxPoint(int i) {
             byte[] b = BitConverter.GetBytes(i);
-            write(0x0042EC57,AsmHelper.getNop(6));
-            write(0x0042ED33,AsmHelper.getNop(6));
-            write(0x0042ED61,AsmHelper.getNop(6));
-            write(0x0042EDE2,AsmHelper.getNop(6));
-            write(0x0042EDB7,AsmHelper.getNop(6));
-            write(0x0042ED8C,AsmHelper.getNop(6));
-            write(0x0042EC21,AsmHelper.getNop(6));
+            write(0x0042EC57,HexCodeHelper.getNop(6));
+            write(0x0042ED33,HexCodeHelper.getNop(6));
+            write(0x0042ED61,HexCodeHelper.getNop(6));
+            write(0x0042EDE2,HexCodeHelper.getNop(6));
+            write(0x0042EDB7,HexCodeHelper.getNop(6));
+            write(0x0042ED8C,HexCodeHelper.getNop(6));
+            write(0x0042EC21,HexCodeHelper.getNop(6));
             write(0x0042E990,new byte[] { 0xE9,0xE8,0xE3,0x05,0x00,0x90 }); //jmp 0048CD7D
             write(0x0048CD7D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,123456
                                           0x89,0x81,0x1C,0x96,0x00,0x00,    //mov dword ptr [ecx+961C],eax
@@ -132,16 +132,15 @@ namespace THSet {
             write(0x0048CD8D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,b[]
                                           0x89,0x81,0x20,0x96,0x00,0x00,    //mov [ecx+00009620],eax
                                           0xE9,0x0E,0x1C,0xFA,0xFF });      //jmp 0042E9AB
-
         }
         public override void setISpecial3(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EC00,i);//extra
             write(0x0042EC36,i);//phantasm
-            write(0x0042ED4F,AsmHelper.getNop(6));
-            write(0x0042ED7A,AsmHelper.getNop(6));
-            write(0x0042EDA5,AsmHelper.getNop(6));
-            write(0x0042EDD0,AsmHelper.getNop(6));
+            write(0x0042ED4F,HexCodeHelper.getNop(6));
+            write(0x0042ED7A,HexCodeHelper.getNop(6));
+            write(0x0042EDA5,HexCodeHelper.getNop(6));
+            write(0x0042EDD0,HexCodeHelper.getNop(6));
             write(0x0042ECAE,i);//p1 p2 p3 p4 p5 p6
         }
 

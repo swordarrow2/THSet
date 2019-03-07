@@ -83,7 +83,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsmHelper.cs" />
+    <Compile Include="HexCodeHelper.cs" />
     <Compile Include="floatWindow.cs">
       <SubType>Form</SubType>
     </Compile>

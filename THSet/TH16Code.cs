@@ -129,9 +129,9 @@ namespace THSet {
                                                              true,false,true,true,true,true,true,true,false,false,
                                                              true,true,true,
                                                              true,true,true,true,true,true,true};
-        public override void setLockPlayer(bool b) => write(0x00443CC5,AsmHelper.getValueArray(new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 },b));//mov [004A57F4],eax
-        public override void setLockBomb(bool b) => write(0x0040DA86,AsmHelper.getValueArray(new byte[] { 0xA3,0x00,0x58,0x4A,0x00 },b));//mov [004A5800],eax
-        public override void setUnbeatable(bool b) => write(0x00443FDB,AsmHelper.getValueArray(new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 },b));// mov[edi+165A8],4
+        public override void setLockPlayer(bool b) => write(0x00443CC5,HexCodeHelper.getValueArray(new byte[] { 0xA3,0xF4,0x57,0x4A,0x00 },b));//mov [004A57F4],eax
+        public override void setLockBomb(bool b) => write(0x0040DA86,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x00,0x58,0x4A,0x00 },b));//mov [004A5800],eax
+        public override void setUnbeatable(bool b) => write(0x00443FDB,HexCodeHelper.getValueArray(new byte[] { 0xC7,0x87,0xA8,0x65,0x01,0x00,0x04,0x00,0x00,0x00 },b));// mov[edi+165A8],4
         public override void setFPS(int i) {
             mt.WriteBytes(0x0045AC45,BitConverter.GetBytes((double)1/i));
             mt.WriteBytes(0x0045ACBD,new byte[] { 0xF2,0x0F,0x10,0x15,0x45,0xAC,0x45,0x00 });
@@ -165,10 +165,10 @@ namespace THSet {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042E5A0,new byte[] { 0xC7,0x46,0x54,b[0],b[1],b[2],b[3] });  //mov [esi+54],b[]
                                                                                   //Stop to set default values
-            write(0x0042CE91,AsmHelper.getNop(6));            //story
-            write(0x0042CEEC,AsmHelper.getNop(5));            //practice
-            write(0x0042CEBC,AsmHelper.getNop(5));            //extra
-            write(0x0042CE51,AsmHelper.getNop(5));            //spell practice
+            write(0x0042CE91,HexCodeHelper.getNop(6));            //story
+            write(0x0042CEEC,HexCodeHelper.getNop(5));            //practice
+            write(0x0042CEBC,HexCodeHelper.getNop(5));            //extra
+            write(0x0042CE51,HexCodeHelper.getNop(5));            //spell practice
         }
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i/10);
@@ -186,19 +186,19 @@ namespace THSet {
             write(0x0042CD38,new byte[] { 0xC7,0x05,0xB0,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],//mov [004A57B0],b[]
                                           0xB8,0x00,0x00,0x00,0x00,  //mov eax,0
                                           0xA3,0xC0,0x57,0x4A,0x00 });  //mov [004A57C0],ecx
-            write(0x0042CD4C,AsmHelper.getNop(5));
+            write(0x0042CD4C,HexCodeHelper.getNop(5));
             write(0x0042E5DD,gettedPlayer);
         }
         public override void setIMaxPoint(int i) {
-            write(0x0042CD66,AsmHelper.stringToAsm("b9 "+AsmHelper.intTohex(i*100)+" 90 90 90"));//mov ecx,i
+            write(0x0042CD66,HexCodeHelper.stringToAsm("b9 "+HexCodeHelper.valueToHex(i*100)+" 90 90 90"));//mov ecx,i
         }
         public override void setISpecial1(int i) {
-            byte[] by = AsmHelper.stringToAsm("C7 05 08 58 4A 00 "+AsmHelper.intTohex(i));  //mov[004A5808],by[]
+            byte[] by = HexCodeHelper.stringToAsm("C7 05 08 58 4A 00 "+HexCodeHelper.valueToHex(i));  //mov[004A5808],by[]
             //story
             write(0x0042CEC6,by);
             //practice          
             write(0x0042CEF8,by);
-            write(0x0042CF02,AsmHelper.getNop(1));
+            write(0x0042CF02,HexCodeHelper.getNop(1));
             //spell practice
             write(0x0042CE5B,by);
         }
