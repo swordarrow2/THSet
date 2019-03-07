@@ -140,7 +140,7 @@ namespace THSet {
         public override void setBomb(int i) => write(0x004F5870,i);
         public override void setBombFragment(int i) => write(0x004F5874,i);
         public override void setPower(int i) => write(0x004F5858,i);
-        public override void setScore(int i) => write(0x004F5830,i/10);
+        public override void setScore(int i) => write(0x004F5830,i);
         public override void setMaxPoint(int i) => write(0x004F584C,i*100);
         public override void setSpecial1(int i) => write(0x004F5894,i);
         public override void setSpecial2(int i) => write(0x004F586C,i);
@@ -164,7 +164,7 @@ namespace THSet {
             write(0x004375B3,i);
         }
         public override void setIScore(int i) {
-            byte[] b = BitConverter.GetBytes(i/10);
+            byte[] b = BitConverter.GetBytes(i);
             write(0x00435C95,new byte[] { 0xE9,0xC9,0x10,0x00,0x00,0x90 });                 //jmp 00436D63
             write(0x00436D63,new byte[] { 0xC7,0x05,0x30,0x58,0x4F,0x00,b[0],b[1],b[2],b[3],//mov [004F5830],b[]
                                           0xEB,0x06 });                                     //jmp 00436D75

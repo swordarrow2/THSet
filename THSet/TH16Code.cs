@@ -141,7 +141,7 @@ namespace THSet {
         public override void setBomb(int i) => write(0x004A5800,i);
         public override void setBombFragment(int i) => write(0x004A5804,i);
         public override void setPower(int i) => write(0x004A57E4,i);
-        public override void setScore(int i) => write(0x004A57B0,i/10);
+        public override void setScore(int i) => write(0x004A57B0,i);
         public override void setMaxPoint(int i) => write(0x004A57D8,i*100);
         public override void setSpecial1(int i) => write(0x004A5808,i);
         public override void setSpecial2(int i) { }
@@ -171,7 +171,7 @@ namespace THSet {
             write(0x0042CE51,HexCodeHelper.getNop(5));            //spell practice
         }
         public override void setIScore(int i) {
-            byte[] b = BitConverter.GetBytes(i/10);
+            byte[] b = BitConverter.GetBytes(i);
             int gettedPlayer = 0;
             if(i<5000000) { gettedPlayer=0; } else
             if(i>=5000000&&i<10000000) { gettedPlayer=1; } else

@@ -150,7 +150,7 @@ namespace THSet {
         public override void setBomb(int i) => write(0x004E745C,i);
         public override void setBombFragment(int i) => write(0x004E7460,i);
         public override void setPower(int i) => write(0x004E7440,i);
-        public override void setScore(int i) => write(0x004E740C,i/10);
+        public override void setScore(int i) => write(0x004E740C,i);
         public override void setMaxPoint(int i) => write(0x004E7434,i*100);
         public override void setSpecial1(int i) => write(0x004E7420,i);
         public override void setSpecial2(int i) { }

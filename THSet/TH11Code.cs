@@ -82,7 +82,7 @@ namespace THSet {
         public override void setBomb(int i){ }
         public override void setBombFragment(int i){ }
         public override void setPower(int i) => write(0x004A56E8,isMarisaA() ? (int)(i/8.333333333333f) : i/5);
-        public override void setScore(int i) => write(0x004A56E4,i/10);
+        public override void setScore(int i) => write(0x004A56E4,i);
         public override void setMaxPoint(int i){ }
         public override void setSpecial1(int i) => write(0x004A56F0,i*100);
         public override void setSpecial2(int i) => write(0x004A56F4,i*100);

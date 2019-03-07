@@ -34,63 +34,63 @@ namespace THSet {
             timerLily.Enabled=true;
         }
 
-        private void bplayer1HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetHP,Convert.ToInt32(tplayer1HP.Text));
-        private void bplayer1Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetHit,Convert.ToInt32(tplayer1Hit.Text));
-        private void bplayer1QiCao_Click(object sender,EventArgs e) => write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetCapacity,BitConverter.GetBytes(Convert.ToSingle(tplayer1QiCao.Text)));
+        private void bplayer1HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player1Addr.playerBase)+Player1Addr.offsetHP,Convert.ToInt32(tplayer1HP.Text));
+        private void bplayer1Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player1Addr.playerBase)+Player1Addr.offsetHit,Convert.ToInt32(tplayer1Hit.Text));
+        private void bplayer1QiCao_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player1Addr.playerBase)+Player1Addr.offsetCapacity,BitConverter.GetBytes(Convert.ToSingle(tplayer1QiCao.Text)));
 
         private void bplayer1NoName_Click(object sender,EventArgs e) {
-            write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetNoName1,Convert.ToInt32(tplayer1NoName.Text));
-            write(mt.ReadInteger(p1Addr.playerBase)+p1Addr.offsetNoName2,Convert.ToInt32(tplayer1NoName.Text));
+            write(mt.ReadInteger(Player1Addr.playerBase)+Player1Addr.offsetNoName1,Convert.ToInt32(tplayer1NoName.Text));
+            write(mt.ReadInteger(Player1Addr.playerBase)+Player1Addr.offsetNoName2,Convert.ToInt32(tplayer1NoName.Text));
         }
         private void bplayer1Score_Click(object sender,EventArgs e) {
-            write(mt.ReadInteger(p1Addr.playerScoreBase)+p1Addr.offsetScore1,Convert.ToInt32(tplayer1Score.Text)/10);
-            write(mt.ReadInteger(p1Addr.playerScoreBase)+p1Addr.offsetScore2,Convert.ToInt32(tplayer1Score.Text)/10);
+            write(mt.ReadInteger(Player1Addr.playerScoreBase)+Player1Addr.offsetScore1,Convert.ToInt32(tplayer1Score.Text)/10);
+            write(mt.ReadInteger(Player1Addr.playerScoreBase)+Player1Addr.offsetScore2,Convert.ToInt32(tplayer1Score.Text)/10);
         }
 
         private void btnPlayer_Click(object sender,EventArgs e) => write(mt.ReadInteger(0x004A7DAC),BitConverter.GetBytes(Convert.ToSingle(tbPlayer.Text)));
         private void cplayer1HP_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressHP1,HexCodeHelper.getValueArray(p1Addr.codeLockHP1,cplayer1HP.Checked));
-            write(p1Addr.codeAddressHP2,HexCodeHelper.getValueArray(p1Addr.codeLockHP2,cplayer1HP.Checked));
+            write(Player1Addr.codeAddressHP1,HexCodeHelper.getValueArray(Player1Addr.codeLockHP1,cplayer1HP.Checked));
+            write(Player1Addr.codeAddressHP2,HexCodeHelper.getValueArray(Player1Addr.codeLockHP2,cplayer1HP.Checked));
         }
         private void cplayer1NoName_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressNoName11,HexCodeHelper.getValueArray(p1Addr.codeLockNoName11,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName12,HexCodeHelper.getValueArray(p1Addr.codeLockNoName12,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName21,HexCodeHelper.getValueArray(p1Addr.codeLockNoName21,cplayer1NoName.Checked));
-            write(p1Addr.codeAddressNoName22,HexCodeHelper.getValueArray(p1Addr.codeLockNoName22,cplayer1NoName.Checked));
+            write(Player1Addr.codeAddressNoName11,HexCodeHelper.getValueArray(Player1Addr.codeLockNoName11,cplayer1NoName.Checked));
+            write(Player1Addr.codeAddressNoName12,HexCodeHelper.getValueArray(Player1Addr.codeLockNoName12,cplayer1NoName.Checked));
+            write(Player1Addr.codeAddressNoName21,HexCodeHelper.getValueArray(Player1Addr.codeLockNoName21,cplayer1NoName.Checked));
+            write(Player1Addr.codeAddressNoName22,HexCodeHelper.getValueArray(Player1Addr.codeLockNoName22,cplayer1NoName.Checked));
         }
         private void cplayer1QiCao_CheckedChanged(object sender,EventArgs e) {
-            write(p1Addr.codeAddressCapacity1,HexCodeHelper.getValueArray(p1Addr.codeLockCapacity1,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity2,HexCodeHelper.getValueArray(p1Addr.codeLockCapacity2,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity3,HexCodeHelper.getValueArray(p1Addr.codeLockCapacity3,cplayer1QiCao.Checked));
-            write(p1Addr.codeAddressCapacity4,HexCodeHelper.getValueArray(p1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
+            write(Player1Addr.codeAddressCapacity1,HexCodeHelper.getValueArray(Player1Addr.codeLockCapacity1,cplayer1QiCao.Checked));
+            write(Player1Addr.codeAddressCapacity2,HexCodeHelper.getValueArray(Player1Addr.codeLockCapacity2,cplayer1QiCao.Checked));
+            write(Player1Addr.codeAddressCapacity3,HexCodeHelper.getValueArray(Player1Addr.codeLockCapacity3,cplayer1QiCao.Checked));
+            write(Player1Addr.codeAddressCapacity4,HexCodeHelper.getValueArray(Player1Addr.codeLockCapacity4,cplayer1QiCao.Checked));
         }
-        private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(p1Addr.codeAddressPlayer,HexCodeHelper.getValueArray(p1Addr.codeLockPlayer,cbPlayer.Checked));
-        private void bplayer2HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHP,Convert.ToInt32(tplayer2HP.Text));
-        private void bplayer2Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetHit,Convert.ToInt32(tplayer2Hit.Text));
-        private void bplayer2QiCao_Click(object sender,EventArgs e) => write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetCapacity,BitConverter.GetBytes(Convert.ToSingle(tplayer2QiCao.Text)));
+        private void cbPlayer_CheckedChanged(object sender,EventArgs e) => write(Player1Addr.codeAddressPlayer,HexCodeHelper.getValueArray(Player1Addr.codeLockPlayer,cbPlayer.Checked));
+        private void bplayer2HP_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player2Addr.playerBase)+Player2Addr.offsetHP,Convert.ToInt32(tplayer2HP.Text));
+        private void bplayer2Hit_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player2Addr.playerBase)+Player2Addr.offsetHit,Convert.ToInt32(tplayer2Hit.Text));
+        private void bplayer2QiCao_Click(object sender,EventArgs e) => write(mt.ReadInteger(Player2Addr.playerBase)+Player2Addr.offsetCapacity,BitConverter.GetBytes(Convert.ToSingle(tplayer2QiCao.Text)));
         private void bplayer2NoName_Click(object sender,EventArgs e) {
-            write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetNoName1,Convert.ToInt32(tplayer2NoName.Text));
-            write(mt.ReadInteger(p2Addr.playerBase)+p2Addr.offsetNoName2,Convert.ToInt32(tplayer2NoName.Text));
+            write(mt.ReadInteger(Player2Addr.playerBase)+Player2Addr.offsetNoName1,Convert.ToInt32(tplayer2NoName.Text));
+            write(mt.ReadInteger(Player2Addr.playerBase)+Player2Addr.offsetNoName2,Convert.ToInt32(tplayer2NoName.Text));
         }
         private void bplayer2Score_Click(object sender,EventArgs e) {
-            write(mt.ReadInteger(p2Addr.playerScoreBase)+p2Addr.offsetScore2,Convert.ToInt32(tplayer2Score.Text)/10);
-            write(mt.ReadInteger(p2Addr.playerScoreBase)+p2Addr.offsetScore2,Convert.ToInt32(tplayer2Score.Text)/10);
+            write(mt.ReadInteger(Player2Addr.playerScoreBase)+Player2Addr.offsetScore2,Convert.ToInt32(tplayer2Score.Text)/10);
+            write(mt.ReadInteger(Player2Addr.playerScoreBase)+Player2Addr.offsetScore2,Convert.ToInt32(tplayer2Score.Text)/10);
         }
         private void cplayer2HP_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressHP1,HexCodeHelper.getValueArray(p2Addr.codeLockHP1,cplayer2HP.Checked));
-            write(p2Addr.codeAddressHP2,HexCodeHelper.getValueArray(p2Addr.codeLockHP2,cplayer2HP.Checked));
+            write(Player2Addr.codeAddressHP1,HexCodeHelper.getValueArray(Player2Addr.codeLockHP1,cplayer2HP.Checked));
+            write(Player2Addr.codeAddressHP2,HexCodeHelper.getValueArray(Player2Addr.codeLockHP2,cplayer2HP.Checked));
         }
         private void cplayer2NoName_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressNoName11,HexCodeHelper.getValueArray(p2Addr.codeLockNoName11,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName12,HexCodeHelper.getValueArray(p2Addr.codeLockNoName12,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName21,HexCodeHelper.getValueArray(p2Addr.codeLockNoName21,cplayer2NoName.Checked));
-            write(p2Addr.codeAddressNoName22,HexCodeHelper.getValueArray(p2Addr.codeLockNoName22,cplayer2NoName.Checked));
+            write(Player2Addr.codeAddressNoName11,HexCodeHelper.getValueArray(Player2Addr.codeLockNoName11,cplayer2NoName.Checked));
+            write(Player2Addr.codeAddressNoName12,HexCodeHelper.getValueArray(Player2Addr.codeLockNoName12,cplayer2NoName.Checked));
+            write(Player2Addr.codeAddressNoName21,HexCodeHelper.getValueArray(Player2Addr.codeLockNoName21,cplayer2NoName.Checked));
+            write(Player2Addr.codeAddressNoName22,HexCodeHelper.getValueArray(Player2Addr.codeLockNoName22,cplayer2NoName.Checked));
         }
         private void cplayer2QiCao_CheckedChanged(object sender,EventArgs e) {
-            write(p2Addr.codeAddressCapacity1,HexCodeHelper.getValueArray(p2Addr.codeLockCapacity1,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity2,HexCodeHelper.getValueArray(p2Addr.codeLockCapacity2,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity3,HexCodeHelper.getValueArray(p2Addr.codeLockCapacity3,cplayer2QiCao.Checked));
-            write(p2Addr.codeAddressCapacity4,HexCodeHelper.getValueArray(p2Addr.codeLockCapacity4,cplayer2QiCao.Checked));
+            write(Player2Addr.codeAddressCapacity1,HexCodeHelper.getValueArray(Player2Addr.codeLockCapacity1,cplayer2QiCao.Checked));
+            write(Player2Addr.codeAddressCapacity2,HexCodeHelper.getValueArray(Player2Addr.codeLockCapacity2,cplayer2QiCao.Checked));
+            write(Player2Addr.codeAddressCapacity3,HexCodeHelper.getValueArray(Player2Addr.codeLockCapacity3,cplayer2QiCao.Checked));
+            write(Player2Addr.codeAddressCapacity4,HexCodeHelper.getValueArray(Player2Addr.codeLockCapacity4,cplayer2QiCao.Checked));
         }
 
         private void write(int address,int value) => mt.WriteInteger(address,value);
@@ -113,10 +113,9 @@ namespace THSet {
                 return 0;
             }
         }
-
     }
 
-    public class p1Addr {
+    public class Player1Addr {
         public const int playerBase = 0x004A7D94;
         public const int playerScoreBase = 0x004A7DAC;
 
@@ -152,7 +151,7 @@ namespace THSet {
         public static readonly byte[] codeLockCapacity4 = new byte[] { 0xD9,0x99,0x88,0x03,0x03,0x00 };
         public static readonly byte[] codeLockPlayer = new byte[] { 0x9D,0x19 };
     }
-    public class p2Addr {
+    public class Player2Addr {
         public const int playerBase = 0x004A7DCC;
         public const int playerScoreBase = 0x004A7DE4;
 

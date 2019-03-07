@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.4.4";
+        public const string versonCode = "THSet v3.4.5";
         private bool useAutoBomb = false;
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
@@ -199,7 +199,7 @@ namespace THSet {
         private void btnBomb_Click(object sender,EventArgs e) => tc.setBomb(Convert.ToInt32(tbBomb.Text));
         private void btnBombFragment_Click(object sender,EventArgs e) => tc.setBombFragment(Convert.ToInt32(tbBombFragment.Text));
         private void btnPower_Click(object sender,EventArgs e) => tc.setPower(Convert.ToInt32(tbPower.Text));
-        private void btnScore_Click(object sender,EventArgs e) => tc.setScore(Convert.ToInt32(tbScore.Text));
+        private void btnScore_Click(object sender,EventArgs e) => tc.setScore(Convert.ToInt32(Convert.ToInt64(tbScore.Text)/10));
         private void btnMaxPoint_Click(object sender,EventArgs e) => tc.setMaxPoint(Convert.ToInt32(tbMaxPoint.Text));
         private void btnSpecial1_Click(object sender,EventArgs e) => tc.setSpecial1(Convert.ToInt32(tbSp1.Text));
         private void btnSpecial2_Click(object sender,EventArgs e) => tc.setSpecial2(Convert.ToInt32(tbSp2.Text));
@@ -212,7 +212,7 @@ namespace THSet {
         private void btnIBomb_Click(object sender,EventArgs e) => tc.setIBomb(Convert.ToInt32(tbIBomb.Text));
         private void btnIBombFragment_Click(object sender,EventArgs e) => tc.setIBombFragment(Convert.ToInt32(tbIBombFragment.Text));
         private void btnIPower_Click(object sender,EventArgs e) => tc.setIPower(Convert.ToInt32(tbIPower.Text));
-        private void btnIScore_Click(object sender,EventArgs e) => tc.setIScore(Convert.ToInt32(tbIScore.Text));
+        private void btnIScore_Click(object sender,EventArgs e) => tc.setIScore(Convert.ToInt32(Convert.ToInt64(tbIScore.Text)/10));
         private void btnIMaxPoint_Click(object sender,EventArgs e) => tc.setIMaxPoint(Convert.ToInt32(tbIMaxPoint.Text));
         private void btnISpecial1_Click(object sender,EventArgs e) => tc.setISpecial1(Convert.ToInt32(tbISp1.Text));
         private void btnISpecial2_Click(object sender,EventArgs e) => tc.setISpecial2(Convert.ToInt32(tbISp2.Text));
