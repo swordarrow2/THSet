@@ -60,16 +60,28 @@ namespace THSet {
            } 
            */
         public static string toHex(int value) {
-            byte[] b = BitConverter.GetBytes(value);
-            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16);
+            byte[] bytes = BitConverter.GetBytes(value);
+            string asmString = "";
+            foreach(byte b in bytes) {
+                    asmString+=string.Format("{0:X2}",b);
+            }
+            return asmString;
         }
         public static string toHex(float value) {
-            byte[] b = BitConverter.GetBytes(value);
-            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16);
+            byte[] bytes = BitConverter.GetBytes(value);
+            string asmString = "";
+            foreach(byte b in bytes) {
+                asmString+=string.Format("{0:X2}",b);
+            }
+            return asmString;
         }
-        public static string valueToHex(double value) {
-            byte[] b = BitConverter.GetBytes(value);
-            return Convert.ToString(b[0],16)+Convert.ToString(b[1],16)+Convert.ToString(b[2],16)+Convert.ToString(b[3],16)+Convert.ToString(b[4],16)+Convert.ToString(b[5],16)+Convert.ToString(b[6],16)+Convert.ToString(b[7],16);
+        public static string toHex(double value) {
+            byte[] bytes = BitConverter.GetBytes(value);
+            string asmString = "";
+            foreach(byte b in bytes) {
+                asmString+=string.Format("{0:X2}",b);
+            }
+            return asmString;
         }
 
         public static byte[] getValueArray(byte[] array,bool isHooked) {

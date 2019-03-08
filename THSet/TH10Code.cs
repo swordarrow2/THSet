@@ -101,10 +101,10 @@ namespace THSet {
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i);
             int gettedPlayer = 0;
-            if(i<20000000) { gettedPlayer=0; } else
-            if(i>=20000000&&i<40000000) { gettedPlayer=1; } else
-            if(i>=40000000&&i<80000000) { gettedPlayer=2; } else
-            if(i>=40000000&&i<150000000) { gettedPlayer=3; } else { gettedPlayer=4; }
+            if(i<2000000) { gettedPlayer=0; } else
+            if(i<4000000) { gettedPlayer=1; } else
+            if(i<8000000) { gettedPlayer=2; } else
+            if(i<15000000) { gettedPlayer=3; } else { gettedPlayer=4; }
             byte[] c = BitConverter.GetBytes(gettedPlayer);
             write(0x0041793B,new byte[] { 0xE9,0x67,0xE1,0x04,0x00,0x90 });                 //jmp 00465AA7
             write(0x00465AA7,new byte[] { 0xC7,0x05,0x44,0x4C,0x47,0x00,b[0],b[1],b[2],b[3],//mov [00474C44],b[]

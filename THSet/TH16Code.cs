@@ -173,16 +173,16 @@ namespace THSet {
         public override void setIScore(int i) {
             byte[] b = BitConverter.GetBytes(i);
             int gettedPlayer = 0;
-            if(i<5000000) { gettedPlayer=0; } else
-            if(i>=5000000&&i<10000000) { gettedPlayer=1; } else
-            if(i>=10000000&&i<20000000) { gettedPlayer=2; } else
-            if(i>=20000000&&i<40000000) { gettedPlayer=3; } else
-            if(i>=40000000&&i<70000000) { gettedPlayer=4; } else
-            if(i>=70000000&&i<100000000) { gettedPlayer=5; } else
-            if(i>=100000000&&i<150000000) { gettedPlayer=6; } else
-            if(i>=150000000&&i<250000000) { gettedPlayer=7; } else
-            if(i>=250000000&&i<500000000) { gettedPlayer=8; } else
-            if(i>=500000000&&i<1000000000) { gettedPlayer=9; } else { gettedPlayer=10; }
+            if(i<500000) { gettedPlayer=0; } else
+            if(i<1000000) { gettedPlayer=1; } else
+            if(i<2000000) { gettedPlayer=2; } else
+            if(i<4000000) { gettedPlayer=3; } else
+            if(i<7000000) { gettedPlayer=4; } else
+            if(i<10000000) { gettedPlayer=5; } else
+            if(i<15000000) { gettedPlayer=6; } else
+            if(i<25000000) { gettedPlayer=7; } else
+            if(i<50000000) { gettedPlayer=8; } else
+            if(i<100000000) { gettedPlayer=9; } else { gettedPlayer=10; }
             write(0x0042CD38,new byte[] { 0xC7,0x05,0xB0,0x57,0x4A,0x00,b[0],b[1],b[2],b[3],//mov [004A57B0],b[]
                                           0xB8,0x00,0x00,0x00,0x00,  //mov eax,0
                                           0xA3,0xC0,0x57,0x4A,0x00 });  //mov [004A57C0],ecx
@@ -190,10 +190,10 @@ namespace THSet {
             write(0x0042E5DD,gettedPlayer);
         }
         public override void setIMaxPoint(int i) {
-            write(0x0042CD66,HexCodeHelper.stringToAsm("b9 "+HexCodeHelper.valueToHex(i*100)+" 90 90 90"));//mov ecx,i
+            write(0x0042CD66,HexCodeHelper.stringToAsm("b9 "+HexCodeHelper.toHex(i*100)+" 90 90 90"));//mov ecx,i
         }
         public override void setISpecial1(int i) {
-            byte[] by = HexCodeHelper.stringToAsm("C7 05 08 58 4A 00 "+HexCodeHelper.valueToHex(i));  //mov[004A5808],by[]
+            byte[] by = HexCodeHelper.stringToAsm("C7 05 08 58 4A 00 "+HexCodeHelper.toHex(i));  //mov[004A5808],by[]
             //story
             write(0x0042CEC6,by);
             //practice          
