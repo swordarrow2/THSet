@@ -31,8 +31,8 @@ namespace THSet {
             switch(stageBox.Text) {
                 case "Stage1": bossBox.Items.AddRange(EclHelper.TH13.stage1BossList); break;
                 case "Stage2": bossBox.Items.AddRange(EclHelper.TH13.stage2BossList); break;
-                case "Stage3": bossBox.Items.AddRange(EclHelper.TH13.stage3BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","太田飞行阵","关底Boss" }); break;
-                case "Stage4": bossBox.Items.AddRange(EclHelper.TH13.stage4BossList); break;
+                case "Stage3": bossBox.Items.AddRange(EclHelper.TH13.stage3BossList); break;
+                case "Stage4": bossBox.Items.AddRange(EclHelper.TH13.stage4BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","道中Boss","太田飞行阵","关底Boss" }); break;
                 case "Stage5": bossBox.Items.AddRange(EclHelper.TH13.stage5BossList); break;
                 case "Stage6": bossBox.Items.AddRange(EclHelper.TH13.stage6BossList); chapterBox.Items.Clear(); chapterBox.Items.AddRange(new object[] { "前半","关底Boss" }); break;
                 case "Extra": bossBox.Items.AddRange(EclHelper.TH13.stage7BossList); break;
@@ -42,7 +42,15 @@ namespace THSet {
             byte[] memory = new byte[0x1000];
             byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
             byte[] eclMainFront = EclHelper.stageEcl[0];
-            byte[] eclMBoss = stageBox.Text.Equals("Extra") ? EclHelper.TH13.eclExtraMBoss : EclHelper.stageEcl[1];
+            byte[] eclMBoss =  EclHelper.stageEcl[1];
+            switch(stageBox.Text) {
+                case "Extra":
+                    eclMBoss=EclHelper.TH13.eclExtraMBoss;
+                    break;
+                case "Stage5":
+                    eclMBoss=EclHelper.TH13.eclStage5MBoss;
+                    break;
+            }
             byte[] eclMainLatter = stageBox.Text.Equals("Extra") ? EclHelper.TH13.eclExtraMainLatter : EclHelper.stageEcl[2];
             byte[] eclMainBoss = EclHelper.stageEcl[3];
             if(stageBox.Text.Equals("Stage6")) {

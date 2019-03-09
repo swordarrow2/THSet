@@ -33,6 +33,7 @@ namespace THSet {
         public static class TH13 {
             public static readonly byte[] eclExtraMBoss = HexCodeHelper.stringToAsm("0B0020000000FF01000000000C0000004D61696E4D426F73730000003C000000");
             public static readonly byte[] eclExtraMainLatter = HexCodeHelper.stringToAsm("0B0020000000FF01000000000C0000004D61696E4C617474657200003C000000170014000000FF0100000000F40100003C0000000C0214000000FF0100000000050000003C000000060214000000FF0100000000000000003C0000000C0214000000FF0100000000060000003C000000");
+            public static readonly byte[] eclStage5MBoss = HexCodeHelper.stringToAsm("0B 00 20 00 00 00 FF 01 00 00 00 00 0C 00 00 00 4D 61 69 6E 4D 42 6F 73 73 00 00 00 3C 00 00 00 0B");
             public static readonly byte[] eclStage6MBoss = HexCodeHelper.stringToAsm("170014000000FF0100000000900100003C0000000C0214000000FF0100000000050000003C000000060214000000FF0100000000000000003C0000000C0214000000FF0100000000060000003C000000");
             public static readonly object[] stage1BossList = bossCount.count4;
             public static readonly object[] stage2BossList = bossCount.count3;
