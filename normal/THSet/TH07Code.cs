@@ -137,11 +137,12 @@ namespace THSet {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EC00,i);//extra
             write(0x0042EC36,i);//phantasm
-            write(0x0042ED4F,HexCodeHelper.getNop(6));
-            write(0x0042ED7A,HexCodeHelper.getNop(6));
-            write(0x0042EDA5,HexCodeHelper.getNop(6));
-            write(0x0042EDD0,HexCodeHelper.getNop(6));
-            write(0x0042ECAE,i);//p1 p2 p3 p4 p5 p6
+            write(0x0042EC92,i);//easy
+            write(0x0042ECAE,i);//normal
+            write(0x0042ECCA,i);//hard
+            write(0x0042ECE6,i);//lunatic
+
+            write(0x0042ED00,HexCodeHelper.stringToAsm("E9 E3 00 00 00 90"));
         }
 
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
