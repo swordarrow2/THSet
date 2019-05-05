@@ -63,7 +63,7 @@ namespace THSet {
             byte[] bytes = BitConverter.GetBytes(value);
             string asmString = "";
             foreach(byte b in bytes) {
-                    asmString+=string.Format("{0:X2}",b);
+                asmString+=string.Format("{0:X2}",b);
             }
             return asmString;
         }
@@ -86,6 +86,10 @@ namespace THSet {
 
         public static byte[] getValueArray(byte[] array,bool isHooked) {
             return isHooked ? getNop(array.Length) : array;
+        }
+
+        public static byte[] getValueArray(string array,bool isHooked) {
+            return isHooked ? getNop(stringToAsm(array).Length) : stringToAsm(array);
         }
 
         public static byte[] getNop(int count) {

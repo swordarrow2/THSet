@@ -110,6 +110,7 @@
     <Compile Include="TH10Code.cs" />
     <Compile Include="TH11Code.cs" />
     <Compile Include="EclHelper.cs" />
+    <Compile Include="TH17Code.cs" />
     <Compile Include="TH165Code.cs" />
     <Compile Include="TH128Code.cs" />
     <Compile Include="TH12Code.cs" />

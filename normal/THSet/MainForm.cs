@@ -12,14 +12,13 @@ using System.Windows.Forms;
 
 namespace THSet {
     public partial class MainForm:Form {
-        public const string versonCode = "THSet v3.4.8";
+        public const string versonCode = "THSet v3.4.9";
         private bool useAutoBomb = false;
         private FormWindowState fwsPrevious;
         private FloatWindow floatWindow;
-        private THCode tc;
+        private THCode thCode;
         private Process THprocess;
-        private bool[] enable;
-        public string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165" };
+        public string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165","th17" };
         private string[] sptip;
         private int pid = 0;
         private int lastLife = 0;
@@ -37,7 +36,6 @@ namespace THSet {
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetActiveWindow();//获得当前活动窗体  
-
         public MainForm() {
             InitializeComponent();
             for(;gameIndex<names.Length;gameIndex++) {
@@ -55,62 +53,61 @@ namespace THSet {
             }
             switch(gameIndex) {
                 case 0:
-                    tc=new TH07Code(new MemoryTool(THprocess));
+                    thCode=new TH07Code(new MemoryTool(THprocess));
                     lbMaxpoint.Text=lbIMaxPoint.Text="分子";
                     THNo=7;
                     break;
                 case 1:
-                    tc=new TH08Code(new MemoryTool(THprocess));
+                    thCode=new TH08Code(new MemoryTool(THprocess));
                     lbMaxpoint.Text=lbIMaxPoint.Text="Time";
                     THNo=8;
                     break;
                 case 4:
                 case 5:
-                case 6: tc=new TH10Code(new MemoryTool(THprocess)); THNo=10; break;
+                case 6: thCode=new TH10Code(new MemoryTool(THprocess)); THNo=10; break;
                 case 7:
-                case 8: tc=new TH11Code(new MemoryTool(THprocess)); THNo=11; break;
+                case 8: thCode=new TH11Code(new MemoryTool(THprocess)); THNo=11; break;
                 case 9:
-                case 10: tc=new TH12Code(new MemoryTool(THprocess)); THNo=12; break;
+                case 10: thCode=new TH12Code(new MemoryTool(THprocess)); THNo=12; break;
                 case 11:
-                case 12: tc=new TH128Code(new MemoryTool(THprocess)); THNo=128; break;
+                case 12: thCode=new TH128Code(new MemoryTool(THprocess)); THNo=128; break;
                 case 13:
-                case 14: tc=new TH13Code(new MemoryTool(THprocess)); THNo=13; break;
-                case 15: tc=new TH14Code(new MemoryTool(THprocess)); THNo=14; break;
-                case 16: tc=new TH15Code(new MemoryTool(THprocess)); THNo=15; break;
-                case 17: tc=new TH16Code(new MemoryTool(THprocess)); THNo=16; break;
-                case 18: tc=new TH165Code(new MemoryTool(THprocess)); THNo=165; break;
+                case 14: thCode=new TH13Code(new MemoryTool(THprocess)); THNo=13; break;
+                case 15: thCode=new TH14Code(new MemoryTool(THprocess)); THNo=14; break;
+                case 16: thCode=new TH15Code(new MemoryTool(THprocess)); THNo=15; break;
+                case 17: thCode=new TH16Code(new MemoryTool(THprocess)); THNo=16; break;
+                case 18: thCode=new TH165Code(new MemoryTool(THprocess)); THNo=165; break;
+                case 19: thCode=new TH17Code(new MemoryTool(THprocess)); THNo=17; break;
             }
-            Text=tc.getTitle();
-            enable=tc.getEnable();
-            sptip=tc.getSpecialTip();
-            string[] d = tc.getDefaultValue();
-            lbPlayer.Enabled=tbPlayer.Enabled=btnPlayer.Enabled=enable[0];
-            lbPF.Enabled=tbPlayerFragment.Enabled=btnPlayerFragment.Enabled=enable[1];
-            lbBomb.Enabled=tbBomb.Enabled=btnBomb.Enabled=enable[2];
-            lbBF.Enabled=tbBombFragment.Enabled=btnBombFragment.Enabled=enable[3];
-            lbPower.Enabled=tbPower.Enabled=btnPower.Enabled=enable[4];
-            lbScore.Enabled=tbScore.Enabled=btnScore.Enabled=enable[5];
-            lbMaxpoint.Enabled=tbMaxPoint.Enabled=btnMaxPoint.Enabled=enable[6];
-            lbSp1.Enabled=tbSp1.Enabled=btnSp1.Enabled=enable[7];
-            lbSp2.Enabled=tbSp2.Enabled=btnSp2.Enabled=enable[8];
-            lbSp3.Enabled=tbSp3.Enabled=btnSp3.Enabled=enable[9];
+            Text=thCode.GetTitle();
+            sptip=thCode.GetSpecialTip();
+            string[] d = thCode.GetDefaultValue();
+            lbPlayer.Enabled=tbPlayer.Enabled=btnPlayer.Enabled=thCode.EnableSetPlayer;
+            lbPF.Enabled=tbPlayerFragment.Enabled=btnPlayerFragment.Enabled=thCode.EnableSetPlayerFragment;
+            lbBomb.Enabled=tbBomb.Enabled=btnBomb.Enabled=thCode.EnableSetBomb;
+            lbBF.Enabled=tbBombFragment.Enabled=btnBombFragment.Enabled=thCode.EnableSetBombFragment;
+            lbPower.Enabled=tbPower.Enabled=btnPower.Enabled=thCode.EnableSetPower;
+            lbScore.Enabled=tbScore.Enabled=btnScore.Enabled=thCode.EnableSetScore;
+            lbMaxpoint.Enabled=tbMaxPoint.Enabled=btnMaxPoint.Enabled=thCode.EnableSetMaxPoint;
+            lbSp1.Enabled=tbSp1.Enabled=btnSp1.Enabled=thCode.EnableSetSpecial1;
+            lbSp2.Enabled=tbSp2.Enabled=btnSp2.Enabled=thCode.EnableSetSpecial2;
+            lbSp3.Enabled=tbSp3.Enabled=btnSp3.Enabled=thCode.EnableSetSpecial3;
 
-            lbIPlayer.Enabled=tbIPlayer.Enabled=btnIPlayer.Enabled=enable[10];
-            lbIPF.Enabled=tbIPlayerFragment.Enabled=btnIPlayerFragment.Enabled=enable[11];
-            lbIBomb.Enabled=tbIBomb.Enabled=btnIBomb.Enabled=enable[12];
-            lbIBF.Enabled=tbIBombFragment.Enabled=btnIBombFragment.Enabled=enable[13];
-            lbIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=enable[14];
-            lbIScore.Enabled=tbIScore.Enabled=btnIScore.Enabled=enable[15];
-            lbIMaxPoint.Enabled=tbIMaxPoint.Enabled=btnIMaxPoint.Enabled=enable[16];
-            lbISp1.Enabled=tbISp1.Enabled=btnISpe1.Enabled=enable[17];
-            lbISp2.Enabled=tbISp2.Enabled=btnISp2.Enabled=enable[18];
-            lbISp3.Enabled=tbISp3.Enabled=btnISp3.Enabled=enable[19];
+            lbIPlayer.Enabled=tbIPlayer.Enabled=btnIPlayer.Enabled=thCode.EnableSetIPlayer;
+            lbIPF.Enabled=tbIPlayerFragment.Enabled=btnIPlayerFragment.Enabled=thCode.EnableSetIPlayerFragment;
+            lbIBomb.Enabled=tbIBomb.Enabled=btnIBomb.Enabled=thCode.EnableSetIBomb;
+            lbIBF.Enabled=tbIBombFragment.Enabled=btnIBombFragment.Enabled=thCode.EnableSetIBombFragment; ;
+            lbIPower.Enabled=tbIPower.Enabled=btnIPower.Enabled=thCode.EnableSetIPower;
+            lbIScore.Enabled=tbIScore.Enabled=btnIScore.Enabled=thCode.EnableSetIScore;
+            lbIMaxPoint.Enabled=tbIMaxPoint.Enabled=btnIMaxPoint.Enabled=thCode.EnableSetIMaxPoint;
+            lbISp1.Enabled=tbISp1.Enabled=btnISpe1.Enabled=thCode.EnableSetISpecial1;
+            lbISp2.Enabled=tbISp2.Enabled=btnISp2.Enabled=thCode.EnableSetISpecial2;
+            lbISp3.Enabled=tbISp3.Enabled=btnISp3.Enabled=thCode.EnableSetISpecial3;
+            groupBoxFPSChange.Enabled=thCode.EnableSetFPS;
+            groupBoxBoss.Enabled=thCode.EnableBossHPInfo;
+            lbBulletCount.Enabled=thCode.EnableShowBulletCount;
 
-            groupBoxFPSChange.Enabled=enable[23];
-            groupBoxBoss.Enabled=enable[25];
-            lbBulletCount.Enabled=enable[26];
-
-            gbBossPractice.Enabled=enable[28];
+            gbBossPractice.Enabled=thCode.EnableChapterPrictice;
             lbSp1.Text=lbSp1.Enabled ? sptip[0] : "不可用";
             lbSp2.Text=lbSp2.Enabled ? sptip[1] : "不可用";
             lbSp3.Text=lbSp3.Enabled ? sptip[2] : "不可用";
@@ -144,18 +141,17 @@ namespace THSet {
             if(THNo==7||THNo==8) {
                 lbPF.Text=lbIPF.Text="蓝点数";
                 timerMissAndBomb.Enabled=true;
-                groupBoxSourceUse.Enabled=enable[24];
                 btnCountStart.Enabled=false;
             }
 
             timerMissAndBomb.Enabled=true; timerEnemy.Enabled=timerDPS.Enabled=true;
-            tc.StartCount();
-            lockPlayer.Enabled=enable[20];
-            lockBomb.Enabled=enable[21];
-            unbeatable.Enabled=enable[22];
-            groupBoxSourceUse.Enabled=enable[24];
-            btnKill.Enabled=enable[27];
-            cbAutoBomb.Enabled=enable[29];
+            thCode.StartCount();
+            lockPlayer.Enabled=thCode.EnableSetLockPlayer;
+            lockBomb.Enabled=thCode.EnableSetLockBomb;
+            unbeatable.Enabled=thCode.EnableSetUnbeatable;
+            groupBoxSourceUse.Enabled=thCode.EnableSourceCount;
+            btnKill.Enabled=thCode.EnableKillSelf;
+            cbAutoBomb.Enabled=thCode.EnableAutoBomb;
 
         }
 
@@ -185,75 +181,75 @@ namespace THSet {
                 }
             }
         }
-        private void lockPlayer_CheckedChanged(object sender,EventArgs e) => tc.setLockPlayer(lockPlayer.Checked);
-        private void lockBomb_CheckedChanged(object sender,EventArgs e) => tc.setLockBomb(lockBomb.Checked);
-        private void choice_CheckedChanged(object sender,EventArgs e) => tc.setUnbeatable(unbeatable.Checked);
+        private void lockPlayer_CheckedChanged(object sender,EventArgs e) => thCode.SetLockPlayer(lockPlayer.Checked);
+        private void lockBomb_CheckedChanged(object sender,EventArgs e) => thCode.SetLockBomb(lockBomb.Checked);
+        private void choice_CheckedChanged(object sender,EventArgs e) => thCode.SetUnbeatable(unbeatable.Checked);
         private void btnFPS_Click(object sender,EventArgs e) {
             int v = Convert.ToInt32(tbFPS.Text);
-            tc.setFPS(v);
+            thCode.SetFPS(v);
             trackBar_FPS.Value=v>trackBar_FPS.Maximum ? trackBar_FPS.Maximum : v<trackBar_FPS.Minimum ? trackBar_FPS.Minimum : v;
         }
-        private void trackBar_FPS_Scroll(object sender,EventArgs e) => tc.setFPS(Convert.ToInt32(tbFPS.Text=Convert.ToString(trackBar_FPS.Value)));
-        private void btnPlayer_Click(object sender,EventArgs e) => tc.setPlayer(Convert.ToInt32(tbPlayer.Text));
-        private void btnPlayerFragment_Click(object sender,EventArgs e) => tc.setPlayerFragment(Convert.ToInt32(tbPlayerFragment.Text));
-        private void btnBomb_Click(object sender,EventArgs e) => tc.setBomb(Convert.ToInt32(tbBomb.Text));
-        private void btnBombFragment_Click(object sender,EventArgs e) => tc.setBombFragment(Convert.ToInt32(tbBombFragment.Text));
-        private void btnPower_Click(object sender,EventArgs e) => tc.setPower(Convert.ToInt32(tbPower.Text));
-        private void btnScore_Click(object sender,EventArgs e) => tc.setScore(Convert.ToInt32(Convert.ToInt64(tbScore.Text)/10));
-        private void btnMaxPoint_Click(object sender,EventArgs e) => tc.setMaxPoint(Convert.ToInt32(tbMaxPoint.Text));
-        private void btnSpecial1_Click(object sender,EventArgs e) => tc.setSpecial1(Convert.ToInt32(tbSp1.Text));
-        private void btnSpecial2_Click(object sender,EventArgs e) => tc.setSpecial2(Convert.ToInt32(tbSp2.Text));
-        private void btnSpecial3_Click(object sender,EventArgs e) => tc.setSpecial3(Convert.ToInt32(tbSp3.Text));
-        private void btnReadSpecial1_Click(object sender,EventArgs e) => tbSp1.Text=Convert.ToString(tc.getSpecial1());
-        private void btnReadSpecial2_Click(object sender,EventArgs e) => tbSp2.Text=Convert.ToString(tc.getSpecial2());
-        private void btnReadSpecial3_Click(object sender,EventArgs e) => tbSp3.Text=Convert.ToString(tc.getSpecial3());
-        private void btnIPlayer_Click(object sender,EventArgs e) => tc.setIPlayer(Convert.ToInt32(tbIPlayer.Text));
-        private void btnIPlayerFragment_Click(object sender,EventArgs e) => tc.setIPlayerFragment(Convert.ToInt32(tbIPlayerFragment.Text));
-        private void btnIBomb_Click(object sender,EventArgs e) => tc.setIBomb(Convert.ToInt32(tbIBomb.Text));
-        private void btnIBombFragment_Click(object sender,EventArgs e) => tc.setIBombFragment(Convert.ToInt32(tbIBombFragment.Text));
-        private void btnIPower_Click(object sender,EventArgs e) => tc.setIPower(Convert.ToInt32(tbIPower.Text));
-        private void btnIScore_Click(object sender,EventArgs e) => tc.setIScore(Convert.ToInt32(Convert.ToInt64(tbIScore.Text)/10));
-        private void btnIMaxPoint_Click(object sender,EventArgs e) => tc.setIMaxPoint(Convert.ToInt32(tbIMaxPoint.Text));
-        private void btnISpecial1_Click(object sender,EventArgs e) => tc.setISpecial1(Convert.ToInt32(tbISp1.Text));
-        private void btnISpecial2_Click(object sender,EventArgs e) => tc.setISpecial2(Convert.ToInt32(tbISp2.Text));
-        private void btnISpecial3_Click(object sender,EventArgs e) => tc.setISpecial3(Convert.ToInt32(tbISp3.Text));
-        private void showBug_Click(object sender,EventArgs e) => MessageBox.Show(tc.getAboutBug(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
-        private void button2_Click(object sender,EventArgs e) => MessageBox.Show(tc.getAboutSpecial(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+        private void trackBar_FPS_Scroll(object sender,EventArgs e) => thCode.SetFPS(Convert.ToInt32(tbFPS.Text=Convert.ToString(trackBar_FPS.Value)));
+        private void btnPlayer_Click(object sender,EventArgs e) => thCode.SetPlayer(Convert.ToInt32(tbPlayer.Text));
+        private void btnPlayerFragment_Click(object sender,EventArgs e) => thCode.SetPlayerFragment(Convert.ToInt32(tbPlayerFragment.Text));
+        private void btnBomb_Click(object sender,EventArgs e) => thCode.SetBomb(Convert.ToInt32(tbBomb.Text));
+        private void btnBombFragment_Click(object sender,EventArgs e) => thCode.SetBombFragment(Convert.ToInt32(tbBombFragment.Text));
+        private void btnPower_Click(object sender,EventArgs e) => thCode.SetPower(Convert.ToInt32(tbPower.Text));
+        private void btnScore_Click(object sender,EventArgs e) => thCode.SetScore(Convert.ToInt32(Convert.ToInt64(tbScore.Text)/10));
+        private void btnMaxPoint_Click(object sender,EventArgs e) => thCode.SetMaxPoint(Convert.ToInt32(tbMaxPoint.Text));
+        private void btnSpecial1_Click(object sender,EventArgs e) => thCode.SetSpecial1(Convert.ToInt32(tbSp1.Text));
+        private void btnSpecial2_Click(object sender,EventArgs e) => thCode.SetSpecial2(Convert.ToInt32(tbSp2.Text));
+        private void btnSpecial3_Click(object sender,EventArgs e) => thCode.SetSpecial3(Convert.ToInt32(tbSp3.Text));
+        private void btnReadSpecial1_Click(object sender,EventArgs e) => tbSp1.Text=Convert.ToString(thCode.GetSpecial1());
+        private void btnReadSpecial2_Click(object sender,EventArgs e) => tbSp2.Text=Convert.ToString(thCode.GetSpecial2());
+        private void btnReadSpecial3_Click(object sender,EventArgs e) => tbSp3.Text=Convert.ToString(thCode.GetSpecial3());
+        private void btnIPlayer_Click(object sender,EventArgs e) => thCode.SetIPlayer(Convert.ToInt32(tbIPlayer.Text));
+        private void btnIPlayerFragment_Click(object sender,EventArgs e) => thCode.SetIPlayerFragment(Convert.ToInt32(tbIPlayerFragment.Text));
+        private void btnIBomb_Click(object sender,EventArgs e) => thCode.SetIBomb(Convert.ToInt32(tbIBomb.Text));
+        private void btnIBombFragment_Click(object sender,EventArgs e) => thCode.SetIBombFragment(Convert.ToInt32(tbIBombFragment.Text));
+        private void btnIPower_Click(object sender,EventArgs e) => thCode.SetIPower(Convert.ToInt32(tbIPower.Text));
+        private void btnIScore_Click(object sender,EventArgs e) => thCode.SetIScore(Convert.ToInt32(Convert.ToInt64(tbIScore.Text)/10));
+        private void btnIMaxPoint_Click(object sender,EventArgs e) => thCode.SetIMaxPoint(Convert.ToInt32(tbIMaxPoint.Text));
+        private void btnISpecial1_Click(object sender,EventArgs e) => thCode.SetISpecial1(Convert.ToInt32(tbISp1.Text));
+        private void btnISpecial2_Click(object sender,EventArgs e) => thCode.SetISpecial2(Convert.ToInt32(tbISp2.Text));
+        private void btnISpecial3_Click(object sender,EventArgs e) => thCode.SetISpecial3(Convert.ToInt32(tbISp3.Text));
+        private void showBug_Click(object sender,EventArgs e) => MessageBox.Show(thCode.GetAboutBug(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
+        private void button2_Click(object sender,EventArgs e) => MessageBox.Show(thCode.GetAboutSpecial(),versonCode,MessageBoxButtons.OK,MessageBoxIcon.Information);
         private void btnKill_Click(object sender,EventArgs e) => killSelf();
         private void timerMissAndBomb_Tick(object sender,EventArgs e) {
-            if(!enable[24]) return;
-            missCount=tc.getMissCount();
-            bombCount=tc.getBombCount();
+            if(!thCode.EnableSourceCount) return;
+            missCount=thCode.GetMissCount();
+            bombCount=thCode.GetBombCount();
             lbMissCount.Text="miss次数:"+missCount;
             lbBombCount.Text="bomb次数:"+bombCount;
         }
         private void timerEnemy_Tick(object sender,EventArgs e) {
             if(getActiveWindow()==IntPtr.Zero&&useAutoBomb) {
-                tc.checkNeedBomb();
+                thCode.CheckNeedBomb();
             }
             // lbLife.Text="游戏"+THprocess.Handle+"\n当前"+getActiveWindow();
-            if(enable[25]) {
-                bossLife=tc.getBossLife();
+            if(thCode.EnableBossHPInfo) {
+                bossLife=thCode.GetBossLife();
                 lbLife.Text="血量:"+bossLife;
             }
-            if(enable[26]) {
-                bulletCount=tc.getBulletCount();
+            if(thCode.EnableShowBulletCount) {
+                bulletCount=thCode.GetBulletCount();
                 lbBulletCount.Text="子弹数量:"+bulletCount;
             }
-            if(!enable[7]) return;
+            if(!thCode.EnableSetSpecial1) return;
             if(THNo==7) {
-                lbShowSp1.Text=sp1="樱道具值:"+(1000+100*tc.getSpecial1());
+                lbShowSp1.Text=sp1="樱道具值:"+(1000+100*thCode.GetSpecial1());
             } else {
-                lbShowSp1.Text=sptip[0]+":"+tc.getSpecial1();
+                lbShowSp1.Text=sptip[0]+":"+thCode.GetSpecial1();
             }
-            if(!enable[8]) return;
-            lbShowSp2.Text=sptip[1]+":"+tc.getSpecial2();
-            if(!enable[9]) return;
-            if(THNo==7) lbShowSp3.Text=sptip[2]+":"+tc.getSpecial3();
+            if(!thCode.EnableSetSpecial2) return;
+            lbShowSp2.Text=sptip[1]+":"+thCode.GetSpecial2();
+            if(!thCode.EnableSetSpecial3) return;
+            if(THNo==7) lbShowSp3.Text=sptip[2]+":"+thCode.GetSpecial3();
         }
         private void timerDPS_Tick(object sender,EventArgs e) {
-            if(enable[25]) {
-                thisLife=tc.getBossLife();
+            if(thCode.EnableBossHPInfo) {
+                thisLife=thCode.GetBossLife();
                 dps=lastLife-thisLife;
                 lbDPS.Text="DPS:"+dps;
                 lastLife=thisLife;
@@ -311,23 +307,23 @@ namespace THSet {
             Properties.Settings.Default.fontB=trackBarFontB.Value;
             Properties.Settings.Default.Save();
         }
-        public void restartCount() => tc.StartCount();
-        public void killSelf() => tc.killSelf();
+        public void restartCount() => thCode.StartCount();
+        public void killSelf() => thCode.KillSelf();
         private void comboBoxStage_selected(object sender,EventArgs e) {
             if(comboBoxStage.Text.Equals("")) return;
-            tc.setStage(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+            thCode.SetStage(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void comboBoxChapter_selected(object sender,EventArgs e) {
             if(comboBoxChapter.Text.Equals("")) return;
-            tc.setChapter(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+            thCode.SetChapter(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void comboBoxMBoss_selected(object sender,EventArgs e) {
             if(comboBoxMBoss.Text.Equals("")) return;
-            tc.setMBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+            thCode.SetMBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void comboBoxBoss_selected(object sender,EventArgs e) {
             if(comboBoxBoss.Text.Equals("")) return;
-            tc.setBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
+            thCode.SetBossNum(comboBoxStage,comboBoxChapter,comboBoxMBoss,comboBoxBoss);
         }
         private void cbAutoBomb_CheckedChanged(object sender,EventArgs e) => useAutoBomb=cbAutoBomb.Checked;
     }

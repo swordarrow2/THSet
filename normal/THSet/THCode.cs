@@ -6,62 +6,95 @@ using System.Windows.Forms;
 
 namespace THSet {
     public abstract class THCode {
-        public abstract string getTitle();
-        public abstract string[] getSpecialTip();
-        public abstract string getAboutBug();
-        public abstract string getAboutSpecial();
-        public abstract string[] getDefaultValue();
-        public abstract void setStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void setChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void setMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void setBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
+        public abstract string GetTitle();
+        public abstract string[] GetSpecialTip();
+        public abstract string GetAboutBug();
+        public abstract string GetAboutSpecial();
+        public abstract string[] GetDefaultValue();
+        public abstract void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
+        public abstract void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
+        public abstract void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
+        public abstract void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
         public abstract void StartCount();
-        public abstract int getMissCount();
-        public abstract int getBombCount();
-        public abstract int getBulletCount();
-        public abstract int getBossLife();
-        public abstract void killSelf();
-        public abstract void checkNeedBomb();
+        public abstract int GetMissCount();
+        public abstract int GetBombCount();
+        public abstract int GetBulletCount();
+        public abstract int GetBossLife();
+        public abstract void KillSelf();
+        public abstract void CheckNeedBomb();
 
-        public abstract bool[] getEnable();
+        public abstract bool[] GetEnable();
 
-        public abstract void setLockPlayer(bool b);
-        public abstract void setLockBomb(bool b);
-        public abstract void setUnbeatable(bool b);
-        public abstract void setFPS(int i);
+        public abstract void SetLockPlayer(bool b);
+        public abstract void SetLockBomb(bool b);
+        public abstract void SetUnbeatable(bool b);
+        public abstract void SetFPS(int i);
 
-        public abstract void setPlayer(int i);
-        public abstract void setPlayerFragment(int i);
+        public abstract void SetPlayer(int i);
+        public abstract void SetPlayerFragment(int i);
 
-        public abstract void setBomb(int i);
-        public abstract void setBombFragment(int i);
+        public abstract void SetBomb(int i);
+        public abstract void SetBombFragment(int i);
 
-        public abstract void setPower(int i);
+        public abstract void SetPower(int i);
 
-        public abstract void setScore(int i);
-        public abstract void setMaxPoint(int i);
+        public abstract void SetScore(int i);
+        public abstract void SetMaxPoint(int i);
 
-        public abstract void setSpecial1(int i);
-        public abstract void setSpecial2(int i);
-        public abstract void setSpecial3(int i);
-        public abstract int getSpecial1();
-        public abstract int getSpecial2();
-        public abstract int getSpecial3();
+        public abstract void SetSpecial1(int i);
+        public abstract void SetSpecial2(int i);
+        public abstract void SetSpecial3(int i);
+        public abstract int GetSpecial1();
+        public abstract int GetSpecial2();
+        public abstract int GetSpecial3();
 
 
-        public abstract void setIPlayer(int i);
-        public abstract void setIPlayerFragment(int i);
-        public abstract void setIBomb(int i);
-        public abstract void setIBombFragment(int i);
+        public abstract void SetIPlayer(int i);
+        public abstract void SetIPlayerFragment(int i);
+        public abstract void SetIBomb(int i);
+        public abstract void SetIBombFragment(int i);
 
-        public abstract void setIPower(int i);
+        public abstract void SetIPower(int i);
 
-        public abstract void setIScore(int i);
-        public abstract void setIMaxPoint(int i);
+        public abstract void SetIScore(int i);
+        public abstract void SetIMaxPoint(int i);
 
-        public abstract void setISpecial1(int i);
-        public abstract void setISpecial2(int i);
-        public abstract void setISpecial3(int i);
+        public abstract void SetISpecial1(int i);
+        public abstract void SetISpecial2(int i);
+        public abstract void SetISpecial3(int i);
+
+        public bool EnableSetIPlayer => GetEnable()[0];
+        public bool EnableSetIPlayerFragment => GetEnable()[1];
+        public bool EnableSetIBomb => GetEnable()[2];
+        public bool EnableSetIBombFragment => GetEnable()[3];
+        public bool EnableSetIPower => GetEnable()[4];
+        public bool EnableSetIScore => GetEnable()[5];
+        public bool EnableSetIMaxPoint => GetEnable()[6];
+        public bool EnableSetISpecial1 => GetEnable()[7];
+        public bool EnableSetISpecial2 => GetEnable()[8];
+        public bool EnableSetISpecial3 => GetEnable()[9];
+
+        public bool EnableSetPlayer => GetEnable()[10];
+        public bool EnableSetPlayerFragment => GetEnable()[11];
+        public bool EnableSetBomb => GetEnable()[12];
+        public bool EnableSetBombFragment => GetEnable()[13];
+        public bool EnableSetPower => GetEnable()[14];
+        public bool EnableSetScore => GetEnable()[15];
+        public bool EnableSetMaxPoint => GetEnable()[16];
+        public bool EnableSetSpecial1 => GetEnable()[17];
+        public bool EnableSetSpecial2 => GetEnable()[18];
+        public bool EnableSetSpecial3 => GetEnable()[19];
+
+        public bool EnableSetLockPlayer => GetEnable()[20];
+        public bool EnableSetLockBomb => GetEnable()[21];
+        public bool EnableSetUnbeatable => GetEnable()[22];
+        public bool EnableSetFPS => GetEnable()[23];
+        public bool EnableSourceCount => GetEnable()[24];
+        public bool EnableBossHPInfo => GetEnable()[25];
+        public bool EnableShowBulletCount => GetEnable()[26];
+        public bool EnableKillSelf => GetEnable()[27];
+        public bool EnableChapterPrictice => GetEnable()[28];
+        public bool EnableAutoBomb => GetEnable()[29];
 
     }
 }
