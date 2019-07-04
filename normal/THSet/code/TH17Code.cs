@@ -133,7 +133,7 @@ namespace THSet {
         public override int GetSpecial1() => (int)(mt.ReadFloat(mt.ReadInteger(0x004B5654)+0x16838)*100);
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
-        public override void SetIPlayer(int i) { }
+        public override void SetIPlayer(int i) { MessageBox.Show("text:"+i); }
         public override void SetIPlayerFragment(int i) { }
         public override void SetIBomb(int i) { }
         public override void SetIBombFragment(int i) { }

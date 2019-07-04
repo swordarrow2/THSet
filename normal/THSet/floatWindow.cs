@@ -11,8 +11,8 @@ namespace THSet {
     public partial class FloatWindow:Form {
         private Point ptMouseCurrrnetPos, ptMouseNewPos, ptFormPos, ptFormNewPos;
         private bool blnMouseDown = false;
-        private MainForm parent;
-        public FloatWindow(MainForm pMain) {
+        private MainForm2 parent;
+        public FloatWindow(MainForm2 pMain) {
             InitializeComponent();
             parent=pMain;
         }
