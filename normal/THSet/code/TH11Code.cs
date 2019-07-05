@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,10 @@ namespace THSet {
             lastStatu=thisStatu;
         }
         public TH11Code(MemoryTool m) => mt=m;
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
         public override string GetTitle() => new Random().Next()%2==0 ? "多睡觉，少操心" : "东方弟灵殿";
         public override string GetAboutBug() => "魔A使用ctrl跳过对话会导致存录像时游戏爆炸(金发孩子真可怜.jpg)，使用z即可\n\nreplay从5面结束到6面第一波乌鸦飞走前若使用了快进，则大鸟战录像爆炸\n\n梦A下避easy难度「波与粒的境界」可能导致录像爆炸";
         public override string GetAboutSpecial() => "对于魔理沙A火力初始值修改请开始游戏(修改器确认机体)后再修改，然后使用ESC+R重新开始游戏";
@@ -87,9 +88,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(0x004A56F0,i*100);
         public override void SetSpecial2(int i) => write(0x004A56F4,i*100);
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x004A56F0)/100;
         public override int GetSpecial2() => mt.ReadInteger(0x004A56F4)/100;
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0041FA38,new byte[] { 0xE9,0x84,0xFE,0xFF,0xFF,0x90 });                 //jmp 0041F8C1
@@ -125,6 +128,7 @@ namespace THSet {
         public override void SetISpecial1(int i) { }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private bool isMarisaA() => ((mt.ReadInteger(0x004A5710)==1)&&(mt.ReadInteger(0x004A5714)==0));
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace THSet {
         }
         //    private int logoEnemyAddress = 0;
         //    private int bossEclAddress = 0;
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             /*       bossEclAddress=0;
                    logoEnemyAddress=0;
                    bossBox.Items.Clear();
@@ -45,7 +46,7 @@ namespace THSet {
                    }
                    */
         }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             /*    byte[] memory = new byte[0x1000];
                 byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
                 byte[] eclMainFront = EclHelper.stageEcl[0];
@@ -86,8 +87,8 @@ namespace THSet {
                 }
                 */
         }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             /*   byte[] memory = new byte[0x1000];
                byte[] bossEcl = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclTH15ExtraMainBossNum : EclHelper.eclMainBossNum;
                int index = 0;
@@ -153,9 +154,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(0x004E7420,i);
         public override void SetSpecial2(int i) { }
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x004E7420);
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) {
             write(0x0043C2B3,i);
             write(0x0043C2C8,i);
@@ -177,6 +180,7 @@ namespace THSet {
         public override void SetISpecial1(int i) { }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

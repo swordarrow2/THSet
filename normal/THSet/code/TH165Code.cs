@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ namespace THSet {
         MemoryTool mt;
         public TH165Code(MemoryTool m) => mt=m;
         public override void CheckNeedBomb() { }
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
         public override string GetTitle() => new Random().Next()%2==0 ? "bug日记" : "TH14.5";
         public override string[] GetSpecialTip() => new string[] { "拍照能量","","" };
         public override string GetAboutBug() => "ESC+R并不会让游戏重新开始，而且还会多一层菜单遮挡视线\n撞弹后进入游戏说明再回到游戏可以复活";
@@ -50,9 +51,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(mt.ReadInteger(0x004B5654)+0x16838,BitConverter.GetBytes(i/100f));
         public override void SetSpecial2(int i) { }
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => (int)(mt.ReadFloat(mt.ReadInteger(0x004B5654)+0x16838)*100);
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) { }
         public override void SetIPlayerFragment(int i) { }
         public override void SetIBomb(int i) { }
@@ -63,6 +66,7 @@ namespace THSet {
         public override void SetISpecial1(int i) { }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

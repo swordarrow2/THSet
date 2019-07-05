@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,10 +21,10 @@ namespace THSet {
             }
             lastStatu=thisStatu;
         }
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
         public override string GetTitle() => new Random().Next()%2==0 ? "东方炸比录" : "东方神曲录";
         public override string GetAboutBug() => "四面部分地点诱导失效,是因为屏幕外侧有打不到的敌人\n\n全关的replay如果直接从4面播放会导致录像爆炸，从3面开始播放即可避免\n\nreplay保存多次将会爆炸";
         public override string GetAboutSpecial() => "信仰值初始为50000，最大值为999990";
@@ -81,9 +82,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(0x00474C4C,i/10);
         public override void SetSpecial2(int i) { }
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x00474C4C)*10;
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             byte[] by = new byte[] { 0xC7,0x05,0x70,0x4C,0x47,0x00,b };//mov[00474C70],b
@@ -123,6 +126,7 @@ namespace THSet {
         }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

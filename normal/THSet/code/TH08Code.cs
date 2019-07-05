@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,10 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public TH08Code(MemoryTool m) => mt=m;
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
         public override string GetTitle() => new Random().Next()%2==0 ? "东方永夜抄" : "TH08";
         public override string[] GetSpecialTip() => new string[] { "","","" };
         public override string GetAboutBug() => "不知道（";
@@ -46,9 +47,11 @@ namespace THSet {
         public override void SetSpecial1(int i) { }
         public override void SetSpecial2(int i) { }
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() { return 0; }
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x0043AE42,new byte[] { 0xE9,0x8B,0x78,0xFF,0xFF,0x90,0x90,0x90 });//jmp 004326D2
@@ -117,6 +120,7 @@ namespace THSet {
         public override void SetISpecial1(int i) { }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }

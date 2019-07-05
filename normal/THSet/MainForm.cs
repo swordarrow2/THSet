@@ -118,16 +118,19 @@ namespace THSet {
                     if(listView.SelectedItems.Count>0) {
                         practiceData.stage=listView.SelectedItems[0].Text;
                     }
+                    thCode.SetStage(stageList,chapterList,null,bossList);
                     break;
                 case "chapterList":
                     if(listView.SelectedItems.Count>0) {
                         practiceData.chapter=listView.SelectedItems[0].Text;
                     }
+                    thCode.SetChapter(stageList,chapterList,null,bossList);
                     break;
                 case "bossList":
                     if(listView.SelectedItems.Count>0) {
                         practiceData.boss=listView.SelectedItems[0].Text;
                     }
+                    thCode.SetBossNum(stageList,chapterList,null,bossList);
                     break;
             }
             MessageBox.Show(practiceData.stage+" "+practiceData.chapter+" "+practiceData.boss);
@@ -415,16 +418,13 @@ namespace THSet {
             if(thCode.EnableShowBulletCount) {
                 page3data.bullet=thCode.GetBulletCount();
                 bulletLable.Text="子弹数量:"+page3data.bullet;
-            }
-            if(!thCode.EnableSetSpecial1) return;
+            } 
             if(gameNum==7) {
                 otherLabel1.Text="樱道具值:"+(1000+100*thCode.GetSpecial1());
             } else {
                 otherLabel1.Text=thCode.GetSpecialTip()[0]+":"+thCode.GetSpecial1();
-            }
-            if(!thCode.EnableSetSpecial2) return;
-            otherLabel2.Text=thCode.GetSpecialTip()[1]+":"+thCode.GetSpecial2();
-            if(!thCode.EnableSetSpecial3) return;
+            } 
+            otherLabel2.Text=thCode.GetSpecialTip()[1]+":"+thCode.GetSpecial2(); 
             if(gameNum==7) otherLabel3.Text=thCode.GetSpecialTip()[2]+":"+thCode.GetSpecial3();
         }
         #endregion

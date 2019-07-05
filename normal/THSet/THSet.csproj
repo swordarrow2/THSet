@@ -90,12 +90,6 @@
     <Compile Include="MainForm.designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm2.Designer.cs">
-      <DependentUpon>MainForm2.cs</DependentUpon>
-    </Compile>
     <Compile Include="MaterialDesign\Animations\AnimationDirection.cs" />
     <Compile Include="MaterialDesign\Animations\AnimationManager.cs" />
     <Compile Include="MaterialDesign\Animations\Animations.cs" />
@@ -255,9 +249,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainForm2.resx">
-      <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="specialCheat\TH08Special.resx">
       <DependentUpon>TH08Special.cs</DependentUpon>

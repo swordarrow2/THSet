@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,10 @@ namespace THSet {
             throw new NotImplementedException();
         }
         public TH07Code(MemoryTool m) => mt=m;
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
 
         public override string GetTitle() => new Random().Next()%2==0 ? "东方妖妖梦" : "东方999";
         public override string[] GetSpecialTip() => new string[] { "收卡数","结界","分母" };
@@ -46,9 +47,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(mt.ReadInteger(0x00626278)+0x1C,i);
         public override void SetSpecial2(int i) => write(0x0062F890,i+mt.ReadInteger(0x00626278,0x88));
         public override void SetSpecial3(int i) => write(0x0062F888,i+mt.ReadInteger(0x00626278,0x88));
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x00626278,0x1C);
         public override int GetSpecial2() => mt.ReadInteger(0x0062F890)-mt.ReadInteger(0x00626278,0x88);
         public override int GetSpecial3() => mt.ReadInteger(0x0062F888)-mt.ReadInteger(0x00626278,0x88);
+        public override int GetSpecial4() => 0;
         public override void SetIPlayer(int i) {
             byte[] b = BitConverter.GetBytes((float)i);
             write(0x0042EA14,new byte[] { 0xA1,0x78,0x62,0x62,0x00,           //mov eax,[00626278]
@@ -145,7 +148,7 @@ namespace THSet {
 
             write(0x0042ED00,HexCodeHelper.stringToAsm("E9 E3 00 00 00 90"));
         }
-
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
 

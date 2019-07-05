@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,23 +22,29 @@ namespace THSet {
             }
             lastStatu=thisStatu;
         }
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        private string getText(MaterialListView l) {
+            if(l.SelectedItems.Count>0) {
+                return l.SelectedItems[0].Text;
+            }
+            return "";
+        }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             bossNumAddress=0;
             logoEnemyAddress=0;
-            bossBox.Items.Clear();
-            chapterBox.Items.Clear();
-            chapterBox.Items.AddRange(EclHelper.chapter);
-            switch(stageBox.Text) {
-                case "Stage1": bossBox.Items.AddRange(EclHelper.TH16.stage1BossList); break;
-                case "Stage2": bossBox.Items.AddRange(EclHelper.TH16.stage2BossList); break;
-                case "Stage3": bossBox.Items.AddRange(EclHelper.TH16.stage3BossList); break;
-                case "Stage4": bossBox.Items.AddRange(EclHelper.TH16.stage4BossList); break;
-                case "Stage5": bossBox.Items.AddRange(EclHelper.TH16.stage5BossList); break;
-                case "Stage6": bossBox.Items.AddRange(EclHelper.TH16.stage6BossList); break;
-                case "Extra": bossBox.Items.AddRange(EclHelper.TH16.stage7BossList); break;
+            boss.Items.Clear();
+            chapter.Items.Clear();
+            chapter.AddRange(EclHelper.chapter);
+            switch(getText(stage)) {
+                case "Stage1": boss.AddRange(EclHelper.TH16.stage1BossList); break;
+                case "Stage2": boss.AddRange(EclHelper.TH16.stage2BossList); break;
+                case "Stage3": boss.AddRange(EclHelper.TH16.stage3BossList); break;
+                case "Stage4": boss.AddRange(EclHelper.TH16.stage4BossList); break;
+                case "Stage5": boss.AddRange(EclHelper.TH16.stage5BossList); break;
+                case "Stage6": boss.AddRange(EclHelper.TH16.stage6BossList); break;
+                case "Extra": boss.AddRange(EclHelper.TH16.stage7BossList); break;
             }
         }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             byte[] memory = new byte[0x1000];
             byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
             byte[] eclMainFront = EclHelper.stageEcl[0];
@@ -47,7 +54,7 @@ namespace THSet {
             int index = 0;
             if(logoEnemyAddress!=0) {
                 byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
-                switch(chapterBox.Text) {
+                switch(getText(chapter)) {
                     case "前半": break;
                     case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
                     case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
@@ -59,7 +66,7 @@ namespace THSet {
                     memory=mt.ReadBytes(i,0x1000);
                     if((index=EclHelper.getIndexOf(memory,eclLogoEnemy))!=-1) {
                         byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
-                        switch(chapterBox.Text) {
+                        switch(getText(chapter)) {
                             case "前半": break;
                             case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
                             case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
@@ -72,14 +79,14 @@ namespace THSet {
                 }
             }
         }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
 
         }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) {
             byte[] memory = new byte[0x1000];
             byte[] bossEcl = EclHelper.eclMainBossNum;
             int index = 0;
-            byte[] b = EclHelper.getBossNumArray(bossBox.Text);
+            byte[] b = EclHelper.getBossNumArray(getText(boss));
             if(bossNumAddress!=0) {
                 mt.WriteBytes(bossNumAddress,b);
             } else {
@@ -130,9 +137,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(mt.ReadInteger(0x004B5654)+0x16838,BitConverter.GetBytes(i/100f));
         public override void SetSpecial2(int i) { }
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => (int)(mt.ReadFloat(mt.ReadInteger(0x004B5654)+0x16838)*100);
         public override int GetSpecial2() { return 0; }
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) { MessageBox.Show("text:"+i); }
         public override void SetIPlayerFragment(int i) { }
         public override void SetIBomb(int i) { }
@@ -143,6 +152,7 @@ namespace THSet {
         public override void SetISpecial1(int i) { }
         public override void SetISpecial2(int i) { }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
         private int write(int addr,string value) => mt.WriteBytes(addr,HexCodeHelper.stringToAsm(value));

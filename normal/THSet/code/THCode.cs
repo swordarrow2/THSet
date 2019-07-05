@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,10 +12,10 @@ namespace THSet {
         public abstract string GetAboutBug();
         public abstract string GetAboutSpecial();
         public abstract string[] GetDefaultValue();
-        public abstract void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
-        public abstract void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox);
+        public abstract void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss);
+        public abstract void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss);
+        public abstract void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss);
+        public abstract void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss);
         public abstract void StartCount();
         public abstract int GetMissCount();
         public abstract int GetBombCount();
@@ -44,9 +45,11 @@ namespace THSet {
         public abstract void SetSpecial1(int i);
         public abstract void SetSpecial2(int i);
         public abstract void SetSpecial3(int i);
+        public abstract void SetSpecial4(int i);
         public abstract int GetSpecial1();
         public abstract int GetSpecial2();
         public abstract int GetSpecial3();
+        public abstract int GetSpecial4();
 
 
         public abstract void SetIPlayer(int i);
@@ -62,6 +65,7 @@ namespace THSet {
         public abstract void SetISpecial1(int i);
         public abstract void SetISpecial2(int i);
         public abstract void SetISpecial3(int i);
+        public abstract void SetISpecial4(int i);
 
         public bool EnableSetIPlayer => GetEnable()[0];
         public bool EnableSetIPlayerFragment => GetEnable()[1];

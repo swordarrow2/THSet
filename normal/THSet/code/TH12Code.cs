@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,10 @@ namespace THSet {
             lastStatu=thisStatu;
         }
         public TH12Code(MemoryTool m) => mt=m;
-        public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
-        public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
+        public override void SetStage(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetChapter(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetMBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
+        public override void SetBossNum(MaterialListView stage,MaterialListView chapter,MaterialListView mBoss,MaterialListView boss) { }
         public override string GetTitle() => new Random().Next()%2==0 ? "春之岸边播放器" : "东方红红蓝";
         public override string GetAboutBug() => "得分超过2,147,483,647时继续获得分数会使计数倒退";
         public override string GetAboutSpecial() => "0-无 1-红 2-蓝 3-绿";
@@ -64,26 +65,16 @@ namespace THSet {
         }
         public override void SetPlayer(int i) => write(0x004B0C98,i);
         public override void SetPlayerFragment(int i) {
-            if(i==3) {
-                i=4;
-            }
-            if(i==2) {
-                i=3;
-            }
-            if(i==1) {
-                i=2;
-            }
+            if(i==3) i=4;
+            if(i==2) i=3;
+            if(i==1) i=2;
             write(0x004B0C9C,i);
         }
 
         public override void SetBomb(int i) => write(0x004B0CA0,i);
         public override void SetBombFragment(int i) {
-            if(i==2) {
-                i=4;
-            }
-            if(i==1) {
-                i=2;
-            }
+            if(i==2) i=4;
+            if(i==1) i=2;
             write(0x004B0CA4,i);
         }
 
@@ -93,9 +84,11 @@ namespace THSet {
         public override void SetSpecial1(int i) => write(0x004B0C4C,i);
         public override void SetSpecial2(int i) => write(0x004B0C50,i);
         public override void SetSpecial3(int i) { }
+        public override void SetSpecial4(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x004B0C4C);
         public override int GetSpecial2() => mt.ReadInteger(0x004B0C50);
         public override int GetSpecial3() { return 0; }
+        public override int GetSpecial4() { return 0; }
         public override void SetIPlayer(int i) {
             byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E81,new byte[] { 0xE9,0x5A,0x5C,0x07,0x00,0x90 });              //jmp 00497AE0
@@ -104,15 +97,9 @@ namespace THSet {
             write(0x00421E92,new byte[] { 0xC7,0x05,0x98,0x0C,0x4B,0x00,b });            //mov [004B0C98],b
         }
         public override void SetIPlayerFragment(int i) {
-            if(i==3) {
-                i=4;
-            }
-            if(i==2) {
-                i=3;
-            }
-            if(i==1) {
-                i=2;
-            }
+            if(i==3) i=4;
+            if(i==2) i=3;
+            if(i==1) i=2;
             byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E79,new byte[] { 0xE9,0x71,0x5C,0x07,0x00,0x90 });              //jmp 00497AEF
             write(0x00497AEF,new byte[] { 0xC7,0x05,0x9C,0x0C,0x4B,0x00,b,0x00,0x00,0x00,//mov [004B0C9C],b
@@ -125,12 +112,8 @@ namespace THSet {
                                           0xE9,0xE8,0xA2,0xF8,0xFF });                   //jmp 00421DF5
         }
         public override void SetIBombFragment(int i) {
-            if(i==2) {
-                i=4;
-            }
-            if(i==1) {
-                i=2;
-            }
+            if(i==2) i=4;
+            if(i==1) i=2;
             byte b = BitConverter.GetBytes(i)[0];
             write(0x00421E35,new byte[] { 0xE9,0xD3,0x5C,0x07,0x00,0x90 });              //jmp 00497B0D
             write(0x00497B0D,new byte[] { 0xC7,0x05,0xA4,0x0C,0x4B,0x00,b,0x00,0x00,0x00,//mov [004B0CA4],b
@@ -168,6 +151,7 @@ namespace THSet {
                                           0xE9,0xE0,0xA2,0xF8,0xFF });                      //jmp 00421E47
         }
         public override void SetISpecial3(int i) { }
+        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
     }
