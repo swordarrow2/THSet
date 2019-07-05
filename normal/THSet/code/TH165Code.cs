@@ -25,8 +25,8 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B550C)+0x40);
         public override int GetBossLife() { return 0; }
         public override void KillSelf() => write(mt.ReadInteger(0x004B5654)+0x165A4,4);
-        public override bool[] GetEnable() => new bool[30] { false,false,false,false,false,false,false,true,false,false,
-                                                             false,false,false,false,false,false,false,false,false,false,
+        public override bool[] GetEnable() => new bool[24] { false,false,false,false,false,false,false,
+                                                             false,false,false,false,false,false,false,
                                                              false,true,true,true,false,false,true,true,false,false };
         public override void SetLockPlayer(bool b) { }
         public override void SetLockBomb(bool b) {

@@ -24,13 +24,13 @@ namespace THSet {
         public string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165","th17" };
         private string[] sptip;
         private int pid = 0;
-        private int lastLife = 0;
         private int thisLife = 0;
         private int gameIndex = 0;
         public int missCount = -1;
         public int bombCount = -1;
         public int bulletCount = 0;
         public int bossLife = 0;
+        private int lastLife = 0;
         public int dps = 0;
         public string sp1 = "";
         private int THNo = 0;
@@ -116,7 +116,7 @@ namespace THSet {
             groupBoxBoss.Enabled=thCode.EnableBossHPInfo;
             lbBulletCount.Enabled=thCode.EnableShowBulletCount;
 
-            gbBossPractice.Enabled=thCode.EnableChapterPrictice;
+            gbBossPractice.Enabled=thCode.EnableChapterPractice;
             lbSp1.Text=lbSp1.Enabled ? sptip[0] : "不可用";
             lbSp2.Text=lbSp2.Enabled ? sptip[1] : "不可用";
             lbSp3.Text=lbSp3.Enabled ? sptip[2] : "不可用";
@@ -168,7 +168,7 @@ namespace THSet {
 
         private void MainForm_Load(object sender,EventArgs e) {
             fwsPrevious=WindowState;
-            floatWindow=new FloatWindow(this);
+        //    floatWindow=new FloatWindow(this);
         }
         protected override void OnResize(EventArgs e) {
             base.OnResize(e);

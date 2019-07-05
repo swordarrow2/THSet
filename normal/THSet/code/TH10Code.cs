@@ -56,8 +56,9 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004776F0)+0x5C);
         public override int GetBossLife() => mt.ReadInteger(mt.ReadInteger(0x0047770C)+0x9E8C);
         public override void KillSelf() => write(mt.ReadInteger(0x00477834)+0x458,4);
-        public override bool[] GetEnable() => new bool[30] { true,false,false,false,true,true,false,true,false,false,
-                                                             true,false,false,false,true,true,false,true,false,false,
+        public override bool[] GetEnable() => new bool[24] {
+                                                             true,false,false,false,true,true,false,
+                                                             true,false,false,false,true,true,false,
                                                              true,true,true,
                                                              mt.ReadInteger(0x00439397)==107752 ? false : true,
                                                              true,true,true,true,false,true };

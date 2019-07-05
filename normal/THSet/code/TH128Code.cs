@@ -49,8 +49,8 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004B8930)+0x5C);
         public override int GetBossLife() => mt.ReadInteger(mt.ReadInteger(0x004B8950)+0x5910);
         public override void KillSelf() => write(mt.ReadInteger(0x004B8A80)+0xF78,4);
-        public override bool[] GetEnable() => new bool[30] { true,false,true,false,true,true,false,true,false,false,
-                                                             true,false,true,false,true,false,false,true,false,false,
+        public override bool[] GetEnable() => new bool[24] { true,false,true,false,true,false,false,
+                                                             true,false,true,false,true,false,false,
                                                              true,true,true,true,true,true,true,true,false,true };
         public override void SetLockPlayer(bool b) => write(0x0042729C,HexCodeHelper.getValueArray(new byte[] { 0x89,0x0D,0x64,0x4D,0x4B,0x00 },b));//mov [004B4D64],ecx
         public override void SetLockBomb(bool b) => write(0x0043B7C1,HexCodeHelper.getValueArray(new byte[] { 0x7C,0x30 },b)); //jl 0043B7F3

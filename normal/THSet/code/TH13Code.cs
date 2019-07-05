@@ -42,7 +42,7 @@ namespace THSet {
             byte[] memory = new byte[0x1000];
             byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
             byte[] eclMainFront = EclHelper.stageEcl[0];
-            byte[] eclMBoss =  EclHelper.stageEcl[1];
+            byte[] eclMBoss = EclHelper.stageEcl[1];
             switch(stageBox.Text) {
                 case "Extra":
                     eclMBoss=EclHelper.TH13.eclExtraMBoss;
@@ -140,8 +140,8 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004C2174)+0x5C);
         public override int GetBossLife() => mt.ReadInteger(mt.ReadInteger(0x004C2190)+0x1B4);
         public override void KillSelf() => write(mt.ReadInteger(0x004C22C4)+0x65C,4);
-        public override bool[] GetEnable() => new bool[30] { true,true,true,true,true,true,true,true,true,false,
-                                                             true,true,true,true,true,true,true,true,true,false,
+        public override bool[] GetEnable() => new bool[24] { true,true,true,true,true,true,true,
+                                                             true,true,true,true,true,true,true,
                                                              true,true,true,
                                                              true,true,true,true,true,true,true };
         public override void SetLockPlayer(bool b) => write(0x00444741,HexCodeHelper.getValueArray(new byte[] { 0xFF,0x0D,0xF4,0xE7,0x4B,0x00 },b));//dec [004BE7F4]

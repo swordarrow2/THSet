@@ -66,11 +66,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.button);
             this.Controls.Add(this.MDText);
             this.Name = "EditText";
-            this.Size = new System.Drawing.Size(168, 32);
+            this.Size = new System.Drawing.Size(170, 34);
             this.ResumeLayout(false);
             this.PerformLayout();
 

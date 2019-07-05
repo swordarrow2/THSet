@@ -19,91 +19,91 @@ namespace THSet {
             }
             lastStatu=thisStatu;
         }
-    //    private int logoEnemyAddress = 0;
-    //    private int bossEclAddress = 0;
+        //    private int logoEnemyAddress = 0;
+        //    private int bossEclAddress = 0;
         public override void SetStage(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-     /*       bossEclAddress=0;
-            logoEnemyAddress=0;
-            bossBox.Items.Clear();
-            chapterBox.Items.Clear();
-            chapterBox.Items.AddRange(EclHelper.chapter);
-            switch(stageBox.Text) {
-                case "Stage1":
-                    bossBox.Items.AddRange(EclHelper.TH15.stage1BossList);
-                    chapterBox.Items.Clear();
-                    chapterBox.Items.AddRange(new object[] { "前半","道中Boss","中","道中Boss2","后半","关底Boss" });
-                    break;
-                case "Stage2": bossBox.Items.AddRange(EclHelper.TH15.stage2BossList); break;
-                case "Stage3": bossBox.Items.AddRange(EclHelper.TH15.stage3BossList); break;
-                case "Stage4": bossBox.Items.AddRange(EclHelper.TH15.stage4BossList); break;
-                case "Stage5":
-                    bossBox.Items.AddRange(EclHelper.TH15.stage5BossList);
-                    chapterBox.Items.Clear();
-                    chapterBox.Items.AddRange(new object[] { "前半","道中Boss","后半","素质三蝴蝶","太田飞行阵","关底Boss" }); break;
-                case "Stage6": bossBox.Items.AddRange(EclHelper.TH15.stage6BossList); break;
-                case "Extra": bossBox.Items.AddRange(EclHelper.TH15.stage7BossList); break;
-            }
-            */
+            /*       bossEclAddress=0;
+                   logoEnemyAddress=0;
+                   bossBox.Items.Clear();
+                   chapterBox.Items.Clear();
+                   chapterBox.Items.AddRange(EclHelper.chapter);
+                   switch(stageBox.Text) {
+                       case "Stage1":
+                           bossBox.Items.AddRange(EclHelper.TH15.stage1BossList);
+                           chapterBox.Items.Clear();
+                           chapterBox.Items.AddRange(new object[] { "前半","道中Boss","中","道中Boss2","后半","关底Boss" });
+                           break;
+                       case "Stage2": bossBox.Items.AddRange(EclHelper.TH15.stage2BossList); break;
+                       case "Stage3": bossBox.Items.AddRange(EclHelper.TH15.stage3BossList); break;
+                       case "Stage4": bossBox.Items.AddRange(EclHelper.TH15.stage4BossList); break;
+                       case "Stage5":
+                           bossBox.Items.AddRange(EclHelper.TH15.stage5BossList);
+                           chapterBox.Items.Clear();
+                           chapterBox.Items.AddRange(new object[] { "前半","道中Boss","后半","素质三蝴蝶","太田飞行阵","关底Boss" }); break;
+                       case "Stage6": bossBox.Items.AddRange(EclHelper.TH15.stage6BossList); break;
+                       case "Extra": bossBox.Items.AddRange(EclHelper.TH15.stage7BossList); break;
+                   }
+                   */
         }
         public override void SetChapter(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-        /*    byte[] memory = new byte[0x1000];
-            byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
-            byte[] eclMainFront = EclHelper.stageEcl[0];
-            byte[] eclMBoss = EclHelper.stageEcl[1];
-            byte[] eclMainLatter = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclExtraMainLatter : EclHelper.stageEcl[2];
-            byte[] eclMainBoss = EclHelper.stageEcl[3];
-            if(stageBox.Text.Equals("Stage6")) {
-                eclMBoss=EclHelper.TH13.eclStage6MBoss;
-                eclMainLatter=new byte[] { };
-            }
-            int index = 0;
-            byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
-            if(logoEnemyAddress!=0) {
-                switch(chapterBox.Text) {
-                    case "前半": break;
-                    case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
-                    case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
-                    case "素质三蝴蝶":
-                    case "太田飞行阵":
-                    case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+            /*    byte[] memory = new byte[0x1000];
+                byte[] eclLogoEnemy = EclHelper.eclLogoEnemy;
+                byte[] eclMainFront = EclHelper.stageEcl[0];
+                byte[] eclMBoss = EclHelper.stageEcl[1];
+                byte[] eclMainLatter = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclExtraMainLatter : EclHelper.stageEcl[2];
+                byte[] eclMainBoss = EclHelper.stageEcl[3];
+                if(stageBox.Text.Equals("Stage6")) {
+                    eclMBoss=EclHelper.TH13.eclStage6MBoss;
+                    eclMainLatter=new byte[] { };
                 }
-                mt.WriteBytes(logoEnemyAddress,EclHelper.createEcl(eclByte));
-            } else {
-                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
-                    memory=mt.ReadBytes(i,0x1000);
-                    if((index=EclHelper.getIndexOf(memory,eclLogoEnemy))!=-1) {
-                        switch(chapterBox.Text) {
-                            case "前半": break;
-                            case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
-                            case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
-                            case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+                int index = 0;
+                byte[][] eclByte = new byte[][] { eclMainFront,eclMBoss,eclMainLatter,eclMainBoss };
+                if(logoEnemyAddress!=0) {
+                    switch(chapterBox.Text) {
+                        case "前半": break;
+                        case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
+                        case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
+                        case "素质三蝴蝶":
+                        case "太田飞行阵":
+                        case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+                    }
+                    mt.WriteBytes(logoEnemyAddress,EclHelper.createEcl(eclByte));
+                } else {
+                    for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
+                        memory=mt.ReadBytes(i,0x1000);
+                        if((index=EclHelper.getIndexOf(memory,eclLogoEnemy))!=-1) {
+                            switch(chapterBox.Text) {
+                                case "前半": break;
+                                case "道中Boss": eclByte=new byte[][] { eclMBoss,eclMainLatter,eclMainBoss }; break;
+                                case "后半": eclByte=new byte[][] { eclMainLatter,eclMainBoss }; break;
+                                case "关底Boss": eclByte=new byte[][] { eclMainBoss }; break;
+                            }
+                            mt.WriteBytes(i+index,EclHelper.createEcl(eclByte));
+                            logoEnemyAddress=i+index;
+                            break;
                         }
-                        mt.WriteBytes(i+index,EclHelper.createEcl(eclByte));
-                        logoEnemyAddress=i+index;
-                        break;
                     }
                 }
-            }
-            */
+                */
         }
         public override void SetMBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) { }
         public override void SetBossNum(ComboBox stageBox,ComboBox chapterBox,ComboBox MBossBox,ComboBox bossBox) {
-         /*   byte[] memory = new byte[0x1000];
-            byte[] bossEcl = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclTH15ExtraMainBossNum : EclHelper.eclMainBossNum;
-            int index = 0;
-            byte[] b = EclHelper.getBossNumArray(bossBox.Text);
-            if(bossEclAddress!=0) {
-                mt.WriteBytes(bossEclAddress,b);
-            } else {
-                for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
-                    memory=mt.ReadBytes(i,0x1000);
-                    if((index=EclHelper.getIndexOf(memory,bossEcl))!=-1) {
-                        mt.WriteBytes(i+index+(stageBox.Text.Equals("Extra") ? bossEcl.Length-1 : 20),b);
-                        bossEclAddress=i+index+(stageBox.Text.Equals("Extra") ? bossEcl.Length-1 : 20);
-                        break;
-                    }
-                }
-            }*/
+            /*   byte[] memory = new byte[0x1000];
+               byte[] bossEcl = stageBox.Text.Equals("Extra") ? EclHelper.TH15.eclTH15ExtraMainBossNum : EclHelper.eclMainBossNum;
+               int index = 0;
+               byte[] b = EclHelper.getBossNumArray(bossBox.Text);
+               if(bossEclAddress!=0) {
+                   mt.WriteBytes(bossEclAddress,b);
+               } else {
+                   for(int i = 0x00500000;i<0x30000000;i+=0x1000) {
+                       memory=mt.ReadBytes(i,0x1000);
+                       if((index=EclHelper.getIndexOf(memory,bossEcl))!=-1) {
+                           mt.WriteBytes(i+index+(stageBox.Text.Equals("Extra") ? bossEcl.Length-1 : 20),b);
+                           bossEclAddress=i+index+(stageBox.Text.Equals("Extra") ? bossEcl.Length-1 : 20);
+                           break;
+                       }
+                   }
+               }*/
         }
         public override string GetTitle() => new Random().Next()%2==0 ? "东方跟着转" : "东方199";
         public override string GetAboutBug() => "boss符卡宣言时扔雷会导致boss保持无敌状态，bomb结束(铃仙为撞掉一层盾)时解除无敌\n\n无敌状态进入Extra八非时boss会无敌且无法解除\n\n无欠模式若纯符击破撞，需重启游戏再打此章节";
@@ -131,8 +131,8 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004E9A6C)+0x40);
         public override int GetBossLife() => mt.ReadInteger(mt.ReadInteger(0x004E9A8C)+0x1D4);
         public override void KillSelf() => write(mt.ReadInteger(0x004E9BB8)+0x16220,4);
-        public override bool[] GetEnable() => new bool[30] { true,true,true,true,true,false,true,true,false,false,
-                                                             true,true,true,true,true,false,true,false,false,false,
+        public override bool[] GetEnable() => new bool[24] { true,true,true,true,true,false,true,
+                                                             true,true,true,true,true,true,true,
                                                              true,true,true,true,true,true,true,true,false,true };
         public override void SetLockPlayer(bool b) => write(0x00456732,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x50,0x74,0x4E,0x00 },b));            //mov [004E7450],eax
         public override void SetLockBomb(bool b) => write(0x004148D5,HexCodeHelper.getValueArray(new byte[] { 0xA3,0x5C,0x74,0x4E,0x00 },b));              //mov [004E745C],eax

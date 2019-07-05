@@ -33,31 +33,31 @@ namespace THSet
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("boss1");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("spell1");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("boss2");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("spell2");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("boss3");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("spell3");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("前半道中");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("道中boss");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("太田飞行阵");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("后半道中");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("关底boss");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("stage1");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("stage2");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("stage3");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("stage4");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("stage5");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("stage6");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("extra");
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("boss1");
+            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("spell1");
+            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("boss2");
+            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("spell2");
+            System.Windows.Forms.ListViewItem listViewItem59 = new System.Windows.Forms.ListViewItem("boss3");
+            System.Windows.Forms.ListViewItem listViewItem60 = new System.Windows.Forms.ListViewItem("spell3");
+            System.Windows.Forms.ListViewItem listViewItem61 = new System.Windows.Forms.ListViewItem("前半道中");
+            System.Windows.Forms.ListViewItem listViewItem62 = new System.Windows.Forms.ListViewItem("道中boss");
+            System.Windows.Forms.ListViewItem listViewItem63 = new System.Windows.Forms.ListViewItem("太田飞行阵");
+            System.Windows.Forms.ListViewItem listViewItem64 = new System.Windows.Forms.ListViewItem("后半道中");
+            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem("关底boss");
+            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem("stage1");
+            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem("stage2");
+            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem("stage3");
+            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem("stage4");
+            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem("stage5");
+            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem("stage6");
+            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem("extra");
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialDivider1 = new MaterialSkin.Controls.MaterialDivider();
             this.custom = new MaterialSkin.Controls.MaterialRadioButton();
             this._90 = new MaterialSkin.Controls.MaterialRadioButton();
             this._75 = new MaterialSkin.Controls.MaterialRadioButton();
-            this.materialButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this._60 = new MaterialSkin.Controls.MaterialRadioButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
@@ -69,7 +69,6 @@ namespace THSet
             this.iBomb = new THSet.EditText();
             this.iPlayerFragment = new THSet.EditText();
             this.iPlayer = new THSet.EditText();
-            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.maxPoint = new THSet.EditText();
             this.score = new THSet.EditText();
@@ -93,32 +92,36 @@ namespace THSet
             this.fpsButton = new MaterialSkin.Controls.MaterialFlatButton();
             this.customFPS = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.materialListView3 = new MaterialSkin.Controls.MaterialListView();
+            this.bossList = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.materialListView2 = new MaterialSkin.Controls.MaterialListView();
-            this.materialListView1 = new MaterialSkin.Controls.MaterialListView();
+            this.chapterList = new MaterialSkin.Controls.MaterialListView();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.stageList = new MaterialSkin.Controls.MaterialListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.killSelf = new MaterialSkin.Controls.MaterialFlatButton();
             this.autoBomb = new MaterialSkin.Controls.MaterialCheckBox();
             this.lockBomb = new MaterialSkin.Controls.MaterialCheckBox();
             this.unbeatable = new MaterialSkin.Controls.MaterialCheckBox();
             this.lockPlayer = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialContextMenuStrip1 = new MaterialSkin.Controls.MaterialContextMenuStrip();
+            this.mainMenu = new MaterialSkin.Controls.MaterialContextMenuStrip();
             this.item1ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
-            this.subItem1ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
-            this.subItem2ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
-            this.disabledItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.item2ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.item3ToolStripMenuItem = new MaterialSkin.Controls.MaterialToolStripMenuItem();
+            this.greenLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.greenDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.blueLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.blueDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.grayLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.grayDark = new System.Windows.Forms.ToolStripMenuItem();
+            this.floatWindowColor = new System.Windows.Forms.ToolStripMenuItem();
             this.materialFlatButton3 = new MaterialSkin.Controls.MaterialFlatButton();
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timeMAndB = new System.Windows.Forms.Timer(this.components);
+            this.timeProcess = new System.Windows.Forms.Timer(this.components);
+            this.timerEnemy = new System.Windows.Forms.Timer(this.components);
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.materialContextMenuStrip1.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialFlatButton2
@@ -128,7 +131,7 @@ namespace THSet
             this.materialFlatButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton2.Depth = 0;
             this.materialFlatButton2.Icon = null;
-            this.materialFlatButton2.Location = new System.Drawing.Point(233, 462);
+            this.materialFlatButton2.Location = new System.Drawing.Point(211, 462);
             this.materialFlatButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton2.Name = "materialFlatButton2";
@@ -145,7 +148,7 @@ namespace THSet
             this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.materialFlatButton1.Depth = 0;
             this.materialFlatButton1.Icon = null;
-            this.materialFlatButton1.Location = new System.Drawing.Point(333, 462);
+            this.materialFlatButton1.Location = new System.Drawing.Point(311, 462);
             this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton1.Name = "materialFlatButton1";
@@ -165,7 +168,7 @@ namespace THSet
             this.materialDivider1.Margin = new System.Windows.Forms.Padding(0);
             this.materialDivider1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialDivider1.Name = "materialDivider1";
-            this.materialDivider1.Size = new System.Drawing.Size(431, 1);
+            this.materialDivider1.Size = new System.Drawing.Size(409, 1);
             this.materialDivider1.TabIndex = 16;
             this.materialDivider1.Text = "materialDivider1";
             // 
@@ -174,6 +177,7 @@ namespace THSet
             this.custom.AutoSize = true;
             this.custom.Cursor = System.Windows.Forms.Cursors.Default;
             this.custom.Depth = 0;
+            this.custom.Enabled = false;
             this.custom.Font = new System.Drawing.Font("Roboto", 10F);
             this.custom.Location = new System.Drawing.Point(3, 37);
             this.custom.Margin = new System.Windows.Forms.Padding(0);
@@ -192,6 +196,7 @@ namespace THSet
             this._90.AutoSize = true;
             this._90.Cursor = System.Windows.Forms.Cursors.Default;
             this._90.Depth = 0;
+            this._90.Enabled = false;
             this._90.Font = new System.Drawing.Font("Roboto", 10F);
             this._90.Location = new System.Drawing.Point(138, 7);
             this._90.Margin = new System.Windows.Forms.Padding(0);
@@ -210,6 +215,7 @@ namespace THSet
             this._75.AutoSize = true;
             this._75.Cursor = System.Windows.Forms.Cursors.Default;
             this._75.Depth = 0;
+            this._75.Enabled = false;
             this._75.Font = new System.Drawing.Font("Roboto", 10F);
             this._75.Location = new System.Drawing.Point(69, 7);
             this._75.Margin = new System.Windows.Forms.Padding(0);
@@ -223,29 +229,13 @@ namespace THSet
             this._75.UseVisualStyleBackColor = true;
             this._75.CheckedChanged += new System.EventHandler(this.setFps);
             // 
-            // materialButton1
-            // 
-            this.materialButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialButton1.AutoSize = true;
-            this.materialButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialButton1.Depth = 0;
-            this.materialButton1.Icon = null;
-            this.materialButton1.Location = new System.Drawing.Point(190, 78);
-            this.materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton1.Name = "materialButton1";
-            this.materialButton1.Primary = true;
-            this.materialButton1.Size = new System.Drawing.Size(125, 36);
-            this.materialButton1.TabIndex = 0;
-            this.materialButton1.Text = "Change Theme";
-            this.materialButton1.UseVisualStyleBackColor = true;
-            this.materialButton1.Click += new System.EventHandler(this.materialButton1_Click);
-            // 
             // _60
             // 
             this._60.AutoSize = true;
             this._60.Checked = true;
             this._60.Cursor = System.Windows.Forms.Cursors.Default;
             this._60.Depth = 0;
+            this._60.Enabled = false;
             this._60.Font = new System.Drawing.Font("Roboto", 10F);
             this._60.Location = new System.Drawing.Point(0, 7);
             this._60.Margin = new System.Windows.Forms.Padding(0);
@@ -269,9 +259,10 @@ namespace THSet
             this.materialTabSelector1.Location = new System.Drawing.Point(0, 59);
             this.materialTabSelector1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabSelector1.Name = "materialTabSelector1";
-            this.materialTabSelector1.Size = new System.Drawing.Size(431, 44);
+            this.materialTabSelector1.Size = new System.Drawing.Size(409, 44);
             this.materialTabSelector1.TabIndex = 17;
             this.materialTabSelector1.Text = "materialTabSelector1";
+            this.materialTabSelector1.Click += new System.EventHandler(this.materialTabSelector1_Click);
             // 
             // materialTabControl1
             // 
@@ -287,7 +278,7 @@ namespace THSet
             this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialTabControl1.Name = "materialTabControl1";
             this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(397, 345);
+            this.materialTabControl1.Size = new System.Drawing.Size(375, 345);
             this.materialTabControl1.TabIndex = 18;
             // 
             // tabPage1
@@ -300,18 +291,15 @@ namespace THSet
             this.tabPage1.Controls.Add(this.iBomb);
             this.tabPage1.Controls.Add(this.iPlayerFragment);
             this.tabPage1.Controls.Add(this.iPlayer);
-            this.tabPage1.Controls.Add(this.materialRaisedButton1);
-            this.tabPage1.Controls.Add(this.materialButton1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(389, 319);
+            this.tabPage1.Size = new System.Drawing.Size(367, 319);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "初始值";
             // 
             // iMaxPoint
             // 
-            this.iMaxPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iMaxPoint.Location = new System.Drawing.Point(6, 234);
             this.iMaxPoint.Name = "iMaxPoint";
             this.iMaxPoint.number = 0;
@@ -321,7 +309,6 @@ namespace THSet
             // 
             // iScore
             // 
-            this.iScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iScore.Location = new System.Drawing.Point(6, 196);
             this.iScore.Name = "iScore";
             this.iScore.number = 0;
@@ -331,7 +318,6 @@ namespace THSet
             // 
             // iPower
             // 
-            this.iPower.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iPower.Location = new System.Drawing.Point(6, 158);
             this.iPower.Name = "iPower";
             this.iPower.number = 0;
@@ -341,7 +327,6 @@ namespace THSet
             // 
             // iBombFragment
             // 
-            this.iBombFragment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iBombFragment.Location = new System.Drawing.Point(6, 120);
             this.iBombFragment.Name = "iBombFragment";
             this.iBombFragment.number = 0;
@@ -351,7 +336,6 @@ namespace THSet
             // 
             // iBomb
             // 
-            this.iBomb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iBomb.Location = new System.Drawing.Point(6, 82);
             this.iBomb.Name = "iBomb";
             this.iBomb.number = 0;
@@ -361,7 +345,6 @@ namespace THSet
             // 
             // iPlayerFragment
             // 
-            this.iPlayerFragment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iPlayerFragment.Location = new System.Drawing.Point(6, 44);
             this.iPlayerFragment.Name = "iPlayerFragment";
             this.iPlayerFragment.number = 0;
@@ -371,30 +354,12 @@ namespace THSet
             // 
             // iPlayer
             // 
-            this.iPlayer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.iPlayer.Location = new System.Drawing.Point(6, 7);
             this.iPlayer.Name = "iPlayer";
             this.iPlayer.number = 0;
             this.iPlayer.Size = new System.Drawing.Size(168, 32);
             this.iPlayer.TabIndex = 22;
             this.iPlayer.TabStop = false;
-            // 
-            // materialRaisedButton1
-            // 
-            this.materialRaisedButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.materialRaisedButton1.AutoSize = true;
-            this.materialRaisedButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialRaisedButton1.Depth = 0;
-            this.materialRaisedButton1.Icon = null;
-            this.materialRaisedButton1.Location = new System.Drawing.Point(190, 120);
-            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialRaisedButton1.Name = "materialRaisedButton1";
-            this.materialRaisedButton1.Primary = true;
-            this.materialRaisedButton1.Size = new System.Drawing.Size(181, 36);
-            this.materialRaisedButton1.TabIndex = 21;
-            this.materialRaisedButton1.Text = "Change color scheme";
-            this.materialRaisedButton1.UseVisualStyleBackColor = true;
-            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
             // 
             // tabPage2
             // 
@@ -409,13 +374,13 @@ namespace THSet
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(389, 319);
+            this.tabPage2.Size = new System.Drawing.Size(367, 319);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "当前值";
             // 
             // maxPoint
             // 
-            this.maxPoint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.maxPoint.Enabled = false;
             this.maxPoint.Location = new System.Drawing.Point(6, 234);
             this.maxPoint.Name = "maxPoint";
             this.maxPoint.number = 0;
@@ -425,7 +390,7 @@ namespace THSet
             // 
             // score
             // 
-            this.score.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.score.Enabled = false;
             this.score.Location = new System.Drawing.Point(6, 196);
             this.score.Name = "score";
             this.score.number = 0;
@@ -435,7 +400,7 @@ namespace THSet
             // 
             // power
             // 
-            this.power.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.power.Enabled = false;
             this.power.Location = new System.Drawing.Point(6, 158);
             this.power.Name = "power";
             this.power.number = 0;
@@ -445,7 +410,7 @@ namespace THSet
             // 
             // bombFragment
             // 
-            this.bombFragment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bombFragment.Enabled = false;
             this.bombFragment.Location = new System.Drawing.Point(6, 120);
             this.bombFragment.Name = "bombFragment";
             this.bombFragment.number = 0;
@@ -455,7 +420,7 @@ namespace THSet
             // 
             // bomb
             // 
-            this.bomb.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.bomb.Enabled = false;
             this.bomb.Location = new System.Drawing.Point(6, 82);
             this.bomb.Name = "bomb";
             this.bomb.number = 0;
@@ -465,7 +430,7 @@ namespace THSet
             // 
             // playerFragment
             // 
-            this.playerFragment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.playerFragment.Enabled = false;
             this.playerFragment.Location = new System.Drawing.Point(6, 44);
             this.playerFragment.Name = "playerFragment";
             this.playerFragment.number = 0;
@@ -475,7 +440,7 @@ namespace THSet
             // 
             // player
             // 
-            this.player.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.player.Enabled = false;
             this.player.Location = new System.Drawing.Point(6, 7);
             this.player.Name = "player";
             this.player.number = 0;
@@ -506,7 +471,7 @@ namespace THSet
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(389, 319);
+            this.tabPage3.Size = new System.Drawing.Size(367, 319);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "基本";
             // 
@@ -566,6 +531,7 @@ namespace THSet
             // 
             this.bulletLable.AutoSize = true;
             this.bulletLable.Depth = 0;
+            this.bulletLable.Enabled = false;
             this.bulletLable.Font = new System.Drawing.Font("Roboto", 11F);
             this.bulletLable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bulletLable.Location = new System.Drawing.Point(6, 205);
@@ -592,19 +558,21 @@ namespace THSet
             // 
             this.dpsLabel.AutoSize = true;
             this.dpsLabel.Depth = 0;
+            this.dpsLabel.Enabled = false;
             this.dpsLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.dpsLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.dpsLabel.Location = new System.Drawing.Point(70, 150);
             this.dpsLabel.MouseState = MaterialSkin.MouseState.HOVER;
             this.dpsLabel.Name = "dpsLabel";
-            this.dpsLabel.Size = new System.Drawing.Size(52, 19);
+            this.dpsLabel.Size = new System.Drawing.Size(53, 19);
             this.dpsLabel.TabIndex = 22;
-            this.dpsLabel.Text = "DPF:   ";
+            this.dpsLabel.Text = "DPS:   ";
             // 
             // hpLabel
             // 
             this.hpLabel.AutoSize = true;
             this.hpLabel.Depth = 0;
+            this.hpLabel.Enabled = false;
             this.hpLabel.Font = new System.Drawing.Font("Roboto", 11F);
             this.hpLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.hpLabel.Location = new System.Drawing.Point(6, 150);
@@ -631,6 +599,7 @@ namespace THSet
             // 
             this.bombLable.AutoSize = true;
             this.bombLable.Depth = 0;
+            this.bombLable.Enabled = false;
             this.bombLable.Font = new System.Drawing.Font("Roboto", 11F);
             this.bombLable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.bombLable.Location = new System.Drawing.Point(70, 99);
@@ -644,6 +613,7 @@ namespace THSet
             // 
             this.missLable.AutoSize = true;
             this.missLable.Depth = 0;
+            this.missLable.Enabled = false;
             this.missLable.Font = new System.Drawing.Font("Roboto", 11F);
             this.missLable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.missLable.Location = new System.Drawing.Point(6, 99);
@@ -692,9 +662,9 @@ namespace THSet
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.materialListView3);
-            this.tabPage4.Controls.Add(this.materialListView2);
-            this.tabPage4.Controls.Add(this.materialListView1);
+            this.tabPage4.Controls.Add(this.bossList);
+            this.tabPage4.Controls.Add(this.chapterList);
+            this.tabPage4.Controls.Add(this.stageList);
             this.tabPage4.Controls.Add(this.killSelf);
             this.tabPage4.Controls.Add(this.autoBomb);
             this.tabPage4.Controls.Add(this.lockBomb);
@@ -702,93 +672,104 @@ namespace THSet
             this.tabPage4.Controls.Add(this.lockPlayer);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(389, 319);
+            this.tabPage4.Size = new System.Drawing.Size(367, 319);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "练习";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // materialListView3
+            // bossList
             // 
-            this.materialListView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.bossList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bossList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader3});
-            this.materialListView3.Depth = 0;
-            this.materialListView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView3.FullRowSelect = true;
-            this.materialListView3.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView3.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6});
-            this.materialListView3.Location = new System.Drawing.Point(282, 3);
-            this.materialListView3.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView3.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView3.Name = "materialListView3";
-            this.materialListView3.OwnerDraw = true;
-            this.materialListView3.Size = new System.Drawing.Size(75, 313);
-            this.materialListView3.TabIndex = 7;
-            this.materialListView3.UseCompatibleStateImageBehavior = false;
-            this.materialListView3.View = System.Windows.Forms.View.Details;
+            this.bossList.Depth = 0;
+            this.bossList.Enabled = false;
+            this.bossList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.bossList.FullRowSelect = true;
+            this.bossList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.bossList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem55,
+            listViewItem56,
+            listViewItem57,
+            listViewItem58,
+            listViewItem59,
+            listViewItem60});
+            this.bossList.Location = new System.Drawing.Point(282, 3);
+            this.bossList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.bossList.MouseState = MaterialSkin.MouseState.OUT;
+            this.bossList.Name = "bossList";
+            this.bossList.OwnerDraw = true;
+            this.bossList.Size = new System.Drawing.Size(75, 289);
+            this.bossList.TabIndex = 7;
+            this.bossList.UseCompatibleStateImageBehavior = false;
+            this.bossList.View = System.Windows.Forms.View.Details;
+            this.bossList.SelectedIndexChanged += new System.EventHandler(this.chapterPracticeSelect);
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "boss";
             this.columnHeader3.Width = 75;
             // 
-            // materialListView2
+            // chapterList
             // 
-            this.materialListView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chapterList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.chapterList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader2});
-            this.materialListView2.Depth = 0;
-            this.materialListView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView2.FullRowSelect = true;
-            this.materialListView2.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView2.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11});
-            this.materialListView2.Location = new System.Drawing.Point(172, 3);
-            this.materialListView2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView2.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView2.Name = "materialListView2";
-            this.materialListView2.OwnerDraw = true;
-            this.materialListView2.Size = new System.Drawing.Size(104, 295);
-            this.materialListView2.TabIndex = 6;
-            this.materialListView2.UseCompatibleStateImageBehavior = false;
-            this.materialListView2.View = System.Windows.Forms.View.Details;
+            this.chapterList.Depth = 0;
+            this.chapterList.Enabled = false;
+            this.chapterList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.chapterList.FullRowSelect = true;
+            this.chapterList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.chapterList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem61,
+            listViewItem62,
+            listViewItem63,
+            listViewItem64,
+            listViewItem65});
+            this.chapterList.Location = new System.Drawing.Point(172, 3);
+            this.chapterList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chapterList.MouseState = MaterialSkin.MouseState.OUT;
+            this.chapterList.Name = "chapterList";
+            this.chapterList.OwnerDraw = true;
+            this.chapterList.Size = new System.Drawing.Size(104, 295);
+            this.chapterList.TabIndex = 6;
+            this.chapterList.UseCompatibleStateImageBehavior = false;
+            this.chapterList.View = System.Windows.Forms.View.Details;
+            this.chapterList.SelectedIndexChanged += new System.EventHandler(this.chapterPracticeSelect);
             // 
-            // materialListView1
+            // columnHeader2
             // 
-            this.materialListView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2.Text = "chapter";
+            this.columnHeader2.Width = 104;
+            // 
+            // stageList
+            // 
+            this.stageList.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stageList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
-            this.materialListView1.Depth = 0;
-            this.materialListView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.materialListView1.FullRowSelect = true;
-            this.materialListView1.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.materialListView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18});
-            this.materialListView1.Location = new System.Drawing.Point(98, 3);
-            this.materialListView1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialListView1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialListView1.Name = "materialListView1";
-            this.materialListView1.OwnerDraw = true;
-            this.materialListView1.Size = new System.Drawing.Size(75, 344);
-            this.materialListView1.TabIndex = 5;
-            this.materialListView1.UseCompatibleStateImageBehavior = false;
-            this.materialListView1.View = System.Windows.Forms.View.Details;
+            this.stageList.Depth = 0;
+            this.stageList.Enabled = false;
+            this.stageList.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.stageList.FullRowSelect = true;
+            this.stageList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.stageList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem66,
+            listViewItem67,
+            listViewItem68,
+            listViewItem69,
+            listViewItem70,
+            listViewItem71,
+            listViewItem72});
+            this.stageList.Location = new System.Drawing.Point(98, 3);
+            this.stageList.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.stageList.MouseState = MaterialSkin.MouseState.OUT;
+            this.stageList.Name = "stageList";
+            this.stageList.OwnerDraw = true;
+            this.stageList.Size = new System.Drawing.Size(75, 344);
+            this.stageList.TabIndex = 5;
+            this.stageList.UseCompatibleStateImageBehavior = false;
+            this.stageList.View = System.Windows.Forms.View.Details;
+            this.stageList.SelectedIndexChanged += new System.EventHandler(this.chapterPracticeSelect);
             // 
             // columnHeader1
             // 
@@ -800,6 +781,7 @@ namespace THSet
             this.killSelf.AutoSize = true;
             this.killSelf.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.killSelf.Depth = 0;
+            this.killSelf.Enabled = false;
             this.killSelf.Icon = null;
             this.killSelf.Location = new System.Drawing.Point(9, 128);
             this.killSelf.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -810,11 +792,13 @@ namespace THSet
             this.killSelf.TabIndex = 4;
             this.killSelf.Text = "自爆";
             this.killSelf.UseVisualStyleBackColor = true;
+            this.killSelf.Click += new System.EventHandler(this.killSelf_Click);
             // 
             // autoBomb
             // 
             this.autoBomb.AutoSize = true;
             this.autoBomb.Depth = 0;
+            this.autoBomb.Enabled = false;
             this.autoBomb.Font = new System.Drawing.Font("Roboto", 10F);
             this.autoBomb.Location = new System.Drawing.Point(0, 92);
             this.autoBomb.Margin = new System.Windows.Forms.Padding(0);
@@ -826,11 +810,13 @@ namespace THSet
             this.autoBomb.TabIndex = 3;
             this.autoBomb.Text = "自动雷";
             this.autoBomb.UseVisualStyleBackColor = true;
+            this.autoBomb.CheckedChanged += new System.EventHandler(this.autoBomb_CheckedChanged);
             // 
             // lockBomb
             // 
             this.lockBomb.AutoSize = true;
             this.lockBomb.Depth = 0;
+            this.lockBomb.Enabled = false;
             this.lockBomb.Font = new System.Drawing.Font("Roboto", 10F);
             this.lockBomb.Location = new System.Drawing.Point(0, 62);
             this.lockBomb.Margin = new System.Windows.Forms.Padding(0);
@@ -842,11 +828,13 @@ namespace THSet
             this.lockBomb.TabIndex = 2;
             this.lockBomb.Text = "无限bomb";
             this.lockBomb.UseVisualStyleBackColor = true;
+            this.lockBomb.CheckedChanged += new System.EventHandler(this.lockBomb_CheckedChanged);
             // 
             // unbeatable
             // 
             this.unbeatable.AutoSize = true;
             this.unbeatable.Depth = 0;
+            this.unbeatable.Enabled = false;
             this.unbeatable.Font = new System.Drawing.Font("Roboto", 10F);
             this.unbeatable.Location = new System.Drawing.Point(0, 32);
             this.unbeatable.Margin = new System.Windows.Forms.Padding(0);
@@ -858,11 +846,13 @@ namespace THSet
             this.unbeatable.TabIndex = 1;
             this.unbeatable.Text = "无敌";
             this.unbeatable.UseVisualStyleBackColor = true;
+            this.unbeatable.CheckedChanged += new System.EventHandler(this.unbeatable_CheckedChanged);
             // 
             // lockPlayer
             // 
             this.lockPlayer.AutoSize = true;
             this.lockPlayer.Depth = 0;
+            this.lockPlayer.Enabled = false;
             this.lockPlayer.Font = new System.Drawing.Font("Roboto", 10F);
             this.lockPlayer.Location = new System.Drawing.Point(0, 2);
             this.lockPlayer.Margin = new System.Windows.Forms.Padding(0);
@@ -874,73 +864,83 @@ namespace THSet
             this.lockPlayer.TabIndex = 0;
             this.lockPlayer.Text = "无限残机";
             this.lockPlayer.UseVisualStyleBackColor = true;
+            this.lockPlayer.CheckedChanged += new System.EventHandler(this.lockPlayer_CheckedChanged);
             // 
-            // materialContextMenuStrip1
+            // mainMenu
             // 
-            this.materialContextMenuStrip1.BackColor = System.Drawing.Color.White;
-            this.materialContextMenuStrip1.Depth = 0;
-            this.materialContextMenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.materialContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenu.BackColor = System.Drawing.Color.White;
+            this.mainMenu.Depth = 0;
+            this.mainMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.item1ToolStripMenuItem,
-            this.disabledItemToolStripMenuItem,
-            this.item2ToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.item3ToolStripMenuItem});
-            this.materialContextMenuStrip1.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
-            this.materialContextMenuStrip1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialContextMenuStrip1.Name = "materialContextMenuStrip1";
-            this.materialContextMenuStrip1.Size = new System.Drawing.Size(166, 130);
+            this.floatWindowColor});
+            this.mainMenu.Margin = new System.Windows.Forms.Padding(16, 8, 16, 8);
+            this.mainMenu.MouseState = MaterialSkin.MouseState.HOVER;
+            this.mainMenu.Name = "materialContextMenuStrip1";
+            this.mainMenu.Size = new System.Drawing.Size(182, 56);
             // 
             // item1ToolStripMenuItem
             // 
             this.item1ToolStripMenuItem.AutoSize = false;
             this.item1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.subItem1ToolStripMenuItem,
-            this.subItem2ToolStripMenuItem});
+            this.greenLight,
+            this.greenDark,
+            this.blueLight,
+            this.blueDark,
+            this.grayLight,
+            this.grayDark});
             this.item1ToolStripMenuItem.Name = "item1ToolStripMenuItem";
             this.item1ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
-            this.item1ToolStripMenuItem.Text = "Item 1";
+            this.item1ToolStripMenuItem.Text = "主题色";
             // 
-            // subItem1ToolStripMenuItem
+            // greenLight
             // 
-            this.subItem1ToolStripMenuItem.AutoSize = false;
-            this.subItem1ToolStripMenuItem.Name = "subItem1ToolStripMenuItem";
-            this.subItem1ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
-            this.subItem1ToolStripMenuItem.Text = "SubItem 1";
+            this.greenLight.Name = "greenLight";
+            this.greenLight.Size = new System.Drawing.Size(116, 22);
+            this.greenLight.Text = "绿(亮)";
+            this.greenLight.Click += new System.EventHandler(this.greenLight_Click);
             // 
-            // subItem2ToolStripMenuItem
+            // greenDark
             // 
-            this.subItem2ToolStripMenuItem.AutoSize = false;
-            this.subItem2ToolStripMenuItem.Name = "subItem2ToolStripMenuItem";
-            this.subItem2ToolStripMenuItem.Size = new System.Drawing.Size(152, 30);
-            this.subItem2ToolStripMenuItem.Text = "SubItem 2";
+            this.greenDark.Name = "greenDark";
+            this.greenDark.Size = new System.Drawing.Size(116, 22);
+            this.greenDark.Text = "绿(暗)";
+            this.greenDark.Click += new System.EventHandler(this.greenDark_Click);
             // 
-            // disabledItemToolStripMenuItem
+            // blueLight
             // 
-            this.disabledItemToolStripMenuItem.AutoSize = false;
-            this.disabledItemToolStripMenuItem.Enabled = false;
-            this.disabledItemToolStripMenuItem.Name = "disabledItemToolStripMenuItem";
-            this.disabledItemToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
-            this.disabledItemToolStripMenuItem.Text = "Disabled item";
+            this.blueLight.Name = "blueLight";
+            this.blueLight.Size = new System.Drawing.Size(116, 22);
+            this.blueLight.Text = "蓝(亮)";
+            this.blueLight.Click += new System.EventHandler(this.blueLight_Click);
             // 
-            // item2ToolStripMenuItem
+            // blueDark
             // 
-            this.item2ToolStripMenuItem.AutoSize = false;
-            this.item2ToolStripMenuItem.Name = "item2ToolStripMenuItem";
-            this.item2ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
-            this.item2ToolStripMenuItem.Text = "Item 2";
+            this.blueDark.Name = "blueDark";
+            this.blueDark.Size = new System.Drawing.Size(116, 22);
+            this.blueDark.Text = "蓝(暗)";
+            this.blueDark.Click += new System.EventHandler(this.blueDark_Click);
             // 
-            // toolStripSeparator1
+            // grayLight
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(162, 6);
+            this.grayLight.Name = "grayLight";
+            this.grayLight.Size = new System.Drawing.Size(116, 22);
+            this.grayLight.Text = "灰(亮)";
+            this.grayLight.Click += new System.EventHandler(this.grayLight_Click);
             // 
-            // item3ToolStripMenuItem
+            // grayDark
             // 
-            this.item3ToolStripMenuItem.AutoSize = false;
-            this.item3ToolStripMenuItem.Name = "item3ToolStripMenuItem";
-            this.item3ToolStripMenuItem.Size = new System.Drawing.Size(170, 30);
-            this.item3ToolStripMenuItem.Text = "Item 3";
+            this.grayDark.Name = "grayDark";
+            this.grayDark.Size = new System.Drawing.Size(116, 22);
+            this.grayDark.Text = "灰(暗)";
+            this.grayDark.Click += new System.EventHandler(this.grayDark_Click);
+            // 
+            // floatWindowColor
+            // 
+            this.floatWindowColor.Name = "floatWindowColor";
+            this.floatWindowColor.Size = new System.Drawing.Size(181, 22);
+            this.floatWindowColor.Text = "悬浮窗颜色设置";
+            this.floatWindowColor.Click += new System.EventHandler(this.floatWindowColor_Click);
             // 
             // materialFlatButton3
             // 
@@ -950,7 +950,7 @@ namespace THSet
             this.materialFlatButton3.Depth = 0;
             this.materialFlatButton3.Enabled = false;
             this.materialFlatButton3.Icon = null;
-            this.materialFlatButton3.Location = new System.Drawing.Point(149, 462);
+            this.materialFlatButton3.Location = new System.Drawing.Point(127, 462);
             this.materialFlatButton3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialFlatButton3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialFlatButton3.Name = "materialFlatButton3";
@@ -960,18 +960,29 @@ namespace THSet
             this.materialFlatButton3.Text = "DISABLED";
             this.materialFlatButton3.UseVisualStyleBackColor = true;
             // 
-            // columnHeader2
+            // timeMAndB
             // 
-            this.columnHeader2.Text = "chapter";
-            this.columnHeader2.Width = 104;
+            this.timeMAndB.Interval = 1000;
+            this.timeMAndB.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timeProcess
+            // 
+            this.timeProcess.Enabled = true;
+            this.timeProcess.Interval = 2000;
+            this.timeProcess.Tick += new System.EventHandler(this.timeProcess_Tick);
+            // 
+            // timerEnemy
+            // 
+            this.timerEnemy.Interval = 10;
+            this.timerEnemy.Tick += new System.EventHandler(this.timerEnemy_Tick);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(423, 505);
-            this.ContextMenuStrip = this.materialContextMenuStrip1;
+            this.ClientSize = new System.Drawing.Size(401, 505);
+            this.ContextMenuStrip = this.mainMenu;
             this.Controls.Add(this.materialFlatButton3);
             this.Controls.Add(this.materialFlatButton2);
             this.Controls.Add(this.materialTabSelector1);
@@ -982,21 +993,18 @@ namespace THSet
             this.Text = "MaterialSkin Demo";
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            this.materialContextMenuStrip1.ResumeLayout(false);
+            this.mainMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MaterialSkin.Controls.MaterialRaisedButton materialButton1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialRadioButton _60;
         private MaterialRadioButton _90;
@@ -1008,15 +1016,8 @@ namespace THSet
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private MaterialContextMenuStrip materialContextMenuStrip1;
+        private MaterialContextMenuStrip mainMenu;
         private MaterialSkin.Controls.MaterialToolStripMenuItem item1ToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialToolStripMenuItem subItem1ToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialToolStripMenuItem subItem2ToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialToolStripMenuItem item2ToolStripMenuItem;
-        private MaterialSkin.Controls.MaterialToolStripMenuItem item3ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem disabledItemToolStripMenuItem;
-		private MaterialRaisedButton materialRaisedButton1;
         private MaterialFlatButton materialFlatButton3;
         private EditText iPlayerFragment;
         private EditText iPlayer;
@@ -1052,11 +1053,21 @@ namespace THSet
         private MaterialCheckBox unbeatable;
         private MaterialCheckBox lockPlayer;
         private MaterialFlatButton killSelf;
-        private MaterialListView materialListView1;
-        private MaterialListView materialListView3;
+        private MaterialListView stageList;
+        private MaterialListView bossList;
         private ColumnHeader columnHeader3;
-        private MaterialListView materialListView2;
+        private MaterialListView chapterList;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
+        private ToolStripMenuItem greenLight;
+        private ToolStripMenuItem greenDark;
+        private ToolStripMenuItem blueLight;
+        private ToolStripMenuItem blueDark;
+        private ToolStripMenuItem floatWindowColor;
+        private ToolStripMenuItem grayLight;
+        private ToolStripMenuItem grayDark;
+        private Timer timeMAndB;
+        private Timer timeProcess;
+        private Timer timerEnemy;
     }
 }

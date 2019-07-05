@@ -60,8 +60,8 @@ namespace THSet {
         public override int GetBulletCount() => mt.ReadInteger(mt.ReadInteger(0x004A8D68)+0x5C);
         public override int GetBossLife() => mt.ReadInteger(mt.ReadInteger(0x004A8D84)+0x43F8);
         public override void KillSelf() => write(mt.ReadInteger(0x004A8EB4)+0x928,4);
-        public override bool[] GetEnable() => new bool[30] { true,true,false,false,true,false,false,true,true,false,
-                                                             true,true,false,false,true,false,false,false,false,false,
+        public override bool[] GetEnable() => new bool[24] { true,true,false,false,true,false,false,
+                                                             true,true,false,false,true,false,false,
                                                              true,true,true,
                                                              true,true,true,true,true,false,true };
         public override void SetLockPlayer(bool b) => write(0x00431D12,HexCodeHelper.getValueArray(new byte[] { 0x89,0x15,0x18,0x57,0x4A,0x00 },b));//mov [004A5718],edx
@@ -79,17 +79,17 @@ namespace THSet {
         }
         public override void SetPlayer(int i) => write(0x004A5718,i);
         public override void SetPlayerFragment(int i) => write(0x004A571C,i);
-        public override void SetBomb(int i){ }
-        public override void SetBombFragment(int i){ }
+        public override void SetBomb(int i) { }
+        public override void SetBombFragment(int i) { }
         public override void SetPower(int i) => write(0x004A56E8,isMarisaA() ? (int)(i/8.333333333333f) : i/5);
         public override void SetScore(int i) => write(0x004A56E4,i);
-        public override void SetMaxPoint(int i){ }
+        public override void SetMaxPoint(int i) { }
         public override void SetSpecial1(int i) => write(0x004A56F0,i*100);
         public override void SetSpecial2(int i) => write(0x004A56F4,i*100);
-        public override void SetSpecial3(int i){ }
+        public override void SetSpecial3(int i) { }
         public override int GetSpecial1() => mt.ReadInteger(0x004A56F0)/100;
         public override int GetSpecial2() => mt.ReadInteger(0x004A56F4)/100;
-        public override int GetSpecial3(){ return 0; }
+        public override int GetSpecial3() { return 0; }
         public override void SetIPlayer(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0041FA38,new byte[] { 0xE9,0x84,0xFE,0xFF,0xFF,0x90 });                 //jmp 0041F8C1
@@ -106,8 +106,8 @@ namespace THSet {
             write(0x0041F85A,i);
 
         }
-        public override void SetIBomb(int i){ }
-        public override void SetIBombFragment(int i){ }
+        public override void SetIBomb(int i) { }
+        public override void SetIBombFragment(int i) { }
         public override void SetIPower(int i) {
             byte[] b = BitConverter.GetBytes(isMarisaA() ? (int)(i/8.3333333333f) : i/5);
             write(0x0041FA8C,new byte[] { 0xE9,0x12,0xFD,0xFF,0xFF,0x90 });                 //jmp 0041F7A3
@@ -120,11 +120,11 @@ namespace THSet {
             write(0x0041F748,new byte[] { 0xE9,0x36,0x03,0x00,0x00 });                      //jmp 0041FA83
 
         }
-        public override void SetIScore(int i){ }
-        public override void SetIMaxPoint(int i){ }
-        public override void SetISpecial1(int i){ }
-        public override void SetISpecial2(int i){ }
-        public override void SetISpecial3(int i){ }
+        public override void SetIScore(int i) { }
+        public override void SetIMaxPoint(int i) { }
+        public override void SetISpecial1(int i) { }
+        public override void SetISpecial2(int i) { }
+        public override void SetISpecial3(int i) { }
         private bool isMarisaA() => ((mt.ReadInteger(0x004A5710)==1)&&(mt.ReadInteger(0x004A5714)==0));
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);

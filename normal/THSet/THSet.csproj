@@ -142,6 +142,78 @@
     <Compile Include="MaterialDesign\DrawHelper.cs" />
     <Compile Include="MaterialDesign\IMaterialControl.cs" />
     <Compile Include="MaterialDesign\MaterialSkinManager.cs" />
+    <Compile Include="specialCheat\TH08Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH08Special.Designer.cs">
+      <DependentUpon>TH08Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH10Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH10Special.Designer.cs">
+      <DependentUpon>TH10Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH11Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH11Special.Designer.cs">
+      <DependentUpon>TH11Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH128Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH128Special.Designer.cs">
+      <DependentUpon>TH128Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH12Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH12Special.Designer.cs">
+      <DependentUpon>TH12Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH07Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH07Special.Designer.cs">
+      <DependentUpon>TH07Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH13Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH13Special.Designer.cs">
+      <DependentUpon>TH13Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH14Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH14Special.Designer.cs">
+      <DependentUpon>TH14Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH15Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH15Special.Designer.cs">
+      <DependentUpon>TH15Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH165Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH165Special.Designer.cs">
+      <DependentUpon>TH165Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH16Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH16Special.Designer.cs">
+      <DependentUpon>TH16Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH17Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH17Special.Designer.cs">
+      <DependentUpon>TH17Special.cs</DependentUpon>
+    </Compile>
     <Compile Include="tools\HexCodeHelper.cs" />
     <Compile Include="floatWindow.cs">
       <SubType>Form</SubType>
@@ -186,6 +258,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm2.resx">
       <DependentUpon>MainForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH08Special.resx">
+      <DependentUpon>TH08Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH10Special.resx">
+      <DependentUpon>TH10Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH12Special.resx">
+      <DependentUpon>TH12Special.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TH09Form.resx">
       <DependentUpon>TH09Form.cs</DependentUpon>

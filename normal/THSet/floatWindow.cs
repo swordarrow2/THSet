@@ -11,8 +11,8 @@ namespace THSet {
     public partial class FloatWindow:Form {
         private Point ptMouseCurrrnetPos, ptMouseNewPos, ptFormPos, ptFormNewPos;
         private bool blnMouseDown = false;
-        private MainForm2 parent;
-        public FloatWindow(MainForm2 pMain) {
+        private MainForm parent;
+        public FloatWindow(MainForm pMain) {
             InitializeComponent();
             parent=pMain;
         }
@@ -51,19 +51,21 @@ namespace THSet {
             Hide();
         }
         private void timerFloatWindow_Tick(object sender,EventArgs e) {
-            if(parent.missCount!=-1) lbMissCount.Text="miss次数:"+parent.missCount;
-            if(parent.bombCount!=-1) lbBombCount.Text="bomb次数:"+parent.bombCount;
-            lbBulletCount.Text="子弹数:"+parent.bulletCount;
-            lbLife.Text="血量:"+parent.bossLife;
-            lbDPS.Text="DPS:"+parent.dps;
-            sp1.Text=parent.sp1.Replace("樱道具值","樱道具");
+            if(parent.page3data.miss!=-1) lbMissCount.Text="miss次数:"+parent.page3data.miss;
+            if(parent.page3data.bomb!=-1) lbBombCount.Text="bomb次数:"+parent.page3data.bomb;
+            lbBulletCount.Text="子弹数:"+parent.page3data.bullet;
+            lbLife.Text="血量:"+parent.page3data.hp;
+            lbDPS.Text="DPS:"+parent.page3data.dps;
+            if(parent.gameNum==7) {
+                sp1.Text="樱道具";
+            }
         }
 
         private void setBG(object sender,EventArgs e) {
-            Opacity=parent.trackBarA.Value/100.0f;
-            BackColor=btnBack.BackColor=btnCountStart.BackColor=Color.FromArgb(parent.trackBarR.Value,parent.trackBarG.Value,parent.trackBarB.Value);
-            ForeColor=Color.FromArgb(parent.trackBarFontR.Value,parent.trackBarFontG.Value,parent.trackBarFontB.Value);
-            groupBoxBoss.ForeColor=groupBoxSourceUse.ForeColor=groupBoxOther.ForeColor=Color.FromArgb(parent.trackBarFontR.Value,parent.trackBarFontG.Value,parent.trackBarFontB.Value);
+            //      Opacity=parent.trackBarA.Value/100.0f;
+            //      BackColor=btnBack.BackColor=btnCountStart.BackColor=Color.FromArgb(parent.trackBarR.Value,parent.trackBarG.Value,parent.trackBarB.Value);
+            //      ForeColor=Color.FromArgb(parent.trackBarFontR.Value,parent.trackBarFontG.Value,parent.trackBarFontB.Value);
+            //      groupBoxBoss.ForeColor=groupBoxSourceUse.ForeColor=groupBoxOther.ForeColor=Color.FromArgb(parent.trackBarFontR.Value,parent.trackBarFontG.Value,parent.trackBarFontB.Value);
         }
 
         private void btnBack_Click(object sender,EventArgs e) {
@@ -71,7 +73,7 @@ namespace THSet {
             Hide();
         }
 
-        private void btnCountStart_Click(object sender,EventArgs e) => parent.restartCount();
-        private void btnKill_Click_1(object sender,EventArgs e) => parent.killSelf();
+        private void btnCountStart_Click(object sender,EventArgs e) => MainForm.thCode.StartCount();
+        private void btnKill_Click_1(object sender,EventArgs e) => MainForm.thCode.KillSelf();
     }
 }

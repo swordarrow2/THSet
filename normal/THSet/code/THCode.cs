@@ -70,31 +70,25 @@ namespace THSet {
         public bool EnableSetIPower => GetEnable()[4];
         public bool EnableSetIScore => GetEnable()[5];
         public bool EnableSetIMaxPoint => GetEnable()[6];
-        public bool EnableSetISpecial1 => GetEnable()[7];
-        public bool EnableSetISpecial2 => GetEnable()[8];
-        public bool EnableSetISpecial3 => GetEnable()[9];
 
-        public bool EnableSetPlayer => GetEnable()[10];
-        public bool EnableSetPlayerFragment => GetEnable()[11];
-        public bool EnableSetBomb => GetEnable()[12];
-        public bool EnableSetBombFragment => GetEnable()[13];
-        public bool EnableSetPower => GetEnable()[14];
-        public bool EnableSetScore => GetEnable()[15];
-        public bool EnableSetMaxPoint => GetEnable()[16];
-        public bool EnableSetSpecial1 => GetEnable()[17];
-        public bool EnableSetSpecial2 => GetEnable()[18];
-        public bool EnableSetSpecial3 => GetEnable()[19];
+        public bool EnableSetPlayer => GetEnable()[7];
+        public bool EnableSetPlayerFragment => GetEnable()[8];
+        public bool EnableSetBomb => GetEnable()[9];
+        public bool EnableSetBombFragment => GetEnable()[10];
+        public bool EnableSetPower => GetEnable()[11];
+        public bool EnableSetScore => GetEnable()[12];
+        public bool EnableSetMaxPoint => GetEnable()[13];
 
-        public bool EnableSetLockPlayer => GetEnable()[20];
-        public bool EnableSetLockBomb => GetEnable()[21];
-        public bool EnableSetUnbeatable => GetEnable()[22];
-        public bool EnableSetFPS => GetEnable()[23];
-        public bool EnableSourceCount => GetEnable()[24];
-        public bool EnableBossHPInfo => GetEnable()[25];
-        public bool EnableShowBulletCount => GetEnable()[26];
-        public bool EnableKillSelf => GetEnable()[27];
-        public bool EnableChapterPrictice => GetEnable()[28];
-        public bool EnableAutoBomb => GetEnable()[29];
+        public bool EnableSetLockPlayer => GetEnable()[14];
+        public bool EnableSetLockBomb => GetEnable()[15];
+        public bool EnableSetUnbeatable => GetEnable()[16];
+        public bool EnableSetFPS => GetEnable()[17];
+        public bool EnableSourceCount => GetEnable()[18];
+        public bool EnableBossHPInfo => GetEnable()[19];
+        public bool EnableShowBulletCount => GetEnable()[20];
+        public bool EnableKillSelf => GetEnable()[21];
+        public bool EnableChapterPractice => GetEnable()[22];
+        public bool EnableAutoBomb => GetEnable()[23];
 
     }
 }
