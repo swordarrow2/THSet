@@ -12,9 +12,14 @@ namespace THSet {
         int thisStatu = 1;
         private int bossNumAddress = 0;
         private int logoEnemyAddress = 0;
-        public TH17Code(MemoryTool m) => mt=m;
+        public TH17Code(MemoryTool m) {
+            mt=m;
+            write(0x00499EBA,HexCodeHelper.stringToAsm("C7 05 60 5A 4B 00 00 00 00 00 C7 05 64 5A 4B 00 00 00 00 00 C7 05 68 5A 4B 00 00 00 00 00 C7 05 6C 5A 4B 00 00 00 00 00 C7 05 70 5A 4B 00 00 00 00 00 E9 B2 46 F7 FF"));
+            write(0x0040E592,HexCodeHelper.stringToAsm("E9 23 B9 08 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90"));
+        }
+
         public override void CheckNeedBomb() {
-            thisStatu=mt.ReadInteger(0x004B33EC,0x18DAC);
+            thisStatu=mt.ReadInteger(0x004B77D0,0x18DB0);
             if(lastStatu!=4&&thisStatu==4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
             } else if(lastStatu==4&&thisStatu!=4) {
@@ -100,8 +105,8 @@ namespace THSet {
                 }
             }
         }
-        public override string GetTitle() => new Random().Next()%2==0 ? "th17体验版" : " 东 方 星 莲 船 ";
-        public override string[] GetSpecialTip() => new string[] { "","","" };
+        public override string GetTitle() => new Random().Next()%2==0 ? "鸡你太美" : " 东 方 星 莲 船 ";
+        public override string[] GetSpecialTip() => new string[] { "灵1","灵2","灵3" };
         public override string GetAboutBug() => "";
         public override string GetAboutSpecial() => "";
         public override string[] GetDefaultValue() => new string[] { "0","0","0" };
@@ -111,48 +116,124 @@ namespace THSet {
         public override int GetBombCount() { return 0; }
         public override int GetBulletCount() { return 0; }
         public override int GetBossLife() { return 0; }
-        public override void KillSelf() => write(mt.ReadInteger(0x004B33EC)+0x18DAC,4);
-        public override bool[] GetEnable() => new bool[24] { false,false,false,false,false,false,false,
-                                                             false,false,false,false,false,false,false,
-                                                             true,true,true,true,false,false,false,true,false,true };
+        public override void KillSelf() => write(mt.ReadInteger(0x004B77D0)+0x18DB0,4);
+        public override bool[] GetEnable() => new bool[24] { true,true,true,true,true,false,false,
+                                                             true,true,true,true,true,false,true,
+                                                             true,true,true,true,false,false,false,true,true,true };
         public override void SetLockPlayer(bool b) {
-            write(0x00448720,HexCodeHelper.getValueArray("89 0D 98 16 4B 00",b));                    //mov [004B1698],ecx
+            write(0x0044921B,HexCodeHelper.getValueArray("89 0D 40 5A 4B 00",b));
         }
         public override void SetLockBomb(bool b) {
-            write(0x00411BC5,HexCodeHelper.getValueArray("89 0D A4 16 4B 00",b));                    //mov [004B16A4],ecx
+            write(0x00411CAB,HexCodeHelper.getValueArray("89 0D 4C 5A 4B 00",b));
         }
 
-        public override void SetUnbeatable(bool b) => write(0x00448A64,HexCodeHelper.getValueArray("C7 87 AC 8D 01 00 04 00 00 00",b));//mov [edi+00018DAC],00000004
+        public override void SetUnbeatable(bool b) => write(0x00449564,HexCodeHelper.getValueArray("C7 87 B0 8D 01 00 04 00 00 00",b));
         public override void SetFPS(int i) {
-            write(0x004622B3,BitConverter.GetBytes((double)1/i));
-            write(0x004620B1,"F2 0F 10 0D B3 22 46 00");//movsd xmm1,[004622B3]
+            write(0x00462184,BitConverter.GetBytes((double)1/i));
+            write(0x00462211,"F2 0F 10 0D 84 21 46 00");
         }
-        public override void SetPlayer(int i) { }
-        public override void SetPlayerFragment(int i) { }
-        public override void SetBomb(int i) { }
-        public override void SetBombFragment(int i) { }
-        public override void SetPower(int i) { }
+        public override void SetPlayer(int i) {
+            write(0x004B5A40,i);
+        }
+        public override void SetPlayerFragment(int i) {
+            write(0x004B5A44,i);
+        }
+        public override void SetBomb(int i) {
+            write(0x004B5A4C,i);
+        }
+        public override void SetBombFragment(int i) {
+            write(0x004B5A50,i);
+        }
+        public override void SetPower(int i) {
+            write(0x004B5A30,i);
+        }
         public override void SetScore(int i) { }
-        public override void SetMaxPoint(int i) { }
-        public override void SetSpecial1(int i) => write(mt.ReadInteger(0x004B5654)+0x16838,BitConverter.GetBytes(i/100f));
-        public override void SetSpecial2(int i) { }
-        public override void SetSpecial3(int i) { }
-        public override void SetSpecial4(int i) { }
-        public override int GetSpecial1() => (int)(mt.ReadFloat(mt.ReadInteger(0x004B5654)+0x16838)*100);
-        public override int GetSpecial2() { return 0; }
-        public override int GetSpecial3() { return 0; }
-        public override int GetSpecial4() { return 0; }
-        public override void SetIPlayer(int i) { MessageBox.Show("text:"+i); }
-        public override void SetIPlayerFragment(int i) { }
-        public override void SetIBomb(int i) { }
-        public override void SetIBombFragment(int i) { }
-        public override void SetIPower(int i) { }
+        public override void SetMaxPoint(int i) {
+            write(0x004B5A24,i);
+        }
+        public override void SetSpecial1(int i) {
+            write(0x004B5A64,i);
+        }
+
+        public override void SetSpecial2(int i) {
+            write(0x004B5A68,i);
+        }
+        public override void SetSpecial3(int i) {
+            write(0x004B5A6C,i);
+        }
+        public override void SetSpecial4(int i) {
+            write(0x004B5A70,i);
+        }
+        public override int GetSpecial1() {
+            return  mt.ReadInteger(0x004B5A64) ;
+        } 
+        public override int GetSpecial2() {
+            return mt.ReadInteger(0x004B5A68);
+        }
+        public override int GetSpecial3() {
+            return mt.ReadInteger(0x004B5A6C);
+        }
+        public override int GetSpecial4() {
+            return mt.ReadInteger(0x004B5A70);
+        }
+        public override void SetIPlayer(int i) {
+            write(0x00430463,i);
+            write(0x0043044E,i);
+        }
+        public override void SetIPlayerFragment(int i) {
+       //     write(0x00430315,i);
+            write(0x0043031F,i);
+        }
+        public override void SetIBomb(int i) {
+            write(0x004302E6,HexCodeHelper.stringToAsm("E9 A6 FC FF FF 90"));
+            write(0x0042FF91,HexCodeHelper.stringToAsm("C7 05 4C 5A 4B 00 00 00 00 00 E9 4C 03 00 00"));
+            write(0x0042FF97,i);
+        }
+        public override void SetIBombFragment(int i) {
+            write(0x00430315,i);
+        }
+        public override void SetIPower(int i) {
+            write(0x004304C6,HexCodeHelper.stringToAsm("E8 28 13 00 00"));
+            write(0x004304EE,HexCodeHelper.stringToAsm("E8 00 13 00 00"));
+            write(0x0043051E,HexCodeHelper.stringToAsm("E8 D0 12 00 00"));
+            write(0x004317F3,HexCodeHelper.stringToAsm("C7 05 30 5A 4B 00 00 00 00 00 C3"));
+            write(0x004317F9,i);
+
+        }
         public override void SetIScore(int i) { }
         public override void SetIMaxPoint(int i) { }
-        public override void SetISpecial1(int i) { }
-        public override void SetISpecial2(int i) { }
-        public override void SetISpecial3(int i) { }
-        public override void SetISpecial4(int i) { }
+        public override void SetISpecial1(int i) {
+            write(0x00499ECA,i);
+            write(0x00499EC0,checkCount());
+        }
+        public override void SetISpecial2(int i) {
+            write(0x00499ED4,i);
+            write(0x00499EC0,checkCount());
+        }
+        public override void SetISpecial3(int i) {
+            write(0x00499EDE,i);
+            write(0x00499EC0,checkCount());
+        }
+        public override void SetISpecial4(int i) {
+            write(0x00499EE8,i);
+            write(0x00499EC0,checkCount());
+        }
+
+        private int checkCount() {
+            if(mt.ReadInteger(0x00499EE8)!=0) {
+                return 4;
+            }
+            if(mt.ReadInteger(0x00499EDE)!=0) {
+                return 3;
+            }
+            if(mt.ReadInteger(0x00499ED4)!=0) {
+                return 2;
+            }
+            if(mt.ReadInteger(0x00499ECA)!=0) {
+                return 1;
+            }
+            return 0;
+        }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
         private int write(int addr,string value) => mt.WriteBytes(addr,HexCodeHelper.stringToAsm(value));

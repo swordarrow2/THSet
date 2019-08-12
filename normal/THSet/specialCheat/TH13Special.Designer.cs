@@ -23,10 +23,43 @@
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            components=new System.ComponentModel.Container();
-            this.AutoScaleMode=System.Windows.Forms.AutoScaleMode.Font;
+            this.editText1 = new THSet.EditText();
+            this.editText2 = new THSet.EditText();
+            this.SuspendLayout();
+            // 
+            // editText1
+            // 
+            this.editText1.Location = new System.Drawing.Point(4, 4);
+            this.editText1.Name = "editText1";
+            this.editText1.number = 0;
+            this.editText1.Size = new System.Drawing.Size(170, 34);
+            this.editText1.TabIndex = 0;
+            this.editText1.TabStop = false;
+            // 
+            // editText2
+            // 
+            this.editText2.Location = new System.Drawing.Point(4, 45);
+            this.editText2.Name = "editText2";
+            this.editText2.number = 0;
+            this.editText2.Size = new System.Drawing.Size(170, 34);
+            this.editText2.TabIndex = 1;
+            this.editText2.TabStop = false;
+            // 
+            // TH13Special
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.editText2);
+            this.Controls.Add(this.editText1);
+            this.Name = "TH13Special";
+            this.Size = new System.Drawing.Size(171, 82);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private EditText editText1;
+        private EditText editText2;
     }
 }

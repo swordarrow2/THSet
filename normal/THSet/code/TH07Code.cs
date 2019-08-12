@@ -107,6 +107,10 @@ namespace THSet {
         }
         public override void SetIScore(int i) { }
         public override void SetIMaxPoint(int i) {
+           
+        }
+
+        public override void SetISpecial1(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EC57,HexCodeHelper.getNop(6));
             write(0x0042ED33,HexCodeHelper.getNop(6));
@@ -119,9 +123,27 @@ namespace THSet {
             write(0x0048CD7D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,123456
                                           0x89,0x81,0x1C,0x96,0x00,0x00,    //mov dword ptr [ecx+961C],eax
                                           0xE9,0x09,0x1C,0xFA,0xFF });      //jmp 0042E996
+          
         }
 
-        public override void SetISpecial1(int i) {
+        public override void SetISpecial2(int i) {
+            byte[] b = BitConverter.GetBytes(i);
+            write(0x0042EC00,i);//extra
+            write(0x0042EC36,i);//phantasm
+            write(0x0042EC92,i);//easy
+            write(0x0042ECAE,i);//normal
+            write(0x0042ECCA,i);//hard
+            write(0x0042ECE6,i);//lunatic 
+            write(0x0042ED00,HexCodeHelper.stringToAsm("E9 E3 00 00 00 90"));
+        }
+        public override void SetISpecial3(int i) {
+            byte[] b = BitConverter.GetBytes(i);
+            write(0x0042E9A5,new byte[] { 0xE9,0xE3,0xE3,0x05,0x00,0x90 }); //jmp 0048CD8D
+            write(0x0048CD8D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,b[]
+                                          0x89,0x81,0x20,0x96,0x00,0x00,    //mov [ecx+00009620],eax
+                                          0xE9,0x0E,0x1C,0xFA,0xFF });      //jmp 0042E9AB 
+        }
+        public override void SetISpecial4(int i) {
             byte[] b = BitConverter.GetBytes(i);
             write(0x0042EB29,new byte[] { 0xE9,0x6F,0xE2,0x05,0x00,0x90,0x90 });//jmp 0048CD9D
             write(0x0048CD9D,new byte[] { 0x8B,0x40,0x08,
@@ -129,26 +151,6 @@ namespace THSet {
                                           0xE9,0x84,0x1D,0xFA,0xFF
             });
         }
-
-        public override void SetISpecial2(int i) {
-            byte[] b = BitConverter.GetBytes(i);
-            write(0x0042E9A5,new byte[] { 0xE9,0xE3,0xE3,0x05,0x00,0x90 }); //jmp 0048CD8D
-            write(0x0048CD8D,new byte[] { 0x05,b[0],b[1],b[2],b[3],         //add eax,b[]
-                                          0x89,0x81,0x20,0x96,0x00,0x00,    //mov [ecx+00009620],eax
-                                          0xE9,0x0E,0x1C,0xFA,0xFF });      //jmp 0042E9AB
-        }
-        public override void SetISpecial3(int i) {
-            byte[] b = BitConverter.GetBytes(i);
-            write(0x0042EC00,i);//extra
-            write(0x0042EC36,i);//phantasm
-            write(0x0042EC92,i);//easy
-            write(0x0042ECAE,i);//normal
-            write(0x0042ECCA,i);//hard
-            write(0x0042ECE6,i);//lunatic
-
-            write(0x0042ED00,HexCodeHelper.stringToAsm("E9 E3 00 00 00 90"));
-        }
-        public override void SetISpecial4(int i) { }
         private int write(int addr,int value) => mt.WriteInteger(addr,value);
         private int write(int addr,byte[] value) => mt.WriteBytes(addr,value);
 

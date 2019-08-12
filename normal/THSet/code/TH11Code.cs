@@ -14,8 +14,6 @@ namespace THSet {
             thisStatu=mt.ReadInteger(mt.ReadInteger(0x004A8EB4)+0x928);
             if(lastStatu!=4&&thisStatu==4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
-                write(0x004A5E88,5);
-                write(0x004A573C,5);
             } else if(lastStatu==4&&thisStatu!=4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
             }

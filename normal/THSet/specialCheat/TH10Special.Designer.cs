@@ -33,6 +33,7 @@
             this.editText1.number = 0;
             this.editText1.Size = new System.Drawing.Size(170, 34);
             this.editText1.TabIndex = 0;
+            this.editText1.TabStop = false;
             // 
             // TH10Special
             // 

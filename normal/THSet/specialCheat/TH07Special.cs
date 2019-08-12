@@ -8,12 +8,23 @@ namespace THSet.specialCheat {
             init=i==1;
             InitializeComponent();
             Location=new Point(181,7);
+            editText1.Text="分子";
+            editText2.Text="分母";
+            editText3.Text="樱+";
+            editText4.Text="收卡数";
             if(init) {
-                Name="th07initSpecial";
+                Name="th17initSpecial";
+                editText1.Action=delegate () { MainForm.thCode.SetISpecial1(editText1.number); };
+                editText2.Action=delegate () { MainForm.thCode.SetISpecial2(editText2.number); };
+                editText3.Action=delegate () { MainForm.thCode.SetISpecial3(editText3.number); };
+                editText4.Action=delegate () { MainForm.thCode.SetISpecial4(editText4.number); };
             } else {
-                Name="th07Special";
+                Name="th17Special";
+                editText1.Action=delegate () { MainForm.thCode.SetSpecial1(editText1.number); };
+                editText2.Action=delegate () { MainForm.thCode.SetSpecial2(editText2.number); };
+                editText3.Action=delegate () { MainForm.thCode.SetSpecial3(editText3.number); };
+                editText4.Action=delegate () { MainForm.thCode.SetSpecial4(editText4.number); };
             }
-            Size=new Size(200,128);
             TabIndex=29;
         }
     }

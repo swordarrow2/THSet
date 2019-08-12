@@ -15,38 +15,66 @@ namespace THSet.specialCheat {
             } else {
                 Name="th12Special";
             }
-            Size=new Size(200,128);
             TabIndex=29;
         }
 
         private void SelectChanged(object sender,EventArgs e) {
             MaterialRadioButton radioButton = (MaterialRadioButton)sender;
             if(radioButton.Checked) {
-                switch(radioButton.Name) {
-                    case "g1n":
-                        if(init) { MainForm.thCode.SetISpecial1(0); } else { MainForm.thCode.SetSpecial1(1); }
-                        break;
-                    case "g1r":
-                        if(init) { MainForm.thCode.SetISpecial1(1); } else { MainForm.thCode.SetSpecial1(1); }
-                        break;
-                    case "g1b":
-                        if(init) { MainForm.thCode.SetISpecial1(2); } else { MainForm.thCode.SetSpecial1(2); }
-                        break;
-                    case "g1g":
-                        if(init) { MainForm.thCode.SetISpecial1(3); } else { MainForm.thCode.SetSpecial1(3); }
-                        break;
-                    case "g2n":
-                        if(init) { MainForm.thCode.SetISpecial2(0); } else { MainForm.thCode.SetSpecial2(0); }
-                        break;
-                    case "g2r":
-                        if(init) { MainForm.thCode.SetISpecial2(1); } else { MainForm.thCode.SetSpecial2(1); }
-                        break;
-                    case "g2b":
-                        if(init) { MainForm.thCode.SetISpecial2(2); } else { MainForm.thCode.SetSpecial2(2); }
-                        break;
-                    case "g2g":
-                        if(init) { MainForm.thCode.SetISpecial2(3); } else { MainForm.thCode.SetSpecial2(3); }
-                        break;
+                if(init) {
+                    switch(radioButton.Name) {
+                        case "g1n":
+                            MainForm.thCode.SetISpecial1(0);
+                            break;
+                        case "g1r":
+                            MainForm.thCode.SetISpecial1(1);
+                            break;
+                        case "g1b":
+                            MainForm.thCode.SetISpecial1(2);
+                            break;
+                        case "g1g":
+                            MainForm.thCode.SetISpecial1(3);
+                            break;
+                        case "g2n":
+                            MainForm.thCode.SetISpecial2(0);
+                            break;
+                        case "g2r":
+                            MainForm.thCode.SetISpecial2(1);
+                            break;
+                        case "g2b":
+                            MainForm.thCode.SetISpecial2(2);
+                            break;
+                        case "g2g":
+                            MainForm.thCode.SetISpecial2(3);
+                            break;
+                    }
+                } else {
+                    switch(radioButton.Name) {
+                        case "g1n":
+                            MainForm.thCode.SetSpecial1(1);
+                            break;
+                        case "g1r":
+                            MainForm.thCode.SetSpecial1(1);
+                            break;
+                        case "g1b":
+                            MainForm.thCode.SetSpecial1(2);
+                            break;
+                        case "g1g":
+                            MainForm.thCode.SetSpecial1(3);
+                            break;
+                        case "g2n":
+                            MainForm.thCode.SetSpecial2(0);
+                            break;
+                        case "g2r":
+                            MainForm.thCode.SetSpecial2(1);
+                            break;
+                        case "g2b":
+                            MainForm.thCode.SetSpecial2(2);
+                            break;
+                        case "g2g":
+                            MainForm.thCode.SetSpecial2(3);
+                            break;
+                    }
                 }
             }
         }

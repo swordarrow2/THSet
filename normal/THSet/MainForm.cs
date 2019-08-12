@@ -25,7 +25,7 @@ namespace THSet {
             public int other3;
         };
 
-        public const string versonCode = "THSet v3.4.9";
+        public const string versonCode = "THSet v4.0.1";
         private string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165","th17" };
         private int gameIndex = 0;
         private PracticeData practiceData;
@@ -249,12 +249,16 @@ namespace THSet {
                     TH07Special th07Special2 = new TH07Special(0);
                     tabPage1.Controls.Add(th07Special1);
                     tabPage2.Controls.Add(th07Special2);
+                    iPlayerFragment.Text="蓝点数";
+                    playerFragment.Text="蓝点数";
                     break;
                 case 8:
                     TH08Special th08Special1 = new TH08Special(1);
                     TH08Special th08Special2 = new TH08Special(0);
                     tabPage1.Controls.Add(th08Special1);
                     tabPage2.Controls.Add(th08Special2);
+                    iPlayerFragment.Text="蓝点数";
+                    playerFragment.Text="蓝点数";
                     break;
                 case 10:
                     TH10Special th10Special1 = new TH10Special(1);
@@ -317,6 +321,7 @@ namespace THSet {
                     tabPage2.Controls.Add(th17Special2);
                     break;
             }
+            timeProcess.Enabled=true;
 
         }
         #endregion
@@ -418,14 +423,14 @@ namespace THSet {
             if(thCode.EnableShowBulletCount) {
                 page3data.bullet=thCode.GetBulletCount();
                 bulletLable.Text="子弹数量:"+page3data.bullet;
-            } 
+            }
             if(gameNum==7) {
                 otherLabel1.Text="樱道具值:"+(1000+100*thCode.GetSpecial1());
             } else {
                 otherLabel1.Text=thCode.GetSpecialTip()[0]+":"+thCode.GetSpecial1();
-            } 
-            otherLabel2.Text=thCode.GetSpecialTip()[1]+":"+thCode.GetSpecial2(); 
-            if(gameNum==7) otherLabel3.Text=thCode.GetSpecialTip()[2]+":"+thCode.GetSpecial3();
+            }
+            otherLabel2.Text=thCode.GetSpecialTip()[1]+":"+thCode.GetSpecial2();
+            otherLabel3.Text=thCode.GetSpecialTip()[2]+":"+thCode.GetSpecial3();
         }
         #endregion
 

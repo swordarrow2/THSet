@@ -15,12 +15,14 @@ namespace THSet.specialCheat {
             init=i==1;
             InitializeComponent();
             Location=new Point(181,7);
+            editText1.Text="当前章节擦弹";
             if(init) {
                 Name="th15initSpecial";
+                editText1.Action=delegate () { MainForm.thCode.SetISpecial1(editText1.number); };
             } else {
                 Name="th15Special";
+                editText1.Action=delegate () { MainForm.thCode.SetSpecial1(editText1.number); };
             }
-            Size=new Size(200,128);
             TabIndex=29;
         }
     }

@@ -10,7 +10,6 @@ namespace THSet {
         MemoryTool mt;
         int lastStatu = 1;
         int thisStatu = 1;
-        int autoBombCount = 0;
         private int bossNumAddress = 0;
         private int logoEnemyAddress = 0;
         public TH16Code(MemoryTool m) => mt=m;
@@ -18,7 +17,6 @@ namespace THSet {
             thisStatu=mt.ReadInteger(mt.ReadInteger(0x004A6EF8)+0x165A8);
             if(lastStatu!=4&&thisStatu==4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),0,0);
-                write(0x004A5954,autoBombCount++);
             } else if(lastStatu==4&&thisStatu!=4) {
                 mt.clickKey(Keys.X,mt.virtualKey((byte)'X',0),2,0);
             }

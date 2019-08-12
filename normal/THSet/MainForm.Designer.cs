@@ -965,7 +965,6 @@ namespace THSet
             // 
             // timeProcess
             // 
-            this.timeProcess.Enabled = true;
             this.timeProcess.Interval = 2000;
             this.timeProcess.Tick += new System.EventHandler(this.timeProcess_Tick);
             // 

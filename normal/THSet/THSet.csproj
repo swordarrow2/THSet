@@ -142,17 +142,17 @@
     <Compile Include="specialCheat\TH08Special.Designer.cs">
       <DependentUpon>TH08Special.cs</DependentUpon>
     </Compile>
-    <Compile Include="specialCheat\TH10Special.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="specialCheat\TH10Special.Designer.cs">
-      <DependentUpon>TH10Special.cs</DependentUpon>
-    </Compile>
     <Compile Include="specialCheat\TH11Special.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="specialCheat\TH11Special.Designer.cs">
       <DependentUpon>TH11Special.cs</DependentUpon>
+    </Compile>
+    <Compile Include="specialCheat\TH10Special.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="specialCheat\TH10Special.Designer.cs">
+      <DependentUpon>TH10Special.cs</DependentUpon>
     </Compile>
     <Compile Include="specialCheat\TH128Special.cs">
       <SubType>UserControl</SubType>
@@ -250,14 +250,41 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH07Special.resx">
+      <DependentUpon>TH07Special.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="specialCheat\TH08Special.resx">
       <DependentUpon>TH08Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH11Special.resx">
+      <DependentUpon>TH11Special.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="specialCheat\TH10Special.resx">
       <DependentUpon>TH10Special.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH128Special.resx">
+      <DependentUpon>TH128Special.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="specialCheat\TH12Special.resx">
       <DependentUpon>TH12Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH13Special.resx">
+      <DependentUpon>TH13Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH14Special.resx">
+      <DependentUpon>TH14Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH15Special.resx">
+      <DependentUpon>TH15Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH165Special.resx">
+      <DependentUpon>TH165Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH16Special.resx">
+      <DependentUpon>TH16Special.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="specialCheat\TH17Special.resx">
+      <DependentUpon>TH17Special.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TH09Form.resx">
       <DependentUpon>TH09Form.cs</DependentUpon>
