@@ -25,7 +25,7 @@ namespace THSet {
             public int other3;
         };
 
-        public const string versonCode = "THSet v4.0.1";
+        public const string versonCode = "THSet v4.0.2";
         private string[] names = new string[] { "th07","th08","th09","th09c","th10","th10chs","th10cht","th11","th11c","th12","th12c","th128","th128_CN","th13","th13c","th14","th15","th16","th165","th17" };
         private int gameIndex = 0;
         private PracticeData practiceData;
@@ -46,18 +46,15 @@ namespace THSet {
         private readonly MaterialSkinManager materialSkinManager;
 
         [DllImport("user32.dll")]
-        public static extern IntPtr GetActiveWindow();//获得当前活动窗体  
+        public static extern IntPtr GetActiveWindow();
 
         public MainForm() {
             InitializeComponent();
-            // Initialize MaterialSkinManager
             materialSkinManager=MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme=MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme=new ColorScheme(Primary.BlueGrey800,Primary.BlueGrey900,Primary.BlueGrey500,Accent.LightBlue200,TextShade.WHITE);
             materialSkinManager.ColorScheme=new ColorScheme(Primary.Green600,Primary.Green700,Primary.Green200,Accent.Red100,TextShade.WHITE);
-            practiceData=new PracticeData();
-            page3data=new Page3Data();
             findProcess();
         }
         #region page3
@@ -133,7 +130,6 @@ namespace THSet {
                     thCode.SetBossNum(stageList,chapterList,null,bossList);
                     break;
             }
-            MessageBox.Show(practiceData.stage+" "+practiceData.chapter+" "+practiceData.boss);
         }
         #endregion
 
@@ -199,7 +195,7 @@ namespace THSet {
             iBomb.Action=delegate () { thCode.SetIBomb(iBomb.number); };
             iBombFragment.Text="Bomb碎片";
             iBombFragment.Enabled=thCode.EnableSetIBombFragment;
-            iBombFragment.Action=delegate () { thCode.SetIBomb(iBombFragment.number); };
+            iBombFragment.Action=delegate () { thCode.SetIBombFragment(iBombFragment.number); };
             iPower.Text="灵力";
             iPower.Enabled=thCode.EnableSetIPower;
             iPower.Action=delegate () { thCode.SetIPower(iPower.number); };
@@ -208,7 +204,7 @@ namespace THSet {
             iScore.Action=delegate () { thCode.SetIScore(iScore.number); };
             iMaxPoint.Text="最大得点";
             iMaxPoint.Enabled=thCode.EnableSetIMaxPoint;
-            iMaxPoint.Action=delegate () { thCode.SetIPlayer(iMaxPoint.number); };
+            iMaxPoint.Action=delegate () { thCode.SetIMaxPoint(iMaxPoint.number); };
 
             player.Text="残机";
             player.Enabled=thCode.EnableSetPlayer;
@@ -221,7 +217,7 @@ namespace THSet {
             bomb.Action=delegate () { thCode.SetBomb(bomb.number); };
             bombFragment.Text="Bomb碎片";
             bombFragment.Enabled=thCode.EnableSetBombFragment;
-            bombFragment.Action=delegate () { thCode.SetBomb(bombFragment.number); };
+            bombFragment.Action=delegate () { thCode.SetBombFragment(bombFragment.number); };
             power.Text="灵力";
             power.Enabled=thCode.EnableSetPower;
             power.Action=delegate () { thCode.SetPower(power.number); };
@@ -230,7 +226,7 @@ namespace THSet {
             score.Action=delegate () { thCode.SetScore(score.number); };
             maxPoint.Text="最大得点";
             maxPoint.Enabled=thCode.EnableSetMaxPoint;
-            maxPoint.Action=delegate () { thCode.SetPlayer(maxPoint.number); };
+            maxPoint.Action=delegate () { thCode.SetMaxPoint(maxPoint.number); };
 
             _60.Enabled=_75.Enabled=_90.Enabled=custom.Enabled=customFPS.Enabled=fpsButton.Enabled=thCode.EnableSetFPS;
             materialLabel1.Enabled=missLable.Enabled=bombLable.Enabled=thCode.EnableSourceCount;
