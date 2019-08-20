@@ -988,6 +988,7 @@ namespace THSet
             this.Controls.Add(this.materialFlatButton1);
             this.Name = "MainForm";
             this.Text = "MaterialSkin Demo";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);

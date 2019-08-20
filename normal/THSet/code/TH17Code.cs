@@ -117,7 +117,7 @@ namespace THSet {
         public override int GetBulletCount() { return 0; }
         public override int GetBossLife() { return 0; }
         public override void KillSelf() => write(mt.ReadInteger(0x004B77D0)+0x18DB0,4);
-        public override bool[] GetEnable() => new bool[24] { true,true,true,true,true,false,false,
+        public override bool[] GetEnable() => new bool[24] { true,true,true,true,true,false,true,
                                                              true,true,true,true,true,false,true,
                                                              true,true,true,true,false,false,false,true,true,true };
         public override void SetLockPlayer(bool b) {
@@ -145,7 +145,7 @@ namespace THSet {
             write(0x004B5A50,i);
         }
         public override void SetPower(int i) {
-            write(0x004B5A30,i);
+            write(0x004B5A30,i*100);
         }
         public override void SetScore(int i) { }
         public override void SetMaxPoint(int i) {
@@ -165,8 +165,8 @@ namespace THSet {
             write(0x004B5A70,i);
         }
         public override int GetSpecial1() {
-            return  mt.ReadInteger(0x004B5A64) ;
-        } 
+            return mt.ReadInteger(0x004B5A64);
+        }
         public override int GetSpecial2() {
             return mt.ReadInteger(0x004B5A68);
         }
@@ -181,7 +181,7 @@ namespace THSet {
             write(0x0043044E,i);
         }
         public override void SetIPlayerFragment(int i) {
-       //     write(0x00430315,i);
+            //     write(0x00430315,i);
             write(0x0043031F,i);
         }
         public override void SetIBomb(int i) {
@@ -201,7 +201,10 @@ namespace THSet {
 
         }
         public override void SetIScore(int i) { }
-        public override void SetIMaxPoint(int i) { }
+        public override void SetIMaxPoint(int i) {
+            write(0x004303F0,HexCodeHelper.stringToAsm("90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 C7 05 24 5A 4B 00 00 00 00 00"));
+            write(0x00430405,i*100);
+        }
         public override void SetISpecial1(int i) {
             write(0x00499ECA,i);
             write(0x00499EC0,checkCount());
